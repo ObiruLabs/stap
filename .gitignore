@@ -1,0 +1,4 @@
+# Ignore workspace
+/.idea/*
+/craftapp/*
+/craft/config/license.key

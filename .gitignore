@@ -2,5 +2,6 @@
 /.idea/*
 /craftapp/*
 /craft/config/license.key
+/craft/config/db.php
 /node_modules/*
 /.sass-cache/*

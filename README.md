@@ -7,7 +7,7 @@ Initial Setup
 -----------
 1. Download and install MAMP.
 2. Start up MAMP and setup new database and user permissions.
-2. Update db credentials in /craft/config/db.php
+2. Update db credentials from /craft/config/db.php.example to /craft/config/db.php
 3. Setup Craft
   * Download from https://buildwithcraft.com/
   * Rename as extracted folder to "craftapp"

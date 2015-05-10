@@ -19,6 +19,10 @@ Initial Setup
 
 Development
 -----------
+* Make sure npm is installed. To install, follow these [instructions](https://docs.npmjs.com/getting-started/installing-node).
+* Make sure grunt is installed. If not, run `sudo npm install -g grunt`.
+* Make sure the grunt CLI is installed. If not, run `sudo npm install -g grunt-cli`.
+* Run `npm install` to install dependencies.
 * Run `grunt server` to start up a server on `localhost:8080`
 * Run `grunt watch` to watch for changes in Haml and Sass files and automatically compile to HTML and CSS
 * When adding new JavaScript files:

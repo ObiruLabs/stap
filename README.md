@@ -16,6 +16,9 @@ Initial Setup
 4. Install Craft
   * Go to localhost:8888/admin/login
   * Setup local admin
+5. Setup sections
+  * Install the artvandelay plugin in http://localhost:8888/admin/settings/plugins
+  * Go to http://localhost:8888/admin/artVandelay and copy contents of /config/sections.json and import
 
 Development
 -----------

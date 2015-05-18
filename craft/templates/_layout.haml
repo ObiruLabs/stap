@@ -37,13 +37,37 @@
         {% block content %}
         {% endblock %}
 
-        %footer#footer.container-fluid
-            .row
-                .col-sm-5
-                    %a{ href: 'http://stapinc.org' } Southern Tier AIDS Program
-                .col-sm-2
-                    %a{ href: '/about' } About Us
-                .col-sm-2
-                    %a{ href: '/about#contact' } Contact
-                .col-sm-3
-                    %a{ href: '/policy' } Privacy Policy
+        %footer#footer
+            .container-fluid
+                .row
+                    .col-sm-7.col-sm-offset-1
+                        .row
+                            .col-xs-3
+                                %h3 Contact
+                                %ul
+                                    %li Binghamton
+                                    %li Johnson City
+                                    %li Elmira
+                                    %li Tompkins County
+                            .col-xs-3
+                                %h3 About
+                                %ul
+                                    %li Staff
+                                    %li Job Openings
+                                    %li Vlunteer
+                                    %li Internships
+                            .col-xs-3
+                                %h3 FAQ
+                                %ul
+                                    %li HIV/AIDS
+                                    %li Condoms
+                                    %li STIs
+                                    %li Harm & Risk Reduction
+                    .col-sm-4
+                        %img{ src: '/images/logowhite.png' }
+                        %h3 Get Email Updates
+                        %form.form-inline
+                            .form-group
+                                .sr-only Email address
+                                %input.form-control{ type: 'email', placeholder: 'Enter your email address' }
+                            %button.btn{ type: 'submit' } Go

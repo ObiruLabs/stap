@@ -1,0 +1,41 @@
+.section {
+    .section--title {
+        margin: {
+            bottom: 60px;
+            top: 75px;
+        }
+        text-align: center;
+    }
+
+    .section--more {
+        background: $brand-secondary-dark-blue;
+        color: #333;
+        font-weight: 700;
+        margin: {
+            bottom: 75px;
+            top: 50px;
+        }
+        padding: 12px;
+
+        .geomicon-arrow-right {
+            font-size: 14px;
+            margin: {
+                left: 5px;
+                top: 4px;
+            }
+        }
+
+        &.is-full {
+            width: 100%;
+        }
+    }
+
+    .section--centered {
+        text-align: center;
+    }
+}
+
+.section_callout {
+    @extend .section;
+    background: $brand-secondary;
+}

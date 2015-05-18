@@ -7,6 +7,11 @@
 @import 'bootstrap';
 @import 'geomicons';
 
+@import 'modules/footer';
+@import 'modules/media-vertical';
+@import 'modules/post';
+@import 'modules/section';
+
 .browsehappy {
     @include make-sm-column(8);
     @include make-sm-column-offset(12);
@@ -36,5 +41,57 @@
 .mz-no-generatedcontent {
     .browsehappy {
         display: block;
+    }
+}
+
+.container-fluid {
+    max-width: 1280px;
+}
+
+.navbar-default {
+    background: #fff;
+    padding: {
+        bottom: 10px;
+        top: 10px;
+    }
+
+    .navbar--donate {
+        color: #fff !important;
+        font-weight: 700;
+        margin: {
+            left: 10px;
+            right: 20px;
+            top: 7px;
+        }
+        padding: {
+            bottom: 5px;
+            top: 5px;
+        }
+
+        &:hover, &:focus {
+            background-color: lighten($brand-primary, 10%) !important;
+        }
+    }
+}
+
+.btn-secondary {
+    background: $brand-secondary-dark-blue;
+    color: #333;
+    font-weight: 700;
+    padding: 12px 25px;
+}
+
+h1, h2, h3, h4, h5 {
+    color: $brand-primary;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+h2 {
+    font: {
+        size: 22px;
+        weight: 700;
     }
 }

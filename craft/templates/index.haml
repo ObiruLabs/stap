@@ -1,10 +1,114 @@
 {% extends "_layout" %}
 {% block content %}
-%main
-    %h1 The five boxing wizards
-    %h2 The five boxing wizards
-    %h3 The five boxing wizards
-    %h4 The five boxing wizards
-    %h5 The five boxing wizards
-    %p The five boxing wizards
+%nav.navbar.navbar-default.navbar-fixed-top
+    .container-fluid
+        .navbar-header
+            %a.navbar-brand{ href: '#' }
+                %img{ src: '/images/logo.png', style: 'width: 55px; margin-top: -15px;' }
+
+        #navbar-collapse-1.collapse.navbar-collapse
+            %ul.nav.navbar-nav.navbar-right
+                %li
+                    %a{ href: '#' } HIV Testing
+                %li
+                    %a{ href: '#' } Services
+                %li
+                    %a{ href: '#' } Events
+                %li
+                    %a{ href: '#' } Resources
+                %li
+                    %a{ href: '#' } FAQ
+                %li
+                    %a{ href: '#' } About
+                %li
+                    %a.navbar--donate.btn.btn-primary{ href: '#' } Donate
+
+%img{ src: '/images/promo.png', width: '100%', style: 'margin-top: 70px;' }
+
+%section.section_callout
+    .container-fluid
+        %h1.section--title.col-sm-8.col-sm-offset-2 We've been providing comprehensive HIV/AIDS services in the Southern Tier of New York for over 30 years.
+        .row
+            .media-vertical_services.col-sm-4
+                .media-vertical--container
+                    .media-vertical--media
+                        %img{ src: '/images/testing.png' }
+                    %h2 HIV Testing
+                    %p STAP offers fast, free and confidential HIV testing at many locations throughout the Southern Tier. Knowing our HIV status can keep you and your partner safe.
+                    %a.media-vertical--more.btn
+                        Get Tested Today
+                        %span.geomicon-arrow-right
+            .media-vertical_services.col-sm-4
+                .media-vertical--container
+                    .media-vertical--media
+                        %img{ src: '/images/syringe.png' }
+                    %h2 Syringe Exhange Program
+                    %p STAP's Prevention Points exchange new sterile syringes for used ones to reduce the risk of infection with HIV, Hepatitis C, and other blood-borne illnesses among injection drug users.
+                    %a.media-vertical--more.btn
+                        Learn why this works
+                        %span.geomicon-arrow-right
+            .media-vertical_services.col-sm-4
+                .media-vertical--container
+                    .media-vertical--media
+                        %img{ src: '/images/healthhomes.png' }
+                    %h2 Health Homes Care Management
+                    %p STAP's Health Homes program serves individuals with a variety of chronic conditions with comprehensive care managemnt and care coordination services.
+                    %a.media-vertical--more.btn
+                        Read about this program
+                        %span.geomicon-arrow-right
+
+        .row
+            .col-sm-6.col-sm-offset-3
+                %a.section--more.btn.is-full
+                    We provide even more services. See it all here
+                    %span.geomicon-arrow-right
+
+%section.section
+    .container-fluid
+        %h1.section--title.col-sm-8.col-sm-offset-2 Check out our community events!
+        .row
+            .media-vertical_events.col-sm-4
+                .media-vertical--container
+                    .media-vertical--media
+                        %img{ src: '/images/aidsride.png' }
+                    %h2 AIDS Ride for Life 2015
+                    %p A great opportunity to combine a challenging route, beautiful scenery with a chance to make a difference, on one of the best supported rides anywhere. Ride a 100 miles or take it easy with 42 miles.
+            .media-vertical_events.col-sm-4
+                .media-vertical--container
+                    .media-vertical--media
+                        %img{ src: '/images/mudgauntlet.png' }
+                    %h2 Mud Gauntlet 2015
+                    %p Seriously challenge yourself by running, crawling, sprinting and splashing through the Mud Gauntlet, Broome County's premier hardcore outdoor obstacle course!
+            .media-vertical_events.col-sm-4
+                .media-vertical--container
+                    .media-vertical--media
+                        %img{ src: '/images/hotcrossrun.png' }
+                    %h2 Hot Cross Run 2014
+                    %p Calling all fitness heroes! The ringmasters at STAP have thrown down the gauntlet and have devised the perfect trio of tasks to test you and your fitness.
+
+%section.section
+    .container-fluid
+        %h1.section--title.col-sm-8.col-sm-offset-2 Recent News
+        .row
+            .post.col-xs-10.col-xs-offset-1
+                .post--container
+                    .row
+                        .col-sm-7
+                            %h2 CDC to Baby Boomers: Get Tested for Hepatitis C
+                            %span.post--date May 18, 2012
+                            %p CDC on Friday announced a proposal to recommend that all people born between 1945 to 1965 get tested for hepatitis C virus. Baby boomers comprise more than 2 million of the estimated 3.2 million Americans thought to have HCV, but many do not know they are infected. CDC officials hope testing all baby boomers will help 800,000 get treated and prevent more than 120,000 deaths.
+                            %a.post--more.btn.btn-secondary Read More
+                        .col-sm-4.col-sm-offset-1
+                            %img.post--image{ src: '/images/doctor.png' }
+
+%img{ src: '/images/impact.png', width: '100%', style: 'margin-top: 70px;' }
+
+%section.section
+    .container-fluid
+        %h1.section--title.col-sm-8.col-sm-offset-2 Who We Are
+        .section--centered.row
+            .col-sm-6.col-sm-offset-3.col-xs-12
+                %p Founded in 1984, the Southern Tier AIDS Program provides supportive services to HIV+ persons and state of the art prevention education from 9 offices in an 8 county area. We work to create a world where HIV transmission is rare and those who are HIV+ lead healthy lives. We cultivate individual and community strengths to improve the public health. Our services focus on the health and well being of HIV+ persons and incorporate a harm reduction perspective and recognize that behavior change is a gradual process.
+                %a.section--more.btn.btn-secondary Learn about us
+
 {% endblock %}

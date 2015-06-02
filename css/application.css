@@ -7994,4 +7994,8 @@ h2 {
   font-weight: 700;
 }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 /*# sourceMappingURL=application.css.map */

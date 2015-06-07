@@ -19,6 +19,11 @@ Initial Setup
 5. Setup sections
   * Install the artvandelay plugin in http://localhost:8888/admin/settings/plugins
   * Go to http://localhost:8888/admin/artVandelay and copy contents of /config/sections.json and import
+6. Setup MandrillForm with keys and fix local ssl issue
+  * http://tutewall.com/ssl-certificate-problem-unable-to-get-local-issuer-certificate/
+7. Setup Craft CMS email SMTP to use Mandrill
+
+
 
 Development
 -----------

@@ -35,6 +35,29 @@
             ga('create', 'UA-45997711-8', 'auto');
             ga('send', 'pageview');
     %body
+        %nav.navbar.navbar-default.navbar-fixed-top
+            .container-fluid
+                .navbar-header
+                    %a.navbar-brand{ href: '/' }
+                        %img{ src: '/images/logo.png', style: 'width: 55px; margin-top: -15px;' }
+
+                #navbar-collapse-1.collapse.navbar-collapse
+                    %ul.nav.navbar-nav.navbar-right
+                        %li
+                            %a{ href: '/testing' } HIV Testing
+                        %li
+                            %a{ href: '/services' } Services
+                        %li
+                            %a{ href: '/events' } Events
+                        %li
+                            %a{ href: '/resources' } Resources
+                        %li
+                            %a{ href: '/faqtopics' } FAQ
+                        %li
+                            %a{ href: '/about' } About
+                        %li
+                            %a.navbar--donate.btn.btn-primary{ href: '/donation' } Donate
+
         {% block content %}
         {% endblock %}
 
@@ -55,7 +78,7 @@
                                 %ul
                                     %li Staff
                                     %li Job Openings
-                                    %li Vlunteer
+                                    %li Volunteer
                                     %li Internships
                             .col-xs-3
                                 %h3 FAQ
@@ -65,10 +88,17 @@
                                     %li STIs
                                     %li Harm & Risk Reduction
                     .col-sm-4
-                        %img{ src: '/images/logowhite.png' }
-                        %h3 Get Email Updates
-                        %form.form-inline
-                            .form-group
-                                .sr-only Email address
-                                %input.form-control{ type: 'email', placeholder: 'Enter your email address' }
-                            %button.btn{ type: 'submit' } Go
+                        #mc_embed_signup
+                            %img{ src: '/images/logowhite.png' }
+                            %h3 Get Email Updates
+                            %form#mc-embedded-subscribe-form.validate.form-inline{ action: '//stapinc.us10.list-manage.com/subscribe/post?u=6e2aebad0f9c25b08a995d4a9&amp;id=d382e4949e', method: 'post', name: 'mc-embedded-subscribe-form', target: '_blank', novalidate: '' }
+                                #mc_embed_signup_scroll
+                                    .mc-field-group.form-group
+                                        %label{ for: 'mce-EMAIL', style: 'display: none' } Email Address
+                                        %input#mce-EMAIL.required.email.form-control{ type: 'email', value: '', name: 'EMAIL', placeholder: 'Enter your email address' }
+                                    %button#mc-embedded-subscribe.button.btn{ type: 'submit', name: 'subscribe' } Subscribe
+                                    #mce-responses.clear
+                                        #mce-error-response.response{ style: 'display:none;' }
+                                        #mce-success-response.response{ style: 'display:none;' }
+                                    %div{ style: 'position: absolute; left: -5000px;' }
+                                        %input{ type: 'text', name: 'b_6e2aebad0f9c25b08a995d4a9_d382e4949e', tabindex: '-1', value: '' }

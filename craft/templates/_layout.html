@@ -32,6 +32,40 @@
     </script>
   </head>
   <body>
+    <nav class='navbar navbar-default navbar-fixed-top'>
+      <div class='container-fluid'>
+        <div class='navbar-header'>
+          <a class='navbar-brand' href='/'>
+            <img src='/images/logo.png' style='width: 55px; margin-top: -15px;'>
+          </a>
+        </div>
+        <div class='collapse navbar-collapse' id='navbar-collapse-1'>
+          <ul class='nav navbar-nav navbar-right'>
+            <li>
+              <a href='/testing'>HIV Testing</a>
+            </li>
+            <li>
+              <a href='/services'>Services</a>
+            </li>
+            <li>
+              <a href='/events'>Events</a>
+            </li>
+            <li>
+              <a href='/resources'>Resources</a>
+            </li>
+            <li>
+              <a href='/faqtopics'>FAQ</a>
+            </li>
+            <li>
+              <a href='/about'>About</a>
+            </li>
+            <li>
+              <a class='navbar--donate btn btn-primary' href='/donation'>Donate</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     {% block content %}
     {% endblock %}
     <footer id='footer'>
@@ -53,7 +87,7 @@
                 <ul>
                   <li>Staff</li>
                   <li>Job Openings</li>
-                  <li>Vlunteer</li>
+                  <li>Volunteer</li>
                   <li>Internships</li>
                 </ul>
               </div>
@@ -69,15 +103,26 @@
             </div>
           </div>
           <div class='col-sm-4'>
-            <img src='/images/logowhite.png'>
-            <h3>Get Email Updates</h3>
-            <form class='form-inline'>
-              <div class='form-group'>
-                <div class='sr-only'>Email address</div>
-                <input class='form-control' placeholder='Enter your email address' type='email'>
-              </div>
-              <button class='btn' type='submit'>Go</button>
-            </form>
+            <div id='mc_embed_signup'>
+              <img src='/images/logowhite.png'>
+              <h3>Get Email Updates</h3>
+              <form action='//stapinc.us10.list-manage.com/subscribe/post?u=6e2aebad0f9c25b08a995d4a9&amp;amp;id=d382e4949e' class='validate form-inline' id='mc-embedded-subscribe-form' method='post' name='mc-embedded-subscribe-form' novalidate='' target='_blank'>
+                <div id='mc_embed_signup_scroll'>
+                  <div class='mc-field-group form-group'>
+                    <label for='mce-EMAIL' style='display: none'>Email Address</label>
+                    <input class='required email form-control' id='mce-EMAIL' name='EMAIL' placeholder='Enter your email address' type='email' value=''>
+                  </div>
+                  <button class='button btn' id='mc-embedded-subscribe' name='subscribe' type='submit'>Subscribe</button>
+                  <div class='clear' id='mce-responses'>
+                    <div class='response' id='mce-error-response' style='display:none;'></div>
+                    <div class='response' id='mce-success-response' style='display:none;'></div>
+                  </div>
+                  <div style='position: absolute; left: -5000px;'>
+                    <input name='b_6e2aebad0f9c25b08a995d4a9_d382e4949e' tabindex='-1' type='text' value=''>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

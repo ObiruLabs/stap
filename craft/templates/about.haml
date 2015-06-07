@@ -1,5 +1,44 @@
 {% extends "_layout" %}
+
+{% macro errorList(errors) %}
+{% if errors %}
+%ul.errors
+    {% for error in errors %}
+    %li {{ error }}
+    {% endfor %}
+{% endif %}
+{% endmacro %}
+
 {% block content %}
 %main
     %h1 About
+
+%section.section
+    .container-fluid
+        %h1.section--title.col-sm-8.col-sm-offset-2 Contact Us
+        .row
+            .col-xs-8.col-xs-offset-2
+                %form.row{ method: 'post', action: '/', accept: { charset: 'UTF-8' } }
+                    %input{ type: 'hidden', name: 'action', value: 'mandrillForm/sendMessage' }
+                    %input{ type: 'hidden', name: 'successRedirectUrl', value: 'success' }
+
+                    .form-group
+                        %label{ for: 'fromEmail' } Your Email
+                        %input#fromEmail.form-control{ type: 'text', name: 'fromEmail', value: '{% if message is defined %}{{ message.fromEmail }}{% endif %}' }
+
+                        {% if message is defined %}
+                        {{ _self.errorList(message.getErrors('fromEmail')) }}
+                        {% endif %}
+
+                    .form-group
+                        %label{ for: 'message' } Message
+                        %textarea#message.form-control{ rows: '10', cols: '40', name: 'message' }
+                            {% if message is defined %}{{ message.message }}{% endif %}
+
+                        {% if message is defined %}
+                        {{ _self.errorList(message.getErrors('message')) }}
+                        {% endif %}
+
+                    %button.btn.btn-primary{ type: 'submit' } Send
+
 {% endblock %}

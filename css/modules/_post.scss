@@ -1,4 +1,10 @@
 .post {
+    @include make-row();
+
+    & + & {
+        margin-top: 25px;
+    }
+
     .post--container {
 
     }

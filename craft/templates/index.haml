@@ -1,27 +1,5 @@
 {% extends "_layout" %}
 {% block content %}
-%nav.navbar.navbar-default.navbar-fixed-top
-    .container-fluid
-        .navbar-header
-            %a.navbar-brand{ href: '#' }
-                %img{ src: '/images/logo.png', style: 'width: 55px; margin-top: -15px;' }
-
-        #navbar-collapse-1.collapse.navbar-collapse
-            %ul.nav.navbar-nav.navbar-right
-                %li
-                    %a{ href: '#' } HIV Testing
-                %li
-                    %a{ href: '#' } Services
-                %li
-                    %a{ href: '#' } Events
-                %li
-                    %a{ href: '#' } Resources
-                %li
-                    %a{ href: '#' } FAQ
-                %li
-                    %a{ href: '#' } About
-                %li
-                    %a.navbar--donate.btn.btn-primary{ href: '#' } Donate
 
 %img{ src: '/images/promo.png', width: '100%', style: 'margin-top: 70px;' }
 
@@ -89,8 +67,8 @@
 %section.section
     .container-fluid
         %h1.section--title.col-sm-8.col-sm-offset-2 Recent News
-        .row
-            .post.col-xs-10.col-xs-offset-1
+        .post
+            .col-xs-10.col-xs-offset-1
                 .post--container
                     .row
                         .col-sm-7

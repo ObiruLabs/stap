@@ -7932,6 +7932,10 @@ button.close {
   background: #eef7f8;
 }
 
+#main-content {
+  margin-top: 70px;
+}
+
 .browsehappy {
   position: relative;
   min-height: 1px;

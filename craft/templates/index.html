@@ -59,33 +59,17 @@
   <div class='container-fluid'>
     <h1 class='section--title col-sm-8 col-sm-offset-2'>Check out our community events!</h1>
     <div class='row'>
+      {% for event in craft.entries.section('events').first().events.limit(3) %}
       <div class='media-vertical_events col-sm-4'>
         <div class='media-vertical--container'>
           <div class='media-vertical--media'>
-            <img src='/images/aidsride.png'>
+            <img data-src='{{ event.photo.first().url }}'>
           </div>
-          <h2>AIDS Ride for Life 2015</h2>
-          <p>A great opportunity to combine a challenging route, beautiful scenery with a chance to make a difference, on one of the best supported rides anywhere. Ride a 100 miles or take it easy with 42 miles.</p>
+          <h2>{{ event.eventName }}</h2>
+          <p>{{ event.description }}</p>
         </div>
       </div>
-      <div class='media-vertical_events col-sm-4'>
-        <div class='media-vertical--container'>
-          <div class='media-vertical--media'>
-            <img src='/images/mudgauntlet.png'>
-          </div>
-          <h2>Mud Gauntlet 2015</h2>
-          <p>Seriously challenge yourself by running, crawling, sprinting and splashing through the Mud Gauntlet, Broome County's premier hardcore outdoor obstacle course!</p>
-        </div>
-      </div>
-      <div class='media-vertical_events col-sm-4'>
-        <div class='media-vertical--container'>
-          <div class='media-vertical--media'>
-            <img src='/images/hotcrossrun.png'>
-          </div>
-          <h2>Hot Cross Run 2014</h2>
-          <p>Calling all fitness heroes! The ringmasters at STAP have thrown down the gauntlet and have devised the perfect trio of tasks to test you and your fitness.</p>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>

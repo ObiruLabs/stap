@@ -1,0 +1,18 @@
+{% extends "_layout" %}
+{% block content %}
+<main id='main-content'>
+  <section class='section'>
+    <div class='container-fluid'>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>{{ entry.title }}</h1>
+      <div class='row'>
+        <div class='col-xs-10 col-xs-offset-1'>
+          {% for faq in entry.faq %}
+          <h2>{{ faq.question }}</h2>
+          <p>{{ faq.answer }}</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

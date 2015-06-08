@@ -23,8 +23,6 @@ Initial Setup
   * http://tutewall.com/ssl-certificate-problem-unable-to-get-local-issuer-certificate/
 7. Setup Craft CMS email SMTP to use Mandrill
 
-
-
 Development
 -----------
 * Run `grunt server` to start up a server on `localhost:8080`

@@ -12,6 +12,10 @@
 @import 'modules/post';
 @import 'modules/section';
 
+#main-content {
+    margin-top: 70px;
+}
+
 .browsehappy {
     @include make-sm-column(8);
     @include make-sm-column-offset(12);

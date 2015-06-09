@@ -7889,7 +7889,7 @@ button.close {
   clear: both;
 }
 .post + .post {
-  margin-top: 25px;
+  margin-top: 50px;
 }
 .post .post--date {
   display: block;

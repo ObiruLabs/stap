@@ -1,5 +1,17 @@
 {% extends "_layout" %}
 {% block content %}
-%main
-    %h1 Publications
+
+{% for entry in craft.entries.section('publications') %}
+%main#main-content
+    %section.section
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 {{ entry.title }}
+            .row
+                {% for issue in entry.issues %}
+                .col-xs-4
+                    %h4 {{ issue.issueName }}
+                    %a{ href: '{{ issue.linkToIssue }}' }
+                        %img{ src: '{{ issue.coverImage.first().url }}', style: 'width: 100%' }
+                {% endfor %}
+{% endfor %}
 {% endblock %}

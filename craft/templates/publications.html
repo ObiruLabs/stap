@@ -1,6 +1,22 @@
 {% extends "_layout" %}
 {% block content %}
-<main>
-  <h1>Publications</h1>
+{% for entry in craft.entries.section('publications') %}
+<main id='main-content'>
+  <section class='section'>
+    <div class='container-fluid'>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>{{ entry.title }}</h1>
+      <div class='row'>
+        {% for issue in entry.issues %}
+        <div class='col-xs-4'>
+          <h4>{{ issue.issueName }}</h4>
+          <a href='{{ issue.linkToIssue }}'>
+            <img src='{{ issue.coverImage.first().url }}' style='width: 100%'>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 </main>
+{% endfor %}
 {% endblock %}

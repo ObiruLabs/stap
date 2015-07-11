@@ -6,12 +6,15 @@
     %section.section
         .container-fluid
             %h1.section--title.col-sm-8.col-sm-offset-2 {{ entry.title }}
+            {% set groups = entry.issues | batch(3) %}
+            {% for issues in groups %}
             .row
-                {% for issue in entry.issues %}
+                {% for issue in issues %}
                 .col-xs-4
                     %h4 {{ issue.issueName }}
                     %a{ href: '{{ issue.linkToIssue }}' }
-                        %img{ src: '{{ issue.coverImage.first().url }}', style: 'width: 100%' }
+                        %img{ data: { src: '{{ issue.coverImage.first().url }}' }, style: 'width: 100%' }
                 {% endfor %}
+            {% endfor %}
 {% endfor %}
 {% endblock %}

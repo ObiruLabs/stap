@@ -5,16 +5,19 @@
   <section class='section'>
     <div class='container-fluid'>
       <h1 class='section--title col-sm-8 col-sm-offset-2'>{{ entry.title }}</h1>
+      {% set groups = entry.issues | batch(3) %}
+      {% for issues in groups %}
       <div class='row'>
-        {% for issue in entry.issues %}
+        {% for issue in issues %}
         <div class='col-xs-4'>
           <h4>{{ issue.issueName }}</h4>
           <a href='{{ issue.linkToIssue }}'>
-            <img src='{{ issue.coverImage.first().url }}' style='width: 100%'>
+            <img data-src='{{ issue.coverImage.first().url }}' style='width: 100%'>
           </a>
         </div>
         {% endfor %}
       </div>
+      {% endfor %}
     </div>
   </section>
 </main>

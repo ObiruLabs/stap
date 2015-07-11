@@ -1,0 +1,20 @@
+{% extends "_layout" %}
+{% block content %}
+
+{% for entry in craft.entries.section('newsletters') %}
+%main#main-content
+    %section.section
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 {{ entry.title }}
+            {% set groups = entry.newsletters | batch((entry.newsletters | length / 2) | round(0, 'ceil')) %}
+            .row
+                {% for newsletters in groups %}
+                .col-sm-6
+                    %ul
+                        {% for newsletter in newsletters %}
+                        %li
+                            %a{ href: '{{ newsletter.newsletterDocument.first().url }}' } {{ newsletter.newsletterEdition }}
+                        {% endfor %}
+                {% endfor %}
+{% endfor %}
+{% endblock %}

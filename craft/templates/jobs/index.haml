@@ -1,0 +1,15 @@
+{% extends "_layout" %}
+{% block content %}
+
+%main#main-content
+    %section.section
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 Job Openings
+            .row
+                .col-xs-12
+                    %ul
+                        {% for entry in craft.entries.section('jobOpenings') %}
+                        %li
+                            %a{ href: '/jobs/{{ entry.slug }}' } {{ entry.title }}
+                        {% endfor %}
+{% endblock %}

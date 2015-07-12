@@ -1,0 +1,21 @@
+{% extends "_layout" %}
+{% block content %}
+<main id='main-content'>
+  <section class='section'>
+    <div class='container-fluid'>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>Job Openings</h1>
+      <div class='row'>
+        <div class='col-xs-12'>
+          <ul>
+            {% for entry in craft.entries.section('jobOpenings') %}
+            <li>
+              <a href='/jobs/{{ entry.slug }}'>{{ entry.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

@@ -1,8 +1,7 @@
 {% extends "_layout" %}
 {% block content %}
-
-{% for entry in craft.entries.section('newsletters') %}
 %main#main-content
+    {% for entry in craft.entries.section('newsletters') %}
     %section.section
         .container-fluid
             %h1.section--title.col-sm-8.col-sm-offset-2 {{ entry.title }}
@@ -16,5 +15,5 @@
                             %a{ href: '{{ newsletter.newsletterDocument.first().url }}' } {{ newsletter.newsletterEdition }}
                         {% endfor %}
                 {% endfor %}
-{% endfor %}
+    {% endfor %}
 {% endblock %}

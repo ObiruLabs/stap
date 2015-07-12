@@ -1,7 +1,7 @@
 {% extends "_layout" %}
 {% block content %}
-{% for entry in craft.entries.section('newsletters') %}
 <main id='main-content'>
+  {% for entry in craft.entries.section('newsletters') %}
   <section class='section'>
     <div class='container-fluid'>
       <h1 class='section--title col-sm-8 col-sm-offset-2'>{{ entry.title }}</h1>
@@ -21,6 +21,6 @@
       </div>
     </div>
   </section>
+  {% endfor %}
 </main>
-{% endfor %}
 {% endblock %}

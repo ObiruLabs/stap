@@ -10,35 +10,66 @@
 {% endmacro %}
 
 {% block content %}
-%main
-    %h1 About
+%main#main-content
+    %section.section_callout
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 Our Mission
+            .row
+                .col-sm-12 {{ entry.pageIntroduction }}
 
-%section.section
-    .container-fluid
-        %h1.section--title.col-sm-8.col-sm-offset-2 Contact Us
-        .row
-            .col-xs-8.col-xs-offset-2
-                %form.row{ method: 'post', action: '/', accept: { charset: 'UTF-8' } }
-                    %input{ type: 'hidden', name: 'action', value: 'mandrillForm/sendMessage' }
-                    %input{ type: 'hidden', name: 'successRedirectUrl', value: 'success' }
+    %section.section
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 Join Us
+            .row
+                .col-sm-6
+                    .post
+                        .post--container
+                            .row
+                                .col-xs-12
+                                    %h2 Job Openings
+                                    %p {{ entry.jobOpeningsIntroduction }}
+                                    %a.post--more.btn.btn-secondary{ href: '/jobs' } See Jobs
+                .col-sm-6
+                    .post
+                        .post--container
+                            .row
+                                .col-xs-12
+                                    %h2 Internships
+                                    %p {{ entry.internshipsIntroduction }}
+                                    %a.post--more.btn.btn-secondary{ href: '/internships' } See Internships
 
-                    .form-group
-                        %label{ for: 'fromEmail' } Your Email
-                        %input#fromEmail.form-control{ type: 'text', name: 'fromEmail', value: '{% if message is defined %}{{ message.fromEmail }}{% endif %}' }
+    %section.section_callout
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 Get Involved
+            .row
+                .col-sm-12 {{ entry.volunteerIntroduction }}
 
-                        {% if message is defined %}
-                        {{ _self.errorList(message.getErrors('fromEmail')) }}
-                        {% endif %}
+    %section.section
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 Contact Us
+            .row
+                .col-xs-8.col-xs-offset-2
+                    %form.row{ method: 'post', action: '/', accept: { charset: 'UTF-8' } }
+                        %input{ type: 'hidden', name: 'action', value: 'mandrillForm/sendMessage' }
+                        %input{ type: 'hidden', name: 'successRedirectUrl', value: 'success' }
 
-                    .form-group
-                        %label{ for: 'message' } Message
-                        %textarea#message.form-control{ rows: '10', cols: '40', name: 'message' }
-                            {% if message is defined %}{{ message.message }}{% endif %}
+                        .form-group
+                            %label{ for: 'fromEmail' } Your Email
+                            %input#fromEmail.form-control{ type: 'text', name: 'fromEmail', value: '{% if message is defined %}{{ message.fromEmail }}{% endif %}' }
 
-                        {% if message is defined %}
-                        {{ _self.errorList(message.getErrors('message')) }}
-                        {% endif %}
+                            {% if message is defined %}
+                            {{ _self.errorList(message.getErrors('fromEmail')) }}
+                            {% endif %}
 
-                    %button.btn.btn-primary{ type: 'submit' } Send
+                        .form-group
+                            %label{ for: 'message' } Message
+                            %textarea#message.form-control{ rows: '10', cols: '40', name: 'message' }
+                                {% if message is defined %}{{ message.message }}{% endif %}
+
+                            {% if message is defined %}
+                            {{ _self.errorList(message.getErrors('message')) }}
+                            {% endif %}
+
+                        %button.btn.btn-primary{ type: 'submit' } Send
 
 {% endblock %}

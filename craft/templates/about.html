@@ -9,35 +9,83 @@
 {% endif %}
 {% endmacro %}
 {% block content %}
-<main>
-  <h1>About</h1>
-</main>
-<section class='section'>
-  <div class='container-fluid'>
-    <h1 class='section--title col-sm-8 col-sm-offset-2'>Contact Us</h1>
-    <div class='row'>
-      <div class='col-xs-8 col-xs-offset-2'>
-        <form accept-charset='UTF-8' action='/' class='row' method='post'>
-          <input name='action' type='hidden' value='mandrillForm/sendMessage'>
-          <input name='successRedirectUrl' type='hidden' value='success'>
-          <div class='form-group'>
-            <label for='fromEmail'>Your Email</label>
-            <input class='form-control' id='fromEmail' name='fromEmail' type='text' value='{% if message is defined %}{{ message.fromEmail }}{% endif %}'>
-            {% if message is defined %}
-            {{ _self.errorList(message.getErrors('fromEmail')) }}
-            {% endif %}
-          </div>
-          <div class='form-group'>
-            <label for='message'>Message</label>
-            <textarea class='form-control' cols='40' id='message' name='message' rows='10'>{% if message is defined %}{{ message.message }}{% endif %}</textarea>
-            {% if message is defined %}
-            {{ _self.errorList(message.getErrors('message')) }}
-            {% endif %}
-          </div>
-          <button class='btn btn-primary' type='submit'>Send</button>
-        </form>
+<main id='main-content'>
+  <section class='section_callout'>
+    <div class='container-fluid'>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>Our Mission</h1>
+      <div class='row'>
+        <div class='col-sm-12'>{{ entry.pageIntroduction }}</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+  <section class='section'>
+    <div class='container-fluid'>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>Join Us</h1>
+      <div class='row'>
+        <div class='col-sm-6'>
+          <div class='post'>
+            <div class='post--container'>
+              <div class='row'>
+                <div class='col-xs-12'>
+                  <h2>Job Openings</h2>
+                  <p>{{ entry.jobOpeningsIntroduction }}</p>
+                  <a class='post--more btn btn-secondary' href='/jobs'>See Jobs</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='col-sm-6'>
+          <div class='post'>
+            <div class='post--container'>
+              <div class='row'>
+                <div class='col-xs-12'>
+                  <h2>Internships</h2>
+                  <p>{{ entry.internshipsIntroduction }}</p>
+                  <a class='post--more btn btn-secondary' href='/internships'>See Internships</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class='section_callout'>
+    <div class='container-fluid'>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>Get Involved</h1>
+      <div class='row'>
+        <div class='col-sm-12'>{{ entry.volunteerIntroduction }}</div>
+      </div>
+    </div>
+  </section>
+  <section class='section'>
+    <div class='container-fluid'>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>Contact Us</h1>
+      <div class='row'>
+        <div class='col-xs-8 col-xs-offset-2'>
+          <form accept-charset='UTF-8' action='/' class='row' method='post'>
+            <input name='action' type='hidden' value='mandrillForm/sendMessage'>
+            <input name='successRedirectUrl' type='hidden' value='success'>
+            <div class='form-group'>
+              <label for='fromEmail'>Your Email</label>
+              <input class='form-control' id='fromEmail' name='fromEmail' type='text' value='{% if message is defined %}{{ message.fromEmail }}{% endif %}'>
+              {% if message is defined %}
+              {{ _self.errorList(message.getErrors('fromEmail')) }}
+              {% endif %}
+            </div>
+            <div class='form-group'>
+              <label for='message'>Message</label>
+              <textarea class='form-control' cols='40' id='message' name='message' rows='10'>{% if message is defined %}{{ message.message }}{% endif %}</textarea>
+              {% if message is defined %}
+              {{ _self.errorList(message.getErrors('message')) }}
+              {% endif %}
+            </div>
+            <button class='btn btn-primary' type='submit'>Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 {% endblock %}

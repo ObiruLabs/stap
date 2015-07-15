@@ -1,5 +1,54 @@
 {% extends "_layout" %}
 {% block content %}
-%main
-    %h1 Services
+%main#main-content
+    %section.section_callout
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 Our Services
+            .row
+                .col-sm-12 {{ entry.pageIntroduction }}
+
+    %section.section
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 Prevention Services
+            .section--centered.row
+                .col-sm-6.col-sm-offset-3.col-xs-12
+                    %p {{ entry.preventionServicesIntroduction }}
+                    %a.section--more.btn.btn-secondary{ href: '/preventionservices' } View our services
+
+    %section.section
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 Client Services
+            .section--centered.row
+                .col-sm-6.col-sm-offset-3.col-xs-12
+                    %p {{ entry.clientServicesIntroduction }}
+                    %a.section--more.btn.btn-secondary{ href: 'clientservices' } View our services
+
+    %section.section_callout
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 Recent Newsletters
+            {% for newsletters in craft.entries.section('newsletters') %}
+            .row
+                .col-xs-12
+                    %h1 {{ newsletters.title }}
+                    %ul
+                        {% for newsletter in newsletters.newsletters | slice(0, 4) %}
+                        %li
+                            %a{ href: '{{ newsletter.newsletterDocument.first().url }}' } {{ newsletter.newsletterEdition }}
+                        {% endfor %}
+            {% endfor %}
+            %a.section--more.btn.btn-secondary{ href: '/newsletters' } Read more
+
+    %section.section
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 Client Stories
+            {% set groups = entry.clientStories | batch(3) %}
+            {% for stories in groups %}
+            .row
+                {% for story in stories %}
+                .col-xs-4
+                    %a{ href: '{{ story.linkToStory }}' }
+                        %img{ data: { src: '{{ story.coverImage.first().url }}' }, style: 'width: 100%' }
+                    %h4 {{ issue.issueName }}
+                {% endfor %}
+            {% endfor %}
 {% endblock %}

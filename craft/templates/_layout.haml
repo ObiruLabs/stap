@@ -22,6 +22,7 @@
         %script{ src: '/js/vendor/modernizr.js' }
         %script{ src: '/js/application.js' }
         %script{ src: '//use.typekit.net/vhe1ish.js' }
+        %script{ src: '//maps.googleapis.com/maps/api/js?libraries=geometry,places' }
 
         :javascript
             try{Typekit.load();}catch(e){}
@@ -34,16 +35,70 @@
             ga('create', 'UA-45997711-8', 'auto');
             ga('send', 'pageview');
     %body
+        %nav.navbar.navbar-default.navbar-fixed-top
+            .container-fluid
+                .navbar-header
+                    %a.navbar-brand{ href: '/' }
+                        %img{ src: '/images/logo.png', style: 'width: 55px; margin-top: -15px;' }
+
+                #navbar-collapse-1.collapse.navbar-collapse
+                    %ul.nav.navbar-nav.navbar-right
+                        %li
+                            %a{ href: '/testing' } HIV Testing
+                        %li
+                            %a{ href: '/services' } Services
+                        %li
+                            %a{ href: '/events' } Events
+                        %li
+                            %a{ href: '/resources' } Resources
+                        %li
+                            %a{ href: '/faq' } FAQ
+                        %li
+                            %a{ href: '/about' } About
+                        %li
+                            %a.navbar--donate.btn.btn-primary{ href: '/donation' } Donate
+
         {% block content %}
         {% endblock %}
 
-        %footer#footer.container-fluid
-            .row
-                .col-sm-5
-                    %a{ href: 'http://stapinc.org' } Southern Tier AIDS Program
-                .col-sm-2
-                    %a{ href: '/about' } About Us
-                .col-sm-2
-                    %a{ href: '/about#contact' } Contact
-                .col-sm-3
-                    %a{ href: '/policy' } Privacy Policy
+        %footer#footer
+            .container-fluid
+                .row
+                    .col-sm-7.col-sm-offset-1
+                        .row
+                            .col-xs-3
+                                %h3 Contact
+                                %ul
+                                    %li Binghamton
+                                    %li Johnson City
+                                    %li Elmira
+                                    %li Tompkins County
+                            .col-xs-3
+                                %h3 About
+                                %ul
+                                    %li Staff
+                                    %li Job Openings
+                                    %li Volunteer
+                                    %li Internships
+                            .col-xs-3
+                                %h3 FAQ
+                                %ul
+                                    %li HIV/AIDS
+                                    %li Condoms
+                                    %li STIs
+                                    %li Harm & Risk Reduction
+                    .col-sm-4
+                        #mc_embed_signup
+                            %img{ src: '/images/logowhite.png' }
+                            %h3 Get Email Updates
+                            %form#mc-embedded-subscribe-form.validate.form-inline{ action: '//stapinc.us10.list-manage.com/subscribe/post?u=6e2aebad0f9c25b08a995d4a9&amp;id=d382e4949e', method: 'post', name: 'mc-embedded-subscribe-form', target: '_blank', novalidate: '' }
+                                #mc_embed_signup_scroll
+                                    .mc-field-group.form-group
+                                        %label{ for: 'mce-EMAIL', style: 'display: none' } Email Address
+                                        %input#mce-EMAIL.required.email.form-control{ type: 'email', value: '', name: 'EMAIL', placeholder: 'Enter your email address' }
+                                    %button#mc-embedded-subscribe.button.btn{ type: 'submit', name: 'subscribe' } Subscribe
+                                    #mce-responses.clear
+                                        #mce-error-response.response{ style: 'display:none;' }
+                                        #mce-success-response.response{ style: 'display:none;' }
+                                    %div{ style: 'position: absolute; left: -5000px;' }
+                                        %input{ type: 'text', name: 'b_6e2aebad0f9c25b08a995d4a9_d382e4949e', tabindex: '-1', value: '' }

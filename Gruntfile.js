@@ -9,7 +9,11 @@ module.exports = function(grunt) {
         indexDependencies = [
             'vendor/jquery.unveil.min', 'vendor/bootstrap'
         ],
-        appDependencies = [];
+        appDependencies = [
+            'controllers/testingCtrl',
+            'directives/googlePlace',
+            'services/geocode'
+        ];
 
     for (i = 0; i < commonDependencies.length; i++) {
         commonDependencies[i] = 'js/vendor/' + commonDependencies[i] + '.js';

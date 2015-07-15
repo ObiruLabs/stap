@@ -1,5 +1,21 @@
 {% extends "_layout" %}
 {% block content %}
-%main
-    %h1 Staff
+
+{% for entry in craft.entries.section('staff') %}
+%main#main-content
+    %section.section
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 {{ entry.title }}
+            {% set groups = entry.employees | batch((entry.employees | length / 2) | round(0, 'ceil')) %}
+            .row
+                {% for employees in groups %}
+                .col-sm-6
+                    %ul
+                        {% for employee in employees %}
+                        %li
+                            %a{ href: 'mailto:{{ employee.emailAddress }}' } {{ employee.employeeName }}
+                            \- {{ employee.position }}
+                        {% endfor %}
+                {% endfor %}
+{% endfor %}
 {% endblock %}

@@ -1,5 +1,31 @@
 {% extends "_layout" %}
+
 {% block content %}
-%main
-    %h1 Internships
+%main#main-content
+    %section.section
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 Internships
+            {% for block in entry.callToAction %}
+            .row
+                {% if block.type == 'description' %}
+                .col-xs-12
+                    %p {{ block.text }}
+                {% elseif block.type == 'callToAction' %}
+                .col-sm-8
+                    %p {{ block.description }}
+                    %a.btn.btn-secondary{ href: '{{ block.buttonUrl }}' } {{ block.buttonText }}
+                .col-sm-4
+                    {% set groups = block.photos | batch((block.photos | length / 2) | round(0, 'ceil')) %}
+                    .row
+                        {% for photos in groups %}
+                        .col-sm-6
+                            %ul
+                                {% for photo in photos %}
+                                %li
+                                    %img{ data: { src: '{{ photo.url }}' }, style: 'width: 100%' }
+                                {% endfor %}
+                        {% endfor %}
+
+                {% endif %}
+            {% endfor %}
 {% endblock %}

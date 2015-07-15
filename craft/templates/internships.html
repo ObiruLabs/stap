@@ -1,6 +1,40 @@
 {% extends "_layout" %}
 {% block content %}
-<main>
-  <h1>Internships</h1>
+<main id='main-content'>
+  <section class='section'>
+    <div class='container-fluid'>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>Internships</h1>
+      {% for block in entry.callToAction %}
+      <div class='row'>
+        {% if block.type == 'description' %}
+        <div class='col-xs-12'>
+          <p>{{ block.text }}</p>
+        </div>
+        {% elseif block.type == 'callToAction' %}
+        <div class='col-sm-8'>
+          <p>{{ block.description }}</p>
+          <a class='btn btn-secondary' href='{{ block.buttonUrl }}'>{{ block.buttonText }}</a>
+        </div>
+        <div class='col-sm-4'>
+          {% set groups = block.photos | batch((block.photos | length / 2) | round(0, 'ceil')) %}
+          <div class='row'>
+            {% for photos in groups %}
+            <div class='col-sm-6'>
+              <ul>
+                {% for photo in photos %}
+                <li>
+                  <img data-src='{{ photo.url }}' style='width: 100%'>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
 </main>
 {% endblock %}

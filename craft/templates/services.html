@@ -1,6 +1,73 @@
 {% extends "_layout" %}
 {% block content %}
-<main>
-  <h1>Services</h1>
+<main id='main-content'>
+  <section class='section_callout'>
+    <div class='container-fluid'>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>Our Services</h1>
+      <div class='row'>
+        <div class='col-sm-12'>{{ entry.pageIntroduction }}</div>
+      </div>
+    </div>
+  </section>
+  <section class='section'>
+    <div class='container-fluid'>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>Prevention Services</h1>
+      <div class='section--centered row'>
+        <div class='col-sm-6 col-sm-offset-3 col-xs-12'>
+          <p>{{ entry.preventionServicesIntroduction }}</p>
+          <a class='section--more btn btn-secondary' href='/preventionservices'>View our services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class='section'>
+    <div class='container-fluid'>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>Client Services</h1>
+      <div class='section--centered row'>
+        <div class='col-sm-6 col-sm-offset-3 col-xs-12'>
+          <p>{{ entry.clientServicesIntroduction }}</p>
+          <a class='section--more btn btn-secondary' href='clientservices'>View our services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class='section_callout'>
+    <div class='container-fluid'>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>Recent Newsletters</h1>
+      {% for newsletters in craft.entries.section('newsletters') %}
+      <div class='row'>
+        <div class='col-xs-12'>
+          <h1>{{ newsletters.title }}</h1>
+          <ul>
+            {% for newsletter in newsletters.newsletters | slice(0, 4) %}
+            <li>
+              <a href='{{ newsletter.newsletterDocument.first().url }}'>{{ newsletter.newsletterEdition }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+      <a class='section--more btn btn-secondary' href='/newsletters'>Read more</a>
+    </div>
+  </section>
+  <section class='section'>
+    <div class='container-fluid'>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>Client Stories</h1>
+      {% set groups = entry.clientStories | batch(3) %}
+      {% for stories in groups %}
+      <div class='row'>
+        {% for story in stories %}
+        <div class='col-xs-4'>
+          <a href='{{ story.linkToStory }}'>
+            <img data-src='{{ story.coverImage.first().url }}' style='width: 100%'>
+          </a>
+          <h4>{{ issue.issueName }}</h4>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
 </main>
 {% endblock %}

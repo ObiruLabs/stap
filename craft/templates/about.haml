@@ -47,6 +47,38 @@
     %section.section
         .container-fluid
             %h1.section--title.col-sm-8.col-sm-offset-2 Contact Us
+            {% for entry in craft.entries.section('contact') %}
+            {% for location in entry.contactLocations | slice(1, 1) %}
+            .post
+                .col-xs-10.col-xs-offset-1
+                    .post--container
+                        .row
+                            .col-sm-7
+                                %h2 {{ location.locationName }}
+                                %p {{ location.address1 }}
+                                %p {{ location.address2 }}
+                                %p {{ location.city }}, {{ location.state }} {{ location.zip }}
+                                {% if location.hotline %}
+                                %p Hotline: {{ location.hotline }}
+                                {% endif %}
+                                {% if location.phone %}
+                                %p Phone: {{ location.phone }}
+                                {% endif %}
+                                {% if location.fax %}
+                                %p Fax: {{ location.fax }}
+                                {% endif %}
+                                %p
+                                    %a{ href: '{{ location.mapLink }}' } Map
+                                %a.post--more.btn.btn-secondary{ href: '/contact' } See all locations
+                            .col-sm-4.col-sm-offset-1
+                                {% set coordinates = location.latitude ~ ',' ~ location.longitude %}
+                                %img.post--image{ data: { src: 'https://maps.googleapis.com/maps/api/staticmap?center={{ coordinates }}&zoom=14&size=150x150&markers=size:mid%7Ccolor:red%7C{{ coordinates }}&scale=2&key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU' } }
+            {% endfor %}
+            {% endfor %}
+
+    %section.section
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 Send Us a Message
             .row
                 .col-xs-8.col-xs-offset-2
                     %form.row{ method: 'post', action: '/', accept: { charset: 'UTF-8' } }

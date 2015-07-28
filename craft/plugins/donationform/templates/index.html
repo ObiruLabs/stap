@@ -1,0 +1,53 @@
+{% extends "_layouts/cp" %}
+
+{% set title = 'Donations' %}
+{% set centered = true %}
+
+{% set donations = craft.donationForm.getAllOneTimeDonations %}
+
+{% block sidebar %}
+    <nav>
+        <ul>
+            <li class="heading"><span>Donation Types</span></li>
+            <li><a class="sel" href="{{ url('donationForm') }}">One Time</a></li>
+            <li><a href="{{ url('donationForm/recurring') }}">Recurring</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% set content %}
+
+    <table class="data fullwidth">
+        <thead>
+            <th scope="col">{{ "Name" | t }}</th>
+            <th scope="col">{{ "Email" | t }}</th>
+            <th scope="col">{{ "Dedicated?" | t }}</th>
+            <th scope="col">{{ "Notify?" | t }}</th>
+            <th scope="col">{{ "Amount" | t }}</th>
+            <th scope="col">{{ "Date" | t }}</th>
+        </thead>
+        <tbody>
+
+            {% for donation in donations %}
+                <tr data-id="{{ donation.id }}" data-name="{{ donation.donorFirstName|t }}">
+                    <th><a href="{{ url('donationForm/donations/'~donation.id) }}">{{ donation.donorFirstName }} {{ donation.donorLastName }}</a></th>
+                    <td>{{ donation.donorEmail }}</td>
+                    <td>
+                        {% if donation.behalfType != "none" %}
+                        <code>Y</code>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not (donation.notifyName is empty) %}
+                        <code>Y</code>
+                        {% endif %}
+                    </td>
+                    <td>${{ (donation.chargeAmount / 100) | number_format(2) }}</td>
+                    <td>{{ donation.dateCreated | date("m/d/Y \\a\\t g:ia") }}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endset %}

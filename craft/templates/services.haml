@@ -48,7 +48,7 @@
                 .col-xs-4
                     %a{ href: '{{ story.linkToStory }}' }
                         %img{ data: { src: '{{ story.coverImage.first().url }}' }, style: 'width: 100%' }
-                    %h4 {{ issue.issueName }}
+                    %h4 {{ story.storyName }}
                 {% endfor %}
             {% endfor %}
 {% endblock %}

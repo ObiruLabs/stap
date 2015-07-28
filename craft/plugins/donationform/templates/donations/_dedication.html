@@ -1,0 +1,68 @@
+{% extends "_layouts/cp" %}
+{% set centered = true %}
+
+{% if donationId is not defined %}{% set donationId = null %}{% endif %}
+{% if donation is not defined %}
+{% if donationId %}
+{% set donation = craft.donationForm.getdonationById(donationId) %}
+{% if not donation %}{% exit 404 %}{% endif %}
+{% else %}
+{% set donation = null %}
+{% endif %}
+{% endif %}
+
+{% set crumbs = [
+    { label: "Donations" | t, url: url('donationForm') }
+] %}
+
+{% set title = donation.donorFirstName ~ ' ' ~ donation.donorLastName ~ '\'s Donation' %}
+
+{% set tabs = {
+    donor:      { label: "Donor" | t, url: url('donationForm/donations/'~donation.id) },
+    dedication: { label: "Dedication" | t, url: url('donationForm/donations/'~donation.id~'/dedication') },
+    donation:   { label: "Donation" | t, url: url('donationForm/donations/'~donation.id~'/donation') }
+} %}
+
+{% set selectedTab = 'dedication' %}
+
+{% set content %}
+    <h2>Details</h2>
+    <h5>
+        Type
+        {% if donation.behalfType == "other" %}
+            (Other)
+        {% endif %}
+    </h5>
+    <p>
+        {% if donation.behalfType == "memory" %}
+            In memory of
+        {% elseif donation.behalfType == "honor" %}
+            In honor of
+        {% elseif donation.behalfType == "other" %}
+            {{ donation.behalfOtherType }}
+        {% elseif donation.behalfType == "none" %}
+            None
+        {% endif %}
+    </p>
+    <h5>Name</h5>
+    <p>{{ donation.behalfName }}</p>
+    <hr>
+
+    <h2>Notify Contact Info</h2>
+    <h5>Name</h5>
+    <p>{{ donation.notifyName }}</p>
+    <h5>Email</h5>
+    <p>{{ donation.notifyEmail }}</p>
+    <h5>Address 1</h5>
+    <p>{{ donation.notifyAddress1 }}</p>
+    <h5>Address 2</h5>
+    <p>{{ donation.notifyAddress2 }}&nbsp;</p>
+    <h5>City</h5>
+    <p>{{ donation.notifyCity }}</p>
+    <h5>State</h5>
+    <p>{{ donation.notifyState }}</p>
+    <h5>Country</h5>
+    <p>{{ donation.notifyCountry }}</p>
+    <h5>Zip</h5>
+    <p>{{ donation.notifyZip }}</p>
+{% endset %}

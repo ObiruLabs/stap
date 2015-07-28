@@ -1,0 +1,50 @@
+{% extends "_layouts/cp" %}
+{% set centered = true %}
+
+{% if donationId is not defined %}{% set donationId = null %}{% endif %}
+{% if donation is not defined %}
+{% if donationId %}
+{% set donation = craft.donationForm.getdonationById(donationId) %}
+{% if not donation %}{% exit 404 %}{% endif %}
+{% else %}
+{% set donation = null %}
+{% endif %}
+{% endif %}
+
+{% set crumbs = [
+    { label: "Donations" | t, url: url('donationForm') }
+] %}
+
+{% set title = donation.donorFirstName ~ ' ' ~ donation.donorLastName ~ '\'s Donation' %}
+
+{% set tabs = {
+    donor:      { label: "Donor" | t, url: url('donationForm/donations/'~donation.id) },
+    dedication: { label: "Dedication" | t, url: url('donationForm/donations/'~donation.id~'/dedication') },
+    donation:   { label: "Donation" | t, url: url('donationForm/donations/'~donation.id~'/donation') }
+} %}
+
+{% set selectedTab = 'donation' %}
+
+{% set content %}
+    <h2>Details</h2>
+    <h5>Amount</h5>
+    <p>${{ (donation.chargeAmount / 100) | number_format(2) }}</p>
+    <h5>Frequency</h5>
+    <p>
+        {% if donation.chargeType == "once" %}
+            One time donation
+        {% elseif donation.chargeType == "recurring" %}
+            Every month
+        {% endif %}
+    </p>
+    {% if donation.chargeType == "recurring" %}
+        <h5>Status</h5>
+        <p>
+            {% if donation.chargeStatus == "active" %}
+                Active
+            {% elseif donation.chargeStatus == "complete" %}
+                Discontinued
+            {% endif %}
+        </p>
+    {% endif %}
+{% endset %}

@@ -1,6 +1,141 @@
 {% extends "_layout" %}
 {% block content %}
-<main>
-  <h1>Donation</h1>
+<main id='main-content' ng-controller='donationCtrl' ng-init="stripePublishableKey='{{ craft.stripeService.publishableKey() }}'">
+  <section class='section'>
+    <div class='container-fluid'>
+      <h1 class='section--title'>Donations</h1>
+      <form accept_charset='UTF-8' method='post'>
+        <input name='action' type='hidden' value='donationForm/donations/donate'>
+        <h2>Your Information</h2>
+        <div class='form-group'>
+          <label>First Name</label>
+          <input class='form-control' name='donation[donorFirstName]' ng-model='form.donorFirstName' type='text' value='John {{ random(50) }}'>
+        </div>
+        <div class='form-group'>
+          <label>Last Name</label>
+          <input class='form-control' name='donation[donorLastName]' ng-model='form.donorLastName' type='text' value='Smith'>
+        </div>
+        <div class='form-group'>
+          <label>Email</label>
+          <input class='form-control' name='donation[donorEmail]' ng-model='form.donorEmail' type='text' value='rubiojan+1@gmail.com'>
+        </div>
+        <h2>Billing Address</h2>
+        <div class='form-group'>
+          <label>Address 1</label>
+          <input class='form-control' name='donation[donorAddress1]' ng-model='form.donorAddress1' type='text' value='1595 Joyce Street'>
+        </div>
+        <div class='form-group'>
+          <label>Address 2</label>
+          <input class='form-control' name='donation[donorAddress2]' ng-model='form.donorAddress2' type='text' value=''>
+        </div>
+        <div class='form-group'>
+          <label>City</label>
+          <input class='form-control' name='donation[donorCity]' ng-model='form.donorCity' type='text' value='Arlington'>
+        </div>
+        <div class='form-group'>
+          <label>State</label>
+          <input class='form-control' name='donation[donorState]' ng-model='form.donorState' type='text' value='VA'>
+        </div>
+        <div class='form-group'>
+          <label>City</label>
+          <input class='form-control' name='donation[donorCountry]' ng-model='form.donorCountry' type='text' value='United States'>
+        </div>
+        <div class='form-group'>
+          <label>Zip</label>
+          <input class='form-control' name='donation[donorZip]' ng-model='form.donorZip' type='text' value='22203'>
+        </div>
+        <h2>Dedicate</h2>
+        <div class='form-group'>
+          <label>Type</label>
+          <select class='form-control' name='donation[behalfType]' ng-model='form.behalfType'>
+            <option value='none'>None</option>
+            <option value='memory'>In memory of</option>
+            <option value='honor'>In honor of</option>
+            <option value='other'>Other</option>
+          </select>
+        </div>
+        <div class='form-group'>
+          <label>Other Type</label>
+          <input class='form-control' name='donation[behalfOtherType]' ng-model='form.behalfOtherType' type='text' value=''>
+        </div>
+        <div class='form-group'>
+          <label>Name</label>
+          <input class='form-control' name='donation[behalfName]' ng-model='form.behalfName' type='text' value='Alec Sadler'>
+        </div>
+        <h2>Notify</h2>
+        <div class='form-group'>
+          <label>Name</label>
+          <input class='form-control' name='donation[notifyName]' ng-model='form.notifyName' type='text' value='Keira'>
+        </div>
+        <div class='form-group'>
+          <label>Email</label>
+          <input class='form-control' name='donation[notifyEmail]' ng-model='form.notifyEmail' type='text' value='jan@obirulabs.com'>
+        </div>
+        <div class='form-group'></div>
+        <div class='form-group'>
+          <label>Address 1</label>
+          <input class='form-control' name='donation[notifyAddress1]' ng-model='form.notifyAddress1' type='text' value='958 Walmart Ave'>
+        </div>
+        <div class='form-group'>
+          <label>Address 2</label>
+          <input class='form-control' name='donation[notifyAddress2]' ng-model='form.notifyAddress2' type='text' value=''>
+        </div>
+        <div class='form-group'>
+          <label>City</label>
+          <input class='form-control' name='donation[notifyCity]' ng-model='form.notifyCity' type='text' value='Massapequa'>
+        </div>
+        <div class='form-group'>
+          <label>State</label>
+          <input class='form-control' name='donation[notifyState]' ng-model='form.notifyState' type='text' value='NY'>
+        </div>
+        <div class='form-group'>
+          <label>City</label>
+          <input class='form-control' name='donation[notifyCountry]' ng-model='form.notifyCountry' type='text' value='United States'>
+        </div>
+        <div class='form-group'>
+          <label>Zip</label>
+          <input class='form-control' name='donation[notifyZip]' ng-model='form.notifyZip' type='text' value='11529'>
+        </div>
+        <h2>Payment</h2>
+        <div class='form-group'>
+          <label>Amount</label>
+          <input class='form-control' name='donation[chargeAmount]' ng-model='form.chargeAmount' type='text' value='1000'>
+        </div>
+        <div class='form-group'>
+          <label>Card Number</label>
+          <input class='form-control' ng-model='card.number' type='text' value='4242424242424242'>
+        </div>
+        <div class='form-group'>
+          <label>CVC</label>
+          <input class='form-control' ng-model='card.cvc' type='text' value='123'>
+        </div>
+        <div class='form-group'>
+          <label>Expiration</label>
+          <select ng-model='card.expirationMonth' ng-options='item for item in creditCardMonths'>
+            <option value=''>Month</option>
+          </select>
+          /
+          <select ng-model='card.expirationYear' ng-options='item for item in creditCardYears'>
+            <option value=''>Year</option>
+          </select>
+        </div>
+        <div class='form-group'>
+          <label>Type</label>
+          <select class='form-control' name='donation[chargeType]' ng-model='form.chargeType'>
+            <option value='once'>One time</option>
+            <option value='recurring'>Every month</option>
+          </select>
+        </div>
+        <div class='form-group'>
+          <label>Status</label>
+          <select class='form-control' name='donation[chargeStatus]' ng-model='form.chargeStatus'>
+            <option value='active'>Active</option>
+            <option value='complete'>Complete</option>
+          </select>
+        </div>
+        <input class='btn btn-primary' ng-click='submit()' value='Donate'>
+      </form>
+    </div>
+  </section>
 </main>
 {% endblock %}

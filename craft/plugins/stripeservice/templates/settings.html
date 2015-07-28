@@ -1,0 +1,21 @@
+{% import "_includes/forms" as forms %}
+
+<div class="field">
+    {{ forms.textField({
+        label: 'Secret Key',
+        required: true,
+        instructions: 'Grab your key here: <a href="https://dashboard.stripe.com/account/apikeys">https://dashboard.stripe.com/account/apikeys</a>',
+        name: 'secretKey',
+        value: settings.secretKey
+    }) }}
+</div>
+
+<div class="field">
+    {{ forms.textField({
+        label: 'Publishable Key',
+        required: true,
+        instructions: 'Grab your key here: <a href="https://dashboard.stripe.com/account/apikeys">https://dashboard.stripe.com/account/apikeys</a>',
+        name: 'publishableKey',
+        value: settings.publishableKey
+    }) }}
+</div>

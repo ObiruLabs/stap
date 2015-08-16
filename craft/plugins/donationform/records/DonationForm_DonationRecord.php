@@ -39,7 +39,10 @@ class DonationForm_DonationRecord extends BaseRecord
 
             'chargeAmount' => array(AttributeType::String, 'required' => true),
             'chargeType' => array(AttributeType::Enum, 'values' => "once,recurring", 'required' => true),
-            'chargeStatus' => array(AttributeType::Enum, 'values' => "active,complete", 'required' => true)
+            'chargeStatus' => array(AttributeType::Enum, 'values' => "active,complete", 'required' => true),
+
+            'stripeCustomerId' => array(AttributeType::String, 'maxLength' => 255, 'required' => false),
+            'stripeChargeId' => array(AttributeType::String, 'maxLength' => 255, 'required' => false)
         );
     }
 

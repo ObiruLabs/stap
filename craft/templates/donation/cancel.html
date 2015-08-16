@@ -1,0 +1,19 @@
+{% extends "_layout" %}
+{% block content %}
+<main id='main-content' ng-controller='donationCancelCtrl'>
+  <section class='section'>
+    <div class='container-fluid'>
+      <h1 class='section--title'>Donations</h1>
+      <div ng-cloak='' ng-show='form.init &amp;&amp; !form.cancelled'>
+        <form accept_charset='UTF-8' method='post'>
+          <p>Click the button below to stop your monthly donations.</p>
+          <button class='btn btn-primary' ng-click='submit()'>Cancel donation</button>
+        </form>
+      </div>
+      <div ng-cloak='' ng-show='form.init &amp;&amp; form.cancelled'>
+        You've already successfully cancelled your monthly donation.
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

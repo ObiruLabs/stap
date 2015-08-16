@@ -1,0 +1,11 @@
+{% import "_includes/forms" as forms %}
+
+<div class="field">
+    {{ forms.textField({
+        label: 'API Key',
+        required: true,
+        instructions: 'Grab your key here: <a href="https://mandrillapp.com/settings">https://mandrillapp.com/settings</a>',
+        name: 'apiKey',
+        value: settings.apiKey
+    }) }}
+</div>

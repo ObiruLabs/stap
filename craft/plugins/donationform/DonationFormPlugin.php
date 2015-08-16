@@ -32,6 +32,13 @@ class DonationFormPlugin extends BasePlugin
         );
     }
 
+    public function registerSiteRoutes()
+    {
+        return array(
+            'donationform/hooks/capture' => array('action' => 'donationForm/hooks/capture')
+        );
+    }
+
     public function hasCpSection()
     {
         return true;

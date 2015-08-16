@@ -43,8 +43,21 @@
             {% if donation.chargeStatus == "active" %}
                 Active
             {% elseif donation.chargeStatus == "complete" %}
-                Discontinued
+                Stopped
             {% endif %}
         </p>
+    {% endif %}
+    {% if donation.chargeStatus == "active" %}
+        <hr>
+        <h2>Cancel Future Donations</h2>
+        <p>
+            <h5>This will stop charging the donor every month.</h5>
+        </p>
+        <form method="post" action="" accept-charset="UTF-8">
+            <input type="hidden" name="action" value="donationForm/donations/cancel" />
+            <input type="hidden" name="customer" value="{{ donation.stripeCustomerId }}" />
+            <input type="hidden" name="emptyResponse" value="true" />
+            <input class="btn submit" type="submit" value="Stop Future Donations">
+        </form>
     {% endif %}
 {% endset %}

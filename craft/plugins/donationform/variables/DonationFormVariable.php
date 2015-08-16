@@ -47,4 +47,9 @@ class DonationFormVariable
     {
         return craft()->donationForm_model->getDonationById($id);
     }
+
+    public function getEmailSettings()
+    {
+        return craft()->donationForm_emailSettings->getOrCreateEmailSetting();
+    }
 }

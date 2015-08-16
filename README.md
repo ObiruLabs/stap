@@ -22,6 +22,8 @@ Initial Setup
 7. Setup Craft CMS email SMTP to use Mandrill
   * Under localhost:8888/admin/settings/email
 8. Configure Stripe key for the stripe plugin
+9. Configure Stripe's webhook
+  * If for on local environment, consider using ultrahook
 
 Development
 -----------

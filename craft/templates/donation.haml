@@ -103,11 +103,6 @@
                     %select.form-control{ name: 'donation[chargeType]', ng: { model: 'form.chargeType' } }
                         %option{ value: 'once' } One time
                         %option{ value: 'recurring' } Every month
-                .form-group
-                    %label Status
-                    %select.form-control{ name: 'donation[chargeStatus]', ng: { model: 'form.chargeStatus' } }
-                        %option{ value: 'active' } Active
-                        %option{ value: 'complete' } Complete
 
-                %input.btn.btn-primary{ value: 'Donate', ng: { click: 'submit()' } }
+                %button.btn.btn-primary{ ng: { click: 'submit()' } } Donate
 {% endblock %}

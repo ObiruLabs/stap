@@ -1,0 +1,44 @@
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+{% includeCssResource "lib/redactor/redactor.css" %}
+{% includeJsResource "lib/redactor/redactor.js" %}
+{% includeJsResource "donationform/js/form.js" %}
+
+{% set title = 'Donations' %}
+{% set centered = true %}
+
+{% set emailSettings = craft.donationForm.getEmailSettings() %}
+
+{% block sidebar %}
+    <nav>
+        <div class="buttons first">
+            <a class="btn submit icon settings" href="{{ url('donationForm/emailSettings') }}">Email Settings</a>
+        </div>
+        <ul>
+            <li class="heading"><span>Donation Types</span></li>
+            <li><a href="{{ url('donationForm') }}">One Time</a></li>
+            <li><a href="{{ url('donationForm/recurring') }}">Recurring</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% set content %}
+    <h2>Email Settings</h2>
+    <form method="post" action="" accept-charset="UTF-8">
+        <div class="field">
+            {{ forms.textareaField({
+                class: 'myFieldsRedactorClass',
+                label: 'Receipt Body',
+                required: true,
+                instructions: 'This appears in the email that is sent when an individual submits a donation.',
+                name: 'settings[receiptBody]',
+                value: emailSettings.receiptBody
+            }) }}
+        </div>
+
+        <input type="hidden" name="action" value="donationForm/emailSettings/update" />
+        <input type="hidden" name="redirect" value="donationform/emailSettings" />
+
+        <input type="submit" class="btn submit icon" value="Save changes">
+    </form>
+{% endset %}

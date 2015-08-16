@@ -17,6 +17,7 @@
             'vendor/jquery.unveil.min', 'vendor/bootstrap'
         ],
         appDependencies = [
+            'controllers/donationCancelCtrl',
             'controllers/donationCtrl',
             'controllers/testingCtrl',
             'directives/googlePlace',

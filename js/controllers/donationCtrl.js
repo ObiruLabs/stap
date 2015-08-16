@@ -61,7 +61,14 @@ angular.module('stap')
                 number: cardNumber,
                 cvc: cardCVC,
                 exp_month: cardExpiryMonth,
-                exp_year: cardExpiryYear
+                exp_year: cardExpiryYear,
+                name: $scope.form.donorFirstName + ' ' + $scope.form.donorLastName,
+                address_line1: $scope.form.donorAddress1,
+                address_line2: $scope.form.donorAddress2,
+                address_city: $scope.form.donorCity,
+                address_state: $scope.form.donorState,
+                address_zip: $scope.form.donorZip,
+                address_country: $scope.form.donorCountry
             }, stripeCallback);
         };
 
@@ -83,6 +90,7 @@ angular.module('stap')
             });
 
             prefixed.action = 'donationForm/donations/donate';
+            prefixed.stripeToken = token;
 
             var request = {
                 method: 'POST',
@@ -95,7 +103,7 @@ angular.module('stap')
 
             $http(request)
                 .success(function() {
-                    console.warn('done');
+                    console.warn('donezo');
                 });
         }
 

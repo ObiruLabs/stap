@@ -7,6 +7,9 @@
 
 {% block sidebar %}
     <nav>
+        <div class="buttons first">
+            <a class="btn submit icon settings" href="{{ url('donationForm/emailSettings') }}">Email Settings</a>
+        </div>
         <ul>
             <li class="heading"><span>Donation Types</span></li>
             <li><a href="{{ url('donationForm') }}">One Time</a></li>
@@ -23,6 +26,7 @@
             <th scope="col">{{ "Email" | t }}</th>
             <th scope="col">{{ "Dedicated?" | t }}</th>
             <th scope="col">{{ "Notify?" | t }}</th>
+            <th scope="col">{{ "Active?" | t }}</th>
             <th scope="col">{{ "Amount" | t }}</th>
             <th scope="col">{{ "Date" | t }}</th>
         </thead>
@@ -39,6 +43,11 @@
                     </td>
                     <td>
                         {% if not (donation.notifyName is empty) %}
+                        <code>Y</code>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if donation.chargeStatus == "active" %}
                         <code>Y</code>
                         {% endif %}
                     </td>

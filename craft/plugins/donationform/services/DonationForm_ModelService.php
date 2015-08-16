@@ -28,7 +28,7 @@ class DonationForm_ModelService extends BaseApplicationComponent
     /**
      * Get a new blank donation
      *
-     * @param  array                           $attributes
+     * @param  array $attributes
      * @return DonationForm_DonationModel
      */
     public function newDonation($attributes = array())
@@ -84,6 +84,13 @@ class DonationForm_ModelService extends BaseApplicationComponent
     public function getDonationById($id)
     {
         if ($record = $this->donationRecord->findByPk($id)) {
+            return DonationForm_DonationModel::populateModel($record);
+        }
+    }
+
+    public function getDonationByCustomerId($id)
+    {
+        if ($record = $this->donationRecord->findByAttributes(array('stripeCustomerId' => $id))) {
             return DonationForm_DonationModel::populateModel($record);
         }
     }

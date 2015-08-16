@@ -39,6 +39,9 @@ class DonationForm_DonationModel extends BaseModel
             'chargeType' => AttributeType::String,
             'chargeStatus' => AttributeType::String,
 
+            'stripeCustomerId' => AttributeType::String,
+            'stripeChargeId' => AttributeType::String,
+
             'dateCreated' => AttributeType::String
         );
     }

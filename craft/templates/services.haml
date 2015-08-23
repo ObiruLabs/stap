@@ -5,30 +5,34 @@
         .container-fluid
             %h1.section--title.col-sm-8.col-sm-offset-2 Our Services
             .row
-                .col-sm-12 {{ entry.pageIntroduction }}
+                .col-sm-10.col-sm-offset-1 {{ entry.pageIntroduction }}
 
     %section.section
         .container-fluid
-            %h1.section--title.col-sm-8.col-sm-offset-2 Prevention Services
-            .section--centered.row
-                .col-sm-6.col-sm-offset-3.col-xs-12
-                    %p {{ entry.preventionServicesIntroduction }}
-                    %a.section--more.btn.btn-secondary{ href: '/preventionservices' } View our services
-
-    %section.section
-        .container-fluid
-            %h1.section--title.col-sm-8.col-sm-offset-2 Client Services
-            .section--centered.row
-                .col-sm-6.col-sm-offset-3.col-xs-12
-                    %p {{ entry.clientServicesIntroduction }}
-                    %a.section--more.btn.btn-secondary{ href: 'clientservices' } View our services
+            .row
+                .col-sm-5.col-sm-offset-1
+                    .post
+                        .post--container
+                            .row
+                                .col-sm-11.col-sm-offset-1
+                                    %h2 Prevention Services
+                                    %p {{ entry.preventionServicesIntroduction }}
+                                    %a.post--more.btn.btn-secondary{ href: '/preventionservices' } See services
+                .col-sm-5
+                    .post
+                        .post--container
+                            .row
+                                .col-sm-11.col-sm-offset-1
+                                    %h2 Client Services
+                                    %p {{ entry.clientServicesIntroduction }}
+                                    %a.post--more.btn.btn-secondary{ href: '/clientservices' } See services
 
     %section.section_callout
         .container-fluid
             %h1.section--title.col-sm-8.col-sm-offset-2 Recent Newsletters
             {% for newsletters in craft.entries.section('newsletters') %}
             .row
-                .col-xs-12
+                .col-sm-4.col-sm-offset-4
                     %h1 {{ newsletters.title }}
                     %ul
                         {% for newsletter in newsletters.newsletters | slice(0, 4) %}
@@ -36,7 +40,9 @@
                             %a{ href: '{{ newsletter.newsletterDocument.first().url }}' } {{ newsletter.newsletterEdition }}
                         {% endfor %}
             {% endfor %}
-            %a.section--more.btn.btn-secondary{ href: '/newsletters' } Read more
+            .row
+                .col-sm-8.col-sm-offset-2.text-center
+                    %a.section--more.btn.btn-secondary{ href: '/newsletters' } Read more
 
     %section.section
         .container-fluid
@@ -48,7 +54,7 @@
                 .col-xs-4
                     %a{ href: '{{ story.linkToStory }}' }
                         %img{ data: { src: '{{ story.coverImage.first().url }}' }, style: 'width: 100%' }
-                    %h4 {{ story.storyName }}
+                    %h4.text-center {{ story.storyName }}
                 {% endfor %}
             {% endfor %}
 {% endblock %}

@@ -7,9 +7,23 @@
       <div class='row'>
         <div class='col-xs-12'>
           {% for entry in craft.entries.section('resources') %}
-          <h2>
-            <a href='/resources/{{ entry.slug }}'>{{ entry.title }}</a>
-          </h2>
+          <h1 class='section--title col-sm-8 col-sm-offset-2'>{{ entry.title }}</h1>
+          <div class='section_resources section--body row'>
+            <div class='col-xs-8 col-xs-offset-2'>
+              {% for block in entry.resourceLinks %}
+              {% if block.type == "resourcesHeader" %}
+              <h2>{{ block.resourceTitle }}</h2>
+              {% endif %}
+              {% if block.type == "resourceLink" %}
+              <div class='section_resources--item'>
+                <label>{{ block.linkText }}</label>
+                <a href='{{ block.linkUrl }}'>{{ block.linkUrl }}</a>
+                <p>{{ block.description }}</p>
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
           {% endfor %}
         </div>
       </div>

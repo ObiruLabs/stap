@@ -18,17 +18,19 @@
 {% set counties = counties | merge(['{"county":"' ~ entry.title ~ '","locations":[' ~ locations | join(',') ~ ']}']) %}
 {% endfor %}
 
-%main{ ng: { controller: 'testingCtrl', init: "counties={{- '[' ~ counties | join(',') ~ ']' -}}" } }
-    %h1 Testing Locations
-
-    %form.form-inline
-        .form-group
-
-            %input.form-control{ google: { place: '' }, ng: { model: 'searchPlace' } }
-        .form-group
-            %label Within
-            %select.form-control{ ng: { options: 'radius.value as radius.label for radius in withinRadius', model: 'searchRadius' } }
-        %button.btn.btn-default{ ng: { click: 'search()' } } Search
+%main#main-content{ ng: { controller: 'testingCtrl', init: "counties={{- '[' ~ counties | join(',') ~ ']' -}}" } }
+    %section.section_callout
+        .container-fluid
+            %h1.section--title.col-sm-8.col-sm-offset-2 Find a Testing Center
+            .row
+                .col-sm-12
+                    %form.testing-form.form-inline
+                        .form-group.col-xs-6
+                            %input.form-control{ google: { place: '' }, ng: { model: 'searchPlace' } }
+                        .form-group
+                            %label Within
+                            %select.form-control{ ng: { options: 'radius.value as radius.label for radius in withinRadius', model: 'searchRadius' } }
+                        %button.btn.btn-default{ ng: { click: 'search()' } } Search
 
     %span{ ng: { show: 'searching', cloak: '' } }
         Showing {[{ totalSearchLocations }]} locations
@@ -45,10 +47,10 @@
                 .col-xs-10.col-xs-offset-1
                     .post--container
                         .row
-                            .col-sm-7
+                            .col-sm-7.col-sm-offset-1
                                 %h2 {[{ location.name }]}
                                 %p {[{ location.address1 }]}
-                            .col-sm-4.col-sm-offset-1
+                            .col-sm-3.col-sm-offset-1
                                 %img.post--image{ ng: { attr_data_src: '{[{ location.map }]}' } }
 
 {% endblock %}

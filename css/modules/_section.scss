@@ -1,4 +1,6 @@
 .section {
+    margin-bottom: 100px;
+
     .section--title {
         margin: {
             bottom: 60px;
@@ -7,14 +9,15 @@
         text-align: center;
     }
 
+    .section--subtitle {
+        margin-top: 50px;
+    }
+
     .section--more {
         background: $brand-secondary-dark-blue;
         color: #333;
         font-weight: 700;
-        margin: {
-            bottom: 75px;
-            top: 50px;
-        }
+        margin-top: 50px;
         padding: 12px;
 
         .geomicon-arrow-right {
@@ -30,6 +33,12 @@
         }
     }
 
+    .section--body {
+        li {
+            margin-bottom: 5px;
+        }
+    }
+
     .section--centered {
         text-align: center;
     }
@@ -38,4 +47,26 @@
 .section_callout {
     @extend .section;
     background: $brand-secondary;
+    padding-bottom: 100px;
+}
+
+.section_resources {
+    @extend .section;
+
+    h2 {
+        margin-top: 50px;
+    }
+
+    a {
+        display: block;
+        margin-bottom: 7px;
+    }
+
+    label {
+        margin-bottom: 0;
+    }
+
+    .section_resources--item {
+        margin-bottom: 20px;
+    }
 }

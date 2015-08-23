@@ -7903,33 +7903,56 @@ button.close {
   width: 100%;
 }
 
-.section .section--title, .section_callout .section--title {
+.section, .section_callout, .section_resources {
+  margin-bottom: 100px;
+}
+.section .section--title, .section_callout .section--title, .section_resources .section--title {
   margin-bottom: 60px;
   margin-top: 75px;
   text-align: center;
 }
-.section .section--more, .section_callout .section--more {
+.section .section--subtitle, .section_callout .section--subtitle, .section_resources .section--subtitle {
+  margin-top: 50px;
+}
+.section .section--more, .section_callout .section--more, .section_resources .section--more {
   background: #c6e7f4;
   color: #333;
   font-weight: 700;
-  margin-bottom: 75px;
   margin-top: 50px;
   padding: 12px;
 }
-.section .section--more .geomicon-arrow-right, .section_callout .section--more .geomicon-arrow-right {
+.section .section--more .geomicon-arrow-right, .section_callout .section--more .geomicon-arrow-right, .section_resources .section--more .geomicon-arrow-right {
   font-size: 14px;
   margin-left: 5px;
   margin-top: 4px;
 }
-.section .section--more.is-full, .section_callout .section--more.is-full {
+.section .section--more.is-full, .section_callout .section--more.is-full, .section_resources .section--more.is-full {
   width: 100%;
 }
-.section .section--centered, .section_callout .section--centered {
+.section .section--body li, .section_callout .section--body li, .section_resources .section--body li {
+  margin-bottom: 5px;
+}
+.section .section--centered, .section_callout .section--centered, .section_resources .section--centered {
   text-align: center;
 }
 
 .section_callout {
   background: #eef7f8;
+  padding-bottom: 100px;
+}
+
+.section_resources h2 {
+  margin-top: 50px;
+}
+.section_resources a {
+  display: block;
+  margin-bottom: 7px;
+}
+.section_resources label {
+  margin-bottom: 0;
+}
+.section_resources .section_resources--item {
+  margin-bottom: 20px;
 }
 
 #main-content {

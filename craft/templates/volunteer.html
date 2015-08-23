@@ -7,32 +7,36 @@
       {% for block in entry.callToAction %}
       <div class='row'>
         {% if block.type == 'description' %}
-        <div class='col-xs-12'>
+        <div class='col-sm-8 col-sm-offset-2'>
           <p>{{ block.text }}</p>
         </div>
         {% elseif block.type == 'callToAction' %}
-        <div class='col-sm-8'>
+        <div class='col-sm-5 col-sm-offset-2'>
           <p>{{ block.description }}</p>
           <a class='btn btn-secondary' href='{{ block.buttonUrl }}'>{{ block.buttonText }}</a>
         </div>
-        <div class='col-sm-4'>
+        <div class='col-sm-3'>
           {% set groups = block.photos | batch((block.photos | length / 2) | round(0, 'ceil')) %}
           <div class='row'>
             {% for photos in groups %}
             <div class='col-sm-6'>
-              <ul>
-                {% for photo in photos %}
-                <li>
-                  <img data-src='{{ photo.url }}' style='width: 100%'>
-                </li>
-                {% endfor %}
-              </ul>
+              <div class='row'>
+                <div class='col-xs-12'>
+                  {% for photo in photos %}
+                  <p>
+                    <img data-src='{{ photo.url }}' style='width: 100%'>
+                  </p>
+                  <br>
+                  {% endfor %}
+                </div>
+              </div>
             </div>
             {% endfor %}
           </div>
         </div>
         {% endif %}
       </div>
+      <br>
       {% endfor %}
     </div>
   </section>

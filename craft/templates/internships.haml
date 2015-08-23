@@ -8,24 +8,25 @@
             {% for block in entry.callToAction %}
             .row
                 {% if block.type == 'description' %}
-                .col-xs-12
+                .col-sm-8.col-sm-offset-2
                     %p {{ block.text }}
                 {% elseif block.type == 'callToAction' %}
-                .col-sm-8
+                .col-sm-5.col-sm-offset-2
                     %p {{ block.description }}
                     %a.btn.btn-secondary{ href: '{{ block.buttonUrl }}' } {{ block.buttonText }}
-                .col-sm-4
+                .col-sm-3
                     {% set groups = block.photos | batch((block.photos | length / 2) | round(0, 'ceil')) %}
                     .row
                         {% for photos in groups %}
                         .col-sm-6
-                            %ul
+                            .row
                                 {% for photo in photos %}
-                                %li
+                                .col-xs-12
                                     %img{ data: { src: '{{ photo.url }}' }, style: 'width: 100%' }
+                                    %br
                                 {% endfor %}
                         {% endfor %}
-
                 {% endif %}
+            %br
             {% endfor %}
 {% endblock %}

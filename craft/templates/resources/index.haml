@@ -7,7 +7,19 @@
             .row
                 .col-xs-12
                     {% for entry in craft.entries.section('resources') %}
-                    %h2
-                        %a{ href: '/resources/{{ entry.slug }}' } {{ entry.title }}
+                    %h1.section--title.col-sm-8.col-sm-offset-2 {{ entry.title }}
+                    .section_resources.section--body.row
+                        .col-xs-8.col-xs-offset-2
+                            {% for block in entry.resourceLinks %}
+                            {% if block.type == "resourcesHeader" %}
+                            %h2 {{ block.resourceTitle }}
+                            {% endif %}
+                            {% if block.type == "resourceLink" %}
+                            .section_resources--item
+                                %label {{ block.linkText }}
+                                %a{ href: '{{ block.linkUrl }}' } {{ block.linkUrl }}
+                                %p {{ block.description }}
+                            {% endif %}
+                            {% endfor %}
                     {% endfor %}
 {% endblock %}

@@ -4,7 +4,9 @@
 %main#main-content
     %section.section
         .container-fluid
-            %h1.section--title.col-sm-8.col-sm-offset-2 Internships
+            .row
+                .col-sm-8.col-sm-offset-2
+                    %h1.section--title Internships
             {% for block in entry.callToAction %}
             .row
                 {% if block.type == 'description' %}

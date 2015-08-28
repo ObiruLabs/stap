@@ -3,7 +3,11 @@
 <main id='main-content'>
   <section class='section'>
     <div class='container-fluid'>
-      <h1 class='section--title col-sm-8 col-sm-offset-2'>Internships</h1>
+      <div class='row'>
+        <div class='col-sm-8 col-sm-offset-2'>
+          <h1 class='section--title'>Internships</h1>
+        </div>
+      </div>
       {% for block in entry.callToAction %}
       <div class='row'>
         {% if block.type == 'description' %}

@@ -1,13 +1,18 @@
-$brand-primary: #dd222c;
-$brand-secondary: #eef7f8;
-$brand-secondary-blue: #e7f2f8;
-$brand-secondary-dark-blue: #c6e7f4;
+$brand-primary: #f13449;
+$brand-secondary: #07beea;
+$brand-tertiary-dark: #50637a;
+$brand-tertiary-light: #e4e8ef;
 
 $font-size-base: 18px;
 $font-family-sans-serif: 'freight-sans-pro', helvetica, arial, sans-serif;
-$font-family-serif: 'freight-text-pro', Georgia, 'Times New Roman', Times, serif;
+$font-family-serif: 'source-serif-pro', Georgia, 'Times New Roman', Times, serif;
+$font-family-base: $font-family-serif;
+$line-height-base: 1.8;
 
 $headings-font-family: 'jaf-bernina-sans', sans-serif;
+$headings-font-weight: 700;
+$font-size-h1: 28px;
+$font-size-h2: 18px;
 
 $border-radius-base: 0;
 

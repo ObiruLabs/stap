@@ -78,25 +78,21 @@
     }
 }
 
+.btn {
+    font-family: $font-family-sans-serif;
+}
+
 .btn-secondary {
-    background: $brand-secondary-dark-blue;
-    color: #333;
-    font-weight: 700;
-    padding: 12px 25px;
-}
+    background: $brand-secondary;
+    color: #fff;
+    padding: 10px 25px;
 
-h1, h2, h3, h4, h5 {
-    color: $brand-primary;
-}
+    &:hover {
+        color: #fff;
+    }
 
-h1 {
-    font-size: 28px;
-}
-
-h2 {
-    font: {
-        size: 22px;
-        weight: 700;
+    &:hover, &:focus {
+        background-color: lighten($brand-secondary, 5%) !important;
     }
 }
 

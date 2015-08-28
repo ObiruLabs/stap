@@ -1,12 +1,21 @@
 .section {
     margin-bottom: 100px;
 
-    .section--title {
+    &--title {
+        font-weight: 700;
         margin: {
-            bottom: 60px;
-            top: 75px;
+            bottom: 30px;
+            top: 50px;
         }
-        text-align: center;
+
+        &:after {
+            background: $brand-tertiary-dark;
+            content: '';
+            display: block;
+            height: 4px;
+            margin-top: 25px;
+            width: 70px;
+        }
     }
 
     .section--subtitle {
@@ -14,7 +23,7 @@
     }
 
     .section--more {
-        background: $brand-secondary-dark-blue;
+//        background: $brand-secondary-dark-blue;
         color: #333;
         font-weight: 700;
         margin-top: 50px;
@@ -46,8 +55,11 @@
 
 .section_callout {
     @extend .section;
-    background: $brand-secondary;
-    padding-bottom: 100px;
+    background: $brand-tertiary-light;
+    padding: {
+        bottom: 100px;
+        top: 55px;
+    }
 }
 
 .section_resources {

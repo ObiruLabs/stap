@@ -1,24 +1,25 @@
 .post {
     @include make-row();
 
+    &--body {
+        @include make-sm-column(10);
+        @include make-sm-column-offset(1);
+    }
+
     & + & {
         margin-top: 50px;
     }
 
-    .post--container {
-
-    }
-
-    .post--date {
+    &--date {
         display: block;
         margin-bottom: 20px;
     }
 
-    .post--more {
+    &--more {
         margin-top: 20px;
     }
 
-    .post--image {
+    &--image {
         margin-top: 30px;
         width: 100%;
     }

@@ -12,45 +12,47 @@
 <main id='main-content'>
   <section class='section_callout'>
     <div class='container-fluid'>
-      <h1 class='section--title col-sm-8 col-sm-offset-2'>Our Mission</h1>
       <div class='row'>
-        <div class='col-sm-10 col-sm-offset-1'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <h1 class='section--title'>Our Mission</h1>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3'>
           {{ entry.pageIntroduction }}
           <br>
-          <div class='text-center'>
-            <a class='post--more btn btn-secondary' href='/staff'>Meet Us</a>
-          </div>
+          <a class='post--more btn btn-secondary' href='/staff'>Meet Us</a>
         </div>
       </div>
     </div>
   </section>
   <section class='section'>
     <div class='container-fluid'>
-      <h1 class='section--title col-sm-8 col-sm-offset-2'>Join Us</h1>
+      <div class='row'>
+        <div class='col-sm-5 col-sm-offset-1'>
+          <div class='row'>
+            <div class='col-sm-11 col-sm-offset-1'>
+              <h1 class='section--title'>Join Us</h1>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class='row'>
         <div class='col-sm-5 col-sm-offset-1'>
           <div class='post'>
-            <div class='post--container'>
-              <div class='row'>
-                <div class='col-sm-11 col-sm-offset-1'>
-                  <h2>Job Openings</h2>
-                  <p>{{ entry.jobOpeningsIntroduction }}</p>
-                  <a class='post--more btn btn-secondary' href='/jobs'>See Jobs</a>
-                </div>
-              </div>
+            <div class='post--body'>
+              <h2>Job Openings</h2>
+              <p>{{ entry.jobOpeningsIntroduction }}</p>
+              <a class='post--more btn btn-secondary' href='/jobs'>See Jobs</a>
             </div>
           </div>
         </div>
         <div class='col-sm-5'>
           <div class='post'>
-            <div class='post--container'>
-              <div class='row'>
-                <div class='col-sm-11 col-sm-offset-1'>
-                  <h2>Internships</h2>
-                  <p>{{ entry.internshipsIntroduction }}</p>
-                  <a class='post--more btn btn-secondary' href='/internships'>See Internships</a>
-                </div>
-              </div>
+            <div class='post--body'>
+              <h2>Internships</h2>
+              <p>{{ entry.internshipsIntroduction }}</p>
+              <a class='post--more btn btn-secondary' href='/internships'>See Internships</a>
             </div>
           </div>
         </div>
@@ -59,9 +61,13 @@
   </section>
   <section class='section_callout'>
     <div class='container-fluid'>
-      <h1 class='section--title col-sm-8 col-sm-offset-2'>Get Involved</h1>
       <div class='row'>
-        <div class='col-sm-8 col-sm-offset-2 text-center'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <h1 class='section--title'>Get Involved</h1>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3'>
           {{ entry.volunteerIntroduction }}
           <br>
           <a class='post--more btn btn-secondary' href='/volunteer'>Learn more</a>
@@ -71,36 +77,38 @@
   </section>
   <section class='section'>
     <div class='container-fluid'>
-      <h1 class='section--title col-sm-8 col-sm-offset-2'>Contact Us</h1>
+      <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <h1 class='section--title'>Contact Us</h1>
+        </div>
+      </div>
       {% for entry in craft.entries.section('contact') %}
       {% for location in entry.contactLocations | slice(0, 1) %}
       <div class='post'>
-        <div class='col-xs-10 col-xs-offset-1'>
-          <div class='post--container'>
-            <div class='row'>
-              <div class='col-sm-7 col-sm-offset-1'>
-                <h2>{{ location.locationName }}</h2>
-                <p>{{ location.address1 }}</p>
-                <p>{{ location.address2 }}</p>
-                <p>{{ location.city }}, {{ location.state }} {{ location.zip }}</p>
-                {% if location.hotline %}
-                <p>Hotline: {{ location.hotline }}</p>
-                {% endif %}
-                {% if location.phone %}
-                <p>Phone: {{ location.phone }}</p>
-                {% endif %}
-                {% if location.fax %}
-                <p>Fax: {{ location.fax }}</p>
-                {% endif %}
-                <p>
-                  <a href='{{ location.mapLink }}'>Map</a>
-                </p>
-                <a class='post--more btn btn-secondary' href='/contact'>See all locations</a>
-              </div>
-              <div class='col-sm-3 col-sm-offset-1'>
-                {% set coordinates = location.latitude ~ ',' ~ location.longitude %}
-                <img class='post--image' data-src='https://maps.googleapis.com/maps/api/staticmap?center={{ coordinates }}&amp;zoom=14&amp;size=150x150&amp;markers=size:mid%7Ccolor:red%7C{{ coordinates }}&amp;scale=2&amp;key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU'>
-              </div>
+        <div class='post--body'>
+          <div class='row'>
+            <div class='col-sm-7 col-sm-offset-1'>
+              <h2>{{ location.locationName }}</h2>
+              <p>{{ location.address1 }}</p>
+              <p>{{ location.address2 }}</p>
+              <p>{{ location.city }}, {{ location.state }} {{ location.zip }}</p>
+              {% if location.hotline %}
+              <p>Hotline: {{ location.hotline }}</p>
+              {% endif %}
+              {% if location.phone %}
+              <p>Phone: {{ location.phone }}</p>
+              {% endif %}
+              {% if location.fax %}
+              <p>Fax: {{ location.fax }}</p>
+              {% endif %}
+              <p>
+                <a href='{{ location.mapLink }}'>Map</a>
+              </p>
+              <a class='post--more btn btn-secondary' href='/contact'>See all locations</a>
+            </div>
+            <div class='col-sm-3 col-sm-offset-1'>
+              {% set coordinates = location.latitude ~ ',' ~ location.longitude %}
+              <img class='post--image' data-src='https://maps.googleapis.com/maps/api/staticmap?center={{ coordinates }}&amp;zoom=14&amp;size=150x150&amp;markers=size:mid%7Ccolor:red%7C{{ coordinates }}&amp;scale=2&amp;key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU'>
             </div>
           </div>
         </div>
@@ -111,9 +119,13 @@
   </section>
   <section class='section'>
     <div class='container-fluid'>
-      <h1 class='section--title col-sm-8 col-sm-offset-2'>Send Us a Message</h1>
       <div class='row'>
-        <div class='col-xs-8 col-xs-offset-2'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <h1 class='section--title'>Send Us a Message</h1>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3'>
           <form accept-charset='UTF-8' action='/' class='row' method='post'>
             <input name='action' type='hidden' value='mandrillForm/sendMessage'>
             <input name='successRedirectUrl' type='hidden' value='success'>

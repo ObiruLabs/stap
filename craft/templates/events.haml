@@ -2,46 +2,49 @@
 
 {% macro eventPost(event, type) %}
 .post
-    .col-xs-10.col-xs-offset-1
-        .post--container
-            .row
-                .col-sm-7
-                    %h2 {{ event.eventName }}
-                    %span.post--date At {{ event.when | date("F j, Y") }}
-                    %p {{ event.description }}
+    .post--body
+        .row
+            .col-sm-7
+                %h2 {{ event.eventName }}
+                %span.post--date At {{ event.when | date("F j, Y") }}
+                %p {{ event.description }}
 
-                    {% if type == "upcoming" %}
-                    {% if event.signUpLink %}
-                    %a.post--more.btn.btn-secondary{ href: '{{ event.signUpLink }}' } Register
-                    {% endif %}
-                    {% endif %}
+                {% if type == "upcoming" %}
+                {% if event.signUpLink %}
+                %a.post--more.btn.btn-secondary{ href: '{{ event.signUpLink }}' } Register
+                {% endif %}
+                {% endif %}
 
-                    {% if event.photosLink %}
-                    %a.btn.btn-default{ href: '{{ event.photosLink }}' } Pictures
-                    {% endif %}
+                {% if event.photosLink %}
+                %a.btn.btn-default{ href: '{{ event.photosLink }}' } Pictures
+                {% endif %}
 
-                .col-sm-4.col-sm-offset-1
-                    %img.post--image{ data: { src: '{{ event.photo.first().url }}' } }
+            .col-sm-4.col-sm-offset-1
+                %img.post--image{ data: { src: '{{ event.photo.first().url }}' } }
 {% endmacro %}
 
 {% block content %}
 %main#main-content
     %section.section
         .container-fluid
-            %h1.section--title.col-sm-8.col-sm-offset-2 Upcoming Events
-            {% for event in entry.events %}
-            {% if (event.when | date("Y-m-d")) >= (date() | date("Y-m-d")) %}
-            {{ _self.eventPost(event, "upcoming") }}
-            {% endif %}
-            {% endfor %}
+            .row
+                .col-sm-8.col-sm-offset-2
+                    %h1.section--title Upcoming Events
+                    {% for event in entry.events %}
+                    {% if (event.when | date("Y-m-d")) >= (date() | date("Y-m-d")) %}
+                    {{ _self.eventPost(event, "upcoming") }}
+                    {% endif %}
+                    {% endfor %}
 
     %section.section
         .container-fluid
-            %h1.section--title.col-sm-8.col-sm-offset-2 Past Events
-            {% for event in entry.events %}
-            {% if (event.when | date("Y-m-d")) < (date() | date("Y-m-d")) %}
-            {{ _self.eventPost(event, "past") }}
-            {% endif %}
-            {% endfor %}
+            .row
+                .col-sm-8.col-sm-offset-2
+                    %h1.section--title Past Events
+                    {% for event in entry.events %}
+                    {% if (event.when | date("Y-m-d")) < (date() | date("Y-m-d")) %}
+                    {{ _self.eventPost(event, "past") }}
+                    {% endif %}
+                    {% endfor %}
 
 {% endblock %}

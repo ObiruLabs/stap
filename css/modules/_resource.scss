@@ -1,0 +1,18 @@
+.resource {
+    &--group-title {
+        font-size: 22px;
+    }
+
+    &--title {
+        color: $brand-primary;
+        font-size: 18px;
+    }
+
+    &--source {
+        border-top: 1px solid #aaa;
+
+        a {
+            color: #aaa;
+        }
+    }
+}

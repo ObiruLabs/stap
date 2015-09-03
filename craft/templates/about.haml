@@ -14,57 +14,51 @@
     %section.section_callout
         .container-fluid
             .row
-                .col-sm-6.col-sm-offset-3
+                .col-sm-8.col-sm-offset-2
                     %h1.section--title Our Mission
-            .row
-                .col-sm-6.col-sm-offset-3
                     {{ entry.pageIntroduction }}
-                    %br
-                    %a.post--more.btn.btn-secondary{ href: '/staff' } Meet Us
+                    %a.btn_more.btn-secondary{ href: '/staff' } Meet Us
 
     %section.section
         .container-fluid
             .row
-                .col-sm-5.col-sm-offset-1
+                .col-sm-6
                     .row
-                        .col-sm-11.col-sm-offset-1
+                        .col-xs-11.col-xs-offset-1
                             %h1.section--title Join Us
             .row
-                .col-sm-5.col-sm-offset-1
-                    .post
-                        .post--body
+                .col-sm-6
+                    .row
+                        .col-xs-10.col-xs-offset-1
                             %h2 Job Openings
                             %p {{ entry.jobOpeningsIntroduction }}
-                            %a.post--more.btn.btn-secondary{ href: '/jobs' } See Jobs
-                .col-sm-5
-                    .post
-                        .post--body
+                            %a.btn_more.btn-secondary{ href: '/jobs' } See Jobs
+                .col-sm-6
+                    .row
+                        .col-xs-10.col-xs-offset-1
                             %h2 Internships
                             %p {{ entry.internshipsIntroduction }}
-                            %a.post--more.btn.btn-secondary{ href: '/internships' } See Internships
+                            %a.btn_more.btn-secondary{ href: '/internships' } See Internships
 
     %section.section_callout
         .container-fluid
             .row
-                .col-sm-6.col-sm-offset-3
+                .col-sm-8.col-sm-offset-2
                     %h1.section--title Get Involved
-            .row
-                .col-sm-6.col-sm-offset-3
                     {{ entry.volunteerIntroduction }}
-                    %br
-                    %a.post--more.btn.btn-secondary{ href: '/volunteer' } Learn more
+                    %a.btn_more.btn-secondary{ href: '/volunteer' } Learn more
 
     %section.section
         .container-fluid
             .row
-                .col-sm-6.col-sm-offset-3
-                    %h1.section--title Contact Us
-            {% for entry in craft.entries.section('contact') %}
-            {% for location in entry.contactLocations | slice(0, 1) %}
-            .post
-                .post--body
+                .col-sm-8.col-sm-offset-2
+                    {% for entry in craft.entries.section('contact') %}
+                    {% for location in entry.contactLocations | slice(0, 1) %}
                     .row
-                        .col-sm-7.col-sm-offset-1
+                        .col-xs-12
+                            %h1.section--title Contact Us
+                    .row
+                        .col-sm-7
                             %h2 {{ location.locationName }}
                             %p {{ location.address1 }}
                             %p {{ location.address2 }}
@@ -80,21 +74,20 @@
                             {% endif %}
                             %p
                                 %a{ href: '{{ location.mapLink }}' } Map
-                            %a.post--more.btn.btn-secondary{ href: '/contact' } See all locations
+                            %a.btn_more.btn-secondary{ href: '/contact' } See all locations
                         .col-sm-3.col-sm-offset-1
                             {% set coordinates = location.latitude ~ ',' ~ location.longitude %}
                             %img.post--image{ data: { src: 'https://maps.googleapis.com/maps/api/staticmap?center={{ coordinates }}&zoom=14&size=150x150&markers=size:mid%7Ccolor:red%7C{{ coordinates }}&scale=2&key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU' } }
-            {% endfor %}
-            {% endfor %}
+                    {% endfor %}
+                    {% endfor %}
 
     %section.section
         .container-fluid
             .row
-                .col-sm-6.col-sm-offset-3
+                .col-sm-8.col-sm-offset-2
                     %h1.section--title Send Us a Message
-            .row
-                .col-sm-6.col-sm-offset-3
-                    %form.row{ method: 'post', action: '/', accept: { charset: 'UTF-8' } }
+
+                    %form{ method: 'post', action: '/', accept: { charset: 'UTF-8' } }
                         %input{ type: 'hidden', name: 'action', value: 'mandrillForm/sendMessage' }
                         %input{ type: 'hidden', name: 'successRedirectUrl', value: 'success' }
 
@@ -108,13 +101,13 @@
 
                         .form-group
                             %label{ for: 'message' } Message
-                            %textarea#message.form-control{ rows: '10', cols: '40', name: 'message' }
+                            %textarea#message.form-control{ rows: '5', cols: '40', name: 'message' }
                                 {% if message is defined %}{{ message.message }}{% endif %}
 
                             {% if message is defined %}
                             {{ _self.errorList(message.getErrors('message')) }}
                             {% endif %}
 
-                        %button.btn.btn-primary{ type: 'submit' } Send
+                        %button.btn_more.btn-primary{ type: 'submit' } Send
 
 {% endblock %}

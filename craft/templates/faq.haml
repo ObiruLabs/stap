@@ -1,0 +1,17 @@
+{% extends "_layout" %}
+{% block content %}
+%main#main-content
+    %section.section
+        .container-fluid
+            .row
+                .col-sm-8.col-sm-offset-2
+                    %h1.section--title Frequently Asked Questions
+
+                    {% for entry in craft.entries.section('faq') %}
+                    %h1.section--title {{ entry.title }}
+                    {% for faq in entry.faq %}
+                    %h2.section--subtitle {{ faq.question }}
+                    {{ faq.answer }}
+                    {% endfor %}
+                    {% endfor %}
+{% endblock %}

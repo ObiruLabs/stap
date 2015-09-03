@@ -1,0 +1,21 @@
+{% extends "_layout" %}
+{% block content %}
+<main id='main-content'>
+  <section class='section'>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-sm-8 col-sm-offset-2'>
+          <h1 class='section--title'>Frequently Asked Questions</h1>
+          {% for entry in craft.entries.section('faq') %}
+          <h1 class='section--title'>{{ entry.title }}</h1>
+          {% for faq in entry.faq %}
+          <h2 class='section--subtitle'>{{ faq.question }}</h2>
+          {{ faq.answer }}
+          {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

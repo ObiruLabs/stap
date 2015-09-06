@@ -34,40 +34,58 @@
     </script>
   </head>
   <body>
-    <nav class='navbar navbar-default navbar-fixed-top'>
+    <nav class='nav-header'>
       <div class='container-fluid'>
-        <div class='navbar-header'>
-          <a class='navbar-brand' href='/'>
-            <img src='/images/logo.png' style='width: 55px; margin-top: -15px;'>
-          </a>
+        <div class='nav-header--large hidden-xs'>
+          <div class='col-sm-2 col-lg-push-5 nav-header--logo'>
+            <a href='/'>
+              <img src='/images/logo.svg'>
+            </a>
+          </div>
+          <div class='nav-header--left-nav-links col-sm-5 col-lg-pull-2'>
+            <div class='nav-header--item col-sm-4 col-lg-3 col-lg-offset-1'>
+              <a class="{% if navPage == 'testing' %}is-active{% endif %}" href='/testing'>HIV&nbsp;Testing</a>
+            </div>
+            <div class='nav-header--item col-sm-3 col-lg-2'>
+              <a class="{% if navPage == 'services' %}is-active{% endif %}" href='/services'>Services</a>
+            </div>
+            <div class='nav-header--item col-sm-3'>
+              <a class="{% if navPage == 'events' %}is-active{% endif %}" href='/events'>Events</a>
+            </div>
+            <div class='nav-header--item col-sm-2'>
+              <a class="{% if navPage == 'faq' %}is-active{% endif %}" href='/faq'>FAQ</a>
+            </div>
+          </div>
+          <div class='nav-header--right-nav-links col-sm-5'>
+            <div class='nav-header--item col-sm-4 col-lg-3 col-lg-offset-1'>
+              <a class="{% if navPage == 'resources' %}is-active{% endif %}" href='/resources'>Resources</a>
+            </div>
+            <div class='nav-header--item col-sm-3 col-lg-4'>
+              <a class="{% if navPage == 'about' %}is-active{% endif %}" href='/about'>About</a>
+            </div>
+            <div class='nav-header--item col-sm-3'>
+              <a class='btn btn-wired' href='/donation'>Donate</a>
+            </div>
+          </div>
         </div>
-        <div class='collapse navbar-collapse' id='navbar-collapse-1'>
-          <ul class='nav navbar-nav navbar-right'>
-            <li>
-              <a href='/testing'>HIV Testing</a>
-            </li>
-            <li>
-              <a href='/services'>Services</a>
-            </li>
-            <li>
-              <a href='/events'>Events</a>
-            </li>
-            <li>
-              <a href='/resources'>Resources</a>
-            </li>
-            <li>
-              <a href='/faq'>FAQ</a>
-            </li>
-            <li>
-              <a href='/publications'>Publications</a>
-            </li>
-            <li>
-              <a href='/about'>About</a>
-            </li>
-            <li>
-              <a class='navbar--donate btn btn-primary' href='/donation'>Donate</a>
-            </li>
-          </ul>
+        <div class='nav-header--small visible-xs'>
+          <div class='nav-header--text-logo'>
+            <div>Southern Tier</div>
+            <div>Aids Program</div>
+          </div>
+          <div class='nav-header--menu-title'>
+            {% if not navPage %}Home{% endif %}
+            {% if navPage == 'testing' %}HIV&nbsp;Testing{% endif %}
+            {% if navPage == 'services' %}Services{% endif %}
+            {% if navPage == 'events' %}Events{% endif %}
+            {% if navPage == 'faq' %}FAQ{% endif %}
+            {% if navPage == 'resources' %}Resources{% endif %}
+            {% if navPage == 'about' %}About{% endif %}
+            {% if navPage == 'donation' %}Donate{% endif %}
+          </div>
+          <div class='nav-header--menu'>
+            menu
+          </div>
         </div>
       </div>
     </nav>

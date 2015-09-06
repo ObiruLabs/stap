@@ -1,16 +1,20 @@
 {% extends "_layout" %}
+{% set navPage = 'resources' %}
 {% block content %}
 %main#main-content
-    %section.section
+    %section.section_short
         .container-fluid
             .row
                 {% for entry in craft.entries.section('resources') %}
                 .col-sm-4
                     %a.resource--tile{ href: "\#{{ entry.slug }}" } {{ entry.title }}
                 {% endfor %}
+
+    {% for entry in craft.entries.section('resources') %}
+    %section.section_bordered
+        .container-fluid
             .row
                 .col-sm-6.col-sm-offset-3
-                    {% for entry in craft.entries.section('resources') %}
                     %p{ id: "{{ entry.slug }}" }
                         &nbsp;
                         %br
@@ -29,5 +33,5 @@
                             .resource--source {{ block.linkUrl }}
                     {% endif %}
                     {% endfor %}
-                    {% endfor %}
+    {% endfor %}
 {% endblock %}

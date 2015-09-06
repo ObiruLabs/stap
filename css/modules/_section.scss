@@ -80,23 +80,16 @@
     }
 }
 
-.section_resources {
+.section_short {
     @extend .section;
 
-    h2 {
-        margin-top: 50px;
-    }
+    padding-bottom: 0;
+}
 
-    a {
-        display: block;
-        margin-bottom: 7px;
-    }
+.section_bordered {
+    @extend .section;
 
-    label {
-        margin-bottom: 0;
-    }
-
-    .section_resources--item {
-        margin-bottom: 20px;
+    & + & {
+        border-top: 1px solid $brand-tertiary-light;
     }
 }

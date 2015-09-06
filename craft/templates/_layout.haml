@@ -38,30 +38,44 @@
             ga('create', 'UA-45997711-8', 'auto');
             ga('send', 'pageview');
     %body
-        %nav.navbar.navbar-default.navbar-fixed-top
+        %nav.nav-header
             .container-fluid
-                .navbar-header
-                    %a.navbar-brand{ href: '/' }
-                        %img{ src: '/images/logo.png', style: 'width: 55px; margin-top: -15px;' }
+                .nav-header--large.hidden-xs
+                    .col-sm-2.col-lg-push-5.nav-header--logo
+                        %a{ href: '/' }
+                            %img{ src: '/images/logo.svg' }
+                    .nav-header--left-nav-links.col-sm-5.col-lg-pull-2
+                        .nav-header--item.col-sm-4.col-lg-3.col-lg-offset-1
+                            %a{ href: '/testing', class: "{% if navPage == 'testing' %}is-active{% endif %}" } HIV&nbsp;Testing
+                        .nav-header--item.col-sm-3.col-lg-2
+                            %a{ href: '/services', class: "{% if navPage == 'services' %}is-active{% endif %}" } Services
+                        .nav-header--item.col-sm-3
+                            %a{ href: '/events', class: "{% if navPage == 'events' %}is-active{% endif %}" } Events
+                        .nav-header--item.col-sm-2
+                            %a{ href: '/faq', class: "{% if navPage == 'faq' %}is-active{% endif %}" } FAQ
+                    .nav-header--right-nav-links.col-sm-5
+                        .nav-header--item.col-sm-4.col-lg-3.col-lg-offset-1
+                            %a{ href: '/resources', class: "{% if navPage == 'resources' %}is-active{% endif %}" } Resources
+                        .nav-header--item.col-sm-3.col-lg-4
+                            %a{ href: '/about', class: "{% if navPage == 'about' %}is-active{% endif %}" } About
+                        .nav-header--item.col-sm-3
+                            %a.btn.btn-wired{ href: '/donation' } Donate
 
-                #navbar-collapse-1.collapse.navbar-collapse
-                    %ul.nav.navbar-nav.navbar-right
-                        %li
-                            %a{ href: '/testing' } HIV Testing
-                        %li
-                            %a{ href: '/services' } Services
-                        %li
-                            %a{ href: '/events' } Events
-                        %li
-                            %a{ href: '/resources' } Resources
-                        %li
-                            %a{ href: '/faq' } FAQ
-                        %li
-                            %a{ href: '/publications' } Publications
-                        %li
-                            %a{ href: '/about' } About
-                        %li
-                            %a.navbar--donate.btn.btn-primary{ href: '/donation' } Donate
+                .nav-header--small.visible-xs
+                    .nav-header--text-logo
+                        %div Southern Tier
+                        %div Aids Program
+                    .nav-header--menu-title
+                        {% if not navPage %}Home{% endif %}
+                        {% if navPage == 'testing' %}HIV&nbsp;Testing{% endif %}
+                        {% if navPage == 'services' %}Services{% endif %}
+                        {% if navPage == 'events' %}Events{% endif %}
+                        {% if navPage == 'faq' %}FAQ{% endif %}
+                        {% if navPage == 'resources' %}Resources{% endif %}
+                        {% if navPage == 'about' %}About{% endif %}
+                        {% if navPage == 'donation' %}Donate{% endif %}
+                    .nav-header--menu
+                        menu
 
         {% block content %}
         {% endblock %}

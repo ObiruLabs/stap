@@ -1,4 +1,5 @@
 {% extends "_layout" %}
+{% set navPage = 'donation' %}
 {% block content %}
 %main#main-content{ ng: { controller: 'donationCtrl', init: "stripePublishableKey='{{ craft.stripeService.publishableKey() }}'" } }
     %section.section

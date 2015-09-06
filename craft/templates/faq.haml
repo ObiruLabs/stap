@@ -1,11 +1,12 @@
 {% extends "_layout" %}
+{% set navPage = 'faq' %}
 {% block content %}
 %main#main-content
-    %section.section
+    {% for entry in craft.entries.section('faq') %}
+    %section.section_bordered
         .container-fluid
             .row
                 .col-sm-6.col-sm-offset-3
-                    {% for entry in craft.entries.section('faq') %}
                     %p{ id: "{{ entry.slug }}" }
                         &nbsp;
                         %br
@@ -16,5 +17,5 @@
                         %h2.faq--question {{ faq.question }}
                         {{ faq.answer }}
                     {% endfor %}
-                    {% endfor %}
+    {% endfor %}
 {% endblock %}

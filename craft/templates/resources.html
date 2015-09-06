@@ -1,7 +1,8 @@
 {% extends "_layout" %}
+{% set navPage = 'resources' %}
 {% block content %}
 <main id='main-content'>
-  <section class='section'>
+  <section class='section_short'>
     <div class='container-fluid'>
       <div class='row'>
         {% for entry in craft.entries.section('resources') %}
@@ -10,9 +11,13 @@
         </div>
         {% endfor %}
       </div>
+    </div>
+  </section>
+  {% for entry in craft.entries.section('resources') %}
+  <section class='section_bordered'>
+    <div class='container-fluid'>
       <div class='row'>
         <div class='col-sm-6 col-sm-offset-3'>
-          {% for entry in craft.entries.section('resources') %}
           <p id='{{ entry.slug }}'>
             &nbsp;
             <br>
@@ -33,10 +38,10 @@
           </div>
           {% endif %}
           {% endfor %}
-          {% endfor %}
         </div>
       </div>
     </div>
   </section>
+  {% endfor %}
 </main>
 {% endblock %}

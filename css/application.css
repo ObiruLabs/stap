@@ -7759,6 +7759,17 @@ button.close {
   margin-top: 14px;
 }
 
+.btn-wired {
+  border: 2px solid #f13449;
+  border-radius: 3px;
+  color: #f13449;
+  padding: 2px 20px;
+}
+.btn-wired:hover {
+  background: #f13449;
+  color: #fff;
+}
+
 .faq--question {
   color: #f13449;
   font-size: 18px;
@@ -7936,6 +7947,121 @@ button.close {
   width: 155px;
 }
 
+.nav-header {
+  background: #f8f8f8;
+  border-bottom: 1px solid #eee;
+  font-family: "freight-sans-pro", helvetica, arial, sans-serif;
+}
+.nav-header--large {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 20px 0;
+}
+.nav-header--large:before, .nav-header--large:after {
+  content: " ";
+  display: table;
+}
+.nav-header--large:after {
+  clear: both;
+}
+.nav-header--small {
+  margin-left: -15px;
+  margin-right: -15px;
+  color: #f13449;
+  padding: 10px 0;
+}
+.nav-header--small:before, .nav-header--small:after {
+  content: " ";
+  display: table;
+}
+.nav-header--small:after {
+  clear: both;
+}
+.nav-header--left-nav-links {
+  padding-right: 0;
+}
+.nav-header--right-nav-links {
+  padding-left: 0;
+}
+.nav-header--logo {
+  text-align: right;
+  padding-right: 0;
+}
+.nav-header--logo > a > img {
+  width: 100px;
+}
+@media (min-width: 1200px) {
+  .nav-header--logo {
+    text-align: center;
+  }
+}
+@media (min-width: 992px) {
+  .nav-header--logo {
+    padding-right: 15px;
+  }
+}
+.nav-header--text-logo {
+  position: relative;
+  float: left;
+  width: 25%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-right: 1px solid #f13449;
+  margin-bottom: -10px;
+  margin-top: -10px;
+}
+.nav-header--menu-title {
+  position: relative;
+  float: left;
+  width: 50%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+}
+.nav-header--menu {
+  position: relative;
+  float: left;
+  width: 25%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-left: 1px solid #f13449;
+  margin-bottom: -10px;
+  margin-top: -10px;
+  text-align: right;
+}
+.nav-header--item {
+  text-align: center;
+}
+.nav-header--item > a {
+  color: #333333;
+  display: inline-block;
+  padding: 34px 10px;
+  position: relative;
+  text-decoration: none;
+}
+.nav-header--item > a:hover, .nav-header--item > a:active, .nav-header--item > a.is-active {
+  color: #f13449;
+}
+.nav-header--item > a:hover:after, .nav-header--item > a:active:after, .nav-header--item > a.is-active:after {
+  border-bottom: 2px solid #f13449;
+  content: '';
+  display: block;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+.nav-header--item > .btn-wired {
+  color: #f13449;
+  margin-top: 30px;
+  padding: 1px 20px;
+}
+.nav-header--item > .btn-wired:hover {
+  color: #fff;
+}
+
 .post + .post {
   margin-top: 50px;
 }
@@ -7970,6 +8096,7 @@ button.close {
   background: #e4e8ef;
   color: #50637a;
   display: block;
+  font-family: "freight-sans-pro", helvetica, arial, sans-serif;
   font-size: 22px;
   margin: 15px 0;
   max-height: 119px;
@@ -7999,7 +8126,7 @@ button.close {
   color: #333333;
 }
 
-.section, .section_callout, .section_resources {
+.section, .section_callout, .section_short, .section_bordered {
   padding-bottom: 100px;
   padding-top: 50px;
 }
@@ -8029,27 +8156,27 @@ button.close {
   margin-top: 25px;
   width: 70px;
 }
-.section .section--subtitle, .section_callout .section--subtitle, .section_resources .section--subtitle {
+.section .section--subtitle, .section_callout .section--subtitle, .section_short .section--subtitle, .section_bordered .section--subtitle {
   margin-top: 50px;
 }
-.section .section--more, .section_callout .section--more, .section_resources .section--more {
+.section .section--more, .section_callout .section--more, .section_short .section--more, .section_bordered .section--more {
   color: #333;
   font-weight: 700;
   margin-top: 50px;
   padding: 12px;
 }
-.section .section--more .geomicon-arrow-right, .section_callout .section--more .geomicon-arrow-right, .section_resources .section--more .geomicon-arrow-right {
+.section .section--more .geomicon-arrow-right, .section_callout .section--more .geomicon-arrow-right, .section_short .section--more .geomicon-arrow-right, .section_bordered .section--more .geomicon-arrow-right {
   font-size: 14px;
   margin-left: 5px;
   margin-top: 4px;
 }
-.section .section--more.is-full, .section_callout .section--more.is-full, .section_resources .section--more.is-full {
+.section .section--more.is-full, .section_callout .section--more.is-full, .section_short .section--more.is-full, .section_bordered .section--more.is-full {
   width: 100%;
 }
-.section .section--body li, .section_callout .section--body li, .section_resources .section--body li {
+.section .section--body li, .section_callout .section--body li, .section_short .section--body li, .section_bordered .section--body li {
   margin-bottom: 5px;
 }
-.section .section--centered, .section_callout .section--centered, .section_resources .section--centered {
+.section .section--centered, .section_callout .section--centered, .section_short .section--centered, .section_bordered .section--centered {
   text-align: center;
 }
 
@@ -8059,18 +8186,12 @@ button.close {
   padding-top: 50px;
 }
 
-.section_resources h2 {
-  margin-top: 50px;
+.section_short {
+  padding-bottom: 0;
 }
-.section_resources a {
-  display: block;
-  margin-bottom: 7px;
-}
-.section_resources label {
-  margin-bottom: 0;
-}
-.section_resources .section_resources--item {
-  margin-bottom: 20px;
+
+.section_bordered + .section_bordered {
+  border-top: 1px solid #e4e8ef;
 }
 
 #main-content {

@@ -1,0 +1,103 @@
+.nav-header {
+    background: #f8f8f8;
+    border-bottom: 1px solid #eee;
+    font-family: $font-family-sans-serif;
+
+    &--large {
+        @include make-row();
+        padding: 20px 0;
+    }
+
+    &--small {
+        @include make-row();
+        color: $brand-primary;
+        padding: 10px 0;
+    }
+
+    &--left-nav-links {
+        padding-right: 0;
+    }
+
+    &--right-nav-links {
+        padding-left: 0;
+    }
+
+    &--logo {
+        text-align: right;
+        padding-right: 0;
+
+        > a > img {
+            width: 100px;
+        }
+
+        @media (min-width: $screen-lg-min) {
+            text-align: center;
+        }
+
+        @media (min-width: $screen-md-min) {
+            padding-right: 15px;
+        }
+    }
+
+    &--text-logo {
+        @include make-xs-column(3);
+        border-right: 1px solid $brand-primary;
+        margin: {
+            bottom: -10px;
+            top: -10px;
+        }
+    }
+
+    &--menu-title {
+        @include make-xs-column(6);
+        text-align: center;
+    }
+
+
+    &--menu {
+        @include make-xs-column(3);
+        border-left: 1px solid $brand-primary;
+        margin: {
+            bottom: -10px;
+            top: -10px;
+        }
+        text-align: right;
+    }
+
+    &--item {
+        text-align: center;
+
+        > a {
+            color: $text-color;
+            display: inline-block;
+            padding: 34px 10px;
+            position: relative;
+            text-decoration: none;
+
+            &:hover,
+            &:active,
+            &.is-active {
+                color: $brand-primary;
+
+                &:after {
+                    border-bottom: 2px solid $brand-primary;
+                    content: '';
+                    display: block;
+                    left: 0;
+                    position: absolute;
+                    width: 100%;
+                }
+            }
+        }
+
+        > .btn-wired {
+            color: $brand-primary;
+            margin-top: 30px;
+            padding: 1px 20px;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+}

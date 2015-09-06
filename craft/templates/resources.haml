@@ -4,9 +4,18 @@
     %section.section
         .container-fluid
             .row
-                .col-sm-8.col-sm-offset-2
+                {% for entry in craft.entries.section('resources') %}
+                .col-sm-4
+                    %a.resource--tile{ href: "\#{{ entry.slug }}" } {{ entry.title }}
+                {% endfor %}
+            .row
+                .col-sm-6.col-sm-offset-3
                     {% for entry in craft.entries.section('resources') %}
-                    %h1.section--title.is-secondary {{ entry.title }}
+                    %p{ id: "{{ entry.slug }}" }
+                        &nbsp;
+                        %br
+                        &nbsp;
+                    %h1.section--title_secondary {{ entry.title }}
 
                     {% for block in entry.resourceLinks %}
                     {% if block.type == "resourcesHeader" %}
@@ -14,10 +23,10 @@
                     {% endif %}
                     {% if block.type == "resourceLink" %}
                     .resource
-                        %h3.resource--title {{ block.linkText }}
-                        %p {{ block.description }}
-                        .resource--source
-                            %a{ href: '{{ block.linkUrl }}' } {{ block.linkUrl }}
+                        %a{ href: '{{ block.linkUrl }}' }
+                            %h3.resource--title {{ block.linkText }}
+                            %p {{ block.description }}
+                            .resource--source {{ block.linkUrl }}
                     {% endif %}
                     {% endfor %}
                     {% endfor %}

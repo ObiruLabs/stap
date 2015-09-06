@@ -4,7 +4,7 @@
   <section class='section_callout'>
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-sm-8 col-sm-offset-2'>
+        <div class='col-sm-6 col-sm-offset-3'>
           <h1 class='section--title'>Our Services</h1>
           {{ entry.pageIntroduction }}
         </div>
@@ -45,7 +45,7 @@
   </section>
   <section class='section_callout'>
     <div class='container-fluid'>
-      <h1 class='section--title col-sm-8 col-sm-offset-2'>Recent Newsletters</h1>
+      <h1 class='section--title col-sm-6 col-sm-offset-3'>Recent Newsletters</h1>
       {% for newsletters in craft.entries.section('newsletters') %}
       <div class='row'>
         <div class='col-sm-4 col-sm-offset-4'>
@@ -61,7 +61,7 @@
       </div>
       {% endfor %}
       <div class='row'>
-        <div class='col-sm-8 col-sm-offset-2 text-center'>
+        <div class='col-sm-6 col-sm-offset-3 text-center'>
           <a class='section--more btn btn-secondary' href='/newsletters'>Read more</a>
         </div>
       </div>
@@ -69,7 +69,7 @@
   </section>
   <section class='section'>
     <div class='container-fluid'>
-      <h1 class='section--title col-sm-8 col-sm-offset-2'>Client Stories</h1>
+      <h1 class='section--title col-sm-6 col-sm-offset-3'>Client Stories</h1>
       {% set groups = entry.clientStories | batch(3) %}
       {% for stories in groups %}
       <div class='row'>

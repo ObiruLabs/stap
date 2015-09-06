@@ -4,11 +4,11 @@
 %main#main-content
     %section.section
         .container-fluid
-            %h1.section--title.col-sm-8.col-sm-offset-2 Get Involved
+            %h1.section--title.col-sm-6.col-sm-offset-3 Get Involved
             {% for block in entry.callToAction %}
             .row
                 {% if block.type == 'description' %}
-                .col-sm-8.col-sm-offset-2
+                .col-sm-6.col-sm-offset-3
                     %p {{ block.text }}
                 {% elseif block.type == 'callToAction' %}
                 .col-sm-5.col-sm-offset-2

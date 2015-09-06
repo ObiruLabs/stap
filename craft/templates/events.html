@@ -28,7 +28,7 @@
   <section class='section'>
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-sm-8 col-sm-offset-2'>
+        <div class='col-sm-6 col-sm-offset-3'>
           <h1 class='section--title'>Upcoming Events</h1>
           {% for event in entry.events %}
           {% if (event.when | date("Y-m-d")) >= (date() | date("Y-m-d")) %}
@@ -42,7 +42,7 @@
   <section class='section'>
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-sm-8 col-sm-offset-2'>
+        <div class='col-sm-6 col-sm-offset-3'>
           <h1 class='section--title'>Past Events</h1>
           {% for event in entry.events %}
           {% if (event.when | date("Y-m-d")) < (date() | date("Y-m-d")) %}

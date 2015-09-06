@@ -1,0 +1,31 @@
+.faq {
+    &--question {
+        color: $brand-primary;
+        font-size: 18px;
+        margin-top: 80px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    li {
+        list-style: none;
+        text-indent: -20px;
+
+        &:before {
+            border: 2px solid $brand-secondary;
+            border-radius: 50%;
+            content: "";
+            display: inline-block;
+            height: 9px;
+            margin: {
+                left: 1px;
+                right: 9px;
+            }
+            position: relative;
+            top: -1px;
+            width: 9px;
+        }
+    }
+}

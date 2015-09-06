@@ -4,7 +4,7 @@
     %section.section_callout
         .container-fluid
             .row
-                .col-sm-8.col-sm-offset-2
+                .col-sm-6.col-sm-offset-3
                     %h1.section--title Our Services
                     {{ entry.pageIntroduction }}
 
@@ -30,7 +30,7 @@
 
     %section.section_callout
         .container-fluid
-            %h1.section--title.col-sm-8.col-sm-offset-2 Recent Newsletters
+            %h1.section--title.col-sm-6.col-sm-offset-3 Recent Newsletters
             {% for newsletters in craft.entries.section('newsletters') %}
             .row
                 .col-sm-4.col-sm-offset-4
@@ -42,12 +42,12 @@
                         {% endfor %}
             {% endfor %}
             .row
-                .col-sm-8.col-sm-offset-2.text-center
+                .col-sm-6.col-sm-offset-3.text-center
                     %a.section--more.btn.btn-secondary{ href: '/newsletters' } Read more
 
     %section.section
         .container-fluid
-            %h1.section--title.col-sm-8.col-sm-offset-2 Client Stories
+            %h1.section--title.col-sm-6.col-sm-offset-3 Client Stories
             {% set groups = entry.clientStories | batch(3) %}
             {% for stories in groups %}
             .row

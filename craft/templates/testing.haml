@@ -21,7 +21,7 @@
 %main#main-content{ ng: { controller: 'testingCtrl', init: "counties={{- '[' ~ counties | join(',') ~ ']' -}}" } }
     %section.section_callout
         .container-fluid
-            %h1.section--title.col-sm-8.col-sm-offset-2 Find a Testing Center
+            %h1.section--title.col-sm-6.col-sm-offset-3 Find a Testing Center
             .row
                 .col-sm-12
                     %form.testing-form.form-inline
@@ -42,7 +42,7 @@
                 .col-xs-12
                     No testing locations found around your area.
         .container-fluid{ ng: { repeat: 'county in closestCounties', cloak: '' } }
-            %h1.section--title.col-sm-8.col-sm-offset-2 {[{ county.county }]}
+            %h1.section--title.col-sm-6.col-sm-offset-3 {[{ county.county }]}
             .post{ ng: { repeat: 'location in county.locations' } }
                 .col-xs-10.col-xs-offset-1
                     .post--container

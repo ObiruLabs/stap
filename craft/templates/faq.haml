@@ -4,14 +4,17 @@
     %section.section
         .container-fluid
             .row
-                .col-sm-8.col-sm-offset-2
-                    %h1.section--title Frequently Asked Questions
-
+                .col-sm-6.col-sm-offset-3
                     {% for entry in craft.entries.section('faq') %}
-                    %h1.section--title {{ entry.title }}
+                    %p{ id: "{{ entry.slug }}" }
+                        &nbsp;
+                        %br
+                        &nbsp;
+                    %h1.section--title_secondary {{ entry.title }}
                     {% for faq in entry.faq %}
-                    %h2.section--subtitle {{ faq.question }}
-                    {{ faq.answer }}
+                    .faq
+                        %h2.faq--question {{ faq.question }}
+                        {{ faq.answer }}
                     {% endfor %}
                     {% endfor %}
 {% endblock %}

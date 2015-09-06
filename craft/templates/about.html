@@ -13,7 +13,7 @@
   <section class='section_callout'>
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-sm-8 col-sm-offset-2'>
+        <div class='col-sm-6 col-sm-offset-3'>
           <h1 class='section--title'>Our Mission</h1>
           {{ entry.pageIntroduction }}
           <a class='btn_more btn-secondary' href='/staff'>Meet Us</a>
@@ -57,7 +57,7 @@
   <section class='section_callout'>
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-sm-8 col-sm-offset-2'>
+        <div class='col-sm-6 col-sm-offset-3'>
           <h1 class='section--title'>Get Involved</h1>
           {{ entry.volunteerIntroduction }}
           <a class='btn_more btn-secondary' href='/volunteer'>Learn more</a>
@@ -68,7 +68,7 @@
   <section class='section'>
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-sm-8 col-sm-offset-2'>
+        <div class='col-sm-6 col-sm-offset-3'>
           {% for entry in craft.entries.section('contact') %}
           {% for location in entry.contactLocations | slice(0, 1) %}
           <div class='row'>
@@ -110,7 +110,7 @@
   <section class='section'>
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-sm-8 col-sm-offset-2'>
+        <div class='col-sm-6 col-sm-offset-3'>
           <h1 class='section--title'>Send Us a Message</h1>
           <form accept-charset='UTF-8' action='/' method='post'>
             <input name='action' type='hidden' value='mandrillForm/sendMessage'>

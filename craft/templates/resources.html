@@ -4,20 +4,32 @@
   <section class='section'>
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-sm-8 col-sm-offset-2'>
+        {% for entry in craft.entries.section('resources') %}
+        <div class='col-sm-4'>
+          <a class='resource--tile' href='#{{ entry.slug }}'>{{ entry.title }}</a>
+        </div>
+        {% endfor %}
+      </div>
+      <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3'>
           {% for entry in craft.entries.section('resources') %}
-          <h1 class='section--title is-secondary'>{{ entry.title }}</h1>
+          <p id='{{ entry.slug }}'>
+            &nbsp;
+            <br>
+            &nbsp;
+          </p>
+          <h1 class='section--title_secondary'>{{ entry.title }}</h1>
           {% for block in entry.resourceLinks %}
           {% if block.type == "resourcesHeader" %}
           <h2 class='resource--group-title'>{{ block.resourceTitle }}</h2>
           {% endif %}
           {% if block.type == "resourceLink" %}
           <div class='resource'>
-            <h3 class='resource--title'>{{ block.linkText }}</h3>
-            <p>{{ block.description }}</p>
-            <div class='resource--source'>
-              <a href='{{ block.linkUrl }}'>{{ block.linkUrl }}</a>
-            </div>
+            <a href='{{ block.linkUrl }}'>
+              <h3 class='resource--title'>{{ block.linkText }}</h3>
+              <p>{{ block.description }}</p>
+              <div class='resource--source'>{{ block.linkUrl }}</div>
+            </a>
           </div>
           {% endif %}
           {% endfor %}

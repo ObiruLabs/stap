@@ -3,11 +3,11 @@
 <main id='main-content'>
   <section class='section'>
     <div class='container-fluid'>
-      <h1 class='section--title col-sm-8 col-sm-offset-2'>Get Involved</h1>
+      <h1 class='section--title col-sm-6 col-sm-offset-3'>Get Involved</h1>
       {% for block in entry.callToAction %}
       <div class='row'>
         {% if block.type == 'description' %}
-        <div class='col-sm-8 col-sm-offset-2'>
+        <div class='col-sm-6 col-sm-offset-3'>
           <p>{{ block.text }}</p>
         </div>
         {% elseif block.type == 'callToAction' %}

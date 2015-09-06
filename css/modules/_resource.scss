@@ -6,13 +6,55 @@
     &--title {
         color: $brand-primary;
         font-size: 18px;
+        margin-top: 0;
     }
 
     &--source {
-        border-top: 1px solid #aaa;
-
-        a {
-            color: #aaa;
+        border-top: 1px solid #e2e2e2;
+        color: #aaa;
+        font: {
+            family: $font-family-sans-serif;
+            style: italic;
         }
+        padding-top: 15px;
+    }
+
+    &--tile {
+        background: $brand-tertiary-light;
+        color: $brand-tertiary-dark;
+        display: block;
+        font-size: 22px;
+        margin: 15px 0;
+        max-height: 119px;
+        padding: 40px;
+        text-align: center;
+
+        &:hover {
+            background: $brand-secondary;
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+
+    a {
+        display: block;
+        margin: 0 -50px;
+        padding: {
+            bottom: 20px;
+            left: 50px;
+            right: 50px;
+            top: 25px;
+        }
+    }
+
+    a:hover,
+    a:active,
+    a:focus {
+        background: #f6f6f6;
+        text-decoration: none;
+    }
+
+    p {
+        color: $text-color;
     }
 }

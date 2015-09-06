@@ -17,9 +17,22 @@
             margin-top: 25px;
             width: 70px;
         }
+    }
 
-        &.is-secondary:after {
+    &--title_secondary {
+        font-weight: 700;
+        margin: {
+            bottom: 30px;
+            top: 50px;
+        }
+
+        &:after {
             background: $brand-secondary;
+            content: '';
+            display: block;
+            height: 4px;
+            margin-top: 25px;
+            width: 70px;
         }
     }
 

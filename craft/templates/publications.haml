@@ -5,7 +5,7 @@
 %main#main-content
     %section.section
         .container-fluid
-            %h1.section--title.col-sm-8.col-sm-offset-2 {{ entry.title }}
+            %h1.section--title.col-sm-6.col-sm-offset-3 {{ entry.title }}
             {% set groups = entry.issues | batch(3) %}
             {% for issues in groups %}
             .row

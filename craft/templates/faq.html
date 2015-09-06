@@ -4,13 +4,19 @@
   <section class='section'>
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-sm-8 col-sm-offset-2'>
-          <h1 class='section--title'>Frequently Asked Questions</h1>
+        <div class='col-sm-6 col-sm-offset-3'>
           {% for entry in craft.entries.section('faq') %}
-          <h1 class='section--title'>{{ entry.title }}</h1>
+          <p id='{{ entry.slug }}'>
+            &nbsp;
+            <br>
+            &nbsp;
+          </p>
+          <h1 class='section--title_secondary'>{{ entry.title }}</h1>
           {% for faq in entry.faq %}
-          <h2 class='section--subtitle'>{{ faq.question }}</h2>
-          {{ faq.answer }}
+          <div class='faq'>
+            <h2 class='faq--question'>{{ faq.question }}</h2>
+            {{ faq.answer }}
+          </div>
           {% endfor %}
           {% endfor %}
         </div>

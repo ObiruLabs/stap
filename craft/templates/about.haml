@@ -14,7 +14,7 @@
     %section.section_callout
         .container-fluid
             .row
-                .col-sm-8.col-sm-offset-2
+                .col-sm-6.col-sm-offset-3
                     %h1.section--title Our Mission
                     {{ entry.pageIntroduction }}
                     %a.btn_more.btn-secondary{ href: '/staff' } Meet Us
@@ -43,7 +43,7 @@
     %section.section_callout
         .container-fluid
             .row
-                .col-sm-8.col-sm-offset-2
+                .col-sm-6.col-sm-offset-3
                     %h1.section--title Get Involved
                     {{ entry.volunteerIntroduction }}
                     %a.btn_more.btn-secondary{ href: '/volunteer' } Learn more
@@ -51,7 +51,7 @@
     %section.section
         .container-fluid
             .row
-                .col-sm-8.col-sm-offset-2
+                .col-sm-6.col-sm-offset-3
                     {% for entry in craft.entries.section('contact') %}
                     {% for location in entry.contactLocations | slice(0, 1) %}
                     .row
@@ -84,7 +84,7 @@
     %section.section
         .container-fluid
             .row
-                .col-sm-8.col-sm-offset-2
+                .col-sm-6.col-sm-offset-3
                     %h1.section--title Send Us a Message
 
                     %form{ method: 'post', action: '/', accept: { charset: 'UTF-8' } }

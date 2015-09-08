@@ -1,56 +1,48 @@
 {% extends "_layout" %}
 {% set navPage = 'events' %}
 {% macro eventPost(event, type) %}
-<div class='post'>
-  <div class='post--body'>
-    <div class='row'>
-      <div class='col-sm-7'>
-        <h2>{{ event.eventName }}</h2>
-        <span class='post--date'>At {{ event.when | date("F j, Y") }}</span>
-        <p>{{ event.description }}</p>
-        {% if type == "upcoming" %}
-        {% if event.signUpLink %}
-        <a class='post--more btn btn-secondary' href='{{ event.signUpLink }}'>Register</a>
-        {% endif %}
-        {% endif %}
-        {% if event.photosLink %}
-        <a class='btn btn-default' href='{{ event.photosLink }}'>Pictures</a>
-        {% endif %}
-      </div>
-      <div class='col-sm-4 col-sm-offset-1'>
-        <img class='post--image' data-src='{{ event.photo.first().url }}'>
-      </div>
-    </div>
+<div class='event'>
+  <div class='row'>
+    <div class='col-sm-7'><h2 class='section--title'>{{ event.eventName }}</h2>
+    <span class='event--date'>{{ event.when | date("F j, Y") }}</span>
+    {{ event.description }}
+    {% if type == "upcoming" %}
+    {% if event.signUpLink %}
+    <a class='btn btn-secondary' href='{{ event.signUpLink }}'>Sign Up</a>
+    {% endif %}
+    {% endif %}
+    {% if event.photosLink %}
+    <a class='btn btn-tertiary' href='{{ event.photosLink }}'>View Photos</a>
+    {% endif %}</div>
   </div>
 </div>
 {% endmacro %}
 {% block content %}
 <main id='main-content'>
-  <section class='section'>
+  <section class='section_blank section_bordered'>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-sm-6 col-sm-offset-3'>
-          <h1 class='section--title'>Upcoming Events</h1>
-          {% for event in entry.events %}
-          {% if (event.when | date("Y-m-d")) >= (date() | date("Y-m-d")) %}
-          {{ _self.eventPost(event, "upcoming") }}
-          {% endif %}
-          {% endfor %}
+          <h1 class='section--title'>Events</h1>
+          <p>
+            We have fun-filled events throughout the year to fundraise and increase awareness and support in the community. Come join us or
+            <a href='/volunteer'>volunteer</a>
+            at one of these events!
+          </p>
         </div>
       </div>
     </div>
   </section>
-  <section class='section'>
-    <div class='container-fluid'>
-      <div class='row'>
-        <div class='col-sm-6 col-sm-offset-3'>
-          <h1 class='section--title'>Past Events</h1>
-          {% for event in entry.events %}
-          {% if (event.when | date("Y-m-d")) < (date() | date("Y-m-d")) %}
-          {{ _self.eventPost(event, "past") }}
-          {% endif %}
-          {% endfor %}
-        </div>
+  <section class='section_bordered section_clear'>
+    <div class='row'>
+      <div class='col-xs-12'>
+        {% for event in entry.events %}
+        {% if (event.when | date("Y-m-d")) >= (date() | date("Y-m-d")) %}
+        {{ _self.eventPost(event, "upcoming") }}
+        {% else %}
+        {{ _self.eventPost(event, "past") }}
+        {% endif %}
+        {% endfor %}
       </div>
     </div>
   </section>

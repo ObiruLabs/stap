@@ -1,0 +1,12 @@
+{% extends "_layout" %}
+{% set navPage = 'about' %}
+
+{% block content %}
+%main#main-content
+    %section.section
+        .container-fluid
+            .privacy-policy.row
+                .col-sm-6.col-sm-offset-3
+                    %h1.section--title Privacy Policy
+                    {{ entry.body }}
+{% endblock %}

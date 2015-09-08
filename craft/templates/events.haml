@@ -2,50 +2,48 @@
 {% set navPage = 'events' %}
 
 {% macro eventPost(event, type) %}
-.post
-    .post--body
-        .row
-            .col-sm-7
-                %h2 {{ event.eventName }}
-                %span.post--date At {{ event.when | date("F j, Y") }}
-                %p {{ event.description }}
+.event
+    .row
+        .col-sm-7<
+            %h2.section--title {{ event.eventName }}
+            %span.event--date {{ event.when | date("F j, Y") }}
 
-                {% if type == "upcoming" %}
-                {% if event.signUpLink %}
-                %a.post--more.btn.btn-secondary{ href: '{{ event.signUpLink }}' } Register
-                {% endif %}
-                {% endif %}
+            {{ event.description }}
 
-                {% if event.photosLink %}
-                %a.btn.btn-default{ href: '{{ event.photosLink }}' } Pictures
-                {% endif %}
+            {% if type == "upcoming" %}
+            {% if event.signUpLink %}
+            %a.btn.btn-secondary{ href: '{{ event.signUpLink }}' } Sign Up
+            {% endif %}
+            {% endif %}
 
-            .col-sm-4.col-sm-offset-1
-                %img.post--image{ data: { src: '{{ event.photo.first().url }}' } }
+            {% if event.photosLink %}
+            %a.btn.btn-tertiary{ href: '{{ event.photosLink }}' } View Photos
+            {% endif %}
+
+        -#.col-sm-4.col-sm-offset-1
+        -#    %img.post--image{ data: { src: '{{ event.photo.first().url }}' } }
 {% endmacro %}
 
 {% block content %}
 %main#main-content
-    %section.section
+    %section.section_blank.section_bordered
         .container-fluid
             .row
                 .col-sm-6.col-sm-offset-3
-                    %h1.section--title Upcoming Events
-                    {% for event in entry.events %}
-                    {% if (event.when | date("Y-m-d")) >= (date() | date("Y-m-d")) %}
-                    {{ _self.eventPost(event, "upcoming") }}
-                    {% endif %}
-                    {% endfor %}
-
-    %section.section
-        .container-fluid
-            .row
-                .col-sm-6.col-sm-offset-3
-                    %h1.section--title Past Events
-                    {% for event in entry.events %}
-                    {% if (event.when | date("Y-m-d")) < (date() | date("Y-m-d")) %}
-                    {{ _self.eventPost(event, "past") }}
-                    {% endif %}
-                    {% endfor %}
+                    %h1.section--title Events
+                    %p
+                        We have fun-filled events throughout the year to fundraise and increase awareness and support in the community. Come join us or
+                        %a{ href: '/volunteer' } volunteer
+                        at one of these events!
+    %section.section_bordered.section_clear
+        .row
+            .col-xs-12
+                {% for event in entry.events %}
+                {% if (event.when | date("Y-m-d")) >= (date() | date("Y-m-d")) %}
+                {{ _self.eventPost(event, "upcoming") }}
+                {% else %}
+                {{ _self.eventPost(event, "past") }}
+                {% endif %}
+                {% endfor %}
 
 {% endblock %}

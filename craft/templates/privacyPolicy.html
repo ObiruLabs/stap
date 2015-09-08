@@ -1,0 +1,16 @@
+{% extends "_layout" %}
+{% set navPage = 'about' %}
+{% block content %}
+<main id='main-content'>
+  <section class='section'>
+    <div class='container-fluid'>
+      <div class='privacy-policy row'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <h1 class='section--title'>Privacy Policy</h1>
+          {{ entry.body }}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

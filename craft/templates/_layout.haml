@@ -136,7 +136,7 @@
                     %path{ fill: '#D2242B', d: 'M24.5,62.5c0,21,17.1,38,38,38c21,0,38-17.1,38-38c0-21-17.1-38-38-38C41.5,24.5,24.5,41.5,24.5,62.5z M25.4,62.5C25.4,42,42,25.4,62.5,25.4C83,25.4,99.6,42,99.6,62.5C99.6,83,83,99.6,62.5,99.6C42,99.6,25.4,83,25.4,62.5z' }
 
                 %g#facebook
-                    %path{ fill: '#ffffff', d: 'M22.2,0H1.8C0.8,0,0,0.8,0,1.7v20.5c0,1,0.8,1.7,1.8,1.7H12v-8.4H9V12h3V9.3c0-3.1,1.9-4.8,4.7-4.8 c1.3,0,2.6,0.1,2.8,0.1v3.2l-2,0c-1.5,0-1.8,0.7-1.8,1.8V12h3.8l0,3.6h-3.8V24h6.5c1,0,1.8-0.8,1.8-1.7V1.7C24,0.8,23.2,0,22.2,0z' }
+                    %path{ fill: '#ffffff', d: 'M474.072,0H37.767C16.938,0,0,16.775,0,37.138v438.166C0,495.695,16.938,512,37.767,512H256V333h-64v-77h64 v-57.447c0-66.115,40.395-102.115,99.374-102.115c28.25,0,54.626,2.103,60.626,3.044v69.094l-41.811,0.019 c-32.075,0-38.189,15.242-38.189,37.609V256h80.026l0.039,77H336v179h138.072c20.87,0,37.928-16.305,37.928-36.696V37.138 C512,16.775,494.942,0,474.072,0z' }
 
                 %g#twitter
                     %path{ fill: '#ffffff', d: 'M512,95.687c-18.838,8.448-39.081,14.158-60.331,16.725c21.689-13.145,38.344-33.961,46.187-58.764 C477.56,65.82,455.079,74.66,431.152,79.424c-19.161-20.644-46.461-33.543-76.673-33.543 c-58.014,0-105.046,47.557-105.046,106.213c0,8.326,0.929,16.431,2.719,24.206c-87.3-4.429-164.701-46.715-216.51-110.977 c-9.042,15.688-14.221,33.933-14.221,53.399c0,36.849,18.545,69.36,46.73,88.408c-17.219-0.551-33.416-5.33-47.579-13.285 c-0.007,0.444-0.009,0.888-0.009,1.335c0,51.463,36.208,94.393,84.263,104.15c-8.815,2.426-18.095,3.725-27.675,3.725 c-6.769,0-13.349-0.666-19.763-1.905c13.367,42.198,52.16,72.907,98.126,73.765c-35.951,28.487-81.243,45.467-130.457,45.467 c-8.479,0-16.84-0.503-25.058-1.483c46.487,30.136,101.701,47.72,161.021,47.72c193.213,0,298.868-161.848,298.868-302.207 c0-4.605-0.102-9.186-0.304-13.74C480.108,135.695,497.918,116.987,512,95.687z' }
@@ -240,14 +240,14 @@
             .footer--callout
                 .container-fluid
                     .row
-                        .col-sm-6
+                        .footer--callout-form.col-sm-6
                             %h3 Get our newsletters updates
                             %form#mc-embedded-subscribe-form.validate.form-inline{ action: '//stapinc.us10.list-manage.com/subscribe/post?u=6e2aebad0f9c25b08a995d4a9&amp;id=d382e4949e', method: 'post', name: 'mc-embedded-subscribe-form', target: '_blank', novalidate: '' }
                                 #mc_embed_signup_scroll
-                                    .mc-field-group.form-group
+                                    .mc-field-group
                                         %label{ for: 'mce-EMAIL', style: 'display: none' } Email Address
-                                        %input#mce-EMAIL.required.email.form-control{ type: 'email', value: '', name: 'EMAIL', placeholder: 'Enter your email address' }
-                                    %button#mc-embedded-subscribe.button.btn{ type: 'submit', name: 'subscribe' } Submit
+                                        %input#mce-EMAIL.form-control.required.email{ type: 'email', value: '', name: 'EMAIL', placeholder: 'Enter your email address' }
+                                        %button#mc-embedded-subscribe.button.btn{ type: 'submit', name: 'subscribe' } Submit
                                     #mce-responses.clear
                                         #mce-error-response.response{ style: 'display:none;' }
                                         #mce-success-response.response{ style: 'display:none;' }
@@ -256,13 +256,13 @@
 
                         .col-sm-6
                             %h3 Join us on social media
-                            %a{ href: '#' }
+                            %a{ href: 'https://www.facebook.com/SouthernTierAIDSProgram' }
                                 %svg{ viewbox: '0 0 512 512' }
                                     %use{ 'xlink:href' => '#facebook' }
-                            %a{ href: '#' }
+                            %a{ href: 'https://twitter.com/stapinc' }
                                 %svg{ viewbox: '0 0 512 512' }
                                     %use{ 'xlink:href' => '#twitter' }
-                            %a{ href: '#' }
+                            %a{ href: 'https://instagram.com/southerntieraidsprogram/' }
                                 %svg{ viewbox: '0 0 512 512' }
                                     %use{ 'xlink:href' => '#instagram' }
 
@@ -277,54 +277,15 @@
                             %span.footer--phone (607) 798-1706
                     .footer--links.row
                         .col-xs-12
-                            %a{ href: '' } About STAP
+                            %a{ href: '/about' } About STAP
                             %span.footer--separator •
-                            %a{ href: '' } Job Openings
+                            %a{ href: '/jobs' } Job Openings
                             %span.footer--separator •
-                            %a{ href: '' } Volunteer
+                            %a{ href: '/volunteer' } Volunteer
                             %span.footer--separator •
-                            %a{ href: '' } Privacy Policy
+                            %a{ href: '/privacypolicy' } Privacy Policy
 
             .footer--disclaimer
                 .container-fluid
                     .row
                         .col-xs-12 This site contains HIV prevention messages that may not be appropriate for all audiences. Since HIV infection is spread primarily through sexual practices or by sharing needles, prevention messages and programs may address these topics. If you are not seeking such information or may be offended by such materials, please leave this website.
-
-                    -#.col-sm-7.col-sm-offset-1
-                    -#    .row
-                    -#        .col-xs-3
-                    -#            %h3 Contact
-                    -#            %ul
-                    -#                %li Binghamton
-                    -#                %li Johnson City
-                    -#                %li Elmira
-                    -#                %li Tompkins County
-                    -#        .col-xs-3
-                    -#            %h3 About
-                    -#            %ul
-                    -#                %li Staff
-                    -#                %li Job Openings
-                    -#                %li Volunteer
-                    -#                %li Internships
-                    -#        .col-xs-3
-                    -#            %h3 FAQ
-                    -#            %ul
-                    -#                %li HIV/AIDS
-                    -#                %li Condoms
-                    -#                %li STIs
-                    -#                %li Harm & Risk Reduction
-                    -#.col-sm-4
-                    -#    #mc_embed_signup
-                    -#        %img{ src: '/images/logowhite.png' }
-                    -#        %h3 Get Email Updates
-                    -#        %form#mc-embedded-subscribe-form.validate.form-inline{ action: '//stapinc.us10.list-manage.com/subscribe/post?u=6e2aebad0f9c25b08a995d4a9&amp;id=d382e4949e', method: 'post', name: 'mc-embedded-subscribe-form', target: '_blank', novalidate: '' }
-                    -#            #mc_embed_signup_scroll
-                    -#                .mc-field-group.form-group
-                    -#                    %label{ for: 'mce-EMAIL', style: 'display: none' } Email Address
-                    -#                    %input#mce-EMAIL.required.email.form-control{ type: 'email', value: '', name: 'EMAIL', placeholder: 'Enter your email address' }
-                    -#                %button#mc-embedded-subscribe.button.btn{ type: 'submit', name: 'subscribe' } Subscribe
-                    -#                #mce-responses.clear
-                    -#                    #mce-error-response.response{ style: 'display:none;' }
-                    -#                    #mce-success-response.response{ style: 'display:none;' }
-                    -#                %div{ style: 'position: absolute; left: -5000px;' }
-                    -#                    %input{ type: 'text', name: 'b_6e2aebad0f9c25b08a995d4a9_d382e4949e', tabindex: '-1', value: '' }

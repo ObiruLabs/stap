@@ -1,0 +1,32 @@
+.event {
+    &--date {
+        display: block;
+        font: {
+            family: $font-family-sans-serif;
+            weight: 700;
+        }
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    h2 {
+        font-size: 28px;
+        margin: {
+            bottom: 25px;
+            top: 0;
+        }
+    }
+
+    .btn-secondary,
+    .btn-tertiary {
+        margin-top: 40px;
+    }
+
+    .btn-secondary {
+        padding: 5px 60px;
+    }
+
+    .btn-tertiary {
+        padding: 5px 40px;
+    }
+}

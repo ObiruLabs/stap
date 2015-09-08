@@ -41,7 +41,6 @@
     }
 
     .section--more {
-//        background: $brand-secondary-dark-blue;
         color: #333;
         font-weight: 700;
         margin-top: 50px;
@@ -80,16 +79,39 @@
     }
 }
 
+.section_blank {
+    @extend .section;
+
+    .section--title {
+        text-align: center;
+
+        &:after {
+            display: none;
+        }
+    }
+
+    p {
+        text-align: center;
+    }
+}
+
 .section_short {
     @extend .section;
 
     padding-bottom: 0;
 }
 
+.section_clear {
+    padding: {
+        bottom: 0;
+        top: 0;
+    }
+}
+
 .section_bordered {
     @extend .section;
 
     & + & {
-        border-top: 1px solid $brand-tertiary-light;
+        border-top: 2px solid $brand-tertiary-light;
     }
 }

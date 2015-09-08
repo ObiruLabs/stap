@@ -8,12 +8,14 @@
 @import 'geomicons';
 
 @import 'modules/btn';
+@import 'modules/event';
 @import 'modules/faq';
 @import 'modules/footer';
 @import 'modules/media-vertical';
 @import 'modules/menu-icon';
 @import 'modules/nav-header';
 @import 'modules/post';
+@import 'modules/privacy-policy';
 @import 'modules/resource';
 @import 'modules/section';
 
@@ -94,6 +96,30 @@
 
     &:hover, &:focus {
         background-color: lighten($brand-secondary, 5%) !important;
+    }
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    list-style: none;
+    text-indent: -20px;
+
+    &:before {
+        @include display-inline-block();
+        border: 2px solid $brand-secondary;
+        border-radius: 50%;
+        content: "";
+        height: 9px;
+        margin: {
+            left: 1px;
+            right: 9px;
+        }
+        position: relative;
+        top: -1px;
+        width: 9px;
     }
 }
 

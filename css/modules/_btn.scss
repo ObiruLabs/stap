@@ -4,6 +4,16 @@
     margin-top: 14px;
 }
 
+.btn-tertiary {
+    color: $brand-tertiary-dark;
+    border: 2px solid $brand-tertiary-dark;
+
+    &:hover {
+        color: #fff;
+        background: $brand-tertiary-dark;
+    }
+}
+
 .btn-wired {
     border: 2px solid $brand-primary;
     border-radius: 20px;

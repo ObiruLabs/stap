@@ -153,6 +153,7 @@
         position: relative;
         text-align: right;
         width: 115px;
+        transition: background 200ms, color 200ms;
 
         &.is-active,
         &:hover {

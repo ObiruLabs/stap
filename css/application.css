@@ -7773,6 +7773,7 @@ button.close {
   border-radius: 20px;
   color: #f13449;
   padding: 2px 20px;
+  transition: background 200ms, color 200ms;
 }
 .btn-wired:hover {
   background: #f13449;
@@ -7827,9 +7828,10 @@ button.close {
   padding: 10px;
   position: relative;
   top: 10px;
+  transition: opacity 100ms;
 }
 .footer--callout a:hover {
-  opacity: .5;
+  opacity: .75;
 }
 .footer--callout svg {
   width: 18px;
@@ -7846,10 +7848,11 @@ button.close {
   border: 2px solid #fff;
   margin-left: -5px;
   padding: 5px 25px;
+  transition: background 200ms, box-shadow 200ms, color 200ms;
 }
 .footer--callout button:hover {
   background: #fff;
-  border-left-color: #f13449;
+  box-shadow: -2px 0 #f13449;
   color: #f13449;
 }
 .footer--callout-form {
@@ -8232,6 +8235,7 @@ button.close {
   position: relative;
   text-align: right;
   width: 115px;
+  transition: background 200ms, color 200ms;
 }
 .nav-header--menu.is-active, .nav-header--menu:hover {
   background-color: #f13449;
@@ -8411,6 +8415,7 @@ button.close {
   max-height: 119px;
   padding: 40px;
   text-align: center;
+  transition: background 200ms, color 200ms;
 }
 .resource--tile:hover {
   background: #07beea;
@@ -8424,6 +8429,7 @@ button.close {
   padding-left: 50px;
   padding-right: 50px;
   padding-top: 25px;
+  transition: background 200ms;
 }
 .resource a:hover,
 .resource a:active,

@@ -20,9 +20,10 @@
             padding: 10px;
             position: relative;
             top: 10px;
+            transition: opacity 100ms;
 
             &:hover {
-                opacity: .5;
+                opacity: .75;
             }
         }
 
@@ -43,10 +44,11 @@
             border: 2px solid #fff;
             margin-left: -5px;
             padding: 5px 25px;
+            transition: background 200ms, box-shadow 200ms, color 200ms;
 
             &:hover {
                 background: #fff;
-                border-left-color: $brand-primary;
+                box-shadow: -2px 0 $brand-primary;
                 color: $brand-primary;
             }
         }

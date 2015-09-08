@@ -31,6 +31,7 @@
         max-height: 119px;
         padding: 40px;
         text-align: center;
+        transition: background 200ms, color 200ms;
 
         &:hover {
             background: $brand-secondary;
@@ -48,6 +49,7 @@
             right: 50px;
             top: 25px;
         }
+        transition: background 200ms;
     }
 
     a:hover,

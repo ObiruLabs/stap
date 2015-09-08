@@ -1,57 +1,80 @@
-#footer {
-    background: #212121;
-    color: #fff;
-    font-size: 16px;
-    padding: {
-        bottom: 80px;
-        top: 35px;
-    }
+.footer {
+    background: #f2f2f2;
+    font-family: $font-family-sans-serif;
+    text-align: center;
 
-    h3 {
+    &--callout {
+        background: $brand-primary;
         color: #fff;
-        font: {
-            size: 18px;
-            weight: 700;
+
+        h3 {
+            font: {
+                size: 18px;
+                weight: 400;
+            }
+        }
+
+        svg {
+            width: 12px;
         }
     }
 
-    ul {
-        padding-left: 0;
+    &--about {
+        padding: 100px 0;
+
+        a {
+            color: $brand-primary;
+        }
+
+        .footer--links .footer--separator {
+            color: $brand-primary;
+        }
     }
 
-    li {
-        list-style-type: none;
-        padding: 5px 0;
-    }
-
-    .col-xs-3 + .col-xs-3 {
-        border-left: #444;
-    }
-
-    input {
-        background: transparent;
+    &--disclaimer {
         border: {
-            left: none;
-            right: none;
-            top: none;
+            bottom: 5px solid $brand-primary;
+            top: 1px solid #ccc;
         }
-        border-bottom-width: 2px;
-        color: #fff;
-        min-width: 220px;
+        color: #888;
+        font-size: 16px;
+        padding: 20px;
     }
 
-    .btn {
-        background: transparent;
-        border: 1px solid #ccc;
-        margin-left: 10px;
-        padding: 6px 20px;
+    &--contact-info {
+        margin-bottom: 15px;
 
-        &:hover {
-            background: #ccc;
+        .footer--separator {
+            display: none;
+
+            @media (min-width: $screen-sm-min) {
+                @include display-inline-block();
+            }
         }
     }
 
-    img {
-        width: 85px;
+    &--address,
+    &--phone {
+        display: block;
+    }
+
+    &--company {
+        display: block;
+        font-weight: 700;
+    }
+
+    @media (min-width: $screen-sm-min) {
+        &--company,
+        &--address,
+        &--phone {
+            @include display-inline-block();
+        }
+    }
+
+    &--separator {
+        font-size: 14px;
+        padding: 0 10px;
+        position: relative;
+        top: -2px;
     }
 }

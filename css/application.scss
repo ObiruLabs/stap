@@ -11,14 +11,11 @@
 @import 'modules/faq';
 @import 'modules/footer';
 @import 'modules/media-vertical';
+@import 'modules/menu-icon';
 @import 'modules/nav-header';
 @import 'modules/post';
 @import 'modules/resource';
 @import 'modules/section';
-
-#main-content {
-    margin-top: 70px;
-}
 
 .browsehappy {
     @include make-sm-column(8);

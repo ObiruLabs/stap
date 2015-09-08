@@ -12,8 +12,10 @@ module.exports = function(grunt) {
         appDependencies = [
             'controllers/donationCancelCtrl',
             'controllers/donationCtrl',
+            'controllers/navigationCtrl',
             'controllers/testingCtrl',
             'directives/googlePlace',
+            'directives/scrollToFixed',
             'services/geocode'
         ];
 

@@ -1,0 +1,31 @@
+.menu-icon {
+    @include display-inline-block();
+    cursor: pointer;
+    transition: all 275ms ease;
+
+    > span {
+        background: $brand-primary;
+        border-radius: 1px;
+        display: block;
+        height: 2px;
+        margin-bottom: 4px;
+        transition: all 275ms ease;
+        width: 22px;
+    }
+
+    &.is-active {
+        @include transform(rotate(-45deg));
+
+        .menu-icon--bar1 {
+            @include transform(rotate(0deg) translateY(6px));
+        }
+
+        .menu-icon--bar2 {
+            opacity: 0;
+        }
+
+        .menu-icon--bar3 {
+            @include transform(rotate(-90deg) translateX(5px));
+        }
+    }
+}

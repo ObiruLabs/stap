@@ -2,6 +2,14 @@
     background: #f8f8f8;
     border-bottom: 1px solid #eee;
     font-family: $font-family-sans-serif;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+
+    @media (min-width: $screen-sm-min) {
+        position: relative;
+    }
 
     &--large {
         @include make-row();
@@ -11,7 +19,49 @@
     &--small {
         @include make-row();
         color: $brand-primary;
-        padding: 10px 0;
+        padding: 11px 0;
+    }
+
+    &--panel {
+        @include make-row();
+        background-color: $brand-primary;
+        height: 100%;
+        padding: 40px;
+        position: fixed;
+        width: 100%;
+
+        @media (min-width: $screen-sm-min) {
+            display: none;
+        }
+
+        @media (min-width: $screen-xs-min) {
+            .nav-header--panel-body {
+                @include make-xs-column(10);
+                @include make-xs-column-offset(1);
+            }
+        }
+
+        .row + .row {
+            border-top: 1px solid $brand-logo;
+        }
+
+        a {
+            color: #fff;
+            display: block;
+            font-size: 22px;
+            padding: 15px 0;
+        }
+    }
+
+    &--panel-body {
+        @include make-xs-column(12);
+
+        left: 0;
+        position: absolute;
+        top: 50%;
+
+        margin-top: -190px;
+        min-height: 280px;
     }
 
     &--left-nav-links {
@@ -26,8 +76,13 @@
         text-align: right;
         padding-right: 0;
 
-        > a > img {
-            width: 100px;
+        > a {
+            display: block;
+            height: 100px;
+
+            > svg {
+                width: 100px;
+            }
         }
 
         @media (min-width: $screen-lg-min) {
@@ -40,37 +95,92 @@
     }
 
     &--text-logo {
-        @include make-xs-column(3);
-        border-right: 1px solid $brand-primary;
+        float: left;
+        height: 52px;
         margin: {
             bottom: -10px;
             top: -10px;
+        }
+        position: relative;
+        text-align: center;
+        width: 145px;
+
+        @media (min-width: $screen-xs-min) {
+            border-right: 1px solid $brand-primary;
+        }
+
+        &.is-home {
+            border-right: none;
+        }
+
+        svg {
+            width: 75px;
+            padding: 12px 0;
         }
     }
 
     &--menu-title {
-        @include make-xs-column(6);
-        text-align: center;
-    }
-
-
-    &--menu {
-        @include make-xs-column(3);
-        border-left: 1px solid $brand-primary;
+        position: absolute;
+        display: none;
+        height: 52px;
         margin: {
             bottom: -10px;
             top: -10px;
         }
+        padding: 10px 0;
+        text-align: center;
+        width: 100%;
+
+        @media (min-width: $screen-xs-min) {
+            display: block;
+        }
+
+        &.is-hidden {
+            visibility: hidden;
+        }
+    }
+
+    &--menu {
+        border-left: 1px solid $brand-primary;
+        cursor: pointer;
+        float: right;
+        height: 52px;
+        margin: {
+            bottom: -10px;
+            top: -10px;
+        }
+        padding: 10px 15px;
+        position: relative;
         text-align: right;
+        width: 115px;
+
+        &.is-active,
+        &:hover {
+            background-color: $brand-primary;
+            color: #fff;
+
+            .menu-icon > span {
+                background: #fff;
+            }
+        }
+    }
+
+    &--menu-label {
+        margin-right: 10px;
+    }
+
+    .menu-icon {
+        position: relative;
+        top: 4px;
     }
 
     &--item {
         text-align: center;
 
         > a {
+            @include display-inline-block();
             color: $text-color;
-            display: inline-block;
-            padding: 34px 10px;
+            padding: 34px 3px;
             position: relative;
             text-decoration: none;
 
@@ -97,7 +207,104 @@
 
             &:hover {
                 color: #fff;
+                text-decoration: none;
+            }
+
+            &:hover,
+            &:active,
+            &.is-active {
+                &:after {
+                    display: none;
+                }
             }
         }
+    }
+}
+
+.nav-header_scrolled {
+    @extend .nav-header;
+    background: $brand-primary;
+    border-color: $brand-logo;
+    top: -130px;
+    transition: top 200ms ease;
+
+    @media (min-width: $screen-sm-min) {
+        position: fixed;
+    }
+
+    &--scrolled {
+        @include make-row();
+    }
+
+    .nav-header--logo {
+        text-align: left;
+        padding-right: 0;
+
+        > a {
+            display: block;
+            height: 30px;
+
+            > svg {
+                border-right: 1px solid #fff;
+                padding: 12px 32px 12px 5px;
+                width: 113px;
+            }
+        }
+
+        @media (min-width: $screen-lg-min) {
+            text-align: center;
+
+            > a > svg {
+                border: {
+                    left: 1px solid #fff;
+                    right: 1px solid #fff;
+                }
+                padding: 10px 35px;
+                width: 148px;
+            }
+        }
+
+        @media (min-width: $screen-md-min) {
+            padding-right: 15px;
+        }
+    }
+
+    .nav-header--item {
+        text-align: center;
+
+        > a {
+            color: #fff;
+            padding: 9px 3px;
+
+            &:hover,
+            &:active,
+            &.is-active {
+                color: #fff;
+
+                &:after {
+                    border-color: #fff;
+                    bottom: 9px;
+                }
+            }
+        }
+
+        > .btn-wired {
+            border-color: #fff;
+            color: #fff;
+            margin-top: 6px;
+            padding: 1px 20px;
+
+            &:hover {
+                background: #fff;
+                color: $brand-primary;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+#logotype g {
+    @media (min-width: $screen-sm-min) {
+        fill: #fff;
     }
 }

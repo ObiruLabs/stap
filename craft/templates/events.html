@@ -3,17 +3,29 @@
 {% macro eventPost(event, type) %}
 <div class='event'>
   <div class='row'>
-    <div class='col-sm-7'><h2 class='section--title'>{{ event.eventName }}</h2>
-    <span class='event--date'>{{ event.when | date("F j, Y") }}</span>
-    {{ event.description }}
-    {% if type == "upcoming" %}
-    {% if event.signUpLink %}
-    <a class='btn btn-secondary' href='{{ event.signUpLink }}'>Sign Up</a>
-    {% endif %}
-    {% endif %}
-    {% if event.photosLink %}
-    <a class='btn btn-tertiary' href='{{ event.photosLink }}'>View Photos</a>
-    {% endif %}</div>
+    <div class='event--photo col-xs-12 col-lg-6' style='background-image: url({{ event.photo.first().url }})'></div>
+    <div class='event--details col-lg-7'>
+      <div class='row'>
+        <div class='col-lg-11'><div class='row'>
+          <div class='col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2'>
+            {% if type == "upcoming" %}
+            <span class='event--upcoming-label'>Upcoming</span>
+            {% endif %}
+            <h2 class='section--title'>{{ event.eventName }}</h2>
+            <span class='event--date'>{{ event.when | date("F j, Y") }}</span>
+            {{ event.description }}
+            {% if type == "upcoming" %}
+            {% if event.signUpLink %}
+            <a class='btn btn-secondary' href='{{ event.signUpLink }}'>Sign Up</a>
+            {% endif %}
+            {% endif %}
+            {% if event.photosLink %}
+            <a class='btn btn-tertiary' href='{{ event.photosLink }}'>View Photos</a>
+            {% endif %}
+          </div>
+        </div></div>
+      </div>
+    </div>
   </div>
 </div>
 {% endmacro %}
@@ -33,17 +45,22 @@
       </div>
     </div>
   </section>
-  <section class='section_bordered section_clear'>
-    <div class='row'>
-      <div class='col-xs-12'>
-        {% for event in entry.events %}
-        {% if (event.when | date("Y-m-d")) >= (date() | date("Y-m-d")) %}
-        {{ _self.eventPost(event, "upcoming") }}
-        {% else %}
-        {{ _self.eventPost(event, "past") }}
-        {% endif %}
+  <section class='section_clear'>
+    <div class='container-full'>
+      {% set groups = entry.events | batch((entry.events | length / 2) | round(0, 'ceil')) %}
+      {% for events in groups %}
+      <div class='row'>
+        {% for event in events %}
+        <div class='col-sm-6 col-lg-12 {% if loop.index is odd %}is-odd{% else %}is-even{% endif %}'>
+          {% if (event.when | date("Y-m-d")) >= (date() | date("Y-m-d")) %}
+          {{ _self.eventPost(event, "upcoming") }}
+          {% else %}
+          {{ _self.eventPost(event, "past") }}
+          {% endif %}
+        </div>
         {% endfor %}
       </div>
+      {% endfor %}
     </div>
   </section>
 </main>

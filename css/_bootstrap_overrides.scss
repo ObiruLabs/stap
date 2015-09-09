@@ -20,3 +20,9 @@ $border-radius-base: 0;
 $icon-font-path: '/css/fonts/';
 
 $input-color-placeholder: #bbb;
+
+.container-full {
+    margin: 0 auto;
+    overflow: hidden;
+    width: 100%;
+}

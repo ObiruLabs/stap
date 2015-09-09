@@ -2,6 +2,16 @@
 {% set navPage = 'donation' %}
 {% block content %}
 <main id='main-content' ng-controller='donationCtrl' ng-init="stripePublishableKey='{{ craft.stripeService.publishableKey() }}'">
+  <section class='section_callout'>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <h1 class='section--title'>Make a Donation</h1>
+          <p>Your generous donation will help us work towards creating a world where HIV transmission is rare and those who are HIV+ lead healthy lives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
   <section class='section'>
     <div class='container-fluid'>
       <div class='row'>

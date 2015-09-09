@@ -18,7 +18,7 @@
                     %form{ method: 'post', accept_charset: 'UTF-8' }
                         %input{ type: 'hidden', name: 'action', value: 'donationForm/donations/donate' }
 
-                        %h2 Your Information
+                        %h2 Payment Info
                         .form-group
                             %label First Name
                             %input.form-control{ type: 'text', ng: { model: 'form.donorFirstName' }, name: 'donation[donorFirstName]', value: 'John {{ random(50) }}' }
@@ -26,57 +26,80 @@
                             %label Last Name
                             %input.form-control{ type: 'text', ng: { model: 'form.donorLastName' }, name: 'donation[donorLastName]', value: 'Smith' }
                         .form-group
-                            %label Email
+                            %label Email Address
                             %input.form-control{ type: 'text', ng: { model: 'form.donorEmail' }, name: 'donation[donorEmail]', value: 'rubiojan+1@gmail.com' }
+                        .form-group
+                            %label Card Number
+                            %input.form-control{ type: 'text', value: '4242424242424242', ng: { model: 'card.number' } }
+                        .form-group
+                            %label Expiration
+                            %select{ ng: { model: 'card.expirationMonth', options: 'item for item in creditCardMonths' } }
+                                %option{ value: '' } Month
+                            \/
+                            %select{ ng: { model: 'card.expirationYear', options: 'item for item in creditCardYears' } }
+                                %option{ value: '' } Year
+                        .form-group
+                            %label CVC
+                            %input.form-control{ type: 'text', value: '123', ng: { model: 'card.cvc' } }
+                        .form-group
+                            %label Billing Zip Code
+                            %input.form-control{ type: 'text' }
 
-                        %h2 Billing Address
-                        .form-group
-                            %label Address 1
-                            %input.form-control{ type: 'text', ng: { model: 'form.donorAddress1' }, name: 'donation[donorAddress1]', value: '1595 Joyce Street' }
-                        .form-group
-                            %label Address 2
-                            %input.form-control{ type: 'text', ng: { model: 'form.donorAddress2' }, name: 'donation[donorAddress2]', value: '' }
-                        .form-group
-                            %label City
-                            %input.form-control{ type: 'text', ng: { model: 'form.donorCity' }, name: 'donation[donorCity]', value: 'Arlington' }
-                        .form-group
-                            %label State
-                            %input.form-control{ type: 'text', ng: { model: 'form.donorState' }, name: 'donation[donorState]', value: 'VA' }
-                        .form-group
-                            %label City
-                            %input.form-control{ type: 'text', ng: { model: 'form.donorCountry' }, name: 'donation[donorCountry]', value: 'United States' }
-                        .form-group
-                            %label Zip
-                            %input.form-control{ type: 'text', ng: { model: 'form.donorZip' }, name: 'donation[donorZip]', value: '22203' }
+                        / %h2 Billing Address
+                        / .form-group
+                        /     %label Address 1
+                        /     %input.form-control{ type: 'text', ng: { model: 'form.donorAddress1' }, name: 'donation[donorAddress1]', value: '1595 Joyce Street' }
+                        / .form-group
+                        /     %label Address 2
+                        /     %input.form-control{ type: 'text', ng: { model: 'form.donorAddress2' }, name: 'donation[donorAddress2]', value: '' }
+                        / .form-group
+                        /     %label City
+                        /     %input.form-control{ type: 'text', ng: { model: 'form.donorCity' }, name: 'donation[donorCity]', value: 'Arlington' }
+                        / .form-group
+                        /     %label State
+                        /     %input.form-control{ type: 'text', ng: { model: 'form.donorState' }, name: 'donation[donorState]', value: 'VA' }
+                        / .form-group
+                        /     %label City
+                        /     %input.form-control{ type: 'text', ng: { model: 'form.donorCountry' }, name: 'donation[donorCountry]', value: 'United States' }
+                        / .form-group
+                        /     %label Zip
+                        /     %input.form-control{ type: 'text', ng: { model: 'form.donorZip' }, name: 'donation[donorZip]', value: '22203' }
 
-                        %h2 Dedicate
+                        %h2 Dedication Info
                         .form-group
-                            %label Type
-                            %select.form-control{ name: 'donation[behalfType]', ng: { model: 'form.behalfType' } }
-                                %option{ value: 'none' } None
-                                %option{ value: 'memory' } In memory of
-                                %option{ value: 'honor' } In honor of
-                                %option{ value: 'other' } Other
+                            .input-group{ name: 'donation[behalfType]', ng: { model: 'form.behalfType' } }
+                                %label
+                                    None
+                                    %input{ type: 'radio', value: 'none', name: 'radio' }
+                                %label
+                                    In Honor of
+                                    %input{ type: 'radio', value: 'honor', name: 'radio' }
+                                %label
+                                    In Memory of
+                                    %input{ type: 'radio', value: 'memory', name: 'radio' }
+                                %label
+                                    Other
+                                    %input{ type: 'radio', value: 'other', name: 'radio' }
                         .form-group
                             %label Other Type
                             %input.form-control{ type: 'text', ng: { model: 'form.behalfOtherType' }, name: 'donation[behalfOtherType]', value: '' }
                         .form-group
-                            %label Name
+                            %label Dedicatee Name
                             %input.form-control{ type: 'text', ng: { model: 'form.behalfName' }, name: 'donation[behalfName]', value: 'Alec Sadler' }
 
                         %h2 Notify
                         .form-group
-                            %label Name
+                            %label Full name of person to notify
                             %input.form-control{ type: 'text', ng: { model: 'form.notifyName' }, name: 'donation[notifyName]', value: 'Keira' }
                         .form-group
-                            %label Email
+                            %label Email Address
                             %input.form-control{ type: 'text', ng: { model: 'form.notifyEmail' }, name: 'donation[notifyEmail]', value: 'jan@obirulabs.com' }
                         .form-group
                         .form-group
-                            %label Address 1
+                            %label Address
                             %input.form-control{ type: 'text', ng: { model: 'form.notifyAddress1' }, name: 'donation[notifyAddress1]', value: '958 Walmart Ave' }
                         .form-group
-                            %label Address 2
+                            %label Apt/Suite
                             %input.form-control{ type: 'text', ng: { model: 'form.notifyAddress2' }, name: 'donation[notifyAddress2]', value: '' }
                         .form-group
                             %label City
@@ -85,29 +108,17 @@
                             %label State
                             %input.form-control{ type: 'text', ng: { model: 'form.notifyState' }, name: 'donation[notifyState]', value: 'NY' }
                         .form-group
-                            %label City
+                            %label Country
                             %input.form-control{ type: 'text', ng: { model: 'form.notifyCountry' }, name: 'donation[notifyCountry]', value: 'United States' }
                         .form-group
-                            %label Zip
+                            %label Zip Code
                             %input.form-control{ type: 'text', ng: { model: 'form.notifyZip' }, name: 'donation[notifyZip]', value: '11529' }
 
                         %h2 Payment
                         .form-group
                             %label Amount
                             %input.form-control{ type: 'text', name: 'donation[chargeAmount]', value: '1000', ng: { model: 'form.chargeAmount' } }
-                        .form-group
-                            %label Card Number
-                            %input.form-control{ type: 'text', value: '4242424242424242', ng: { model: 'card.number' } }
-                        .form-group
-                            %label CVC
-                            %input.form-control{ type: 'text', value: '123', ng: { model: 'card.cvc' } }
-                        .form-group
-                            %label Expiration
-                            %select{ ng: { model: 'card.expirationMonth', options: 'item for item in creditCardMonths' } }
-                                %option{ value: '' } Month
-                            \/
-                            %select{ ng: { model: 'card.expirationYear', options: 'item for item in creditCardYears' } }
-                                %option{ value: '' } Year
+
                         .form-group
                             %label Type
                             %select.form-control{ name: 'donation[chargeType]', ng: { model: 'form.chargeType' } }

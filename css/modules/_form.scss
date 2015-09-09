@@ -1,1 +1,22 @@
 // Forms
+
+.form-group {
+    label {
+        color: #ccc;
+        font-family: $font-family-sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+
+    }
+}
+
+input.form-control[type="text"] {
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+    border: 0;
+    border-bottom: 1px solid #999;
+    box-shadow: none;
+    font-family: $font-family-sans-serif;
+    padding: 0 2px;
+}

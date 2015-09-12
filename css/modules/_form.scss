@@ -6,7 +6,63 @@
         font-family: $font-family-sans-serif;
         font-size: 14px;
         font-weight: normal;
+    }
+}
 
+.form-inline {
+    font-size: 0;
+    height: 53px;
+
+    & + & {
+        margin-top: 10px;
+    }
+
+    .form-group {
+        position: relative;
+
+        &[class *= "col"] {
+            padding: 0;
+        }
+
+        label {
+            color: transparent;
+            left: 0;
+            position: absolute;
+            top: 5px;
+            transition: color 200ms, top 200ms;
+        }
+
+        input.form-control[type="text"].is-filled ~ label,
+        input.form-control[type="text"].ng-invalid-mask ~ label {
+            color: #ccc;
+            top: 0;
+        }
+
+        input.form-control[type="text"].is-filled:focus ~ label,
+        input.form-control[type="text"].ng-invalid-mask:focus ~ label {
+            color: $brand-secondary;
+        }
+
+        input.form-control[type="text"].has-errors {
+            border: {
+                bottom-color: $brand-primary;
+                bottom-width: 2px;
+            }
+            height: 33px;
+
+            & ~ label {
+                color: $brand-primary;
+                top: 0;
+            }
+        }
+
+        input.form-control[type="text"] {
+            height: 32px;
+            padding: 0 12px 6px 0;
+            position: relative;
+            top: 21px;
+            width: 100%;
+        }
     }
 }
 
@@ -15,8 +71,267 @@ input.form-control[type="text"] {
     -moz-appearance:    none;
     appearance:         none;
     border: 0;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid #aaa;
     box-shadow: none;
     font-family: $font-family-sans-serif;
     padding: 0 2px;
+}
+
+button.btn {
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+
+    &:focus,
+    &:active,
+    &:active:focus {
+        outline: none;
+    }
+}
+
+.donation-form {
+    .checkbox {
+        font-family: $font-family-sans-serif;
+        padding-left: 0;
+
+        .geomicon-info-2 {
+            color: #999;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+    }
+
+    :not(#foo) .checkbox input[type = "checkbox"] {
+        position: absolute;
+        opacity: 0;
+
+        & + label {
+            position: relative;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        & + label:before {
+            background: #fff;
+            border: 1px solid #ccc;
+            content: '';
+            display: inline-block;
+            height: 20px;
+            margin: {
+                right: 10px;
+                top: 2px;
+            }
+            transition: background 200ms, border 200ms;
+            vertical-align: text-top;
+            width: 20px;
+        }
+
+        &:checked + label:before {
+            background: $brand-secondary;
+            border-color: $brand-secondary;
+        }
+
+        &:checked + label:after {
+            background: #fff;
+            box-shadow: 2px 0 0 #fff, 4px 0 0 #fff, 4px -2px 0 #fff, 4px -4px 0 #fff, 4px -6px 0 #fff, 4px -8px 0 #fff;
+            content: '';
+            height: 2px;
+            left: 5px;
+            @include rotate(40deg);
+            top: 12px;
+            width: 2px;
+            position: absolute;
+        }
+    }
+
+    :not(#foo) .checkbox input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+
+        & + label {
+            position: relative;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        & + label:before {
+            background: #fff;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            content: '';
+            display: inline-block;
+            height: 20px;
+            margin: {
+                right: 10px;
+                top: 2px;
+            }
+            transition: background 200ms, border 200ms;
+            vertical-align: text-top;
+            width: 20px;
+        }
+
+        &:checked + label:before {
+            background: $brand-secondary;
+            border-color: $brand-secondary;
+        }
+
+        &:checked + label:after {
+            background: #fff;
+            box-shadow: 2px 0 0 #fff, 4px 0 0 #fff, 4px -2px 0 #fff, 4px -4px 0 #fff, 4px -6px 0 #fff, 4px -8px 0 #fff;
+            content: '';
+            height: 2px;
+            left: 5px;
+            @include rotate(40deg);
+            top: 12px;
+            width: 2px;
+            position: absolute;
+        }
+    }
+
+    .checkbox.with-input {
+        position: absolute;
+    }
+
+    input.form-control.donation-form--other-behalf-input[type = "text"] {
+        height: 36px;
+        margin-top: 10px;
+        padding: {
+            bottom: 12px;
+            left: 31px;
+            top: 8px;
+        }
+
+        &.is-filled {
+            border-bottom-color: transparent;
+
+            &:focus,
+            &:hover {
+                border-bottom: 1px solid #aaa;
+            }
+        }
+    }
+
+    &--header {
+        margin: {
+            bottom: 40px;
+            top: 80px;
+        }
+    }
+
+    &--amount {
+        background: #fff;
+        border: 2px solid $brand-primary;
+        color: $brand-primary;
+        transition: background 200ms, color 200ms;
+        width: 100%;
+
+        &:hover {
+            color: $brand-primary;
+        }
+
+        &.is-selected {
+            background: $brand-primary;
+            color: #fff;
+        }
+    }
+
+    &--custom-amount.form-control[type="text"] {
+        background: $brand-primary;
+        border: 2px solid $brand-primary;
+        color: #fff;
+        text-align: center;
+        transition: background 200ms, color 200ms;
+        width: 100%;
+
+        &:hover,
+        &:focus,
+        &.is-empty {
+            background: #fff;
+            border: {
+                left: none;
+                right: none;
+                top-color: #fff;
+            }
+            color: $brand-primary;
+        }
+    }
+
+    &--amount-options {
+        margin-top: 25px;
+    }
+
+    &--continue {
+        margin-top: 80px;
+        text-align: center;
+    }
+
+    .hint--top:before,
+    .hint--top:after {
+        bottom: 90%;
+        left: 30%;
+    }
+
+    &--dedication-info.hint--top:after {
+        margin-left: -105px;
+    }
+
+    &--recurring-info.hint--top:after {
+        margin-left: -150px;
+    }
+
+    .donation-form--notify-details {
+        margin-top: 10px;
+    }
+
+    .donation-form--complete {
+        h1 {
+            font: {
+                family: $font-family-sans-serif;
+                weight: 700;
+            }
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        h2 {
+            font: {
+                family: $font-family-serif;
+                size: 20px;
+                weight: 400;
+            }
+            line-height: 28px;
+            margin: {
+                bottom: 100px;
+                top:50px;
+            }
+            text-align: center;
+        }
+    }
+
+    .donation-form--share-links {
+        margin: 70px 0;
+        text-align: center;
+
+        .btn {
+            margin-bottom: 15px;
+            padding: 5px 40px 5px 34px;
+            width: 100%;
+        }
+
+        svg {
+            margin-right: 8px;
+            position: relative;
+            top: 3px;
+            width: 18px;
+        }
+    }
+
+    .alert {
+        font: {
+            family: $font-family-sans-serif;
+            size: 16px;
+        }
+        margin-top: 35px;
+        padding: 30px 50px;
+    }
 }

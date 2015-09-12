@@ -6,7 +6,8 @@ angular.module('stap', [
         'ngAnimate',
         'ngResource',
         'ngSanitize',
-        'angularSpinner'
+        'angularSpinner',
+        'ui.mask'
 
     ])
     .config(function ($interpolateProvider) {

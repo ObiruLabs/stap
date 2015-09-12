@@ -2,7 +2,7 @@
 {% set navPage = 'donation' %}
 {% block content %}
 <main id='main-content' ng-controller='donationCtrl' ng-init="stripePublishableKey='{{ craft.stripeService.publishableKey() }}'">
-  <section class='section_callout'>
+  <section class='section_callout section_blank section_progress'>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-sm-6 col-sm-offset-3'>
@@ -11,145 +11,229 @@
         </div>
       </div>
     </div>
+    <div class='progress-steps'>
+      <div class='progress-steps--step is-active' ng-click='gotoStep(0)'>1</div>
+      <div class='progress-steps--step' ng-class='{ "is-active": isStep(1) || isStep(2) }' ng-click='gotoStep(1)'>2</div>
+      <div class='progress-steps--step' ng-class='{ "is-active": isStep(2) }' ng-click='gotoStep(2)'>3</div>
+    </div>
   </section>
-  <section class='section'>
+  <section class='donation-form section'>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-sm-6 col-sm-offset-3'>
-          <h1 class='section--title'>Donations</h1>
-          <form accept_charset='UTF-8' method='post'>
-            <input name='action' type='hidden' value='donationForm/donations/donate'>
-            <h2>Payment Info</h2>
-            <div class='form-group'>
-              <label>First Name</label>
-              <input class='form-control' name='donation[donorFirstName]' ng-model='form.donorFirstName' type='text' value='John {{ random(50) }}'>
-            </div>
-            <div class='form-group'>
-              <label>Last Name</label>
-              <input class='form-control' name='donation[donorLastName]' ng-model='form.donorLastName' type='text' value='Smith'>
-            </div>
-            <div class='form-group'>
-              <label>Email Address</label>
-              <input class='form-control' name='donation[donorEmail]' ng-model='form.donorEmail' type='text' value='rubiojan+1@gmail.com'>
-            </div>
-            <div class='form-group'>
-              <label>Card Number</label>
-              <input class='form-control' ng-model='card.number' type='text' value='4242424242424242'>
-            </div>
-            <div class='form-group'>
-              <label>Expiration</label>
-              <select ng-model='card.expirationMonth' ng-options='item for item in creditCardMonths'>
-                <option value=''>Month</option>
-              </select>
-              /
-              <select ng-model='card.expirationYear' ng-options='item for item in creditCardYears'>
-                <option value=''>Year</option>
-              </select>
-            </div>
-            <div class='form-group'>
-              <label>CVC</label>
-              <input class='form-control' ng-model='card.cvc' type='text' value='123'>
-            </div>
-            <div class='form-group'>
-              <label>Billing Zip Code</label>
-              <input class='form-control' type='text'>
-            </div>
-            <!-- %h2 Billing Address -->
-            <!-- .form-group -->
-            <!-- %label Address 1 -->
-            <!-- %input.form-control{ type: 'text', ng: { model: 'form.donorAddress1' }, name: 'donation[donorAddress1]', value: '1595 Joyce Street' } -->
-            <!-- .form-group -->
-            <!-- %label Address 2 -->
-            <!-- %input.form-control{ type: 'text', ng: { model: 'form.donorAddress2' }, name: 'donation[donorAddress2]', value: '' } -->
-            <!-- .form-group -->
-            <!-- %label City -->
-            <!-- %input.form-control{ type: 'text', ng: { model: 'form.donorCity' }, name: 'donation[donorCity]', value: 'Arlington' } -->
-            <!-- .form-group -->
-            <!-- %label State -->
-            <!-- %input.form-control{ type: 'text', ng: { model: 'form.donorState' }, name: 'donation[donorState]', value: 'VA' } -->
-            <!-- .form-group -->
-            <!-- %label City -->
-            <!-- %input.form-control{ type: 'text', ng: { model: 'form.donorCountry' }, name: 'donation[donorCountry]', value: 'United States' } -->
-            <!-- .form-group -->
-            <!-- %label Zip -->
-            <!-- %input.form-control{ type: 'text', ng: { model: 'form.donorZip' }, name: 'donation[donorZip]', value: '22203' } -->
-            <h2>Dedication Info</h2>
-            <div class='form-group'>
-              <div class='input-group' name='donation[behalfType]' ng-model='form.behalfType'>
-                <label>
-                  None
-                  <input name='radio' type='radio' value='none'>
-                </label>
-                <label>
-                  In Honor of
-                  <input name='radio' type='radio' value='honor'>
-                </label>
-                <label>
-                  In Memory of
-                  <input name='radio' type='radio' value='memory'>
-                </label>
-                <label>
-                  Other
-                  <input name='radio' type='radio' value='other'>
-                </label>
+          <section ng-show='isStep(0)'>
+            <h2 class='donation-form--header'>Select an amount</h2>
+            <div class='row'>
+              <div class='col-sm-3'>
+                <button class='donation-form--amount btn' ng-class="{ 'is-selected': form.amountType === 'option' &amp;&amp; form.amountValue === 25 }" ng-click='selectAmountOption(25)'>$25</button>
+              </div>
+              <div class='col-sm-3'>
+                <button class='donation-form--amount btn' ng-class="{ 'is-selected': form.amountType === 'option' &amp;&amp; form.amountValue === 50 }" ng-click='selectAmountOption(50)'>$50</button>
+              </div>
+              <div class='col-sm-3'>
+                <button class='donation-form--amount btn' ng-class="{ 'is-selected': form.amountType === 'option' &amp;&amp; form.amountValue === 100 }" ng-click='selectAmountOption(100)'>$100</button>
+              </div>
+              <div class='col-sm-3'>
+                <input class='donation-form--custom-amount form-control is-empty' ng-change='updateCustomAmount()' ng-class="{ 'is-empty': form.amountType !== 'custom' }" ng-model='form.amountCustom' placeholder='$ Other' type='text'>
               </div>
             </div>
-            <div class='form-group'>
-              <label>Other Type</label>
-              <input class='form-control' name='donation[behalfOtherType]' ng-model='form.behalfOtherType' type='text' value=''>
+            <div class='donation-form--amount-options row'>
+              <div class='col-xs-12'>
+                <div class='checkbox'>
+                  <input id='donation-form--dedicated' ng-change='updateBehalfSelection()' ng-model='form.behalfSelected' type='checkbox'>
+                  <label for='donation-form--dedicated'>
+                    Dedicate this donation
+                    <span class='donation-form--dedication-info hint--top' data-hint='Add dedication information to your donation'>
+                      <span class='geomicon-info-2'></span>
+                    </span>
+                  </label>
+                </div>
+                <div class='checkbox'>
+                  <input id='donation-form--recurring' ng-false-value='once' ng-model='form.chargeType' ng-true-value='recurring' type='checkbox'>
+                  <label for='donation-form--recurring'>
+                    Make this a monthly recurring donation
+                    <span class='donation-form--recurring-info hint--top' data-hint='You can discontinue your donation from a monthly email receipt.'>
+                      <span class='geomicon-info-2'></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
             </div>
-            <div class='form-group'>
-              <label>Dedicatee Name</label>
-              <input class='form-control' name='donation[behalfName]' ng-model='form.behalfName' type='text' value='Alec Sadler'>
+            <div class='donation-form--continue row'>
+              <div class='col-xs-12'>
+                <button class='btn btn-secondary btn-secondary_pill' ng-click='gotoStep(1)'>Continue<span class='geomicon-arrow-right'></span></button>
+              </div>
             </div>
-            <h2>Notify</h2>
-            <div class='form-group'>
-              <label>Full name of person to notify</label>
-              <input class='form-control' name='donation[notifyName]' ng-model='form.notifyName' type='text' value='Keira'>
+          </section>
+          <section ng-cloak='' ng-show='isStep(1)'>
+            <h2 class='donation-form--header'>Payment Info</h2>
+            <div class='form-inline'>
+              <div class='form-group col-sm-6'>
+                <input class='form-control' ng-class='{ "is-filled": form.donorFirstName, "has-errors": errorField(requireField, form.donorFirstName) }' ng-model='form.donorFirstName' placeholder='First Name' type='text'>
+                <label>{[{ errorFieldLabel(requireField, form.donorFirstName, 'First Name') }]}</label>
+              </div>
+              <div class='form-group col-sm-6'>
+                <input class='form-control' ng-class='{ "is-filled": form.donorLastName, "has-errors": errorField(requireField, form.donorLastName) }' ng-model='form.donorLastName' placeholder='Last Name' type='text'>
+                <label>{[{ errorFieldLabel(requireField, form.donorLastName, 'Last Name') }]}</label>
+              </div>
             </div>
-            <div class='form-group'>
-              <label>Email Address</label>
-              <input class='form-control' name='donation[notifyEmail]' ng-model='form.notifyEmail' type='text' value='jan@obirulabs.com'>
+            <div class='form-inline'>
+              <div class='form-group col-sm-12'>
+                <input class='form-control' ng-class='{ "is-filled": form.donorEmail, "has-errors": errorField(requireEmailField, form.donorEmail) }' ng-model='form.donorEmail' placeholder='Email Address' type='text'>
+                <label>{[{ errorFieldLabel(requireEmailField, form.donorEmail, 'Email Address') }]}</label>
+              </div>
             </div>
-            <div class='form-group'></div>
-            <div class='form-group'>
-              <label>Address</label>
-              <input class='form-control' name='donation[notifyAddress1]' ng-model='form.notifyAddress1' type='text' value='958 Walmart Ave'>
+            <div class='form-inline'>
+              <div class='form-group col-sm-6'>
+                <input class='form-control' ng-class='{ "is-filled": card.number, "has-errors": errorField(requireField, card.number) }' ng-model='card.number' placeholder='Card Number' type='text' ui_mask='9999  9999  9999  9999' ui_mask_placeholder='––––  ––––  ––––  ––––'>
+                <label>{[{ errorFieldLabel(requireField, card.number, 'Card Number') }]}</label>
+              </div>
+              <div class='form-group col-sm-2'>
+                <input class='form-control' ng-class='{ "is-filled": card.expiration, "has-errors": errorField(requireField, card.expiration) }' ng-model='card.expiration' placeholder='MM / YY' type='text' ui_mask='99 / 99' ui_mask_placeholder='–– / ––'>
+                <label>{[{ errorFieldLabel(requireField, card.expiration, 'MM / YY') }]}</label>
+              </div>
+              <div class='form-group col-sm-4'>
+                <input class='form-control' ng-change='updateCardCvc("{[{ card.cvc }]}")' ng-class='{ "is-filled": card.cvc, "has-errors": errorField(requireField, card.cvc) }' ng-model='card.cvc' placeholder='Security Code' type='text'>
+                <label>{[{ errorFieldLabel(requireField, card.cvc, 'Security Code') }]}</label>
+              </div>
             </div>
-            <div class='form-group'>
-              <label>Apt/Suite</label>
-              <input class='form-control' name='donation[notifyAddress2]' ng-model='form.notifyAddress2' type='text' value=''>
+            <div class='form-inline'>
+              <div class='form-group col-sm-12'>
+                <input class='form-control' ng-class='{ "is-filled": form.donorZip, "has-errors": errorField(requireField, form.donorZip) }' ng-model='form.donorZip' placeholder='Billing Zip Code' type='text' ui_mask='99999' ui_mask_placeholder='–––––'>
+                <label>{[{ errorFieldLabel(requireField, form.donorZip, 'Billing Zip Code') }]}</label>
+              </div>
             </div>
-            <div class='form-group'>
-              <label>City</label>
-              <input class='form-control' name='donation[notifyCity]' ng-model='form.notifyCity' type='text' value='Massapequa'>
+            <div ng-show='form.behalfSelected'>
+              <h2 class='donation-form--header'>Dedication Info</h2>
+              <div class='row'>
+                <div class='col-sm-4'>
+                  <div class='checkbox' ng-click='form.behalfOtherType = ""'>
+                    <input id='donation-form--honor-behalf' ng-model='form.behalfType' type='radio' value='honor'>
+                    <label for='donation-form--honor-behalf'>In honor of</label>
+                  </div>
+                </div>
+                <div class='col-sm-4'>
+                  <div class='checkbox' ng-click='form.behalfOtherType = ""'>
+                    <input id='donation-form--memory-behalf' ng-model='form.behalfType' type='radio' value='memory'>
+                    <label for='donation-form--memory-behalf'>In memory of</label>
+                  </div>
+                </div>
+                <div class='col-sm-4'>
+                  <div class='checkbox with-input'>
+                    <input id='donation-form--other-behalf' ng-model='form.behalfType' type='radio' value='other'>
+                    <label for='donation-form--other-behalf'>&nbsp;</label>
+                  </div>
+                  <input class='form-control donation-form--other-behalf-input' for='donation-form--other-behalf' ng-class='{ "is-filled": form.behalfOtherType }' ng-click='form.behalfType = "other"' ng-model='form.behalfOtherType' placeholder='Other' type='text'>
+                </div>
+              </div>
+              <div class='form-inline'>
+                <div class='form-group col-sm-12'>
+                  <input class='form-control' ng-class='{ "is-filled": form.behalfName, "has-errors": errorField(requireField, form.behalfName) }' ng-model='form.behalfName' placeholder='Dedicatee Name' type='text'>
+                  <label>{[{ errorFieldLabel(requireField, form.behalfName, 'Dedicatee Name') }]}</label>
+                </div>
+              </div>
+              <h2 class='donation-form--header'>Would you like us to notify someone?</h2>
+              <div class='row'>
+                <div class='col-sm-4'>
+                  <div class='checkbox'>
+                    <input id='donation-form--none-notify' ng-model='form.notifyType' type='radio' value='none'>
+                    <label for='donation-form--none-notify'>No notification</label>
+                  </div>
+                </div>
+                <div class='col-sm-4'>
+                  <div class='checkbox'>
+                    <input id='donation-form--email-notify' ng-model='form.notifyType' type='radio' value='email'>
+                    <label for='donation-form--email-notify'>Send email</label>
+                  </div>
+                </div>
+                <div class='col-sm-4'>
+                  <div class='checkbox'>
+                    <input id='donation-form--letter-notify' ng-model='form.notifyType' type='radio' value='letter'>
+                    <label for='donation-form--letter-notify'>Send letter</label>
+                  </div>
+                </div>
+              </div>
+              <div ng-hide='form.notifyType === "none"'>
+                <div class='form-inline'>
+                  <div class='form-group col-sm-12'>
+                    <input class='form-control' ng-class='{ "is-filled": form.notifyName, "has-errors": errorField(requireField, form.notifyName) }' ng-model='form.notifyName' placeholder='Full name of person to notify' type='text'>
+                    <label>{[{ errorFieldLabel(requireField, form.notifyName, 'Full name of person to notify') }]}</label>
+                  </div>
+                </div>
+                <div class='donation-form--notify-details' ng-show='form.notifyType === "email"'>
+                  <div class='form-inline'>
+                    <div class='form-group col-sm-12'>
+                      <input class='form-control' ng-class='{ "is-filled": form.notifyEmail, "has-errors": errorField(requireEmailField, form.notifyEmail) }' ng-model='form.notifyEmail' placeholder='Email Address' type='text'>
+                      <label>{[{ errorFieldLabel(requireEmailField, form.notifyEmail, 'Email Address') }]}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class='donation-form--notify-details' ng-show='form.notifyType === "letter"'>
+                  <div class='form-inline'>
+                    <div class='form-group col-sm-6'>
+                      <input class='form-control' ng-class='{ "is-filled": form.notifyAddress1, "has-errors": errorField(requireField, form.notifyAddress1) }' ng-model='form.notifyAddress1' placeholder='Address' type='text'>
+                      <label>{[{ errorFieldLabel(requireField, form.notifyAddress1, 'Address') }]}</label>
+                    </div>
+                    <div class='form-group col-sm-6'>
+                      <input class='form-control' ng-class='{ "is-filled": form.notifyAddress2 }' ng-model='form.notifyAddress2' placeholder='Apt / Suite' type='text'>
+                      <label>Apt / Suite</label>
+                    </div>
+                  </div>
+                  <div class='form-inline'>
+                    <div class='form-group col-sm-6'>
+                      <input class='form-control' ng-class='{ "is-filled": form.notifyCity, "has-errors": errorField(requireField, form.notifyCity) }' ng-model='form.notifyCity' placeholder='City' type='text'>
+                      <label>{[{ errorFieldLabel(requireField, form.notifyCity, 'City') }]}</label>
+                    </div>
+                    <div class='form-group col-sm-3'>
+                      <input class='form-control' ng-class='{ "is-filled": form.notifyState, "has-errors": errorField(requireField, form.notifyState) }' ng-model='form.notifyState' placeholder='State' type='text' ui_mask='AA' ui_mask_placeholder='––'>
+                      <label>{[{ errorFieldLabel(requireField, form.notifyState, 'State') }]}</label>
+                    </div>
+                    <div class='form-group col-sm-3'>
+                      <input class='form-control' ng-class='{ "is-filled": form.notifyZip, "has-errors": errorField(requireField, form.notifyZip) }' ng-model='form.notifyZip' placeholder='Zip Code' type='text' ui_mask='99999' ui_mask_placeholder='–––––'>
+                      <label>{[{ errorFieldLabel(requireField, form.notifyZip, 'Zip Code') }]}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class='form-group'>
-              <label>State</label>
-              <input class='form-control' name='donation[notifyState]' ng-model='form.notifyState' type='text' value='NY'>
+            <div class='donation-form--continue row'>
+              <div class='col-xs-12'>
+                <button class='btn btn-secondary btn-secondary_pill' ng-click='submit()' ng-disabled='form.submitting'>{[{ form.submitting ? 'Completing' : 'Complete' }]} your {[{ form.chargeType === 'recurring' ? ' monthly ' : '' }]} donation of ${[{ donationAmount() / 100 }]}<span class='geomicon-arrow-right' ng-hide='form.submitting'></span><span ng-show='form.submitting'>&nbsp;.&nbsp;.&nbsp;.</span></button>
+              </div>
             </div>
-            <div class='form-group'>
-              <label>Country</label>
-              <input class='form-control' name='donation[notifyCountry]' ng-model='form.notifyCountry' type='text' value='United States'>
+            <div class='alert alert-danger' ng-show='form.hasErrors'>{[{ errorMessage }]}</div>
+          </section>
+          <section class='donation-form--complete' ng-cloak='' ng-show='isStep(2)'>
+            <h1>Thank you for your gift of ${[{ donationAmount() / 100 }]}!</h1>
+            <h2>
+              We’ve sent an email confirmation of your donation to
+              <br>
+              <strong>{[{ form.donorEmail }]}.</strong>
+            </h2>
+            <p>Every day brings reasons to be grateful and blessings to be counted. Thank you for being one of them. If you have any questions about your donation, please email {{ entry.donationContactName }} at
+            <a href='mailto:{{ entry.donationContactEmail }}'>{{ entry.donationContactEmail }}.</a></p>
+            <div class='donation-form--share-links'>
+              <div class='row'>
+                <div class='col-xs-6'>
+                  <button class='btn btn-secondary_pill btn-facebook'>
+                    <svg viewbox='0 0 512 512'>
+                      <use xlink:href='#facebook'></use>
+                    </svg>
+                    Share on Facebook
+                  </button>
+                </div>
+                <div class='col-xs-6'>
+                  <button class='btn btn-secondary_pill btn-twitter'>
+                    <svg viewbox='0 0 512 512'>
+                      <use xlink:href='#twitter'></use>
+                    </svg>
+                    Share on Twitter
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class='form-group'>
-              <label>Zip Code</label>
-              <input class='form-control' name='donation[notifyZip]' ng-model='form.notifyZip' type='text' value='11529'>
-            </div>
-            <h2>Payment</h2>
-            <div class='form-group'>
-              <label>Amount</label>
-              <input class='form-control' name='donation[chargeAmount]' ng-model='form.chargeAmount' type='text' value='1000'>
-            </div>
-            <div class='form-group'>
-              <label>Type</label>
-              <select class='form-control' name='donation[chargeType]' ng-model='form.chargeType'>
-                <option value='once'>One time</option>
-                <option value='recurring'>Every month</option>
-              </select>
-            </div>
-            <button class='btn_more btn-primary' ng-click='submit()'>Donate</button>
-          </form>
+            <p>Southern Tier AIDS Program is a 501(c)(3) non-profit organization. No goods or services were provided in exchange for your donation, which is tax-deductible to the fullest extent of the law.</p>
+          </section>
         </div>
       </div>
     </div>

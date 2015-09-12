@@ -1,0 +1,30 @@
+.progress-steps {
+    border-top: 1px solid $brand-tertiary-dark;
+    color: #bbb;
+    text-align: center;
+    width: 100%;
+
+    &--step {
+        background: #fff;
+        border: 2px solid #bbb;
+        border-radius: 50%;
+        cursor: pointer;
+        display: inline-block;
+        height: 30px;
+        line-height: 27px;
+        position: relative;
+        top: -15px;
+        transition: background 200ms, color 200ms, border 200ms;
+        width: 30px;
+
+        &.is-active {
+            background: $brand-primary;
+            border-color: $brand-primary;
+            color: #fff;
+        }
+
+        & + & {
+            margin-left: 100px;
+        }
+    }
+}

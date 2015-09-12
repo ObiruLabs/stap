@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     var commonDependencies = [
             'lodash.min', 'moment.min', 'spin.min', 'jquery', 'autofill-event',
             'angular.min', 'angular-animate.min', 'angular-resource.min', 'angular-sanitize.min',
-            'angular-spinner.min',
+            'angular-spinner.min', 'mask.min',
             'app'
         ],
         indexDependencies = [

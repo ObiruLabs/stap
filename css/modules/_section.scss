@@ -115,3 +115,12 @@
         border-top: 2px solid $brand-tertiary-light;
     }
 }
+
+.section_progress {
+    position: relative;
+
+    .progress-steps {
+        bottom: -32px;
+        position: absolute;
+    }
+}

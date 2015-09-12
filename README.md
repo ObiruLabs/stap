@@ -24,6 +24,7 @@ Initial Setup
 8. Configure Stripe key for the stripe plugin
 9. Configure Stripe's webhook
   * If for on local environment, consider using ultrahook
+  * ultrahook stripe 8888
 
 Development
 -----------

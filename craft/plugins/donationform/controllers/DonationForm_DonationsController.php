@@ -59,7 +59,7 @@ class DonationForm_DonationsController extends BaseController
             $model->setAttributes($attributes);
             craft()->donationForm_model->saveDonation($model);
 
-            $this->sendEmailConfirmation($name);
+            $this->sendEmailConfirmation($name, $attributes['donorEmail']);
 
             $this->returnJson(array('status' => 'success'));
 
@@ -111,11 +111,10 @@ class DonationForm_DonationsController extends BaseController
         }
     }
 
-    private function sendEmailConfirmation($name)
+    private function sendEmailConfirmation($name, $email)
     {
         $mandrill = craft()->mandrillService_wrapper->requireApi();
 
-        $email = 'rubiojan@gmail.com';
         $body = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptBody;
 
         $message = array(

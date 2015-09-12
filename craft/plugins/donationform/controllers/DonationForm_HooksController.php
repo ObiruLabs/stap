@@ -18,18 +18,18 @@ class DonationForm_HooksController extends BaseController
         $event_json = json_decode($input);
 
         if ($event_json->type == 'invoice.payment_succeeded') {
-            $this->sendEmail($event_json);
+            $customer = \Stripe\Customer::retrieve($event_json->data->object->customer);
+            $this->sendEmail($customer->email, $event_json);
         }
 
         http_response_code(200); // PHP 5.4 or greater
         $this->returnJson(array('photos' => 'sldafkj'));
     }
 
-    private function sendEmail($json)
+    private function sendEmail($email, $json)
     {
         $mandrill = craft()->mandrillService_wrapper->requireApi();
 
-        $email = 'rubiojan@gmail.com';
         $body = '<a href="http://localhost:8888/donation/cancel?a='.$json->data->object->customer.'">Click here to cancel</a>';
 
         $message = array(

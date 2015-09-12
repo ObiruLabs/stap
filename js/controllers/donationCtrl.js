@@ -3,24 +3,7 @@
 angular.module('stap')
     .controller('donationCtrl', function($scope, $http) {
 
-        $scope.creditCardMonths =  _.map(_.range(1, 13), function(month) {
-            return ('0' + month).slice (-2);
-        });
-        $scope.creditCardYears = _.range(moment().year(), +moment().year() + 15);
-        $scope.form = {};
         $scope.card = {};
-
-        $scope.card = {
-            number: '4242424242424242',
-            expiration: '0518',
-            expirationMonth: '05',
-            expirationYear: 2018,
-            cvc: '123'
-        };
-
-        var firstName = faker.name.firstName();
-        var lastName = faker.name.lastName();
-
         $scope.form = {
             amountType: '',
             amountValue: 0,
@@ -28,33 +11,63 @@ angular.module('stap')
             behalfSelected: false,
             notifyType: 'none',
 
-            donorFirstName: firstName,
-            donorLastName: lastName,
-            donorEmail: firstName.toLowerCase() + '.' + lastName.toLowerCase() + '@gmail.com',
-            //donorAddress1: faker.address.streetAddress(),
-            //donorAddress2: '',
-            //donorCity: faker.address.city(),
-            //donorState: faker.address.stateAbbr(),
-            //donorCountry: 'US',
-            //donorZip: faker.address.zipCode(),
+            donorFirstName: '',
+            donorLastName: '',
+            donorEmail: '',
+            donorZip: '',
 
             behalfType: 'none',
             behalfOtherType: '',
-            behalfName: faker.name.firstName() + ' ' + faker.name.lastName(),
+            behalfName: '',
 
-            notifyName: faker.name.firstName() + ' ' + faker.name.lastName(),
-            notifyEmail: firstName.toLowerCase() + '.' + lastName.toLowerCase() + '@gmail.com',
-            notifyAddress1: faker.address.streetAddress(),
+            notifyName: '',
+            notifyEmail: '',
+            notifyAddress1: '',
             notifyAddress2: '',
-            notifyCity: faker.address.city(),
-            notifyState: faker.address.stateAbbr(),
+            notifyCity: '',
+            notifyState: '',
+            notifyZip: '',
             notifyCountry: 'US',
-            notifyZip: faker.address.zipCode(),
 
-            chargeAmount: _.random(500, 2500),
-            chargeType: 'once',
-            chargeStatus: 'complete'
+            chargeType: 'once'
         };
+
+        window.fakeData = function() {
+            $scope.$apply(fakeData);
+        };
+
+        function fakeData() {
+            var firstName = faker.name.firstName();
+            var lastName = faker.name.lastName();
+
+            $scope.card.number = '4242424242424242';
+            $scope.card.expiration = '0518';
+            $scope.card.cvc = '123';
+
+            $scope.form.donorFirstName = firstName;
+            $scope.form.donorLastName = lastName;
+            $scope.form.donorEmail = 'rubiojan@gmail.com';
+            $scope.form.donorZip = faker.address.zipCode();
+
+            $scope.form.behalfSelected = true;
+            $scope.form.behalfType = 'honor';
+            $scope.form.behalfOtherType = '';
+            $scope.form.behalfName = faker.name.firstName() + ' ' + faker.name.lastName();
+
+            $scope.form.notifyType = 'email';
+            $scope.form.notifyName = faker.name.firstName() + ' ' + faker.name.lastName();
+            $scope.form.notifyEmail = 'rubiojan@gmail.com';
+            $scope.form.notifyAddress1 = faker.address.streetAddress();
+            $scope.form.notifyAddress2 = '';
+            $scope.form.notifyCity = faker.address.city();
+            $scope.form.notifyState = faker.address.stateAbbr();
+            $scope.form.notifyCountry = 'US';
+            $scope.form.notifyZip = faker.address.zipCode();
+
+            $scope.form.amountType = 'custom';
+            $scope.form.amountCustom = '$' + _.random(5, 25);
+            $scope.form.chargeType = 'once';
+        }
 
         var currentStep = 0;
 
@@ -126,11 +139,16 @@ angular.module('stap')
         };
 
         /**
-         * Goes to the specified step if all the validations pass.
+         * Goes to the specified step if all the validations pass. If you're on the last step,
+         * you cannot go to any other steps.
          *
          * @param step {Number} 0-index based step
          */
         $scope.gotoStep = function(step) {
+            if (currentStep === 2) {
+                return;
+            }
+
             var validations = _.times(step, function(previousStep) {
                 return isStepComplete(previousStep);
             });
@@ -304,30 +322,32 @@ angular.module('stap')
 
             Stripe.setPublishableKey($scope.stripePublishableKey);
 
+            var expiry = $scope.card.expiration.split('');
             var cardNumber = $scope.card.number ? $scope.card.number.replace(/\D+/g, '') : '';
-            var cardExpiryMonth = +$scope.card.expirationMonth;
-            var cardExpiryYear = +$scope.card.expirationYear;
-            var cardCVC = +$scope.card.cvc;
+            var cardExpiryMonth = +_.take(expiry, 2).join('');
+            var cardExpiryYear = +_.takeRight(expiry, 2).join('');
+            var cardCVC = $scope.card.cvc;
 
-            //Stripe.card.createToken({
-            //    number: cardNumber,
-            //    cvc: cardCVC,
-            //    exp_month: cardExpiryMonth,
-            //    exp_year: cardExpiryYear,
-            //    name: $scope.form.donorFirstName + ' ' + $scope.form.donorLastName,
-            //    address_line1: $scope.form.donorAddress1,
-            //    address_line2: $scope.form.donorAddress2,
-            //    address_city: $scope.form.donorCity,
-            //    address_state: $scope.form.donorState,
-            //    address_zip: $scope.form.donorZip,
-            //    address_country: $scope.form.donorCountry
-            //}, stripeCallback);
+            Stripe.card.createToken({
+                number: cardNumber,
+                cvc: cardCVC,
+                exp_month: cardExpiryMonth,
+                exp_year: cardExpiryYear,
+                name: $scope.form.donorFirstName + ' ' + $scope.form.donorLastName,
+                //address_line1: $scope.form.donorAddress1,
+                //address_line2: $scope.form.donorAddress2,
+                //address_city: $scope.form.donorCity,
+                //address_state: $scope.form.donorState,
+                address_zip: $scope.form.donorZip
+                //address_country: $scope.form.donorCountry
+            }, stripeCallback);
         };
 
         function stripeCallback(status, response) {
             $scope.$apply(function() {
                 if (response.error) {
-                    console.dir(response.error);
+                    $scope.form.hasErrors = true;
+                    $scope.errorMessage = response.error.message;
                     $scope.form.submitting = false;
                 } else {
                     completeDonation(response.id);
@@ -336,9 +356,34 @@ angular.module('stap')
         }
 
         function completeDonation(token) {
+            var fields = [
+                'donorFirstName',
+                'donorLastName',
+                'donorEmail',
+                'donorZip',
+
+                'behalfType',
+                'behalfOtherType',
+                'behalfName',
+
+                'notifyType',
+                'notifyName',
+                'notifyEmail',
+                'notifyAddress1',
+                'notifyAddress2',
+                'notifyCity',
+                'notifyState',
+                'notifyCountry',
+                'notifyZip',
+
+                'chargeType'
+            ];
+            var form = _.pick($scope.form, fields);
             var prefixed = {};
 
-            _.forOwn($scope.form, function(value, key) {
+            form.chargeAmount = $scope.donationAmount();
+
+            _.forOwn(form, function(value, key) {
                 prefixed['donation[' + key + ']'] = value;
             });
 
@@ -355,8 +400,19 @@ angular.module('stap')
             };
 
             $http(request)
-                .then(function() {
-                    console.warn('donezo');
+                .then(function(response) {
+                    console.dir(response);
+                    if (response.data.status === 'success') {
+                        $scope.jump('start');
+                        $scope.gotoStep(2);
+                    } else {
+                        $scope.form.hasErrors = true;
+                        $scope.errorMessage = 'Unable to process your donation. ' + response.data.error.message;
+                    }
+                })
+                .catch(function() {
+                    $scope.form.hasErrors = true;
+                    $scope.errorMessage = 'Unable to process your donation. Please try again after a few moments.';
                 })
                 .finally(function() {
                     $scope.form.submitting = false;
@@ -370,6 +426,12 @@ angular.module('stap')
                     str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
                 }
             return str.join("&");
+        }
+
+        $scope.jump = function(h) {
+            var url = location.href;
+            location.href = '#' + h;
+            history.replaceState(null, null, url);
         }
 
     });

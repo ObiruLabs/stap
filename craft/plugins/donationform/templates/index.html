@@ -41,7 +41,7 @@
                         {% endif %}
                     </td>
                     <td>
-                        {% if not (donation.notifyName is empty) %}
+                        {% if donation.notifyType != "none" %}
                         <code>Y</code>
                         {% endif %}
                     </td>

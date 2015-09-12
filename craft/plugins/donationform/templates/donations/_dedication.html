@@ -46,23 +46,34 @@
     </p>
     <h5>Name</h5>
     <p>{{ donation.behalfName }}</p>
-    <hr>
 
-    <h2>Notify Contact Info</h2>
-    <h5>Name</h5>
-    <p>{{ donation.notifyName }}</p>
-    <h5>Email</h5>
-    <p>{{ donation.notifyEmail }}</p>
-    <h5>Address 1</h5>
-    <p>{{ donation.notifyAddress1 }}</p>
-    <h5>Address 2</h5>
-    <p>{{ donation.notifyAddress2 }}&nbsp;</p>
-    <h5>City</h5>
-    <p>{{ donation.notifyCity }}</p>
-    <h5>State</h5>
-    <p>{{ donation.notifyState }}</p>
-    <h5>Country</h5>
-    <p>{{ donation.notifyCountry }}</p>
-    <h5>Zip</h5>
-    <p>{{ donation.notifyZip }}</p>
+    {% if donation.notifyType != "none" %}
+        <hr>
+
+        <h2>
+            Notify via {{ donation.notifyType }}
+        </h2>
+        <h5>Name</h5>
+        <p>{{ donation.notifyName }}</p>
+
+        {% if donation.notifyType == "email" %}
+            <h5>Email</h5>
+            <p>{{ donation.notifyEmail }}</p>
+        {% endif %}
+
+        {% if donation.notifyType == "letter" %}
+            <h5>Address 1</h5>
+            <p>{{ donation.notifyAddress1 }}</p>
+            <h5>Address 2</h5>
+            <p>{{ donation.notifyAddress2 }}&nbsp;</p>
+            <h5>City</h5>
+            <p>{{ donation.notifyCity }}</p>
+            <h5>State</h5>
+            <p>{{ donation.notifyState }}</p>
+            <h5>Country</h5>
+            <p>{{ donation.notifyCountry }}</p>
+            <h5>Zip</h5>
+            <p>{{ donation.notifyZip }}</p>
+        {% endif %}
+    {% endif %}
 {% endset %}

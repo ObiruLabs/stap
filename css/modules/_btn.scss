@@ -11,6 +11,10 @@
     margin-top: 14px;
 }
 
+.btn-secondary:active {
+    color: #fff;
+}
+
 .btn-tertiary {
     color: $brand-tertiary-dark;
     border: 2px solid $brand-tertiary-dark;

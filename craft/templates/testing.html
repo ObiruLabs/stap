@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class='container-fluid' ng-cloak='' ng-repeat='county in closestCounties'>
-      <h1 class='section--title col-sm-6 col-sm-offset-3'>{[{ county.county }]}</h1>
+      <h1 class='section--title col-sm-6 col-sm-offset-3' ng-attr-id='{[{ county.county }]}'>{[{ county.county }]}</h1>
       <div class='post' ng-repeat='location in county.locations'>
         <div class='col-xs-10 col-xs-offset-1'>
           <div class='post--container'>

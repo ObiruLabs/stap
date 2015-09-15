@@ -1,11 +1,4 @@
 .post {
-//    @include make-row();
-
-    &--body {
-//        @include make-xs-column(10);
-//        @include make-xs-column-offset(1);
-    }
-
     & + & {
         margin-top: 50px;
     }

@@ -3,6 +3,62 @@
 
 	AddType text/x-component .htc
 
+    RewriteRule ^About-Us/About-Us$ "/about" [R=301,NC,L,R,NE]
+    RewriteRule ^About-Us/Board-of-Directors$ "/staff#board-of-directors" [R=301,NC,L,R,NE]
+    RewriteRule ^About-Us/Staff$ "/staff" [R=301,NC,L,R,NE]
+    RewriteRule ^About-Us/Job-Openings$ "/jobs" [R=301,NC,L,R,NE]
+    RewriteRule ^About-Us/Internships$ "/internships" [R=301,NC,L,R,NE]
+
+    RewriteRule ^Client-Services/Client-Services$ "/clientservices" [R=301,NC,L,R,NE]
+    RewriteRule ^Client-Services/Available-Services$ "/clientservices" [R=301,NC,L,R,NE]
+    RewriteRule ^Client-Services/Housing-Services$ "/clientservices#housing-opportunities-for-people-with-hiv-aids-hopwa-supportive-housing-services-for-persons-living-with-hiv-aids" [R=301,NC,L,R,NE]
+    RewriteRule ^Client-Services/Treatment-Literacy$ "/clientservices" [R=301,NC,L,R,NE]
+    RewriteRule ^Client-Services/Hepatitis-C-Services$ "/clientservices" [R=301,NC,L,R,NE]
+    RewriteRule ^Client-Services/Positive-Voices-Newsletter$ "/newsletters" [R=301,NC,L,R,NE]
+
+    RewriteRule ^Prevention-Services/Prevention-Services$ "/preventionservices" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/Community-Education$ "/preventionservices" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/The-Cube$ "/preventionservices#men-who-have-sex-with-men-msm-communities-of-color-coc" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/Identity$ "/preventionservices#identity" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/Syringe-Exchange$ "/preventionservices#syringe-exchange-program-sep" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/HIV/AIDS-101$ "/faq#hiv-aids-101" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/Q--A$ "/faq#hiv-aids-101" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/Harm--Risk-Reduction$ "/faq#harm-risk-reduction" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/Condom-FAQs$ "/faq#condoms" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/Condom-Demo$ "/faq#condoms" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/Post-Exposure-Prophylaxis$ "/faq#post-exposure-prophylaxis" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/Prevention-for-Positives$ "/faq#prevention-for-positives" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/STIs$ "/faq#sexually-transmitted-infections" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/Women-Services$ "/preventionservices" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/Criminal-Justice$ "/preventionservices#criminal-justice-initiative" [R=301,NC,L,R,NE]
+    RewriteRule ^Prevention-Services/Substance-Use-Outreach$ "/preventionservices" [R=301,NC,L,R,NE]
+
+    RewriteRule ^HIV-Testing/HIV-Testing$ "/testing" [R=301,NC,L,R,NE]
+    RewriteRule ^HIV-Testing/Broome$ "/testing" [R=301,NC,L,R,NE]
+    RewriteRule ^HIV-Testing/Chemung$ "/testing" [R=301,NC,L,R,NE]
+    RewriteRule ^HIV-Testing/Chenango$ "/testing" [R=301,NC,L,R,NE]
+    RewriteRule ^HIV-Testing/Cortland$ "/testing" [R=301,NC,L,R,NE]
+    RewriteRule ^HIV-Testing/Delaware$ "/testing" [R=301,NC,L,R,NE]
+    RewriteRule ^HIV-Testing/Otsego$ "/testing" [R=301,NC,L,R,NE]
+    RewriteRule ^HIV-Testing/Tioga$ "/testing" [R=301,NC,L,R,NE]
+    RewriteRule ^HIV-Testing/Tompkins$ "/testing" [R=301,NC,L,R,NE]
+
+    RewriteRule ^Get-Involved/Future-Road$ "/volunteer" [R=301,NC,L,R,NE]
+    RewriteRule ^Get-Involved--Get-Involved$ "/events" [R=301,NC,L,R,NE]
+    RewriteRule ^Get-Involved/Hot-Cross-Run$ "/events" [R=301,NC,L,R,NE]
+    RewriteRule ^Get-Involved/World-AIDS-Day$ "/events" [R=301,NC,L,R,NE]
+    RewriteRule ^Get-Involved/Volunteer$ "/volunteer" [R=301,NC,L,R,NE]
+    RewriteRule ^Get-Involved/Donate$ "/donation" [R=301,NC,L,R,NE]
+
+    RewriteRule ^Publications/Publications$ "/publications" [R=301,NC,L,R,NE]
+    RewriteRule ^Publications/Online-Resources$ "/resources#online-resources" [R=301,NC,L,R,NE]
+    RewriteRule ^Publications/Local-Resources$ "/resources#local-resources" [R=301,NC,L,R,NE]
+    RewriteRule ^Publications/HIV/AIDS/STD-Info$ "/resources#hiv-aids-std" [R=301,NC,L,R,NE]
+    RewriteRule ^Publications/Medical-Research$ "/resources#medical-research" [R=301,NC,L,R,NE]
+    RewriteRule ^Publications/Alkohol/Drugs-safer-sex$ "/resources#alcohol-drugs-safer-sex" [R=301,NC,L,R,NE]
+    RewriteRule ^Publications/LGBT-Info$ "/resources#lesbian-gay-bisexual-transgender" [R=301,NC,L,R,NE]
+    RewriteRule ^Contact-Us$ "/contact" [R=301,NC,L,R,NE]
+
 	# Send would-be 404 requests to Craft
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d

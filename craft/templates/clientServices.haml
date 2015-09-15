@@ -4,28 +4,28 @@
 %main#main-content
     %section.section
         .container-fluid
-            %h1.section--title.col-sm-8.col-sm-offset-2 Client Services
-            {% for service in entry.services %}
-            .post
-                .col-xs-10.col-xs-offset-1
-                    .post--container
+            .row
+                .col-sm-6.col-sm-offset-3
+                    %h1.section--title Client Services
+                    {% for service in entry.services %}
+                    .post{ id: '{{ service.serviceName | kebab }}' }
                         .row
                             {% if service.photo.first() %}
                             .col-sm-7
-                                %h2 {{ service.serviceName }}
+                                %h2.faq--question {{ service.serviceName }}
                                 %p {{ service.description }}
 
                             .col-sm-4.col-sm-offset-1
                                 %img.post--image{ data: { src: '{{ service.photo.first().url }}' } }
                             {% else %}
                             .col-sm-12
-                                %h2 {{ service.serviceName }}
+                                %h2.faq--question {{ service.serviceName }}
                                 %p {{ service.description }}
                             {% endif %}
-            {% endfor %}
+                    {% endfor %}
 
             .row
-                .col-xs-10.col-xs-offset-1
+                .col-sm-6.col-sm-offset-3
                     %br
                     %br
                     %label For more information, or to reach a staff member, please call 1-800-333-0892.

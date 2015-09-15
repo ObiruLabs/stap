@@ -3,7 +3,7 @@
 {% block content %}
 {% for entry in craft.entries.section('staff') %}
 <main id='main-content'>
-  <section class='section'>
+  <section class='section' id='{{ entry.slug }}'>
     <div class='container-fluid'>
       <h1 class='section--title col-sm-6 col-sm-offset-3'>{{ entry.title }}</h1>
       {% set groups = entry.employees | batch((entry.employees | length / 2) | round(0, 'ceil')) %}

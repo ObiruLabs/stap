@@ -7770,6 +7770,10 @@ button.close {
   margin-top: 14px;
 }
 
+.btn-secondary:active {
+  color: #fff;
+}
+
 .btn-tertiary {
   color: #50637a;
   border: 2px solid #50637a;

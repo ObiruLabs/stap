@@ -236,7 +236,7 @@
                                             %use{ 'xlink:href' => '#facebook' }
                                         Share on Facebook
                                 .col-xs-6
-                                    %button.btn.btn-secondary_pill.btn-twitter
+                                    %a.btn.btn-secondary_pill.btn-twitter{ ng: { href: 'https://twitter.com/home?status=I%20just%20donated%20${[{ donationAmount() / 100 }]}%20to%20the%20Southern%20Tier%20AIDS%20Program' }, target: '_blank' }
                                         %svg{ viewbox: '0 0 512 512' }
                                             %use{ 'xlink:href' => '#twitter' }
                                         Share on Twitter

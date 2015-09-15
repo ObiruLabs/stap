@@ -4,7 +4,7 @@
 
 {% for entry in craft.entries.section('staff') %}
 %main#main-content
-    %section.section
+    %section.section{ id: '{{ entry.slug }}' }
         .container-fluid
             %h1.section--title.col-sm-6.col-sm-offset-3 {{ entry.title }}
             {% set groups = entry.employees | batch((entry.employees | length / 2) | round(0, 'ceil')) %}

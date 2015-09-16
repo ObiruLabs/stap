@@ -17,20 +17,20 @@
     %section.donation-form.section
         .container-fluid
             .row
-                .col-sm-6.col-sm-offset-3
+                .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
                     %section{ ng: { show: 'isStep(0)' } }
                         %h2.donation-form--header Select an amount
                         .row
-                            .col-sm-3
+                            .col-xs-6.col-sm-3
                                 %button.donation-form--amount.btn{ ng: { class: "{ 'is-selected': form.amountType === 'option' && form.amountValue === 25 }",
                                                                          click: 'selectAmountOption(25)' } } $25
-                            .col-sm-3
+                            .col-xs-6.col-sm-3
                                 %button.donation-form--amount.btn{ ng: { class: "{ 'is-selected': form.amountType === 'option' && form.amountValue === 50 }",
                                                                          click: 'selectAmountOption(50)' } } $50
-                            .col-sm-3
+                            .col-xs-6.col-sm-3
                                 %button.donation-form--amount.btn{ ng: { class: "{ 'is-selected': form.amountType === 'option' && form.amountValue === 100 }",
                                                                          click: 'selectAmountOption(100)' } } $100
-                            .col-sm-3
+                            .col-xs-6.col-sm-3
                                 %input.donation-form--custom-amount.form-control.is-empty{ type: 'text', placeholder: '$ Other',
                                                                                            ng: { class: "{ 'is-empty': form.amountType !== 'custom' }",
                                                                                                  model: 'form.amountCustom',
@@ -123,7 +123,7 @@
                                     .checkbox{ ng: { click: 'form.behalfOtherType = ""' } }
                                         %input{ id: 'donation-form--memory-behalf', type: 'radio', value: 'memory', ng: { model: 'form.behalfType' } }
                                         %label{ for: 'donation-form--memory-behalf' } In memory of
-                                .col-sm-4
+                                .col-sm-4.col-xs-5
                                     .checkbox.with-input
                                         %input{ id: 'donation-form--other-behalf', type: 'radio', value: 'other', ng: { model: 'form.behalfType' } }
                                         %label{ for: 'donation-form--other-behalf' } &nbsp;
@@ -133,7 +133,7 @@
                                                                                                  click: 'form.behalfType = "other"',
                                                                                                  class: '{ "is-filled": form.behalfOtherType }' } }
                             .form-inline
-                                .form-group.col-sm-12
+                                .donation-form--behalf-name-container.form-group.col-sm-12
                                     %input.form-control{ type: 'text',
                                                          placeholder: 'Dedicatee Name',
                                                         ng: { model: 'form.behalfName',
@@ -225,20 +225,20 @@
                             We’ve sent an email confirmation of your donation to
                             %br
                             %strong {[{ form.donorEmail }]}.
-                        %p<
-                            Every day brings reasons to be grateful and blessings to be counted. Thank you for being one of them. If you have any questions about your donation, please email {{ entry.donationContactName }} at
-                            %a{ href: 'mailto:{{ entry.donationContactEmail }}' } {{ entry.donationContactEmail }}.
+                        {{ entry.donationQuote }}
                         .donation-form--share-links
                             .row
                                 .col-xs-6
                                     %button.btn.btn-secondary_pill.btn-facebook
                                         %svg{ viewbox: '0 0 512 512' }
                                             %use{ 'xlink:href' => '#facebook' }
-                                        Share on Facebook
+                                        Share
+                                        %span.hidden-xs on Facebook
                                 .col-xs-6
                                     %a.btn.btn-secondary_pill.btn-twitter{ ng: { href: 'https://twitter.com/home?status=I%20just%20donated%20${[{ donationAmount() / 100 }]}%20to%20the%20Southern%20Tier%20AIDS%20Program' }, target: '_blank' }
                                         %svg{ viewbox: '0 0 512 512' }
                                             %use{ 'xlink:href' => '#twitter' }
-                                        Share on Twitter
-                        %p< Southern Tier AIDS Program is a 501(c)(3) non-profit organization. No goods or services were provided in exchange for your donation, which is tax-deductible to the fullest extent of the law.
+                                        Share
+                                        %span.hidden-xs on Twitter
+                        {{ entry.donationNote }}
 {% endblock %}

@@ -11,10 +11,25 @@
 
 .form-inline {
     font-size: 0;
-    height: 53px;
 
     & + & {
-        margin-top: 10px;
+        margin-top: 30px;
+    }
+
+    @media (min-width: $screen-sm-min) {
+        height: 53px;
+
+        & + & {
+            margin-top: 10px;
+        }
+    }
+
+    .form-group + .form-group {
+        margin-top: 30px;
+
+        @media (min-width: $screen-sm-min) {
+            margin-top: 0;
+        }
     }
 
     .form-group {
@@ -189,16 +204,25 @@ button.btn {
     }
 
     .checkbox.with-input {
+        margin-top: 0;
         position: absolute;
+
+        @media (min-width: $screen-sm-min) {
+            margin-top: 10px;
+        }
     }
 
     input.form-control.donation-form--other-behalf-input[type = "text"] {
         height: 36px;
-        margin-top: 10px;
+        margin-top: 0;
         padding: {
             bottom: 12px;
             left: 31px;
             top: 8px;
+        }
+
+        @media (min-width: $screen-sm-min) {
+            margin-top: 10px;
         }
 
         &.is-filled {
@@ -208,6 +232,14 @@ button.btn {
             &:hover {
                 border-bottom: 1px solid #aaa;
             }
+        }
+    }
+
+    .donation-form--behalf-name-container {
+        margin-top: 15px;
+
+        @media (min-width: $screen-sm-min) {
+            margin-top: 0;
         }
     }
 
@@ -222,8 +254,13 @@ button.btn {
         background: #fff;
         border: 2px solid $brand-primary;
         color: $brand-primary;
+        margin-bottom: 20px;
         transition: background 200ms, color 200ms;
         width: 100%;
+
+        @media (min-width: $screen-sm-min) {
+            margin-bottom: 0;
+        }
 
         &:hover {
             color: $brand-primary;
@@ -280,7 +317,11 @@ button.btn {
     }
 
     .donation-form--notify-details {
-        margin-top: 10px;
+        margin-top: 30px;
+
+        @media (min-width: $screen-sm-min) {
+            margin-top: 10px;
+        }
     }
 
     .donation-form--complete {

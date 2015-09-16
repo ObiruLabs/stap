@@ -21,20 +21,20 @@
   <section class='donation-form section'>
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-sm-6 col-sm-offset-3'>
+        <div class='col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2'>
           <section ng-show='isStep(0)'>
             <h2 class='donation-form--header'>Select an amount</h2>
             <div class='row'>
-              <div class='col-sm-3'>
+              <div class='col-xs-6 col-sm-3'>
                 <button class='donation-form--amount btn' ng-class="{ 'is-selected': form.amountType === 'option' &amp;&amp; form.amountValue === 25 }" ng-click='selectAmountOption(25)'>$25</button>
               </div>
-              <div class='col-sm-3'>
+              <div class='col-xs-6 col-sm-3'>
                 <button class='donation-form--amount btn' ng-class="{ 'is-selected': form.amountType === 'option' &amp;&amp; form.amountValue === 50 }" ng-click='selectAmountOption(50)'>$50</button>
               </div>
-              <div class='col-sm-3'>
+              <div class='col-xs-6 col-sm-3'>
                 <button class='donation-form--amount btn' ng-class="{ 'is-selected': form.amountType === 'option' &amp;&amp; form.amountValue === 100 }" ng-click='selectAmountOption(100)'>$100</button>
               </div>
-              <div class='col-sm-3'>
+              <div class='col-xs-6 col-sm-3'>
                 <input class='donation-form--custom-amount form-control is-empty' ng-change='updateCustomAmount()' ng-class="{ 'is-empty': form.amountType !== 'custom' }" ng-model='form.amountCustom' placeholder='$ Other' type='text'>
               </div>
             </div>
@@ -119,7 +119,7 @@
                     <label for='donation-form--memory-behalf'>In memory of</label>
                   </div>
                 </div>
-                <div class='col-sm-4'>
+                <div class='col-sm-4 col-xs-5'>
                   <div class='checkbox with-input'>
                     <input id='donation-form--other-behalf' ng-model='form.behalfType' type='radio' value='other'>
                     <label for='donation-form--other-behalf'>&nbsp;</label>
@@ -128,7 +128,7 @@
                 </div>
               </div>
               <div class='form-inline'>
-                <div class='form-group col-sm-12'>
+                <div class='donation-form--behalf-name-container form-group col-sm-12'>
                   <input class='form-control' ng-class='{ "is-filled": form.behalfName, "has-errors": errorField(requireField, form.behalfName) }' ng-model='form.behalfName' placeholder='Dedicatee Name' type='text'>
                   <label>{[{ errorFieldLabel(requireField, form.behalfName, 'Dedicatee Name') }]}</label>
                 </div>
@@ -211,8 +211,7 @@
               <br>
               <strong>{[{ form.donorEmail }]}.</strong>
             </h2>
-            <p>Every day brings reasons to be grateful and blessings to be counted. Thank you for being one of them. If you have any questions about your donation, please email {{ entry.donationContactName }} at
-            <a href='mailto:{{ entry.donationContactEmail }}'>{{ entry.donationContactEmail }}.</a></p>
+            {{ entry.donationQuote }}
             <div class='donation-form--share-links'>
               <div class='row'>
                 <div class='col-xs-6'>
@@ -220,7 +219,8 @@
                     <svg viewbox='0 0 512 512'>
                       <use xlink:href='#facebook'></use>
                     </svg>
-                    Share on Facebook
+                    Share
+                    <span class='hidden-xs'>on Facebook</span>
                   </button>
                 </div>
                 <div class='col-xs-6'>
@@ -228,12 +228,13 @@
                     <svg viewbox='0 0 512 512'>
                       <use xlink:href='#twitter'></use>
                     </svg>
-                    Share on Twitter
+                    Share
+                    <span class='hidden-xs'>on Twitter</span>
                   </a>
                 </div>
               </div>
             </div>
-            <p>Southern Tier AIDS Program is a 501(c)(3) non-profit organization. No goods or services were provided in exchange for your donation, which is tax-deductible to the fullest extent of the law.</p>
+            {{ entry.donationNote }}
           </section>
         </div>
       </div>

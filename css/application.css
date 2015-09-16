@@ -9143,10 +9143,25 @@ button.close {
 
 .form-inline, .navbar-form {
   font-size: 0;
-  height: 53px;
 }
 .form-inline + .form-inline, .navbar-form + .form-inline, .form-inline + .navbar-form, .navbar-form + .navbar-form {
-  margin-top: 10px;
+  margin-top: 30px;
+}
+@media (min-width: 768px) {
+  .form-inline, .navbar-form {
+    height: 53px;
+  }
+  .form-inline + .form-inline, .navbar-form + .form-inline, .form-inline + .navbar-form, .navbar-form + .navbar-form {
+    margin-top: 10px;
+  }
+}
+.form-inline .form-group + .form-group, .navbar-form .form-group + .form-group {
+  margin-top: 30px;
+}
+@media (min-width: 768px) {
+  .form-inline .form-group + .form-group, .navbar-form .form-group + .form-group {
+    margin-top: 0;
+  }
 }
 .form-inline .form-group, .navbar-form .form-group {
   position: relative;
@@ -9298,20 +9313,39 @@ button.btn:focus, button.btn_more:focus, button.btn:active, button.btn_more:acti
   position: absolute;
 }
 .donation-form .checkbox.with-input {
+  margin-top: 0;
   position: absolute;
+}
+@media (min-width: 768px) {
+  .donation-form .checkbox.with-input {
+    margin-top: 10px;
+  }
 }
 .donation-form input.form-control.donation-form--other-behalf-input[type="text"] {
   height: 36px;
-  margin-top: 10px;
+  margin-top: 0;
   padding-bottom: 12px;
   padding-left: 31px;
   padding-top: 8px;
+}
+@media (min-width: 768px) {
+  .donation-form input.form-control.donation-form--other-behalf-input[type="text"] {
+    margin-top: 10px;
+  }
 }
 .donation-form input.form-control.donation-form--other-behalf-input[type="text"].is-filled {
   border-bottom-color: transparent;
 }
 .donation-form input.form-control.donation-form--other-behalf-input[type="text"].is-filled:focus, .donation-form input.form-control.donation-form--other-behalf-input[type="text"].is-filled:hover {
   border-bottom: 1px solid #aaa;
+}
+.donation-form .donation-form--behalf-name-container {
+  margin-top: 15px;
+}
+@media (min-width: 768px) {
+  .donation-form .donation-form--behalf-name-container {
+    margin-top: 0;
+  }
 }
 .donation-form--header {
   margin-bottom: 40px;
@@ -9321,8 +9355,14 @@ button.btn:focus, button.btn_more:focus, button.btn:active, button.btn_more:acti
   background: #fff;
   border: 2px solid #f13449;
   color: #f13449;
+  margin-bottom: 20px;
   transition: background 200ms, color 200ms;
   width: 100%;
+}
+@media (min-width: 768px) {
+  .donation-form--amount {
+    margin-bottom: 0;
+  }
 }
 .donation-form--amount:hover {
   color: #f13449;
@@ -9365,7 +9405,12 @@ button.btn:focus, button.btn_more:focus, button.btn:active, button.btn_more:acti
   margin-left: -150px;
 }
 .donation-form .donation-form--notify-details {
-  margin-top: 10px;
+  margin-top: 30px;
+}
+@media (min-width: 768px) {
+  .donation-form .donation-form--notify-details {
+    margin-top: 10px;
+  }
 }
 .donation-form .donation-form--complete h1 {
   font-family: "freight-sans-pro", helvetica, arial, sans-serif;

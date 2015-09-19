@@ -1,0 +1,191 @@
+.testing {
+    &--jumbotron {
+        text-align: center;
+
+        .section--title {
+            margin-top: 30px;
+        }
+    }
+
+    &--ribbon {
+        margin-top: 25px;
+        width: 30px;
+    }
+
+    &--introduction {
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        position: relative;
+
+        &:after {
+            border-bottom: 2px solid #eee;
+            bottom: 0;
+            content: '';
+            left: 50%;
+            margin-left: -125px;
+            position: absolute;
+            width: 250px;
+        }
+    }
+
+    &--form-of {
+        float: left;
+        font-size: 18px;
+        position: relative;
+        top: 15px;
+        width: 10%;
+    }
+
+    &--radius {
+        cursor: pointer;
+        position: relative;
+        border-bottom: 2px solid #aaa;
+        float: left;
+        top: 7px;
+        width: 30%;
+
+        > select {
+            color: $brand-secondary;
+            max-width: 100%;
+            padding: 0px 21px 6px 10px;
+            border: none;
+            background-color: transparent;
+            font: {
+                family: $font-family-sans-serif;
+                size: 18px;
+            }
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 100%;
+
+            &:active,
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
+        }
+
+        &:after {
+            content: " ";
+            position: absolute;
+            top: 50%;
+            margin-top: -2px;
+            right: 8px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #aaa;
+        }
+    }
+
+    &--location-form {
+        .form-inline &.form-group > input.form-control[type="text"] {
+            border-bottom-width: 2px;
+            color: $brand-secondary;
+            text-align: center;
+            margin-right: 5%;
+            top: 15px;
+            @include placeholder($brand-secondary);
+            width: 55%;
+        }
+    }
+
+    &--filter.btn-secondary {
+        margin-top: 5px;
+        padding: {
+            bottom: 5px;
+            top: 5px;
+        }
+    }
+
+    &--location {
+        border: 1px solid #ccc;
+        height: 600px;
+        margin: 20px auto;
+        max-width: 480px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    &--location-map {
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+
+        > img {
+            height: 210px;
+        }
+    }
+
+    .testing--location-overlay {
+        background: #fff;
+        border-bottom: 1px solid #ccc;
+        height: 210px;
+        left: 0;
+        opacity: .7;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 2;
+    }
+
+    &--location-name {
+        height: 210px;
+        padding: 0 50px;
+        position: relative;
+        z-index: 3;
+
+        > h2 {
+            margin-bottom: 5px;
+            font-size: 22px;
+            height: 75px;
+            line-height: 25px;
+        }
+    }
+
+    &--location-address {
+        font: {
+            family: $font-family-sans-serif;
+            size: 16px;
+            weight: 700;
+        }
+        height: 50px;
+        line-height: 22px;
+        margin-bottom: 0;
+        text-transform: uppercase;
+    }
+
+    &--location-details {
+        padding: 0 50px;
+    }
+
+    &--location-links {
+        font: {
+            family: $font-family-sans-serif;
+            size: 16px;
+        }
+
+        a:hover .geomicon-external,
+        a:hover .geomicon-location {
+            text-decoration: none;
+        }
+
+        a + a {
+            padding-left: 40px;
+        }
+
+        .geomicon-external,
+        .geomicon-location {
+            font-size: 14px;
+            margin-left: 5px;
+        }
+    }
+
+    .section--title_secondary_centered {
+        margin-bottom: 80px;
+    }
+}

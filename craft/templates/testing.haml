@@ -12,46 +12,95 @@
 {% set latitude = '"latitude":"' ~ location.latitude ~ '"' %}
 {% set longitude = '"longitude":"' ~ location.longitude ~ '"' %}
 {% set address1 = '"address1":"' ~ location.address1 ~ '"' %}
-{% set values = [name, latitude, longitude, address1] %}
+{% set address2 = '"address2":"' ~ location.address2 ~ '"' %}
+{% set city = '"city":"' ~ location.city ~ '"' %}
+{% set state = '"state":"' ~ location.state ~ '"' %}
+{% set zip = '"zip":"' ~ location.zip ~ '"' %}
+
+{% set phone = '"phone":"' ~ location.phone ~ '"' %}
+{% set phone2 = '"phone2":"' ~ location.phone2 ~ '"' %}
+
+{% set website = '"website":"' ~ location.website ~ '"' %}
+{% set hours = '"hours":"' ~ location.hours ~ '"' %}
+{% set fees = '"fees":"' ~ location.fees ~ '"' %}
+{% set eligiblePopulation = '"eligiblePopulation":"' ~ location.eligiblePopulation ~ '"' %}
+{% set appointmentType = '"appointmentType":"' ~ location.appointmentType ~ '"' %}
+
+{% set services = '"services":"' %}
+
+{% for option in location.services %}
+{{ option }}
+{% set services = services ~ "," %}
+{% endfor %}
+
+{% set services = '"services":"' %}
+
+{% set values = [name, latitude, longitude, address1, address2, city, state, zip, phone, phone2, website, hours, fees, eligiblePopulation, appointmentType] %}
 {% set locations = locations | merge(['{' ~ values | join(',') ~ '}']) %}
 {% endfor %}
 
 {% set counties = counties | merge(['{"county":"' ~ entry.title ~ '","locations":[' ~ locations | join(',') ~ ']}']) %}
 {% endfor %}
 
-%main#main-content{ ng: { controller: 'testingCtrl', init: "counties={{- '[' ~ counties | join(',') ~ ']' -}}" } }
-    %section.section_callout
-        .container-fluid
-            %h1.section--title.col-sm-6.col-sm-offset-3 Find a Testing Center
+%main#main-content.testing{ ng: { controller: 'testingCtrl', init: "counties={{- '[' ~ counties | join(',') ~ ']' -}}" } }
+    %section.section_blank.section_bordered
+        .testing--jumbotron.container-fluid
             .row
-                .col-sm-12
-                    %form.testing-form.form-inline
-                        .form-group.col-xs-6
-                            %input.form-control{ google: { place: '' }, ng: { model: 'searchPlace' } }
-                        .form-group
-                            %label Within
-                            %select.form-control{ ng: { options: 'radius.value as radius.label for radius in withinRadius', model: 'searchRadius' } }
-                        %button.btn.btn-default{ ng: { click: 'search()' } } Search
+                .col-sm-6.col-sm-offset-3
+                    %img.testing--ribbon{ src: '/images/ribbon.png' }
+                    %h1.section--title Know Your HIV Status
+                    %p.testing--introduction New York State has made it easier than ever to get tested and learn your status today.
+                    %p Find a testing center within:
+                    %form.form-inline
+                        .testing--location-form.form-group.col-sm-10
+                            .testing--radius
+                                %select{ ng: { options: 'radius.value as radius.label for radius in withinRadius', model: 'searchRadius' } }
+                            %span.testing--form-of of
+                            %input.form-control{ type: 'text', google: { place: '' }, ng: { model: 'searchPlace' }, placeholder: 'Your location' }
+                        .form-group.col-sm-2
+                            %button.testing--filter.btn.btn-secondary{ ng: { click: 'search()' } } Filter
 
-    %span{ ng: { show: 'searching', cloak: '' } }
+    %section{ ng: { if: 'searching', cloak: '' } }
         Showing {[{ totalSearchLocations }]} locations
         %button.btn.btn-default{ ng: { click: 'clearSearch()', show: 'searching', cloak: '' } } See all
 
-    %section.section
-        .container-fluid{ ng: { show: 'searching && totalSearchLocations === 0', cloak: '' } }
+    %section.section{ ng: { if: 'searching && totalSearchLocations === 0', cloak: '' } }
+        .container-fluid
             .row
                 .col-xs-12
                     No testing locations found around your area.
-        .container-fluid{ ng: { repeat: 'county in closestCounties', cloak: '' } }
-            %h1.section--title.col-sm-6.col-sm-offset-3{ ng: { attr_id: '{[{ county.county }]}' } } {[{ county.county }]}
-            .post{ ng: { repeat: 'location in county.locations' } }
-                .col-xs-10.col-xs-offset-1
-                    .post--container
-                        .row
-                            .col-sm-7.col-sm-offset-1
-                                %h2 {[{ location.name }]}
-                                %p {[{ location.address1 }]}
-                            .col-sm-3.col-sm-offset-1
-                                %img.post--image{ ng: { attr_data_src: '{[{ location.map }]}' } }
 
+    %section.section_bordered
+        .container-fluid{ ng: { repeat: 'county in closestCounties', cloak: '' } }
+            %h1.section--title_secondary_centered.col-sm-6.col-sm-offset-3{ ng: { attr_id: '{[{ county.county }]}' } }<
+                HIV Testing in {[{ county.county }]}
+            .row
+                .col-sm-6{ ng: { repeat: 'location in county.locations' } }
+                    .testing--location
+                        .row
+                            .testing--location-map
+                                %img{ ng: { attr_data_src: '{[{ location.map }]}' } }
+                            .testing--location-overlay
+                            .testing--location-name
+                                %h2 {[{ location.name }]}
+                                %p.testing--location-address
+                                    {[{ location.address1 }]},
+                                    {[{ location.address2 ? location.address2 + ',' : '' }]}
+                                    {[{ location.city }]},
+                                    {[{ location.state }]},
+                                    {[{ location.zip }]}
+                                .testing--location-links
+                                    %a{ href: '#' }
+                                        Website
+                                        %span.geomicon-external
+                                    %a{ href: '#' }
+                                        See it on a map
+                                        %span.geomicon-location
+                            .testing--location-details
+                                %p {[{ location.website }]}
+                                %p {[{ location.hours }]}
+                                %p {[{ location.fees }]}
+                                %p {[{ location.eligiblePopulation }]}
+                                %p {[{ location.appointmentType }]}
+                                %p {[{ location.services }]}
 {% endblock %}

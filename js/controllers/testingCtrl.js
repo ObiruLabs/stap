@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stap')
-    .constant('GOOGLE_STATIC_MAP', 'https://maps.googleapis.com/maps/api/staticmap?center=<%= coordinates %>&zoom=14&size=150x150&markers=size:mid%7Ccolor:red%7C<%= coordinates %>&scale=2&key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU')
+    .constant('GOOGLE_STATIC_MAP', 'https://maps.googleapis.com/maps/api/staticmap?center=<%= coordinates %>&zoom=14&size=500x220&markers=size:mid%7Ccolor:0x777777%7C<%= coordinates %>&scale=1&key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU&style=saturation:-100')
     .constant('METERS_TO_MILES', 1609.344)
     .controller('testingCtrl', function ($scope, $timeout, GOOGLE_STATIC_MAP, METERS_TO_MILES, Geocode) {
 
@@ -14,7 +14,7 @@ angular.module('stap')
         ];
         $scope.counties = [];
         $scope.searchPlace = '';
-        $scope.searchRadius = 5;
+        $scope.searchRadius = 10;
         $scope.totalSearchLocations = 0;
         $scope.searching = false;
 

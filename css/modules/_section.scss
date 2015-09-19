@@ -36,6 +36,27 @@
         }
     }
 
+    &--title_secondary_centered {
+        font-weight: 700;
+        margin: {
+            bottom: 30px;
+            top: 50px;
+        }
+        text-align: center;
+
+        &:after {
+            background: $brand-secondary;
+            content: '';
+            display: block;
+            height: 4px;
+            left: 50%;
+            margin-top: 25px;
+            margin-left: -35px;
+            position: relative;
+            width: 70px;
+        }
+    }
+
     .section--subtitle {
         margin-top: 50px;
     }

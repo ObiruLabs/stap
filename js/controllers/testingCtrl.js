@@ -2,10 +2,12 @@
 
 angular.module('stap')
     .constant('GOOGLE_STATIC_MAP', 'https://maps.googleapis.com/maps/api/staticmap?center=<%= coordinates %>&zoom=14&size=500x220&markers=size:mid%7Ccolor:0x777777%7C<%= coordinates %>&scale=1&key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU&style=saturation:-100')
+    .constant('GOOGLE_EXTERNAL_MAP', 'https://maps.google.com?daddr=<%= address %>')
     .constant('METERS_TO_MILES', 1609.344)
-    .controller('testingCtrl', function ($scope, $timeout, GOOGLE_STATIC_MAP, METERS_TO_MILES, Geocode) {
+    .controller('testingCtrl', function ($scope, $timeout, GOOGLE_STATIC_MAP, GOOGLE_EXTERNAL_MAP, METERS_TO_MILES, Geocode) {
 
         var STATIC_MAP = _.template(GOOGLE_STATIC_MAP);
+        var EXTERNAL_MAP = _.template(GOOGLE_EXTERNAL_MAP);
 
         $scope.withinRadius = [
             { label: '5 miles', value: 5 },
@@ -24,6 +26,7 @@ angular.module('stap')
             }
 
             $scope.searching = true;
+            $scope.searchPlaceShort = $scope.searchPlace.split(',')[0] || $scope.searchPlace;
 
             Geocode
                 .bestMatch($scope.searchPlace)
@@ -85,6 +88,7 @@ angular.module('stap')
             _.forEach(counties, function (county) {
                 _.forEach(county.locations, function (location) {
                     location.map = STATIC_MAP({ coordinates: location.latitude + ',' + location.longitude });
+                    location.externalMap = EXTERNAL_MAP({ address: [location.address1, location.city, location.state, location.zip].join('+').replace(/\s+/g, '+') });
                     location.coordinates = new google.maps.LatLng(location.latitude, location.longitude);
                 });
             });

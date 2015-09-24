@@ -11,12 +11,14 @@
     margin-top: 14px;
 }
 
-.btn-secondary:active {
+.btn-secondary:focus,
+.btn-secondary:active, {
     color: #fff;
 }
 
 .btn-tertiary {
     color: $brand-tertiary-dark;
+    background: transparent;
     border: 2px solid $brand-tertiary-dark;
 
     &:hover {

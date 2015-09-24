@@ -25,17 +25,9 @@
 {% set fees = '"fees":"' ~ location.fees ~ '"' %}
 {% set eligiblePopulation = '"eligiblePopulation":"' ~ location.eligiblePopulation ~ '"' %}
 {% set appointmentType = '"appointmentType":"' ~ location.appointmentType ~ '"' %}
+{% set services = '"services":["' ~ location.services | join('","') ~ '"]' %}
 
-{% set services = '"services":"' %}
-
-{% for option in location.services %}
-{{ option }}
-{% set services = services ~ "," %}
-{% endfor %}
-
-{% set services = '"services":"' %}
-
-{% set values = [name, latitude, longitude, address1, address2, city, state, zip, phone, phone2, website, hours, fees, eligiblePopulation, appointmentType] %}
+{% set values = [name, latitude, longitude, address1, address2, city, state, zip, phone, phone2, website, hours, fees, eligiblePopulation, appointmentType, services] %}
 {% set locations = locations | merge(['{' ~ values | join(',') ~ '}']) %}
 {% endfor %}
 
@@ -60,17 +52,18 @@
                         .form-group.col-sm-2
                             %button.testing--filter.btn.btn-secondary{ ng: { click: 'search()' } } Filter
 
-    %section{ ng: { if: 'searching', cloak: '' } }
-        Showing {[{ totalSearchLocations }]} locations
-        %button.btn.btn-default{ ng: { click: 'clearSearch()', show: 'searching', cloak: '' } } See all
+    %section.testing--notification{ ng: { if: 'searching', cloak: '' } }
+        %span{ ng: { if: 'totalSearchLocations > 0' } } Showing {[{ totalSearchLocations }]} locations listed near {[{ searchPlaceShort }]}
+        %span{ ng: { if: 'totalSearchLocations === 0' } } No testing locations listed near {[{ searchPlaceShort }]}
+        %button.btn.btn-tertiary{ ng: { click: 'clearSearch()', show: 'searching', cloak: '' } } Clear filter
 
-    %section.section{ ng: { if: 'searching && totalSearchLocations === 0', cloak: '' } }
-        .container-fluid
-            .row
-                .col-xs-12
-                    No testing locations found around your area.
+    %section.testing--no-locations{ ng: { if: 'searching && totalSearchLocations === 0', cloak: '' } }
+        %p No testing locations listed nearby.
+        %p
+            Try a different search or
+            %a{ ng: { click: 'clearSearch()' } } clear the search filters?
 
-    %section.section_bordered
+    %section.section_bordered{ ng: { hide: 'searching && totalSearchLocations === 0' } }
         .container-fluid{ ng: { repeat: 'county in closestCounties', cloak: '' } }
             %h1.section--title_secondary_centered.col-sm-6.col-sm-offset-3{ ng: { attr_id: '{[{ county.county }]}' } }<
                 HIV Testing in {[{ county.county }]}
@@ -89,18 +82,51 @@
                                     {[{ location.city }]},
                                     {[{ location.state }]},
                                     {[{ location.zip }]}
+                                %p.testing--location-phone
+                                    {[{ location.phone }]}
                                 .testing--location-links
-                                    %a{ href: '#' }
-                                        Website
-                                        %span.geomicon-external
-                                    %a{ href: '#' }
-                                        See it on a map
-                                        %span.geomicon-location
+                                    %a{ ng: { if: 'location.website', attr_href: '{[{ location.website }]}' } }<
+                                        Website&nbsp;&nbsp;
+                                        %span.geomicon-external<>
+                                    %a{ ng: { attr_href: '{[{ location.externalMap }]}' } }<
+                                        See it on a map&nbsp;&nbsp;
+                                        %span.geomicon-location<>
                             .testing--location-details
-                                %p {[{ location.website }]}
-                                %p {[{ location.hours }]}
-                                %p {[{ location.fees }]}
-                                %p {[{ location.eligiblePopulation }]}
-                                %p {[{ location.appointmentType }]}
-                                %p {[{ location.services }]}
+                                .row
+                                    .col-sm-4
+                                        %label<>
+                                            %span.geomicon-clock<>
+                                            Hours
+                                    .col-sm-8
+                                        %p{ ng: { bind_html: 'location.hours' } }
+                                .row
+                                    .col-sm-4
+                                        %label<>
+                                            %span.geomicon-bank<>
+                                            Cost
+                                    .col-sm-8
+                                        %p {[{ location.fees }]}
+                                .row
+                                    .col-sm-4
+                                        %label<>
+                                            %span.geomicon-people<>
+                                            Eligibility
+                                    .col-sm-8
+                                        %p {[{ location.eligiblePopulation }]}
+                                .row
+                                    .col-sm-4
+                                        %label<>
+                                            %span.geomicon-calendar-day<>
+                                            Appointment
+                                    .col-sm-8
+                                        %p{ ng: { bind_html: 'location.appointmentType' } }
+                                .row
+                                    .col-sm-4
+                                        %label<>
+                                            %span.geomicon-briefcase<>
+                                            Services
+                                    .col-sm-8
+                                        %ul
+                                            %li{ ng: { repeat: 'service in location.services' } }
+                                                {[{ service }]}
 {% endblock %}

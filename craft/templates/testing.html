@@ -20,13 +20,8 @@
 {% set fees = '"fees":"' ~ location.fees ~ '"' %}
 {% set eligiblePopulation = '"eligiblePopulation":"' ~ location.eligiblePopulation ~ '"' %}
 {% set appointmentType = '"appointmentType":"' ~ location.appointmentType ~ '"' %}
-{% set services = '"services":"' %}
-{% for option in location.services %}
-{{ option }}
-{% set services = services ~ "," %}
-{% endfor %}
-{% set services = '"services":"' %}
-{% set values = [name, latitude, longitude, address1, address2, city, state, zip, phone, phone2, website, hours, fees, eligiblePopulation, appointmentType] %}
+{% set services = '"services":["' ~ location.services | join('","') ~ '"]' %}
+{% set values = [name, latitude, longitude, address1, address2, city, state, zip, phone, phone2, website, hours, fees, eligiblePopulation, appointmentType, services] %}
 {% set locations = locations | merge(['{' ~ values | join(',') ~ '}']) %}
 {% endfor %}
 {% set counties = counties | merge(['{"county":"' ~ entry.title ~ '","locations":[' ~ locations | join(',') ~ ']}']) %}
@@ -56,20 +51,19 @@
       </div>
     </div>
   </section>
-  <section ng-cloak='' ng-if='searching'>
-    Showing {[{ totalSearchLocations }]} locations
-    <button class='btn btn-default' ng-click='clearSearch()' ng-cloak='' ng-show='searching'>See all</button>
+  <section class='testing--notification' ng-cloak='' ng-if='searching'>
+    <span ng-if='totalSearchLocations &gt; 0'>Showing {[{ totalSearchLocations }]} locations listed near {[{ searchPlaceShort }]}</span>
+    <span ng-if='totalSearchLocations === 0'>No testing locations listed near {[{ searchPlaceShort }]}</span>
+    <button class='btn btn-tertiary' ng-click='clearSearch()' ng-cloak='' ng-show='searching'>Clear filter</button>
   </section>
-  <section class='section' ng-cloak='' ng-if='searching &amp;&amp; totalSearchLocations === 0'>
-    <div class='container-fluid'>
-      <div class='row'>
-        <div class='col-xs-12'>
-          No testing locations found around your area.
-        </div>
-      </div>
-    </div>
+  <section class='testing--no-locations' ng-cloak='' ng-if='searching &amp;&amp; totalSearchLocations === 0'>
+    <p>No testing locations listed nearby.</p>
+    <p>
+      Try a different search or
+      <a ng-click='clearSearch()'>clear the search filters?</a>
+    </p>
   </section>
-  <section class='section_bordered'>
+  <section class='section_bordered' ng-hide='searching &amp;&amp; totalSearchLocations === 0'>
     <div class='container-fluid' ng-cloak='' ng-repeat='county in closestCounties'>
       <h1 class='section--title_secondary_centered col-sm-6 col-sm-offset-3' ng-attr-id='{[{ county.county }]}'>HIV Testing in {[{ county.county }]}</h1>
       <div class='row'>
@@ -89,24 +83,49 @@
                   {[{ location.state }]},
                   {[{ location.zip }]}
                 </p>
+                <p class='testing--location-phone'>
+                  {[{ location.phone }]}
+                </p>
                 <div class='testing--location-links'>
-                  <a href='#'>
-                    Website
-                    <span class='geomicon-external'></span>
-                  </a>
-                  <a href='#'>
-                    See it on a map
-                    <span class='geomicon-location'></span>
-                  </a>
+                  <a ng-attr-href='{[{ location.website }]}' ng-if='location.website'>Website&nbsp;&nbsp;<span class='geomicon-external'></span></a>
+                  <a ng-attr-href='{[{ location.externalMap }]}'>See it on a map&nbsp;&nbsp;<span class='geomicon-location'></span></a>
                 </div>
               </div>
               <div class='testing--location-details'>
-                <p>{[{ location.website }]}</p>
-                <p>{[{ location.hours }]}</p>
-                <p>{[{ location.fees }]}</p>
-                <p>{[{ location.eligiblePopulation }]}</p>
-                <p>{[{ location.appointmentType }]}</p>
-                <p>{[{ location.services }]}</p>
+                <div class='row'>
+                  <div class='col-sm-4'><label><span class='geomicon-clock'></span>Hours</label></div>
+                  <div class='col-sm-8'>
+                    <p ng-bind-html='location.hours'></p>
+                  </div>
+                </div>
+                <div class='row'>
+                  <div class='col-sm-4'><label><span class='geomicon-bank'></span>Cost</label></div>
+                  <div class='col-sm-8'>
+                    <p>{[{ location.fees }]}</p>
+                  </div>
+                </div>
+                <div class='row'>
+                  <div class='col-sm-4'><label><span class='geomicon-people'></span>Eligibility</label></div>
+                  <div class='col-sm-8'>
+                    <p>{[{ location.eligiblePopulation }]}</p>
+                  </div>
+                </div>
+                <div class='row'>
+                  <div class='col-sm-4'><label><span class='geomicon-calendar-day'></span>Appointment</label></div>
+                  <div class='col-sm-8'>
+                    <p ng-bind-html='location.appointmentType'></p>
+                  </div>
+                </div>
+                <div class='row'>
+                  <div class='col-sm-4'><label><span class='geomicon-briefcase'></span>Services</label></div>
+                  <div class='col-sm-8'>
+                    <ul>
+                      <li ng-repeat='service in location.services'>
+                        {[{ service }]}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

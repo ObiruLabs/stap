@@ -46,6 +46,7 @@
 
         > select {
             color: $brand-secondary;
+            cursor: pointer;
             max-width: 100%;
             padding: 0px 21px 6px 10px;
             border: none;
@@ -101,12 +102,16 @@
     }
 
     &--location {
-        border: 1px solid #ccc;
-        height: 600px;
+        border: 2px solid $brand-tertiary-light;
+        height: 775px;
         margin: 20px auto;
         max-width: 480px;
         overflow: hidden;
         position: relative;
+
+        @media (min-width: $screen-sm-min) {
+            height: 650px;
+        }
     }
 
     &--location-map {
@@ -117,24 +122,33 @@
         z-index: 1;
 
         > img {
-            height: 210px;
+            height: 250px;
+
+            @media (min-width: $screen-lg-min) {
+                height: 225px;
+            }
         }
     }
 
     .testing--location-overlay {
-        background: #fff;
+        background: $brand-tertiary-dark;
         border-bottom: 1px solid #ccc;
-        height: 210px;
+        height: 250px;
         left: 0;
-        opacity: .7;
+        opacity: .85;
         position: absolute;
         top: 0;
         width: 100%;
         z-index: 2;
+
+        @media (min-width: $screen-lg-min) {
+            height: 225px;
+        }
     }
 
     &--location-name {
-        height: 210px;
+        color: #fff;
+        height: 250px;
         padding: 0 50px;
         position: relative;
         z-index: 3;
@@ -144,6 +158,14 @@
             font-size: 22px;
             height: 75px;
             line-height: 25px;
+
+            @media (min-width: $screen-lg-min) {
+                height: 50px;
+            }
+        }
+
+        a {
+            color: $brand-secondary;
         }
     }
 
@@ -160,7 +182,26 @@
     }
 
     &--location-details {
+        font: {
+            family: $font-family-sans-serif;
+            size: 16px;
+        }
         padding: 0 50px;
+
+        > .row {
+            margin-bottom: 10px;
+
+            p {
+                margin-bottom: 0;
+            }
+
+            label > span {
+                color: #999;
+                margin-right: 10px;
+                position: relative;
+                top: 1px;
+            }
+        }
     }
 
     &--location-links {
@@ -181,11 +222,51 @@
         .geomicon-external,
         .geomicon-location {
             font-size: 14px;
-            margin-left: 5px;
         }
+    }
+
+    &--location-phone {
+        font: {
+            family: $font-family-sans-serif;
+            size: 16px;
+        }
+        margin-bottom: 10px;
     }
 
     .section--title_secondary_centered {
         margin-bottom: 80px;
+    }
+
+    &--notification {
+        background: $brand-tertiary-light;
+        border-top: 1px solid #aaa;
+        font-family: $font-family-sans-serif;
+        padding: 20px 0;
+        text-align: center;
+
+        .btn-tertiary {
+            margin-left: 25px;
+            padding: 0 20px;
+        }
+    }
+
+    &--no-locations {
+        color: #ccc;
+        font: {
+            family: $font-family-sans-serif;
+            size: 28px;
+        }
+        padding: 100px 0 200px 0;
+        text-align: center;
+
+        p {
+            margin-bottom: 0;
+        }
+
+        a {
+            color: #ccc;
+            cursor: pointer;
+            text-decoration: underline;
+        }
     }
 }

@@ -7770,12 +7770,14 @@ button.close {
   margin-top: 14px;
 }
 
+.btn-secondary:focus,
 .btn-secondary:active {
   color: #fff;
 }
 
 .btn-tertiary {
   color: #50637a;
+  background: transparent;
   border: 2px solid #50637a;
 }
 .btn-tertiary:hover {
@@ -9192,6 +9194,7 @@ button.close {
 }
 .testing--radius > select {
   color: #07beea;
+  cursor: pointer;
   max-width: 100%;
   padding: 0px 21px 6px 10px;
   border: none;
@@ -9243,12 +9246,17 @@ button.close {
   padding-top: 5px;
 }
 .testing--location {
-  border: 1px solid #ccc;
-  height: 600px;
+  border: 2px solid #e4e8ef;
+  height: 775px;
   margin: 20px auto;
   max-width: 480px;
   overflow: hidden;
   position: relative;
+}
+@media (min-width: 768px) {
+  .testing--location {
+    height: 650px;
+  }
 }
 .testing--location-map {
   left: 0;
@@ -9258,21 +9266,32 @@ button.close {
   z-index: 1;
 }
 .testing--location-map > img {
-  height: 210px;
+  height: 250px;
+}
+@media (min-width: 1200px) {
+  .testing--location-map > img {
+    height: 225px;
+  }
 }
 .testing .testing--location-overlay {
-  background: #fff;
+  background: #50637a;
   border-bottom: 1px solid #ccc;
-  height: 210px;
+  height: 250px;
   left: 0;
-  opacity: .7;
+  opacity: .85;
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 2;
 }
+@media (min-width: 1200px) {
+  .testing .testing--location-overlay {
+    height: 225px;
+  }
+}
 .testing--location-name {
-  height: 210px;
+  color: #fff;
+  height: 250px;
   padding: 0 50px;
   position: relative;
   z-index: 3;
@@ -9282,6 +9301,14 @@ button.close {
   font-size: 22px;
   height: 75px;
   line-height: 25px;
+}
+@media (min-width: 1200px) {
+  .testing--location-name > h2 {
+    height: 50px;
+  }
+}
+.testing--location-name a {
+  color: #07beea;
 }
 .testing--location-address {
   font-family: "freight-sans-pro", helvetica, arial, sans-serif;
@@ -9293,7 +9320,21 @@ button.close {
   text-transform: uppercase;
 }
 .testing--location-details {
+  font-family: "freight-sans-pro", helvetica, arial, sans-serif;
+  font-size: 16px;
   padding: 0 50px;
+}
+.testing--location-details > .row {
+  margin-bottom: 10px;
+}
+.testing--location-details > .row p {
+  margin-bottom: 0;
+}
+.testing--location-details > .row label > span {
+  color: #999;
+  margin-right: 10px;
+  position: relative;
+  top: 1px;
 }
 .testing--location-links {
   font-family: "freight-sans-pro", helvetica, arial, sans-serif;
@@ -9309,10 +9350,40 @@ button.close {
 .testing--location-links .geomicon-external,
 .testing--location-links .geomicon-location {
   font-size: 14px;
-  margin-left: 5px;
+}
+.testing--location-phone {
+  font-family: "freight-sans-pro", helvetica, arial, sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 .testing .section--title_secondary_centered {
   margin-bottom: 80px;
+}
+.testing--notification {
+  background: #e4e8ef;
+  border-top: 1px solid #aaa;
+  font-family: "freight-sans-pro", helvetica, arial, sans-serif;
+  padding: 20px 0;
+  text-align: center;
+}
+.testing--notification .btn-tertiary {
+  margin-left: 25px;
+  padding: 0 20px;
+}
+.testing--no-locations {
+  color: #ccc;
+  font-family: "freight-sans-pro", helvetica, arial, sans-serif;
+  font-size: 28px;
+  padding: 100px 0 200px 0;
+  text-align: center;
+}
+.testing--no-locations p {
+  margin-bottom: 0;
+}
+.testing--no-locations a {
+  color: #ccc;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .form-group label {

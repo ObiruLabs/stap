@@ -116,6 +116,48 @@
     }
 }
 
+.section_background {
+    @extend .section;
+    background-size: cover;
+    position: relative;
+    @include poly-background-size();
+
+    &--overlay {
+        height: 100%;
+        left: 0;
+        opacity: .8;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    .section--title {
+        text-align: center;
+
+        &:after {
+            display: none;
+        }
+    }
+
+    p {
+        text-align: center;
+    }
+}
+
+.section_background_services {
+    @extend .section_background;
+    background-image: url("/images/hotcrossrun.png");
+    color: #fff;
+    padding: {
+        bottom: 150px;
+        top: 100px;
+    }
+
+    .section_background--overlay {
+        background: $brand-tertiary-dark;
+    }
+}
+
 .section_short {
     @extend .section;
 

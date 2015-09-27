@@ -1,0 +1,143 @@
+.service {
+    border: none;
+    margin: 20px auto;
+    overflow: hidden;
+
+    @media (min-width: $screen-lg-min) {
+        border: {
+            bottom: none;
+            left: none;
+            right: none;
+            top: 2px solid $brand-tertiary-light;
+        }
+        height: auto;
+        margin: 0;
+        max-width: none;
+        min-width: none;
+    }
+
+    .is-odd & {
+        @media (min-width: $screen-sm-min) {
+            margin-right: 0;
+        }
+
+        .service--photo {
+            @include make-lg-column-push(6);
+        }
+    }
+
+    .is-even & {
+        @media (min-width: $screen-sm-min) {
+            margin-left: 0;
+        }
+
+        .service--details {
+            @include make-lg-column-push(5);
+
+            > .row > .col-lg-11 {
+                @include make-lg-column-push(1);
+            }
+        }
+    }
+
+    &--upcoming-label {
+        @include display-inline-block();
+        background: $brand-tertiary-light;
+        color: $brand-tertiary-dark;
+        font: {
+            family: $font-family-sans-serif;
+            size: 16px;
+        }
+        margin-bottom: 25px;
+        padding: 0 20px;
+        position: absolute;
+        text-transform: uppercase;
+        top: -50px;
+    }
+
+    &--date {
+        display: block;
+        font: {
+            family: $font-family-sans-serif;
+            weight: 700;
+        }
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    &--photo {
+        background-size: cover;
+        height: 300px;
+        position: absolute;
+        @include poly-background-size();
+
+        @media (min-width: $screen-lg-min) {
+            height: 100%;
+            margin-top: 0;
+            padding-top: 0;
+        }
+    }
+
+    &--details {
+        margin-top: 250px;
+        padding-top: 20px;
+
+        > .row > .col-lg-11 {
+            padding: {
+                bottom: 45px;
+                top: 100px;
+            }
+        }
+
+        @media (min-width: $screen-lg-min) {
+            margin-top: 0;
+            padding-top: 0;
+
+            > .row > .col-lg-11 {
+                background: #fff;
+                padding-bottom: 200px;
+            }
+        }
+    }
+
+    > .row {
+        position: relative;
+    }
+
+    h2 {
+        font-size: 28px;
+        margin: {
+            bottom: 25px;
+            top: 0;
+        }
+    }
+
+    .btn-secondary,
+    .btn-tertiary {
+        display: block;
+        margin-top: 40px;
+
+        @media (min-width: $screen-xs-min) {
+            display: inline-block;
+        }
+    }
+
+    .btn-secondary {
+        padding: 5px 60px;
+    }
+
+    .btn-tertiary {
+        padding: 4px 39px;
+    }
+
+    .btn-secondary + .btn-tertiary {
+        margin-top: 15px;
+
+        @media (min-width: $screen-xs-min) {
+            margin: {
+                left: 10px;
+                top: 40px;
+            }
+        }
+    }
+}

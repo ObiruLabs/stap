@@ -2,32 +2,48 @@
 {% set navPage = 'services' %}
 {% block content %}
 %main#main-content
-    %section.section_callout
+    %section.section_background_services
+        .section_background--overlay
         .container-fluid
             .row
                 .col-sm-6.col-sm-offset-3
                     %h1.section--title Our Services
                     {{ entry.pageIntroduction }}
 
-    %section.section
+    %section.section_bordered
         .container-fluid
             .row
-                .col-sm-5.col-sm-offset-1
-                    .post
-                        .post--container
-                            .row
-                                .col-sm-11.col-sm-offset-1
-                                    %h2 Prevention Services
-                                    %p {{ entry.preventionServicesIntroduction }}
-                                    %a.post--more.btn.btn-secondary{ href: '/preventionservices' } See services
-                .col-sm-5
-                    .post
-                        .post--container
-                            .row
-                                .col-sm-11.col-sm-offset-1
-                                    %h2 Client Services
-                                    %p {{ entry.clientServicesIntroduction }}
-                                    %a.post--more.btn.btn-secondary{ href: '/clientservices' } See services
+                .col-sm-6.col-sm-offset-3
+                    {{ entry.pageSubIntroduction }}
+
+    %section.section_clear
+        .container-full
+            .row
+                .col-lg-12.is-odd
+                    .service
+                        .row
+                            .service--photo.col-xs-12.col-lg-6{ style: 'background-image: url("/images/events/mudgauntlet.png")' }
+                            .service--details.col-lg-7
+                                .row
+                                    .col-lg-11<
+                                        .row
+                                            .col-xs-10.col-xs-offset-1.col-lg-8.col-lg-offset-2
+                                                %h2.section--title Prevention Services
+                                                %p {{ entry.preventionServicesIntroduction }}
+                                                %a.btn.btn-secondary{ href: '/preventionservices' } Read about our prevention programs
+
+                .col-lg-12.is-even
+                    .service
+                        .row
+                            .service--photo.col-xs-12.col-lg-6{ style: 'background-image: url("/images/events/aidsride.png")' }
+                            .service--details.col-lg-7
+                                .row
+                                    .col-lg-11<
+                                        .row
+                                            .col-xs-10.col-xs-offset-1.col-lg-8.col-lg-offset-2
+                                                %h2.section--title Client Services
+                                                %p {{ entry.clientServicesIntroduction }}
+                                                %a.btn.btn-secondary{ href: '/clientservices' } Read about our client programs
 
     %section.section_callout
         .container-fluid

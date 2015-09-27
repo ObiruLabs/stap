@@ -316,7 +316,7 @@ button.btn {
         margin-left: -150px;
     }
 
-    .donation-form--notify-details {
+    &--notify-details {
         margin-top: 30px;
 
         @media (min-width: $screen-sm-min) {
@@ -324,7 +324,7 @@ button.btn {
         }
     }
 
-    .donation-form--complete {
+    &--complete {
         h1 {
             font: {
                 family: $font-family-sans-serif;
@@ -349,7 +349,7 @@ button.btn {
         }
     }
 
-    .donation-form--share-links {
+    &--share-links {
         margin: 70px 0;
         text-align: center;
 
@@ -365,6 +365,18 @@ button.btn {
             top: 3px;
             width: 18px;
         }
+    }
+
+    &--notify-address {
+        background: #f8f8f8;
+        margin: {
+            bottom: 70px;
+            left: auto;
+            right: auto;
+            top: -50px;
+        }
+        padding: 15px 40px;
+        width: 60%;
     }
 
     .alert {

@@ -131,6 +131,16 @@ angular.module('stap')
                 $scope.form.behalfType = 'honor';
             } else if (!$scope.form.behalfSelected && $scope.form.behalfType !== 'none') {
                 $scope.form.behalfType = 'none';
+                $scope.form.behalfName = '';
+
+                $scope.form.notifyType = 'none';
+                $scope.form.notifyName = '';
+                $scope.form.notifyEmail = '';
+                $scope.form.notifyAddress1 = '';
+                $scope.form.notifyAddress2 = '';
+                $scope.form.notifyCity = '';
+                $scope.form.notifyState = '';
+                $scope.form.notifyZip = '';
             }
         };
 
@@ -145,6 +155,10 @@ angular.module('stap')
          * @param step {Number} 0-index based step
          */
         $scope.gotoStep = function(step) {
+            if (currentStep === 1) {
+
+            }
+
             if (currentStep === 2) {
                 return;
             }

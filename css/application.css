@@ -9656,21 +9656,21 @@ button.btn:focus, button.btn_more:focus, button.btn:active, button.btn_more:acti
 .donation-form--recurring-info.hint--top:after {
   margin-left: -150px;
 }
-.donation-form .donation-form--notify-details {
+.donation-form--notify-details {
   margin-top: 30px;
 }
 @media (min-width: 768px) {
-  .donation-form .donation-form--notify-details {
+  .donation-form--notify-details {
     margin-top: 10px;
   }
 }
-.donation-form .donation-form--complete h1 {
+.donation-form--complete h1 {
   font-family: "freight-sans-pro", helvetica, arial, sans-serif;
   font-weight: 700;
   margin-top: 80px;
   text-align: center;
 }
-.donation-form .donation-form--complete h2 {
+.donation-form--complete h2 {
   font-family: "source-serif-pro", Georgia, "Times New Roman", Times, serif;
   font-size: 20px;
   font-weight: 400;
@@ -9679,20 +9679,29 @@ button.btn:focus, button.btn_more:focus, button.btn:active, button.btn_more:acti
   margin-top: 50px;
   text-align: center;
 }
-.donation-form .donation-form--share-links {
+.donation-form--share-links {
   margin: 70px 0;
   text-align: center;
 }
-.donation-form .donation-form--share-links .btn, .donation-form .donation-form--share-links .btn_more {
+.donation-form--share-links .btn, .donation-form--share-links .btn_more {
   margin-bottom: 15px;
   padding: 5px 40px 5px 34px;
   width: 100%;
 }
-.donation-form .donation-form--share-links svg {
+.donation-form--share-links svg {
   margin-right: 8px;
   position: relative;
   top: 3px;
   width: 18px;
+}
+.donation-form--notify-address {
+  background: #f8f8f8;
+  margin-bottom: 70px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -50px;
+  padding: 15px 40px;
+  width: 60%;
 }
 .donation-form .alert {
   font-family: "freight-sans-pro", helvetica, arial, sans-serif;

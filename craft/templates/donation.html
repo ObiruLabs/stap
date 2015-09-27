@@ -205,12 +205,25 @@
             <div class='alert alert-danger' ng-show='form.hasErrors'>{[{ errorMessage }]}</div>
           </section>
           <section class='donation-form--complete' ng-cloak='' ng-show='isStep(2)'>
-            <h1>Thank you for your gift of ${[{ donationAmount() / 100 }]}!</h1>
+            <h1>Thank you for your {[{ form.chargeType === 'recurring' ? ' monthly ' : '' }]} gift of ${[{ donationAmount() / 100 }]}!</h1>
             <h2>
               We’ve sent an email confirmation of your donation to
               <br>
               <strong>{[{ form.donorEmail }]}.</strong>
+              <span ng-if='form.chargeType === "recurring"'>
+                Each month you’ll receive an email after your donation of ${[{ donationAmount() / 100 }]} is processed. You can cancel your recurring donation from that receipt.
+              </span>
+              <span ng-if='form.notifyType === "letter"'>
+                We’ll also send a letter to notify<strong>&nbsp;{[{ form.notifyName }]}&nbsp;</strong>of your donation, at the following address:
+              </span>
+              <span ng-if='form.notifyType === "email"'>
+                We’ll also send an email to notify<strong>&nbsp;{[{ form.notifyName }]}&nbsp;</strong>of your donation, at<strong>&nbsp;{[{ form.notifyEmail }]}.</strong></span>
             </h2>
+            <div class='donation-form--notify-address' ng-if='form.notifyType === "letter"'>
+              <div class='donation-form--notify-address1'>{[{ form.notifyAddress1 }]}</div>
+              <div class='donation-form--notify-address2' ng-if='form.notifyAddress2'>{[{ form.notifyAddress2 }]}</div>
+              <div class='donation-form--notify-address3'>{[{ form.notifyCity }]}, {[{ form.notifyState }]} {[{ form.notifyZip }]}</div>
+            </div>
             {{ entry.donationQuote }}
             <div class='donation-form--share-links'>
               <div class='row'>

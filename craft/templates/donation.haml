@@ -220,11 +220,26 @@
                         .alert.alert-danger{ ng: { show: 'form.hasErrors' } } {[{ errorMessage }]}
 
                     %section.donation-form--complete{ ng: { cloak: '', show: 'isStep(2)' } }
-                        %h1 Thank you for your gift of ${[{ donationAmount() / 100 }]}!
+                        %h1 Thank you for your {[{ form.chargeType === 'recurring' ? ' monthly ' : '' }]} gift of ${[{ donationAmount() / 100 }]}!
                         %h2
                             We’ve sent an email confirmation of your donation to
                             %br
                             %strong {[{ form.donorEmail }]}.
+                            %span{ ng: { if: 'form.chargeType === "recurring"' } }
+                                Each month you’ll receive an email after your donation of ${[{ donationAmount() / 100 }]} is processed. You can cancel your recurring donation from that receipt.
+                            %span{ ng: { if: 'form.notifyType === "letter"' } }
+                                We’ll also send a letter to notify
+                                %strong> &nbsp;{[{ form.notifyName }]}&nbsp;
+                                of your donation, at the following address:
+                            %span{ ng: { if: 'form.notifyType === "email"' } }
+                                We’ll also send an email to notify
+                                %strong> &nbsp;{[{ form.notifyName }]}&nbsp;
+                                of your donation, at
+                                %strong> &nbsp;{[{ form.notifyEmail }]}.
+                        .donation-form--notify-address{ ng: { if: 'form.notifyType === "letter"' } }
+                            .donation-form--notify-address1 {[{ form.notifyAddress1 }]}
+                            .donation-form--notify-address2{ ng: { if: 'form.notifyAddress2' } } {[{ form.notifyAddress2 }]}
+                            .donation-form--notify-address3 {[{ form.notifyCity }]}, {[{ form.notifyState }]} {[{ form.notifyZip }]}
                         {{ entry.donationQuote }}
                         .donation-form--share-links
                             .row

@@ -2,8 +2,9 @@
 {% set navPage = 'donation' %}
 {% block content %}
 %main#main-content{ ng: { controller: 'donationCtrl', init: "stripePublishableKey='{{ craft.stripeService.publishableKey() }}'" } }
-    %section.section_callout.section_blank.section_progress
-        .container-fluid
+    %section.section_background_donation.section_progress
+        .section_background--overlay
+        .testing--jumbotron.container-fluid
             .row
                 .col-sm-6.col-sm-offset-3
                     %h1.section--title Make a Donation

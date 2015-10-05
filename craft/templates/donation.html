@@ -2,8 +2,9 @@
 {% set navPage = 'donation' %}
 {% block content %}
 <main id='main-content' ng-controller='donationCtrl' ng-init="stripePublishableKey='{{ craft.stripeService.publishableKey() }}'">
-  <section class='section_callout section_blank section_progress'>
-    <div class='container-fluid'>
+  <section class='section_background_donation section_progress'>
+    <div class='section_background--overlay'></div>
+    <div class='testing--jumbotron container-fluid'>
       <div class='row'>
         <div class='col-sm-6 col-sm-offset-3'>
           <h1 class='section--title'>Make a Donation</h1>

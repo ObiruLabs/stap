@@ -178,6 +178,16 @@
     }
 }
 
+.section_background_donation {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-7.jpg");
+
+    .section_background--overlay {
+        background: #fff;
+        opacity: .9;
+    }
+}
+
 .section_short {
     @extend .section;
 

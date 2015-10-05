@@ -2,6 +2,19 @@
 {% set navPage = 'faq' %}
 {% block content %}
 %main#main-content
+    %section.section_bordered
+        .container-fluid
+            .row
+                .col-sm-6.col-sm-offset-3
+                    {% for entry in craft.entries.section('faq') %}
+                    %a{ href: "{{ '#' ~ entry.slug }}" }
+                        %h1 {{ entry.title }}
+                    %ul.faq--question-links
+                        {% for faq in entry.faq %}
+                        %li.faq--question-link
+                            %a{ href: "{{ '#' ~ faq.question | kebab }}" } {{ faq.question }}
+                        {% endfor %}
+                    {% endfor %}
     {% for entry in craft.entries.section('faq') %}
     %section.section_bordered
         .container-fluid
@@ -13,6 +26,8 @@
                         &nbsp;
                     %h1.section--title_secondary {{ entry.title }}
                     {% for faq in entry.faq %}
+                    %a{ id: '{{ faq.question | kebab }}' }
+                        &nbsp;
                     .faq
                         %h2.faq--question {{ faq.question }}
                         {{ faq.answer }}

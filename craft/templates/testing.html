@@ -27,11 +27,14 @@
 {% set counties = counties | merge(['{"county":"' ~ entry.title ~ '","locations":[' ~ locations | join(',') ~ ']}']) %}
 {% endfor %}
 <main class='testing' id='main-content' ng-controller='testingCtrl' ng-init="counties={{- '[' ~ counties | join(',') ~ ']' -}}">
-  <section class='section_blank section_bordered'>
+  <section class='section_background_testing section_bordered'>
+    <div class='section_background--overlay'></div>
     <div class='testing--jumbotron container-fluid'>
       <div class='row'>
         <div class='col-sm-6 col-sm-offset-3'>
-          <img class='testing--ribbon' src='/images/ribbon.png'>
+          <svg class='testing--ribbon' viewbox='0 0 24 47.5'>
+            <use xlink:href='#ribbon'></use>
+          </svg>
           <h1 class='section--title'>Know Your HIV Status</h1>
           <p class='testing--introduction'>New York State has made it easier than ever to get tested and learn your status today.</p>
           <p>Find a testing center within:</p>

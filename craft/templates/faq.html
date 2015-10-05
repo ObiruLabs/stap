@@ -2,6 +2,26 @@
 {% set navPage = 'faq' %}
 {% block content %}
 <main id='main-content'>
+  <section class='section_bordered'>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          {% for entry in craft.entries.section('faq') %}
+          <a href="{{ '#' ~ entry.slug }}">
+            <h1>{{ entry.title }}</h1>
+          </a>
+          <ul class='faq--question-links'>
+            {% for faq in entry.faq %}
+            <li class='faq--question-link'>
+              <a href="{{ '#' ~ faq.question | kebab }}">{{ faq.question }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
   {% for entry in craft.entries.section('faq') %}
   <section class='section_bordered'>
     <div class='container-fluid'>
@@ -14,6 +34,9 @@
           </p>
           <h1 class='section--title_secondary'>{{ entry.title }}</h1>
           {% for faq in entry.faq %}
+          <a id='{{ faq.question | kebab }}'>
+            &nbsp;
+          </a>
           <div class='faq'>
             <h2 class='faq--question'>{{ faq.question }}</h2>
             {{ faq.answer }}

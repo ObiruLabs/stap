@@ -1,13 +1,13 @@
 {% extends "_layout" %}
 {% block content %}
-<img src='/images/promo.png' style='margin-top: 70px;' width='100%'>
-<section class='section_callout'>
+<img src='/images/promo.png' width='100%'>
+<section class='section_callout' style='background-color: #eef7f8'>
   <div class='container-fluid'>
     <h1 class='section--title col-sm-8 col-sm-offset-2'>We've been providing comprehensive HIV/AIDS services in the Southern Tier of New York for over 30 years.</h1>
     <div class='row'>
       <div class='media-vertical_services col-sm-4'>
         <div class='media-vertical--container'>
-          <div class='media-vertical--media'>
+          <div class='media-vertical--media' style='background-color: #e7f2f8'>
             <img src='/images/testing.png'>
           </div>
           <h2>HIV Testing</h2>
@@ -20,7 +20,7 @@
       </div>
       <div class='media-vertical_services col-sm-4'>
         <div class='media-vertical--container'>
-          <div class='media-vertical--media'>
+          <div class='media-vertical--media' style='background-color: #e7f2f8'>
             <img src='/images/syringe.png'>
           </div>
           <h2>Syringe Exhange Program</h2>
@@ -33,7 +33,7 @@
       </div>
       <div class='media-vertical_services col-sm-4'>
         <div class='media-vertical--container'>
-          <div class='media-vertical--media'>
+          <div class='media-vertical--media' style='background-color: #e7f2f8'>
             <img src='/images/healthhomes.png'>
           </div>
           <h2>Health Homes Care Management</h2>
@@ -47,7 +47,7 @@
     </div>
     <div class='row'>
       <div class='col-sm-6 col-sm-offset-3'>
-        <a class='section--more btn is-full'>
+        <a class='section--more btn is-full btn-secondary' style='color: #fff'>
           We provide even more services. See it all here
           <span class='geomicon-arrow-right'></span>
         </a>
@@ -61,7 +61,7 @@
     <div class='row'>
       {% for event in craft.entries.section('events').first().events.limit(3) %}
       <div class='media-vertical_events col-sm-4'>
-        <div class='media-vertical--container'>
+        <div class='media-vertical--container' style='background-color: #eef7f8'>
           <div class='media-vertical--media'>
             <img data-src='{{ event.photo.first().url }}'>
           </div>
@@ -77,7 +77,7 @@
   <div class='container-fluid'>
     <h1 class='section--title col-sm-8 col-sm-offset-2'>Recent News</h1>
     <div class='post'>
-      <div class='col-xs-10 col-xs-offset-1'>
+      <div class='col-xs-8 col-xs-offset-2'>
         <div class='post--container'>
           <div class='row'>
             <div class='col-sm-7'>

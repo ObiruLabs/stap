@@ -119,6 +119,10 @@
 .section_background {
     @extend .section;
     background-size: cover;
+    padding: {
+        bottom: 150px;
+        top: 100px;
+    }
     position: relative;
     @include poly-background-size();
 
@@ -146,15 +150,31 @@
 
 .section_background_services {
     @extend .section_background;
-    background-image: url("/images/hotcrossrun.png");
+    background-image: url("/images/backgrounds/bg-6.jpg");
     color: #fff;
-    padding: {
-        bottom: 150px;
-        top: 100px;
-    }
 
     .section_background--overlay {
         background: $brand-tertiary-dark;
+    }
+}
+
+.section_background_events {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-5.jpg");
+
+    .section_background--overlay {
+        background: #fff;
+        opacity: .9;
+    }
+}
+
+.section_background_testing {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-2.jpg");
+
+    .section_background--overlay {
+        background: #fff;
+        opacity: .95;
     }
 }
 

@@ -2,6 +2,18 @@
     &--question {
         color: $brand-primary;
         font-size: 18px;
-        margin-top: 80px;
+        margin-top: 55px;
+    }
+
+    &--question-links {
+        margin-bottom: 50px;
+    }
+
+    &--question-link {
+        margin-bottom: 5px;
+
+        a {
+            color: $text-color;
+        }
     }
 }

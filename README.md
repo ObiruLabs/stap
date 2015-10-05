@@ -50,7 +50,11 @@ Deployment
 3. Stage generated assets from ` /dist `
 4. Commit change
 5. Tag the commit to be deployed
-6. Highlight all files
-7. Right click, Sync with Deployed
+
+New Deployments
+-----------
+* Update General Settings URL
+* Update each Asset URLs
+* Sync images folder
 
 Note: You have to expand the .html file that is generated for it to be uploaded/diffed when syncing.

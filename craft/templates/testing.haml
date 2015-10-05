@@ -35,11 +35,13 @@
 {% endfor %}
 
 %main#main-content.testing{ ng: { controller: 'testingCtrl', init: "counties={{- '[' ~ counties | join(',') ~ ']' -}}" } }
-    %section.section_blank.section_bordered
+    %section.section_background_testing.section_bordered
+        .section_background--overlay
         .testing--jumbotron.container-fluid
             .row
                 .col-sm-6.col-sm-offset-3
-                    %img.testing--ribbon{ src: '/images/ribbon.png' }
+                    %svg.testing--ribbon{ viewbox: '0 0 24 47.5' }
+                        %use{ 'xlink:href' => '#ribbon' }
                     %h1.section--title Know Your HIV Status
                     %p.testing--introduction New York State has made it easier than ever to get tested and learn your status today.
                     %p Find a testing center within:

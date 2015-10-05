@@ -9,7 +9,7 @@
 
     &--ribbon {
         margin-top: 25px;
-        width: 30px;
+        width: 20px;
     }
 
     &--introduction {
@@ -83,6 +83,7 @@
 
     &--location-form {
         .form-inline &.form-group > input.form-control[type="text"] {
+            background: transparent;
             border-bottom-width: 2px;
             color: $brand-secondary;
             text-align: center;

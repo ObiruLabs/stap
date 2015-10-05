@@ -1,15 +1,15 @@
 {% extends "_layout" %}
 {% block content %}
 
-%img{ src: '/images/promo.png', width: '100%', style: 'margin-top: 70px;' }
+%img{ src: '/images/promo.png', width: '100%' }
 
-%section.section_callout
+%section.section_callout{ style: 'background-color: #eef7f8' }
     .container-fluid
         %h1.section--title.col-sm-8.col-sm-offset-2 We've been providing comprehensive HIV/AIDS services in the Southern Tier of New York for over 30 years.
         .row
             .media-vertical_services.col-sm-4
                 .media-vertical--container
-                    .media-vertical--media
+                    .media-vertical--media{ style: 'background-color: #e7f2f8' }
                         %img{ src: '/images/testing.png' }
                     %h2 HIV Testing
                     %p STAP offers fast, free and confidential HIV testing at many locations throughout the Southern Tier. Knowing our HIV status can keep you and your partner safe.
@@ -18,7 +18,7 @@
                         %span.geomicon-arrow-right
             .media-vertical_services.col-sm-4
                 .media-vertical--container
-                    .media-vertical--media
+                    .media-vertical--media{ style: 'background-color: #e7f2f8' }
                         %img{ src: '/images/syringe.png' }
                     %h2 Syringe Exhange Program
                     %p STAP's Prevention Points exchange new sterile syringes for used ones to reduce the risk of infection with HIV, Hepatitis C, and other blood-borne illnesses among injection drug users.
@@ -27,7 +27,7 @@
                         %span.geomicon-arrow-right
             .media-vertical_services.col-sm-4
                 .media-vertical--container
-                    .media-vertical--media
+                    .media-vertical--media{ style: 'background-color: #e7f2f8' }
                         %img{ src: '/images/healthhomes.png' }
                     %h2 Health Homes Care Management
                     %p STAP's Health Homes program serves individuals with a variety of chronic conditions with comprehensive care managemnt and care coordination services.
@@ -37,7 +37,7 @@
 
         .row
             .col-sm-6.col-sm-offset-3
-                %a.section--more.btn.is-full
+                %a.section--more.btn.is-full.btn-secondary{ style: 'color: #fff' }
                     We provide even more services. See it all here
                     %span.geomicon-arrow-right
 
@@ -47,7 +47,7 @@
         .row
             {% for event in craft.entries.section('events').first().events.limit(3) %}
             .media-vertical_events.col-sm-4
-                .media-vertical--container
+                .media-vertical--container{ style: 'background-color: #eef7f8' }
                     .media-vertical--media
                         %img{ data: { src: '{{ event.photo.first().url }}' } }
                     %h2 {{ event.eventName }}
@@ -58,7 +58,7 @@
     .container-fluid
         %h1.section--title.col-sm-8.col-sm-offset-2 Recent News
         .post
-            .col-xs-10.col-xs-offset-1
+            .col-xs-8.col-xs-offset-2
                 .post--container
                     .row
                         .col-sm-7

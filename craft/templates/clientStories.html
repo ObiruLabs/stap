@@ -1,0 +1,33 @@
+{% extends "_layout" %}
+{% set navPage = 'about' %}
+{% block content %}
+<main id='main-content'>
+  <section class='section_background_clientstories'>
+    <div class='section_background--overlay'></div>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <h1 class='section--title'>Stories from Our Clients</h1>
+          <p>Read and watch the stories our clients have shared about the impact STAP has made on their lives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% for story in entry.clientStories %}
+  <section class='section'>
+    <div class='container-fluid'>
+      <div class='client-story row'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <div class='client-story--profile'>
+            <img data-src='{{ story.coverImage.first().url }}'>
+          </div>
+          <h3>{{ story.storyName }}</h3>
+          {{ story.about }}
+        </div>
+      </div>
+    </div>
+  </section>
+  <iframe allowfullscreen='' frameborder='0' height='600' src='{{ story.linkToStory }}?rel=0&amp;amp;showinfo=0' width='100%'></iframe>
+  {% endfor %}
+</main>
+{% endblock %}

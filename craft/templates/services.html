@@ -88,23 +88,5 @@
       </div>
     </div>
   </section>
-  <section class='section'>
-    <div class='container-fluid'>
-      <h1 class='section--title col-sm-6 col-sm-offset-3'>Client Stories</h1>
-      {% set groups = entry.clientStories | batch(3) %}
-      {% for stories in groups %}
-      <div class='row'>
-        {% for story in stories %}
-        <div class='col-xs-4'>
-          <a href='{{ story.linkToStory }}'>
-            <img data-src='{{ story.coverImage.first().url }}' style='width: 100%'>
-          </a>
-          <h4 class='text-center'>{{ story.storyName }}</h4>
-        </div>
-        {% endfor %}
-      </div>
-      {% endfor %}
-    </div>
-  </section>
 </main>
 {% endblock %}

@@ -61,18 +61,4 @@
             .row
                 .col-sm-6.col-sm-offset-3.text-center
                     %a.section--more.btn.btn-secondary{ href: '/newsletters' } Read more
-
-    %section.section
-        .container-fluid
-            %h1.section--title.col-sm-6.col-sm-offset-3 Client Stories
-            {% set groups = entry.clientStories | batch(3) %}
-            {% for stories in groups %}
-            .row
-                {% for story in stories %}
-                .col-xs-4
-                    %a{ href: '{{ story.linkToStory }}' }
-                        %img{ data: { src: '{{ story.coverImage.first().url }}' }, style: 'width: 100%' }
-                    %h4.text-center {{ story.storyName }}
-                {% endfor %}
-            {% endfor %}
 {% endblock %}

@@ -126,7 +126,8 @@
     position: relative;
     @include poly-background-size();
 
-    &--overlay {
+    &--overlay,
+    &--overlay-light {
         height: 100%;
         left: 0;
         opacity: .8;
@@ -185,6 +186,46 @@
     .section_background--overlay {
         background: #fff;
         opacity: .9;
+    }
+}
+
+.section_background_clientstories {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-7.jpg");
+
+    .section_background--overlay {
+        background: #fff;
+        opacity: .9;
+    }
+}
+
+.section_background_home {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-1.jpg");
+    padding: {
+        bottom: 220px;
+        top: 150px;
+    }
+    position: relative;
+
+    .section_background--overlay-light {
+        background: #fff;
+        opacity: .6;
+    }
+
+    .section_background--overlay {
+        background: $brand-tertiary-dark;
+        opacity: .5;
+    }
+
+    .section--title {
+        color: #fff;
+        font: {
+            family: $font-family-serif;
+            size: 37px;
+            weight: 400;
+        }
+        line-height: 50px;
     }
 }
 

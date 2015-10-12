@@ -7831,6 +7831,26 @@ button.close {
   color: #fff;
 }
 
+.client-callout {
+  bottom: -32px;
+  position: absolute;
+}
+
+.client-story--profile {
+  margin-top: 50px;
+  text-align: center;
+}
+.client-story img {
+  border-radius: 50%;
+  height: 75px;
+  margin: 0 auto;
+  width: 75px;
+}
+.client-story h3 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
 .event {
   border: none;
   margin: 20px auto;
@@ -9053,7 +9073,7 @@ button.close {
   color: #333333;
 }
 
-.section, .section_callout, .section_blank, .section_background, .section_background_services, .section_background_events, .section_background_testing, .section_background_donation, .section_short, .section_bordered {
+.section, .section_callout, .section_blank, .section_background, .section_background_services, .section_background_events, .section_background_testing, .section_background_donation, .section_background_clientstories, .section_background_home, .section_short, .section_bordered {
   padding-bottom: 100px;
   padding-top: 50px;
 }
@@ -9100,27 +9120,27 @@ button.close {
   position: relative;
   width: 70px;
 }
-.section .section--subtitle, .section_callout .section--subtitle, .section_blank .section--subtitle, .section_background .section--subtitle, .section_background_services .section--subtitle, .section_background_events .section--subtitle, .section_background_testing .section--subtitle, .section_background_donation .section--subtitle, .section_short .section--subtitle, .section_bordered .section--subtitle {
+.section .section--subtitle, .section_callout .section--subtitle, .section_blank .section--subtitle, .section_background .section--subtitle, .section_background_services .section--subtitle, .section_background_events .section--subtitle, .section_background_testing .section--subtitle, .section_background_donation .section--subtitle, .section_background_clientstories .section--subtitle, .section_background_home .section--subtitle, .section_short .section--subtitle, .section_bordered .section--subtitle {
   margin-top: 50px;
 }
-.section .section--more, .section_callout .section--more, .section_blank .section--more, .section_background .section--more, .section_background_services .section--more, .section_background_events .section--more, .section_background_testing .section--more, .section_background_donation .section--more, .section_short .section--more, .section_bordered .section--more {
+.section .section--more, .section_callout .section--more, .section_blank .section--more, .section_background .section--more, .section_background_services .section--more, .section_background_events .section--more, .section_background_testing .section--more, .section_background_donation .section--more, .section_background_clientstories .section--more, .section_background_home .section--more, .section_short .section--more, .section_bordered .section--more {
   color: #333;
   font-weight: 700;
   margin-top: 50px;
   padding: 12px;
 }
-.section .section--more .geomicon-arrow-right, .section_callout .section--more .geomicon-arrow-right, .section_blank .section--more .geomicon-arrow-right, .section_background .section--more .geomicon-arrow-right, .section_background_services .section--more .geomicon-arrow-right, .section_background_events .section--more .geomicon-arrow-right, .section_background_testing .section--more .geomicon-arrow-right, .section_background_donation .section--more .geomicon-arrow-right, .section_short .section--more .geomicon-arrow-right, .section_bordered .section--more .geomicon-arrow-right {
+.section .section--more .geomicon-arrow-right, .section_callout .section--more .geomicon-arrow-right, .section_blank .section--more .geomicon-arrow-right, .section_background .section--more .geomicon-arrow-right, .section_background_services .section--more .geomicon-arrow-right, .section_background_events .section--more .geomicon-arrow-right, .section_background_testing .section--more .geomicon-arrow-right, .section_background_donation .section--more .geomicon-arrow-right, .section_background_clientstories .section--more .geomicon-arrow-right, .section_background_home .section--more .geomicon-arrow-right, .section_short .section--more .geomicon-arrow-right, .section_bordered .section--more .geomicon-arrow-right {
   font-size: 14px;
   margin-left: 5px;
   margin-top: 4px;
 }
-.section .section--more.is-full, .section_callout .section--more.is-full, .section_blank .section--more.is-full, .section_background .section--more.is-full, .section_background_services .section--more.is-full, .section_background_events .section--more.is-full, .section_background_testing .section--more.is-full, .section_background_donation .section--more.is-full, .section_short .section--more.is-full, .section_bordered .section--more.is-full {
+.section .section--more.is-full, .section_callout .section--more.is-full, .section_blank .section--more.is-full, .section_background .section--more.is-full, .section_background_services .section--more.is-full, .section_background_events .section--more.is-full, .section_background_testing .section--more.is-full, .section_background_donation .section--more.is-full, .section_background_clientstories .section--more.is-full, .section_background_home .section--more.is-full, .section_short .section--more.is-full, .section_bordered .section--more.is-full {
   width: 100%;
 }
-.section .section--body li, .section_callout .section--body li, .section_blank .section--body li, .section_background .section--body li, .section_background_services .section--body li, .section_background_events .section--body li, .section_background_testing .section--body li, .section_background_donation .section--body li, .section_short .section--body li, .section_bordered .section--body li {
+.section .section--body li, .section_callout .section--body li, .section_blank .section--body li, .section_background .section--body li, .section_background_services .section--body li, .section_background_events .section--body li, .section_background_testing .section--body li, .section_background_donation .section--body li, .section_background_clientstories .section--body li, .section_background_home .section--body li, .section_short .section--body li, .section_bordered .section--body li {
   margin-bottom: 5px;
 }
-.section .section--centered, .section_callout .section--centered, .section_blank .section--centered, .section_background .section--centered, .section_background_services .section--centered, .section_background_events .section--centered, .section_background_testing .section--centered, .section_background_donation .section--centered, .section_short .section--centered, .section_bordered .section--centered {
+.section .section--centered, .section_callout .section--centered, .section_blank .section--centered, .section_background .section--centered, .section_background_services .section--centered, .section_background_events .section--centered, .section_background_testing .section--centered, .section_background_donation .section--centered, .section_background_clientstories .section--centered, .section_background_home .section--centered, .section_short .section--centered, .section_bordered .section--centered {
   text-align: center;
 }
 
@@ -9140,14 +9160,14 @@ button.close {
   text-align: center;
 }
 
-.section_background, .section_background_services, .section_background_events, .section_background_testing, .section_background_donation {
+.section_background, .section_background_services, .section_background_events, .section_background_testing, .section_background_donation, .section_background_clientstories, .section_background_home {
   background-size: cover;
   padding-bottom: 150px;
   padding-top: 100px;
   position: relative;
   behavior: url("/css/polyfills/backgroundsize.htc");
 }
-.section_background--overlay {
+.section_background--overlay, .section_background--overlay-light {
   height: 100%;
   left: 0;
   opacity: .8;
@@ -9155,13 +9175,13 @@ button.close {
   top: 0;
   width: 100%;
 }
-.section_background .section--title, .section_background_services .section--title, .section_background_events .section--title, .section_background_testing .section--title, .section_background_donation .section--title {
+.section_background .section--title, .section_background_services .section--title, .section_background_events .section--title, .section_background_testing .section--title, .section_background_donation .section--title, .section_background_clientstories .section--title, .section_background_home .section--title {
   text-align: center;
 }
-.section_background .section--title:after, .section_background_services .section--title:after, .section_background_events .section--title:after, .section_background_testing .section--title:after, .section_background_donation .section--title:after {
+.section_background .section--title:after, .section_background_services .section--title:after, .section_background_events .section--title:after, .section_background_testing .section--title:after, .section_background_donation .section--title:after, .section_background_clientstories .section--title:after, .section_background_home .section--title:after {
   display: none;
 }
-.section_background p, .section_background_services p, .section_background_events p, .section_background_testing p, .section_background_donation p {
+.section_background p, .section_background_services p, .section_background_events p, .section_background_testing p, .section_background_donation p, .section_background_clientstories p, .section_background_home p {
   text-align: center;
 }
 
@@ -9195,6 +9215,36 @@ button.close {
 .section_background_donation .section_background--overlay {
   background: #fff;
   opacity: .9;
+}
+
+.section_background_clientstories {
+  background-image: url("/images/backgrounds/bg-7.jpg");
+}
+.section_background_clientstories .section_background--overlay {
+  background: #fff;
+  opacity: .9;
+}
+
+.section_background_home {
+  background-image: url("/images/backgrounds/bg-1.jpg");
+  padding-bottom: 220px;
+  padding-top: 150px;
+  position: relative;
+}
+.section_background_home .section_background--overlay-light {
+  background: #fff;
+  opacity: .6;
+}
+.section_background_home .section_background--overlay {
+  background: #50637a;
+  opacity: .5;
+}
+.section_background_home .section--title {
+  color: #fff;
+  font-family: "source-serif-pro", Georgia, "Times New Roman", Times, serif;
+  font-size: 37px;
+  font-weight: 400;
+  line-height: 50px;
 }
 
 .section_short {

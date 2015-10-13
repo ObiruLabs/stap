@@ -7840,6 +7840,24 @@ button.close {
   margin-top: 50px;
   text-align: center;
 }
+.client-story--video {
+  height: 300px;
+}
+@media (min-width: 768px) {
+  .client-story--video {
+    height: 500px;
+  }
+}
+@media (min-width: 992px) {
+  .client-story--video {
+    height: 600px;
+  }
+}
+@media (min-width: 1200px) {
+  .client-story--video {
+    height: 700px;
+  }
+}
 .client-story img {
   border-radius: 50%;
   height: 75px;

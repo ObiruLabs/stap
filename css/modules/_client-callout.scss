@@ -9,6 +9,22 @@
         text-align: center;
     }
 
+    &--video {
+        height: 300px;
+
+        @media (min-width: $screen-sm-min) {
+            height: 500px;
+        }
+
+        @media (min-width: $screen-md-min) {
+            height: 600px;
+        }
+
+        @media (min-width: $screen-lg-min) {
+            height: 700px;
+        }
+    }
+
     img {
         border-radius: 50%;
         height: 75px;

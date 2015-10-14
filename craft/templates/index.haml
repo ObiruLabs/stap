@@ -7,7 +7,7 @@
         .container-fluid
             .row
                 .col-sm-8.col-sm-offset-2
-                    %h1.section--title We work towards creating a world where HIV transmission is rare and those who are HIV+ lead healthy lives.
+                    %h1.section--title {{ entry.pageIntroduction }}
         .client-callout
             {% set story = random(craft.entries.section('clientStories').first().clientStories) %}
             .client-callout--overlay
@@ -105,15 +105,11 @@
         .row
             %h1.section--title.col-sm-8.col-sm-offset-2  Our Impact in Numbers
         .row
+            {% for impact in entry.impactStatistics %}
             .impact--statistic.col-sm-4
-                .impact--value 1,870
-                .impact--label Total Clients Served
-            .impact--statistic.col-sm-4
-                .impact--value 160,401
-                .impact--label Syringes Exchanged
-            .impact--statistic.col-sm-4
-                .impact--value 3,138
-                .impact--label Participants in Outreach Activities
+                .impact--value {{ impact.number }}
+                .impact--label {{ impact.label }}
+            {% endfor %}
         .impact--buttons.row
             .col-xs-12
                 %a.btn.btn-white_pill.impact--volunteer{ href: '/about#opportunities' }

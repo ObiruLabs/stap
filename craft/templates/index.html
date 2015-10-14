@@ -7,7 +7,7 @@
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-sm-8 col-sm-offset-2'>
-          <h1 class='section--title'>We work towards creating a world where HIV transmission is rare and those who are HIV+ lead healthy lives.</h1>
+          <h1 class='section--title'>{{ entry.pageIntroduction }}</h1>
         </div>
       </div>
     </div>
@@ -149,18 +149,12 @@
       <h1 class='section--title col-sm-8 col-sm-offset-2'>Our Impact in Numbers</h1>
     </div>
     <div class='row'>
+      {% for impact in entry.impactStatistics %}
       <div class='impact--statistic col-sm-4'>
-        <div class='impact--value'>1,870</div>
-        <div class='impact--label'>Total Clients Served</div>
+        <div class='impact--value'>{{ impact.number }}</div>
+        <div class='impact--label'>{{ impact.label }}</div>
       </div>
-      <div class='impact--statistic col-sm-4'>
-        <div class='impact--value'>160,401</div>
-        <div class='impact--label'>Syringes Exchanged</div>
-      </div>
-      <div class='impact--statistic col-sm-4'>
-        <div class='impact--value'>3,138</div>
-        <div class='impact--label'>Participants in Outreach Activities</div>
-      </div>
+      {% endfor %}
     </div>
     <div class='impact--buttons row'>
       <div class='col-xs-12'>

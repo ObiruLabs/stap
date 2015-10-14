@@ -7832,8 +7832,73 @@ button.close {
 }
 
 .client-callout {
-  bottom: -32px;
+  bottom: 0;
   position: absolute;
+  width: 100%;
+}
+.client-callout--overlay {
+  background: #50637a;
+  height: 100%;
+  left: 0;
+  opacity: .8;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.client-callout--body {
+  color: #fff;
+  font-family: "freight-sans-pro", helvetica, arial, sans-serif;
+  position: relative;
+}
+.client-callout--photo {
+  border-radius: 50%;
+  background: #7d8da0;
+  display: inline-block;
+  height: 75px;
+  margin-right: 23px;
+  margin-top: -40px;
+  width: 75px;
+}
+.client-callout--name {
+  display: inline-block;
+  margin: 24px 0 0 0;
+}
+.client-callout--name > a {
+  color: #fff;
+}
+.client-callout--name > a:hover {
+  color: #fff;
+}
+.client-callout--introduction {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+.client-callout--introduction > a {
+  color: #fff;
+}
+.client-callout--introduction > a:hover {
+  color: #fff;
+}
+.client-callout--quote-body {
+  font-size: 22px;
+  line-height: 30px;
+  margin-top: 23px;
+  margin-bottom: 23px;
+  margin-top: 23px;
+  padding-left: 60px;
+}
+.client-callout--quote-image {
+  opacity: .3;
+  position: absolute;
+  top: 7px;
+  width: 40px;
+}
+@media (min-width: 768px) {
+  .client-callout--quote-image {
+    top: 30px;
+  }
 }
 
 .client-story--profile {
@@ -8941,7 +9006,7 @@ button.close {
 }
 .nav-header_scrolled .nav-header--logo > a > svg {
   border-right: 1px solid #fff;
-  padding: 12px 32px 12px 5px;
+  padding: 10px 32px 10px 5px;
   width: 113px;
 }
 @media (min-width: 1200px) {
@@ -9260,9 +9325,16 @@ button.close {
 .section_background_home .section--title {
   color: #fff;
   font-family: "source-serif-pro", Georgia, "Times New Roman", Times, serif;
-  font-size: 37px;
+  font-size: 30px;
   font-weight: 400;
   line-height: 50px;
+  margin-bottom: 70px;
+}
+@media (min-width: 768px) {
+  .section_background_home .section--title {
+    font-size: 37px;
+    margin-bottom: 30px;
+  }
 }
 
 .section_short {

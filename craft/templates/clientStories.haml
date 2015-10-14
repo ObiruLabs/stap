@@ -11,7 +11,7 @@
                     %p Read and watch the stories our clients have shared about the impact STAP has made on their lives.
 
     {% for story in entry.clientStories %}
-    %section.section
+    %section.section{ id: '{{ story.storyName | kebab }}' }
         .container-fluid
             .client-story.row
                 .col-sm-6.col-sm-offset-3
@@ -19,6 +19,14 @@
                         %img{ data: { src: '{{ story.coverImage.first().url }}' } }
                     %h3 {{ story.storyName }}
                     {{ story.about }}
-    %iframe.client-story--video{ width: '100%', src: '{{ story.linkToStory }}?rel=0&amp;showinfo=0', frameborder: '0', allowfullscreen: '' }
+    %iframe.client-story--video{ width: '100%', data: { src: '{{ story.linkToStory }}?rel=0&amp;showinfo=0' }, frameborder: '0', allowfullscreen: '' }
     {% endfor %}
+    %script
+        function init() {
+        var vidDefer = document.getElementsByTagName('iframe');
+        for (var i=0; i<vidDefer.length; i++) {
+        if(vidDefer[i].getAttribute('data-src')) {
+        vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
+        } } }
+        window.onload = init;
 {% endblock %}

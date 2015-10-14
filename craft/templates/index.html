@@ -11,6 +11,33 @@
         </div>
       </div>
     </div>
+    <div class='client-callout'>
+      {% set story = random(craft.entries.section('clientStories').first().clientStories) %}
+      <div class='client-callout--overlay'></div>
+      <div class='client-callout--body'>
+        <div class='container-fluid'>
+          <div class='row'>
+            <div class='col-sm-4 col-md-3'>
+              <a href='/clientstories{{ "#" ~ story.storyName | kebab }}'>
+                <img class='client-callout--photo' src='{{ story.coverImage.first().url }}'>
+              </a>
+              <h3 class='client-callout--name'>
+                <a href='/clientstories{{ "#" ~ story.storyName | kebab }}'>{{ story.storyName }}</a>
+                <div class='client-callout--introduction'>
+                  <a href='/clientstories{{ "#" ~ story.storyName | kebab }}'>{{ story.introduction }}</a>
+                </div>
+              </h3>
+            </div>
+            <div class='client-callout--quote col-sm-8 col-md-9'>
+              <svg class='client-callout--quote-image' viewbox='0 0 45.9 39.2'>
+                <use xlink:href='#quote'></use>
+              </svg>
+              <div class='client-callout--quote-body'>{{ story.quote }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </main>
 <section class='section_callout' style='background-color: #eef7f8'>

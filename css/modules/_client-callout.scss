@@ -1,6 +1,87 @@
 .client-callout {
-    bottom: -32px;
+    bottom: 0;
     position: absolute;
+    width: 100%;
+
+    &--overlay {
+        background: $brand-tertiary-dark;
+        height: 100%;
+        left: 0;
+        opacity: .8;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    &--body {
+        color: #fff;
+        font-family: $font-family-sans-serif;
+        position: relative;
+    }
+
+    &--photo {
+        border-radius: 50%;
+        background: #7d8da0;
+        display: inline-block;
+        height: 75px;
+        margin: {
+            right: 23px;
+            top: -40px;
+        }
+        width: 75px;
+    }
+
+    &--name {
+        display: inline-block;
+        margin: 24px 0 0 0;
+
+        > a {
+            color: #fff;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
+    &--introduction {
+        font: {
+            size: 16px;
+            weight: 700;
+        }
+        margin-top: 8px;
+        text-transform: uppercase;
+
+        > a {
+            color: #fff;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
+    &--quote-body {
+        font-size: 22px;
+        line-height: 30px;
+        margin-top: 23px;
+        margin: {
+            bottom: 23px;
+            top: 23px;
+        }
+        padding-left: 60px;
+    }
+
+    &--quote-image {
+        opacity: .3;
+        position: absolute;
+        top: 7px;
+        width: 40px;
+
+        @media (min-width: $screen-sm-min) {
+            top: 30px;
+        }
+    }
 }
 
 .client-story {

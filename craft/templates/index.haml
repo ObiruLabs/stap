@@ -8,6 +8,23 @@
             .row
                 .col-sm-8.col-sm-offset-2
                     %h1.section--title We work towards creating a world where HIV transmission is rare and those who are HIV+ lead healthy lives.
+        .client-callout
+            {% set story = random(craft.entries.section('clientStories').first().clientStories) %}
+            .client-callout--overlay
+            .client-callout--body
+                .container-fluid
+                    .row
+                        .col-sm-4.col-md-3
+                            %a{ href: '/clientstories{{ "#" ~ story.storyName | kebab }}' }
+                                %img.client-callout--photo{ src: '{{ story.coverImage.first().url }}' }
+                            %h3.client-callout--name
+                                %a{ href: '/clientstories{{ "#" ~ story.storyName | kebab }}' } {{ story.storyName }}
+                                .client-callout--introduction
+                                    %a{ href: '/clientstories{{ "#" ~ story.storyName | kebab }}' } {{ story.introduction }}
+                        .client-callout--quote.col-sm-8.col-md-9
+                            %svg.client-callout--quote-image{ viewbox: '0 0 45.9 39.2' }
+                                %use{ 'xlink:href' => '#quote' }
+                            .client-callout--quote-body {{ story.quote }}
 
 %section.section_callout{ style: 'background-color: #eef7f8' }
     .container-fluid

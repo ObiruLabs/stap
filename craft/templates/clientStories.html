@@ -14,7 +14,7 @@
     </div>
   </section>
   {% for story in entry.clientStories %}
-  <section class='section'>
+  <section class='section' id='{{ story.storyName | kebab }}'>
     <div class='container-fluid'>
       <div class='client-story row'>
         <div class='col-sm-6 col-sm-offset-3'>
@@ -27,7 +27,16 @@
       </div>
     </div>
   </section>
-  <iframe allowfullscreen='' class='client-story--video' frameborder='0' src='{{ story.linkToStory }}?rel=0&amp;amp;showinfo=0' width='100%'></iframe>
+  <iframe allowfullscreen='' class='client-story--video' data-src='{{ story.linkToStory }}?rel=0&amp;amp;showinfo=0' frameborder='0' width='100%'></iframe>
   {% endfor %}
+  <script>
+    function init() {
+    var vidDefer = document.getElementsByTagName('iframe');
+    for (var i=0; i<vidDefer.length; i++) {
+    if(vidDefer[i].getAttribute('data-src')) {
+    vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
+    } } }
+    window.onload = init;
+  </script>
 </main>
 {% endblock %}

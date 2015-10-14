@@ -222,10 +222,16 @@
         color: #fff;
         font: {
             family: $font-family-serif;
-            size: 37px;
+            size: 30px;
             weight: 400;
         }
         line-height: 50px;
+        margin-bottom: 70px;
+
+        @media (min-width: $screen-sm-min) {
+            font-size: 37px;
+            margin-bottom: 30px;
+        }
     }
 }
 

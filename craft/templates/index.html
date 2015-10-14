@@ -40,7 +40,9 @@
     </div>
   </section>
 </main>
-<section class='section_callout' style='background-color: #eef7f8'>
+<section class='section_background_home-services section_bordered' style='background-color: #eef7f8'>
+  <div class='section_background--overlay-light'></div>
+  <div class='section_background--overlay'></div>
   <div class='container-fluid'>
     <h1 class='section--title col-sm-8 col-sm-offset-2'>We've been providing comprehensive HIV/AIDS services in the Southern Tier of New York for over 30 years.</h1>
     <div class='row'>
@@ -51,7 +53,7 @@
           </div>
           <h2>HIV Testing</h2>
           <p>STAP offers fast, free and confidential HIV testing at many locations throughout the Southern Tier. Knowing our HIV status can keep you and your partner safe.</p>
-          <a class='media-vertical--more btn'>
+          <a class='media-vertical--more btn' href='/testing'>
             Get Tested Today
             <span class='geomicon-arrow-right'></span>
           </a>
@@ -64,7 +66,7 @@
           </div>
           <h2>Syringe Exhange Program</h2>
           <p>STAP's Prevention Points exchange new sterile syringes for used ones to reduce the risk of infection with HIV, Hepatitis C, and other blood-borne illnesses among injection drug users.</p>
-          <a class='media-vertical--more btn'>
+          <a class='media-vertical--more btn' href='/preventionservices#syringe-exchange-program-sep'>
             Learn why this works
             <span class='geomicon-arrow-right'></span>
           </a>
@@ -77,26 +79,27 @@
           </div>
           <h2>Health Homes Care Management</h2>
           <p>STAP's Health Homes program serves individuals with a variety of chronic conditions with comprehensive care managemnt and care coordination services.</p>
-          <a class='media-vertical--more btn'>
+          <a class='media-vertical--more btn' href='/clientservices#health-homes-medicaid-care-management'>
             Read about this program
             <span class='geomicon-arrow-right'></span>
           </a>
         </div>
       </div>
     </div>
-    <div class='row'>
-      <div class='col-sm-6 col-sm-offset-3'>
-        <a class='section--more btn is-full btn-secondary' style='color: #fff'>
-          We provide even more services. See it all here
-          <span class='geomicon-arrow-right'></span>
-        </a>
+    <div class='section_background_home-services--more row'>
+      <div class='col-xs-12 text-center'>
+        <a class='btn btn-secondary' href='/services'>See all our services</a>
+        &nbsp;
+        <a class='btn btn-clear-wired' href='/about'>Learn more about us</a>
       </div>
     </div>
   </div>
 </section>
-<section class='section'>
+<section class='section section_bordered'>
   <div class='container-fluid'>
-    <h1 class='section--title col-sm-8 col-sm-offset-2'>Check out our community events!</h1>
+    <div class='row'>
+      <h1 class='section--title-center col-xs-12'>Get involved in our events and make a difference!</h1>
+    </div>
     <div class='row'>
       {% for event in craft.entries.section('events').first().events.limit(3) %}
       <div class='media-vertical_events col-sm-4'>
@@ -105,28 +108,33 @@
             <img data-src='{{ event.photo.first().url }}'>
           </div>
           <h2>{{ event.eventName }}</h2>
-          <p>{{ event.description }}</p>
+          {{ event.description }}
         </div>
       </div>
       {% endfor %}
     </div>
   </div>
 </section>
-<section class='section'>
-  <div class='container-fluid'>
-    <h1 class='section--title col-sm-8 col-sm-offset-2'>Recent News</h1>
-    <div class='post'>
-      <div class='col-xs-8 col-xs-offset-2'>
-        <div class='post--container'>
+{% set article = craft.entries.section('news').first() %}
+<section class='section_clear'>
+  <div class='container-full'>
+    <div class='row'>
+      <div class='col-lg-12 is-odd'>
+        <div class='service'>
           <div class='row'>
-            <div class='col-sm-7'>
-              <h2>CDC to Baby Boomers: Get Tested for Hepatitis C</h2>
-              <span class='post--date'>May 18, 2012</span>
-              <p>CDC on Friday announced a proposal to recommend that all people born between 1945 to 1965 get tested for hepatitis C virus. Baby boomers comprise more than 2 million of the estimated 3.2 million Americans thought to have HCV, but many do not know they are infected. CDC officials hope testing all baby boomers will help 800,000 get treated and prevent more than 120,000 deaths.</p>
-              <a class='post--more btn btn-secondary'>Read More</a>
-            </div>
-            <div class='col-sm-4 col-sm-offset-1'>
-              <img class='post--image' src='/images/doctor.png'>
+            <div class='service--photo col-xs-12 col-lg-6' style='background-image: url("{{ article.articlePhoto.first().url }}")'></div>
+            <div class='service--details col-lg-7'>
+              <div class='row'>
+                <div class='col-lg-11'><div class='row'>
+                  <div class='col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2'>
+                    <span class='service--upcoming-label'>Latest News</span>
+                    <h2 class='section--title'>{{ article.title }}</h2>
+                    <span class='service--date'>{{ article.postDate | date("F j, Y") }}</span>
+                    <p>{{ article.excerpt }}</p>
+                    <a class='btn btn-secondary' href='/news/{{ article.slug }}'>Read more</a>
+                  </div>
+                </div></div>
+              </div>
             </div>
           </div>
         </div>
@@ -134,14 +142,37 @@
     </div>
   </div>
 </section>
-<img src='/images/impact.png' style='margin-top: 70px;' width='100%'>
-<section class='section'>
-  <div class='container-fluid'>
+<section class='section_background_home-impact'>
+  <div class='section_background--overlay'></div>
+  <div class='impact container-fluid'>
     <div class='row'>
-      <div class='col-sm-6 col-sm-offset-3'>
-        <h1 class='section--title'>Who We Are</h1>
-        <p>Founded in 1984, the Southern Tier AIDS Program provides supportive services to HIV+ persons and state of the art prevention education from 9 offices in an 8 county area. We work to create a world where HIV transmission is rare and those who are HIV+ lead healthy lives. We cultivate individual and community strengths to improve the public health. Our services focus on the health and well being of HIV+ persons and incorporate a harm reduction perspective and recognize that behavior change is a gradual process.</p>
-        <a class='btn_more btn-secondary'>Learn about us</a>
+      <h1 class='section--title col-sm-8 col-sm-offset-2'>Our Impact in Numbers</h1>
+    </div>
+    <div class='row'>
+      <div class='impact--statistic col-sm-4'>
+        <div class='impact--value'>1,870</div>
+        <div class='impact--label'>Total Clients Served</div>
+      </div>
+      <div class='impact--statistic col-sm-4'>
+        <div class='impact--value'>160,401</div>
+        <div class='impact--label'>Syringes Exchanged</div>
+      </div>
+      <div class='impact--statistic col-sm-4'>
+        <div class='impact--value'>3,138</div>
+        <div class='impact--label'>Participants in Outreach Activities</div>
+      </div>
+    </div>
+    <div class='impact--buttons row'>
+      <div class='col-xs-12'>
+        <a class='btn btn-white_pill impact--volunteer' href='/about#opportunities'>
+          Jobs & Volunteer Opportunities
+          <span class='geomicon-arrow-right'></span>
+        </a>
+        &nbsp;
+        <a class='btn btn-white_pill' href='/donation'>
+          Donate today
+          <span class='geomicon-arrow-right'></span>
+        </a>
       </div>
     </div>
   </div>

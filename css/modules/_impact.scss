@@ -1,0 +1,41 @@
+.impact {
+    &--statistic {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    &--value {
+        font: {
+            size: 75px;
+            weight: 700;
+        }
+        line-height: 100px;
+    }
+
+    &--label {
+        color: #fff;
+        font-family: $font-family-sans-serif;
+        text-transform: uppercase;
+    }
+
+    &--buttons {
+        margin-top: 60px;
+        text-align: center;
+    }
+
+    &--volunteer {
+        color: $text-color;
+
+        &:hover {
+            color: $text-color;
+        }
+    }
+
+    .btn-white_pill {
+        margin-bottom: 15px;
+    }
+
+    .section--title {
+        margin-bottom: 70px;
+    }
+}

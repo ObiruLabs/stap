@@ -1,4 +1,6 @@
 .btn {
+    transition: background 200ms, color 200ms;
+
     [class *= "geomicon"] {
         font-size: 11px;
         margin-left: 5px;
@@ -40,6 +42,18 @@
     }
 }
 
+.btn-clear-wired {
+    background: #fff;
+    border: 2px solid $brand-tertiary-dark;
+    color: $text-color;
+    padding: 9px 24px;
+
+    &:hover {
+        background: #fff;
+        color: $text-color;
+    }
+}
+
 .btn-secondary.btn-secondary_pill {
     border-radius: 25px;
     padding: 5px 34px 5px 40px;
@@ -76,5 +90,15 @@
 
     &:focus {
         color: #fff;
+    }
+}
+
+.btn-white_pill {
+    background: #fff;
+    border-radius: 25px;
+    padding: 5px 34px 5px 40px;
+
+    &:hover {
+        color: $brand-primary;
     }
 }

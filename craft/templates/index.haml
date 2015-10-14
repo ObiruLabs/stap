@@ -26,7 +26,9 @@
                                 %use{ 'xlink:href' => '#quote' }
                             .client-callout--quote-body {{ story.quote }}
 
-%section.section_callout{ style: 'background-color: #eef7f8' }
+%section.section_background_home-services.section_bordered{ style: 'background-color: #eef7f8' }
+    .section_background--overlay-light
+    .section_background--overlay
     .container-fluid
         %h1.section--title.col-sm-8.col-sm-offset-2 We've been providing comprehensive HIV/AIDS services in the Southern Tier of New York for over 30 years.
         .row
@@ -36,7 +38,7 @@
                         %img{ src: '/images/testing.png' }
                     %h2 HIV Testing
                     %p STAP offers fast, free and confidential HIV testing at many locations throughout the Southern Tier. Knowing our HIV status can keep you and your partner safe.
-                    %a.media-vertical--more.btn
+                    %a.media-vertical--more.btn{ href: '/testing' }
                         Get Tested Today
                         %span.geomicon-arrow-right
             .media-vertical_services.col-sm-4
@@ -45,7 +47,7 @@
                         %img{ src: '/images/syringe.png' }
                     %h2 Syringe Exhange Program
                     %p STAP's Prevention Points exchange new sterile syringes for used ones to reduce the risk of infection with HIV, Hepatitis C, and other blood-borne illnesses among injection drug users.
-                    %a.media-vertical--more.btn
+                    %a.media-vertical--more.btn{ href: '/preventionservices#syringe-exchange-program-sep' }
                         Learn why this works
                         %span.geomicon-arrow-right
             .media-vertical_services.col-sm-4
@@ -54,19 +56,20 @@
                         %img{ src: '/images/healthhomes.png' }
                     %h2 Health Homes Care Management
                     %p STAP's Health Homes program serves individuals with a variety of chronic conditions with comprehensive care managemnt and care coordination services.
-                    %a.media-vertical--more.btn
+                    %a.media-vertical--more.btn{ href: '/clientservices#health-homes-medicaid-care-management' }
                         Read about this program
                         %span.geomicon-arrow-right
 
-        .row
-            .col-sm-6.col-sm-offset-3
-                %a.section--more.btn.is-full.btn-secondary{ style: 'color: #fff' }
-                    We provide even more services. See it all here
-                    %span.geomicon-arrow-right
+        .section_background_home-services--more.row
+            .col-xs-12.text-center
+                %a.btn.btn-secondary{ href: '/services' } See all our services
+                &nbsp;
+                %a.btn.btn-clear-wired{ href: '/about' } Learn more about us
 
-%section.section
+%section.section.section_bordered
     .container-fluid
-        %h1.section--title.col-sm-8.col-sm-offset-2 Check out our community events!
+        .row
+            %h1.section--title-center.col-xs-12 Get involved in our events and make a difference!
         .row
             {% for event in craft.entries.section('events').first().events.limit(3) %}
             .media-vertical_events.col-sm-4
@@ -74,32 +77,50 @@
                     .media-vertical--media
                         %img{ data: { src: '{{ event.photo.first().url }}' } }
                     %h2 {{ event.eventName }}
-                    %p {{ event.description }}
+                    {{ event.description }}
             {% endfor %}
 
-%section.section
-    .container-fluid
-        %h1.section--title.col-sm-8.col-sm-offset-2 Recent News
-        .post
-            .col-xs-8.col-xs-offset-2
-                .post--container
-                    .row
-                        .col-sm-7
-                            %h2 CDC to Baby Boomers: Get Tested for Hepatitis C
-                            %span.post--date May 18, 2012
-                            %p CDC on Friday announced a proposal to recommend that all people born between 1945 to 1965 get tested for hepatitis C virus. Baby boomers comprise more than 2 million of the estimated 3.2 million Americans thought to have HCV, but many do not know they are infected. CDC officials hope testing all baby boomers will help 800,000 get treated and prevent more than 120,000 deaths.
-                            %a.post--more.btn.btn-secondary Read More
-                        .col-sm-4.col-sm-offset-1
-                            %img.post--image{ src: '/images/doctor.png' }
-
-%img{ src: '/images/impact.png', width: '100%', style: 'margin-top: 70px;' }
-
-%section.section
-    .container-fluid
+{% set article = craft.entries.section('news').first() %}
+%section.section_clear
+    .container-full
         .row
-            .col-sm-6.col-sm-offset-3
-                %h1.section--title Who We Are
-                %p Founded in 1984, the Southern Tier AIDS Program provides supportive services to HIV+ persons and state of the art prevention education from 9 offices in an 8 county area. We work to create a world where HIV transmission is rare and those who are HIV+ lead healthy lives. We cultivate individual and community strengths to improve the public health. Our services focus on the health and well being of HIV+ persons and incorporate a harm reduction perspective and recognize that behavior change is a gradual process.
-                %a.btn_more.btn-secondary Learn about us
+            .col-lg-12.is-odd
+                .service
+                    .row
+                        .service--photo.col-xs-12.col-lg-6{ style: 'background-image: url("{{ article.articlePhoto.first().url }}")' }
+                        .service--details.col-lg-7
+                            .row
+                                .col-lg-11<
+                                    .row
+                                        .col-xs-10.col-xs-offset-1.col-lg-8.col-lg-offset-2
+                                            %span.service--upcoming-label Latest News
+                                            %h2.section--title {{ article.title }}
+                                            %span.service--date {{ article.postDate | date("F j, Y") }}
+                                            %p {{ article.excerpt }}
+                                            %a.btn.btn-secondary{ href: '/news/{{ article.slug }}' } Read more
 
+%section.section_background_home-impact
+    .section_background--overlay
+    .impact.container-fluid
+        .row
+            %h1.section--title.col-sm-8.col-sm-offset-2  Our Impact in Numbers
+        .row
+            .impact--statistic.col-sm-4
+                .impact--value 1,870
+                .impact--label Total Clients Served
+            .impact--statistic.col-sm-4
+                .impact--value 160,401
+                .impact--label Syringes Exchanged
+            .impact--statistic.col-sm-4
+                .impact--value 3,138
+                .impact--label Participants in Outreach Activities
+        .impact--buttons.row
+            .col-xs-12
+                %a.btn.btn-white_pill.impact--volunteer{ href: '/about#opportunities' }
+                    Jobs & Volunteer Opportunities
+                    %span.geomicon-arrow-right
+                &nbsp;
+                %a.btn.btn-white_pill{ href: '/donation' }
+                    Donate today
+                    %span.geomicon-arrow-right
 {% endblock %}

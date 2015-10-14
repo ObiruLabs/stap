@@ -19,6 +19,13 @@
         }
     }
 
+    &--title-center {
+        color: $brand-primary;
+        font-weight: 400;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
     &--title_secondary {
         font-weight: 700;
         margin: {
@@ -232,6 +239,49 @@
             font-size: 37px;
             margin-bottom: 30px;
         }
+    }
+}
+
+.section_background_home-services {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-map.png");
+    padding-bottom: 80px;
+
+    .section_background--overlay-light {
+        background: #fff;
+        opacity: .85;
+    }
+
+    .section_background--overlay {
+        background: #f2f2f2;
+        opacity: .4;
+    }
+
+    .section--title {
+        font-weight: 400;
+        margin-bottom: 60px;
+    }
+
+    &--more {
+        margin-top: 120px;
+    }
+
+    p {
+        text-align: left;
+    }
+}
+
+.section_background_home-impact {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-3.jpg");
+
+    .section_background--overlay {
+        background: #71bcce;
+        opacity: .94;
+    }
+
+    .section--title {
+        color: #fff;
     }
 }
 

@@ -1,15 +1,21 @@
 .media-vertical {
     h2 {
+        color: $brand-tertiary-dark;
         margin: {
             bottom: 30px;
             top: 55px;
         }
     }
 
+    p {
+        font-family: $font-family-sans-serif;
+    }
+
     .media-vertical--container {
         background: #fff;
-        margin: 0 10px;
+        margin: 0 auto;
         min-height: 600px;
+        max-width: 380px;
         padding: 0 30px;
         position: relative;
 
@@ -18,11 +24,11 @@
         }
 
         @media (min-width: $screen-md-min) {
-            min-height: 660px;
+            min-height: 690px;
         }
 
         @media (min-width: $screen-lg-min) {
-            min-height: 610px;
+            min-height: 620px;
         }
     }
 }
@@ -37,8 +43,11 @@
         }
     }
 
+    p {
+        padding-bottom: 20px;
+    }
+
     .media-vertical--container {
-        margin: 0 10px;
         min-height: 400px;
         padding: 0 30px;
         position: relative;
@@ -48,7 +57,7 @@
         }
 
         @media (min-width: $screen-md-min) {
-            min-height: 450px;
+            min-height: 490px;
         }
     }
 
@@ -68,7 +77,7 @@
     @extend .media-vertical;
 
     .media-vertical--more {
-//        border-top: 2px solid $brand-secondary-dark-blue;
+        border-top: 2px solid $brand-tertiary-light;
         bottom: 0;
         color: #333;
         display: block;
@@ -92,26 +101,24 @@
 
     .media-vertical--container {
         background: #fff;
-        margin: 0 10px;
         min-height: 600px;
         padding: 0 30px;
         position: relative;
 
         @media (min-width: $screen-sm-min) {
-            min-height: 760px;
+            min-height: 800px;
         }
 
         @media (min-width: $screen-md-min) {
-            min-height: 660px;
+            min-height: 690px;
         }
 
         @media (min-width: $screen-lg-min) {
-            min-height: 610px;
+            min-height: 620px;
         }
     }
 
     .media-vertical--media {
-//        background: $brand-secondary-blue;
         height: 250px;
         text-align: center;
         margin: {

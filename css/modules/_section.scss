@@ -164,6 +164,15 @@
     .section_background--overlay {
         background: $brand-tertiary-dark;
     }
+
+    &--buttons {
+        margin-top: 50px;
+        text-align: center;
+
+        .btn {
+            margin-bottom: 15px;
+        }
+    }
 }
 
 .section_background_events {

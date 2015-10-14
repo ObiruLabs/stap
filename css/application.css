@@ -9342,6 +9342,13 @@ button.close {
 .section_background_services .section_background--overlay {
   background: #50637a;
 }
+.section_background_services--buttons {
+  margin-top: 50px;
+  text-align: center;
+}
+.section_background_services--buttons .btn, .section_background_services--buttons .btn_more {
+  margin-bottom: 15px;
+}
 
 .section_background_events {
   background-image: url("/images/backgrounds/bg-5.jpg");

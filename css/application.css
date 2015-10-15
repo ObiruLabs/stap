@@ -8674,6 +8674,9 @@ button.close {
   padding: 0 30px;
   position: relative;
 }
+.media-vertical .media-vertical--container > a, .media-vertical_events .media-vertical--container > a, .media-vertical_services .media-vertical--container > a {
+  color: #50637a;
+}
 @media (min-width: 768px) {
   .media-vertical .media-vertical--container, .media-vertical_events .media-vertical--container, .media-vertical_services .media-vertical--container {
     min-height: 800px;
@@ -8716,7 +8719,7 @@ button.close {
   margin-left: -30px;
   margin-right: -30px;
 }
-.media-vertical_events .media-vertical--media > img {
+.media-vertical_events .media-vertical--media > a > img {
   width: 100%;
 }
 
@@ -9521,6 +9524,9 @@ button.close {
   position: absolute;
   text-transform: uppercase;
   top: -50px;
+}
+.service--upcoming-label > a {
+  color: #50637a;
 }
 .service--date {
   display: block;

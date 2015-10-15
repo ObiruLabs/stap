@@ -75,8 +75,10 @@
             .media-vertical_events.col-sm-4
                 .media-vertical--container{ style: 'background-color: #eef7f8' }
                     .media-vertical--media
-                        %img{ data: { src: '{{ event.photo.first().url }}' } }
-                    %h2 {{ event.eventName }}
+                        %a{ href: '/events{{ "#" ~ event.eventName | kebab }}' }
+                            %img{ data: { src: '{{ event.photo.first().url }}' } }
+                    %a{ href: '/events{{ "#" ~ event.eventName | kebab }}' }
+                        %h2 {{ event.eventName }}
                     {{ event.description }}
             {% endfor %}
 
@@ -93,7 +95,8 @@
                                 .col-lg-11<
                                     .row
                                         .col-xs-10.col-xs-offset-1.col-lg-8.col-lg-offset-2
-                                            %span.service--upcoming-label Latest News
+                                            %span.service--upcoming-label
+                                                %a{ href: '/news' } Latest News
                                             %h2.section--title {{ article.title }}
                                             %span.service--date {{ article.postDate | date("F j, Y") }}
                                             %p {{ article.excerpt }}

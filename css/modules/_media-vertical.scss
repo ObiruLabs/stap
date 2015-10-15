@@ -19,6 +19,10 @@
         padding: 0 30px;
         position: relative;
 
+        > a {
+            color: $brand-tertiary-dark;
+        }
+
         @media (min-width: $screen-sm-min) {
             min-height: 800px;
         }
@@ -67,7 +71,7 @@
             right: -30px;
         }
 
-        > img {
+        > a > img {
             width: 100%;
         }
     }

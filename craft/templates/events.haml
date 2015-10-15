@@ -47,7 +47,7 @@
             {% for events in groups %}
             .row
                 {% for event in events %}
-                %div{ class: 'col-sm-6 col-lg-12 {% if loop.index is odd %}is-odd{% else %}is-even{% endif %}' }
+                %div{ class: 'col-sm-6 col-lg-12 {% if loop.index is odd %}is-odd{% else %}is-even{% endif %}', id: '{{ event.eventName | kebab }}' }
                     {% if (event.when | date("Y-m-d")) >= (date() | date("Y-m-d")) %}
                     {{ _self.eventPost(event, "upcoming") }}
                     {% else %}

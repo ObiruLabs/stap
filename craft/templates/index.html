@@ -105,9 +105,13 @@
       <div class='media-vertical_events col-sm-4'>
         <div class='media-vertical--container' style='background-color: #eef7f8'>
           <div class='media-vertical--media'>
-            <img data-src='{{ event.photo.first().url }}'>
+            <a href='/events{{ "#" ~ event.eventName | kebab }}'>
+              <img data-src='{{ event.photo.first().url }}'>
+            </a>
           </div>
-          <h2>{{ event.eventName }}</h2>
+          <a href='/events{{ "#" ~ event.eventName | kebab }}'>
+            <h2>{{ event.eventName }}</h2>
+          </a>
           {{ event.description }}
         </div>
       </div>
@@ -127,7 +131,9 @@
               <div class='row'>
                 <div class='col-lg-11'><div class='row'>
                   <div class='col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2'>
-                    <span class='service--upcoming-label'>Latest News</span>
+                    <span class='service--upcoming-label'>
+                      <a href='/news'>Latest News</a>
+                    </span>
                     <h2 class='section--title'>{{ article.title }}</h2>
                     <span class='service--date'>{{ article.postDate | date("F j, Y") }}</span>
                     <p>{{ article.excerpt }}</p>

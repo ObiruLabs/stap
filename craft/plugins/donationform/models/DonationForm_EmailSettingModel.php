@@ -12,7 +12,9 @@ class DonationForm_EmailSettingModel extends BaseModel
     {
         return array(
             'id'    => AttributeType::Number,
-            'receiptBody' => AttributeType::String,
+            'receiptParagraphOne' => AttributeType::String,
+            'receiptParagraphTwo' => AttributeType::String,
+            'receiptParagraphThree' => AttributeType::String
         );
     }
 }

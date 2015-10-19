@@ -19,29 +19,47 @@ class DonationForm_HooksController extends BaseController
 
         if ($event_json->type == 'invoice.payment_succeeded') {
             $customer = \Stripe\Customer::retrieve($event_json->data->object->customer);
-            $this->sendEmail($customer->email, $event_json);
+            $this->sendEmail($customer->email, $customer->metadata->name, $event_json);
         }
 
         http_response_code(200); // PHP 5.4 or greater
-        $this->returnJson(array('photos' => 'sldafkj'));
     }
 
-    private function sendEmail($email, $json)
+    private function sendEmail($email, $name, $json)
     {
         $mandrill = craft()->mandrillService_wrapper->requireApi();
 
-        $body = '<a href="http://localhost:8888/donation/cancel?a='.$json->data->object->customer.'">Click here to cancel</a>';
+        $cancelURL = 'http://localhost:8888/donation/cancel?a='.$json->data->object->customer;
+        $amount = $json->data->object->amount_due;
+        $bodyOne = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptParagraphOne;
+        $bodyTwo = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptParagraphTwo;
+        $bodyThree = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptParagraphThree;
 
         $message = array(
-            'to' => array(array('email' => $email, 'name' => 'mikki')),
+            'to' => array(array('email' => $email, 'name' => $name)),
             'merge' => true,
             'merge_vars' => array(array(
                 'rcpt' => $email,
                 'vars' =>
                 array(
                     array(
-                        'name' => 'BODY',
-                        'content' => $body)
+                        'name' => 'NAME',
+                        'content' => $name),
+                    array(
+                        'name' => 'AMOUNT',
+                        'content' => number_format($amount / 100)),
+                    array(
+                        'name' => 'RECEIPTPARAGRAPHONE',
+                        'content' => $bodyOne),
+                    array(
+                        'name' => 'RECEIPTPARAGRAPHTWO',
+                        'content' => $bodyTwo),
+                    array(
+                        'name' => 'RECEIPTPARAGRAPHTHREE',
+                        'content' => $bodyThree),
+                    array(
+                        'name' => 'CANCEL_URL',
+                        'content' => $cancelURL)
             )))
         );
 

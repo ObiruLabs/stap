@@ -26,13 +26,30 @@
     <h2>Email Settings</h2>
     <form method="post" action="" accept-charset="UTF-8">
         <div class="field">
-            {{ forms.textareaField({
-                class: 'myFieldsRedactorClass',
-                label: 'Receipt Body',
-                required: true,
+            {{ forms.textField({
+                label: 'Receipt Paragraph 1',
+                required: false,
                 instructions: 'This appears in the email that is sent when an individual submits a donation.',
-                name: 'settings[receiptBody]',
-                value: emailSettings.receiptBody
+                name: 'settings[receiptParagraphOne]',
+                value: emailSettings.receiptParagraphOne
+            }) }}
+        </div>
+        <div class="field">
+            {{ forms.textField({
+                label: 'Receipt Paragraph 2',
+                required: false,
+                instructions: 'This appears in the email that is sent when an individual submits a donation.',
+                name: 'settings[receiptParagraphTwo]',
+                value: emailSettings.receiptParagraphTwo
+            }) }}
+        </div>
+        <div class="field">
+            {{ forms.textField({
+                label: 'Receipt Paragraph 3',
+                required: false,
+                instructions: 'This appears in the email that is sent when an individual submits a donation.',
+                name: 'settings[receiptParagraphThree]',
+                value: emailSettings.receiptParagraphThree
             }) }}
         </div>
 

@@ -415,7 +415,6 @@ angular.module('stap')
 
             $http(request)
                 .then(function(response) {
-                    console.dir(response);
                     if (response.data.status === 'success') {
                         $scope.jump('start');
                         $scope.gotoStep(2);

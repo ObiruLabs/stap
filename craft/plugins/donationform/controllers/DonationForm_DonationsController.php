@@ -6,6 +6,7 @@ class DonationForm_DonationsController extends BaseController
 {
     const BASE_PLAN_NAME = 'stapdonations';
     const EMAIL_CONFIRMATION_TEMPLATE = 'stap-donation-confirmation';
+    const EMAIL_RECURRING_CONFIRMATION_TEMPLATE = 'stap-donation-confirmation-recurring';
 
     protected $allowAnonymous = true;
 
@@ -59,7 +60,7 @@ class DonationForm_DonationsController extends BaseController
             $model->setAttributes($attributes);
             craft()->donationForm_model->saveDonation($model);
 
-            $this->sendEmailConfirmation($name, $attributes['donorEmail']);
+            $this->sendEmailConfirmation($name, $attributes['chargeAmount'], $attributes['donorEmail'], $attributes['chargeType']);
 
             $this->returnJson(array('status' => 'success'));
 
@@ -111,30 +112,54 @@ class DonationForm_DonationsController extends BaseController
         }
     }
 
-    private function sendEmailConfirmation($name, $email)
+    private function sendEmailConfirmation($name, $amount, $email, $type)
     {
         $mandrill = craft()->mandrillService_wrapper->requireApi();
+        $template = self::EMAIL_CONFIRMATION_TEMPLATE;
+        $vars = array();
 
-        $body = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptBody;
+        if ($type == 'once') {
+            $bodyOne = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptParagraphOne;
+            $bodyTwo = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptParagraphTwo;
+            $bodyThree = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptParagraphThree;
+
+            $vars = array(
+                array(
+                    'name' => 'NAME',
+                    'content' => $name),
+                array(
+                    'name' => 'AMOUNT',
+                    'content' => number_format(intval($amount) / 100)),
+                array(
+                    'name' => 'RECEIPTPARAGRAPHONE',
+                    'content' => $bodyOne),
+                array(
+                    'name' => 'RECEIPTPARAGRAPHTWO',
+                    'content' => $bodyTwo),
+                array(
+                    'name' => 'RECEIPTPARAGRAPHTHREE',
+                    'content' => $bodyThree)
+            );
+        } elseif ($type == 'recurring') {
+            $template = self::EMAIL_RECURRING_CONFIRMATION_TEMPLATE;
+            $vars = array(
+                array(
+                    'name' => 'NAME',
+                    'content' => $name)
+            );
+        }
 
         $message = array(
             'to' => array(array('email' => $email, 'name' => $name)),
             'merge' => true,
             'merge_vars' => array(array(
                 'rcpt' => $email,
-                'vars' =>
-                array(
-                    array(
-                        'name' => 'NAME',
-                        'content' => $name),
-                    array(
-                        'name' => 'BODY',
-                        'content' => $body)
-            )))
+                'vars' => $vars
+            ))
         );
 
         $template_content = array();
-        $mandrill->messages->sendTemplate(self::EMAIL_CONFIRMATION_TEMPLATE, $template_content, $message);
+        $mandrill->messages->sendTemplate($template, $template_content, $message);
     }
 
     /**

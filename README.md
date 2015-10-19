@@ -48,13 +48,14 @@ Deployment
   * If JS changes are made, increment version in application.js to update its hash.
   * In the terminal, run ` grunt `
 3. Stage generated assets from ` /dist `
-4. Commit change
-5. Tag the commit to be deployed
+4. Update DonationForm_HooksController's cancel URL to use production site instead of local.
+5. Commit change
+6. Tag the commit to be deployed
 
 New Deployments
 -----------
 * Update General Settings URL
 * Update each Asset URLs
-* Sync images folder
+* Sync images/documents folder
 
 Note: You have to expand the .html file that is generated for it to be uploaded/diffed when syncing.

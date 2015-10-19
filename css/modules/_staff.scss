@@ -1,0 +1,40 @@
+.staff {
+    font-family: $font-family-sans-serif;
+
+    ul {
+        list-style-type: none;
+
+        li {
+            position: relative;
+            text-indent: 0;
+
+            &:before {
+                display: none;
+            }
+        }
+    }
+
+    a {
+        color: $text-color;
+
+        &:hover {
+            color: $brand-primary;
+
+            .geomicon-mail, .staff--position {
+                color: $brand-primary;
+            }
+        }
+    }
+
+    &--position {
+        color: #777;
+        font-style: italic;
+    }
+
+    .geomicon-mail {
+        color: #ccc;
+        left: -25px;
+        position: absolute;
+        top: 2px;
+    }
+}

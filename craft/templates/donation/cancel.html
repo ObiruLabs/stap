@@ -3,15 +3,27 @@
 <main id='main-content' ng-controller='donationCancelCtrl'>
   <section class='section'>
     <div class='container-fluid'>
-      <h1 class='section--title'>Donations</h1>
-      <div ng-cloak='' ng-show='form.init &amp;&amp; !form.cancelled'>
-        <form accept_charset='UTF-8' method='post'>
-          <p>Click the button below to stop your monthly donations.</p>
-          <button class='btn btn-primary' ng-click='submit()'>Cancel donation</button>
-        </form>
-      </div>
-      <div ng-cloak='' ng-show='form.init &amp;&amp; form.cancelled'>
-        You've already successfully cancelled your monthly donation.
+      {% set donation = craft.entries.section('donation').first() %}
+      <h1 class='section--title-center'>Cancel Your Donation</h1>
+      <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <div ng-hide='form.init'>Checking your donation status...</div>
+          <div ng-cloak='' ng-show='form.init &amp;&amp; !form.cancelled'>
+            <form accept_charset='UTF-8' method='post'>
+              <p>Please confirm that you would like to cancel future monthly donations to STAP by clicking the button below.</p>
+              <button class='btn btn-secondary' ng-click='submit()' ng-disabled='form.cancelling'>
+                {[{ form.cancelling ? 'Cancelling future donations...' : 'Cancel future donations' }]}
+              </button>
+            </form>
+          </div>
+          <div ng-cloak='' ng-show='form.init &amp;&amp; form.cancelled'>
+            You've successfully cancelled your monthly donation.
+          </div>
+          <br>
+          <br>
+          <hr>
+          {{ donation.donationNote }}
+        </div>
       </div>
     </div>
   </section>

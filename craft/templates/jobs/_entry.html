@@ -13,7 +13,8 @@
         <div class='col-sm-6 col-sm-offset-3'>
           <label>{{ entry.postDate | date("F j, Y") }}</label>
           <p>{{ entry.body }}</p>
-          <a href='{{ entry.jobOpeningDocument.first().url }}'>Document</a>
+          <br>
+          <a class='btn btn-secondary' href='{{ entry.jobOpeningDocument.first().url }}'>Download PDF</a>
         </div>
       </div>
     </div>

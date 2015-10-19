@@ -3,14 +3,22 @@
 {% block content %}
 
 %main#main-content
-    %section.section
+    %section.section_background_jobs
+        .section_background--overlay
         .container-fluid
-            %h1.section--title.col-sm-6.col-sm-offset-3 Job Openings
             .row
                 .col-sm-6.col-sm-offset-3
-                    %ul
-                        {% for entry in craft.entries.section('jobOpenings') %}
-                        %li
-                            %a{ href: '/jobs/{{ entry.slug }}' } {{ entry.title }}
-                        {% endfor %}
+                    %h1.section--title Job Openings
+                    Providing Comprehensive HIV/AIDS Services in the Southern Tier of New York. Founded in 1984 as a local response to the HIV epidemic, Southern Tier AIDS program provides effective and innovative HIV and Hepatitis C prevention education.
+
+    %section.section
+        .container-fluid
+            {% for entry in craft.entries.section('jobOpenings') %}
+            .job.row
+                .col-sm-6.col-sm-offset-3
+                    %a.job--title{ href: '/jobs/{{ entry.slug }}' }
+                        %h2 {{ entry.title }}
+                    %p {{ entry.excerpt }}
+                    %a.btn.btn-secondary{ href: '/jobs/{{ entry.slug }}' } View Posting
+            {% endfor %}
 {% endblock %}

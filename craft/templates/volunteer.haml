@@ -2,32 +2,24 @@
 {% set navPage = 'about' %}
 {% block content %}
 %main#main-content
+    %section.section_background_volunteer
+        .section_background--overlay
+        .container-fluid
+            .row
+                .col-sm-6.col-sm-offset-3
+                    %h1.section--title Get Involved
+                    {{ entry.pageIntroduction }}
+
     %section.section
         .container-fluid
-            %h1.section--title.col-sm-6.col-sm-offset-3 Get Involved
-            {% for block in entry.callToAction %}
             .row
-                {% if block.type == 'description' %}
                 .col-sm-6.col-sm-offset-3
-                    %p {{ block.text }}
-                {% elseif block.type == 'callToAction' %}
-                .col-sm-5.col-sm-offset-2
-                    %p {{ block.description }}
-                    %a.btn.btn-secondary{ href: '{{ block.buttonUrl }}' } {{ block.buttonText }}
-                .col-sm-3
-                    {% set groups = block.photos | batch((block.photos | length / 2) | round(0, 'ceil')) %}
-                    .row
-                        {% for photos in groups %}
-                        .col-sm-6
-                            .row
-                                .col-xs-12
-                                    {% for photo in photos %}
-                                    %p
-                                        %img{ data: { src: '{{ photo.url }}' }, style: 'width: 100%' }
-                                    %br
-                                    {% endfor %}
-                        {% endfor %}
-                {% endif %}
+                    {{ entry.descriptionWithContent }}
+            {% for block in entry.callToActionButton %}
+            .row
+                .col-sm-6.col-sm-offset-3
+                    %br
+                    %a.btn.btn-secondary{ href: '{{ block.buttonLink }}' } {{ block.buttonText }}
             %br
             {% endfor %}
 {% endblock %}

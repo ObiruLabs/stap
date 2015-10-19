@@ -6,29 +6,16 @@
         .container-fluid
             %h1.section--title.col-sm-6.col-sm-offset-3 News
             {% for entry in craft.entries.section('news') %}
-            .post
-                .col-xs-10.col-xs-offset-1
-                    .post--container
-                        .row
-                            {% if entry.articlePhoto.first() %}
-                            .col-sm-7
-                                %h2 {{ entry.title }}
-                                %span.post--date {{ entry.postDate | date("F j, Y") }}
-                                %p {{ entry.excerpt }}
+            .article.row
+                .col-sm-6.col-sm-offset-3
+                    .article--photo
+                        %a{ href: '/news/{{ entry.slug }}' }
+                            %img{ data: { src: '{{ entry.articlePhoto.first().url }}' } }
+                    %h2 {{ entry.title }}
+                    %span.post--date {{ entry.postDate | date("F j, Y") }}
+                    %p {{ entry.excerpt }}
 
-                                %a.post--more.btn.btn-secondary{ href: '/news/{{ entry.slug }}' } Read More
-
-                            .col-sm-4.col-sm-offset-1
-                                %a{ href: '/news/{{ entry.slug }}' }
-                                    %img.post--image{ data: { src: '{{ entry.articlePhoto.first().url }}' } }
-                            {% else %}
-                            .col-sm-12
-                                %h2 {{ entry.title }}
-                                %span.post--date {{ entry.postDate | date("F j, Y") }}
-                                %p {{ entry.excerpt }}
-
-                                %a.post--more.btn.btn-secondary{ href: '/news/{{ entry.slug }}' } Read More
-                            {% endif %}
+                    %a.post--more.btn.btn-secondary{ href: '/news/{{ entry.slug }}' } Read More
             {% endfor %}
 
 {% endblock %}

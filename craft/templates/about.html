@@ -11,127 +11,146 @@
 {% endmacro %}
 {% block content %}
 <main id='main-content'>
-  <section class='section_callout'>
+  <section class='section_background_about'>
+    <div class='section_background--overlay'></div>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-sm-6 col-sm-offset-3'>
-          <h1 class='section--title'>Our Mission</h1>
+          <h1 class='section--title'>Who We Are</h1>
           {{ entry.pageIntroduction }}
-          <a class='btn_more btn-secondary' href='/staff'>Meet Us</a>
+        </div>
+      </div>
+      <div class='section_background_about--buttons row'>
+        <div class='col-xs-12'>
+          <a class='btn btn-secondary' href='/staff'>Meet our team</a>
+          &nbsp;
+          <a class='btn btn-clear-wired' href='/contact'>Contact Us</a>
         </div>
       </div>
     </div>
   </section>
-  <section class='section' id='opportunities'>
-    <div class='container-fluid'>
-      <div class='row'>
-        <div class='col-sm-6'>
-          <div class='row'>
-            <div class='col-xs-11 col-xs-offset-1'>
-              <h1 class='section--title'>Join Us</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col-sm-6'>
-          <div class='row'>
-            <div class='col-xs-10 col-xs-offset-1'>
-              <h2>Job Openings</h2>
-              <p>{{ entry.jobOpeningsIntroduction }}</p>
-              <a class='btn_more btn-secondary' href='/jobs'>See Jobs</a>
-            </div>
-          </div>
-        </div>
-        <div class='col-sm-6'>
-          <div class='row'>
-            <div class='col-xs-10 col-xs-offset-1'>
-              <h2>Internships</h2>
-              <p>{{ entry.internshipsIntroduction }}</p>
-              <a class='btn_more btn-secondary' href='/internships'>See Internships</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class='section_callout'>
+  <section class='section_bordered'>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-sm-6 col-sm-offset-3'>
-          <h1 class='section--title'>Get Involved</h1>
-          {{ entry.volunteerIntroduction }}
-          <a class='btn_more btn-secondary' href='/volunteer'>Learn more</a>
+          <h1 class='section--title-center-alt'>Our Mission</h1>
+          {{ entry.pageSubIntroduction }}
         </div>
       </div>
     </div>
   </section>
-  <section class='section'>
+  <section class='section_clear section_bordered' id='opportunities'>
+    <div class='container-full'>
+      <div class='row'>
+        <div class='col-lg-12 is-odd'>
+          <div class='service'>
+            <div class='row'>
+              <div class='service--photo col-xs-12 col-lg-6' style='background-image: url("/images/backgrounds/bg-6.jpg")'></div>
+              <div class='service--details col-lg-7'>
+                <div class='row'>
+                  <div class='col-lg-11'><div class='row'>
+                    <div class='col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2'>
+                      <h2 class='section--title'>Jobs &amp; Internships</h2>
+                      <p>{{ entry.jobInternshipIntroduction }}</p>
+                      <a class='btn btn-secondary' href='/jobs'>See Jobs</a>
+                      &nbsp;
+                      <a class='btn btn-tertiary' href='/internships'>See Internships</a>
+                    </div>
+                  </div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-lg-12 is-even'>
+          <div class='service'>
+            <div class='row'>
+              <div class='service--photo col-xs-12 col-lg-6' style='background-image: url("/images/backgrounds/bg-3.jpg")'></div>
+              <div class='service--details col-lg-7'>
+                <div class='row'>
+                  <div class='col-lg-11'><div class='row'>
+                    <div class='col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2'>
+                      <h2 class='section--title'>Volunteer with Us</h2>
+                      <p>{{ entry.volunteerIntroduction }}</p>
+                      <a class='btn btn-tertiary' href='/volunteer'>Become a Volunteer</a>
+                    </div>
+                  </div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class='section_background_publications-services section_bordered' style='background-color: #eef7f8'>
+    {% set allIssues = [] %}
+    {% for entry in craft.entries.section('publications') %}
+    {% for issue in entry.issues %}
+    {% set allIssues = allIssues | merge([issue]) %}
+    {% endfor %}
+    {% endfor %}
+    <div class='section_background--overlay'></div>
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-sm-6 col-sm-offset-3'>
-          {% for entry in craft.entries.section('contact') %}
-          {% for location in entry.contactLocations | slice(0, 1) %}
+        <div class='col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2'>
           <div class='row'>
             <div class='col-xs-12'>
-              <h1 class='section--title'>Contact Us</h1>
+              <h1 class='section--title-center-alt'>Publications</h1>
             </div>
           </div>
           <div class='row'>
-            <div class='col-sm-7'>
-              <h2>{{ location.locationName }}</h2>
-              <p>{{ location.address1 }}</p>
-              <p>{{ location.address2 }}</p>
-              <p>{{ location.city }}, {{ location.state }} {{ location.zip }}</p>
-              {% if location.hotline %}
-              <p>Hotline: {{ location.hotline }}</p>
-              {% endif %}
-              {% if location.phone %}
-              <p>Phone: {{ location.phone }}</p>
-              {% endif %}
-              {% if location.fax %}
-              <p>Fax: {{ location.fax }}</p>
-              {% endif %}
-              <p>
-                <a href='{{ location.mapLink }}'>Map</a>
-              </p>
-              <a class='btn_more btn-secondary' href='/contact'>See all locations</a>
+            {% for issue in allIssues | slice(0, 4) %}
+            <div class='section_background_publications-services--cover col-xs-3'>
+              <a href='{{ issue.linkToIssue }}' style='background-image: url("{{ issue.coverImage.first().url }}")'></a>
             </div>
-            <div class='col-sm-3 col-sm-offset-1'>
-              {% set coordinates = location.latitude ~ ',' ~ location.longitude %}
-              <img class='post--image' data-src='https://maps.googleapis.com/maps/api/staticmap?center={{ coordinates }}&amp;zoom=14&amp;size=150x150&amp;markers=size:mid%7Ccolor:red%7C{{ coordinates }}&amp;scale=2&amp;key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU'>
+            {% endfor %}
+          </div>
+          <div class='row'>
+            <div class='col-xs-12 text-center'>
+              <br>
+              <br>
+              <a class='btn btn-secondary' href='/publications'>View all Publications</a>
             </div>
           </div>
-          {% endfor %}
-          {% endfor %}
         </div>
       </div>
     </div>
   </section>
-  <section class='section'>
+  <section class='section_background_about-contact section_bordered' style='background-color: #eef7f8'>
+    <div class='section_background--overlay-light'></div>
+    <div class='section_background--overlay'></div>
     <div class='container-fluid'>
+      <h1 class='section--title-center-alt col-sm-8 col-sm-offset-2'>Contact Us</h1>
+      {% for entry in craft.entries.section('contact') %}
+      {% for location in entry.contactLocations | slice(0, 1) %}
+      <div class='contact row'>
+        <div class='col-sm-5 col-sm-offset-4'>
+          <h2>{{ location.locationName }}</h2>
+          <div class='contact--address1'>{{ location.address1 }}</div>
+          <div class='contact--address2'>{{ location.address2 }}</div>
+          <div class='contact--address3'>{{ location.city }}, {{ location.state }} {{ location.zip }}</div>
+          {% if location.hotline %}
+          <div class='contact--phone'>Hotline: {{ location.hotline }}</div>
+          {% endif %}
+          {% if location.phone %}
+          <div class='contact--phone'>Phone: {{ location.phone }}</div>
+          {% endif %}
+          {% if location.fax %}
+          <div class='contact--phone'>Fax: {{ location.fax }}</div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+      {% endfor %}
       <div class='row'>
-        <div class='col-sm-6 col-sm-offset-3'>
-          <h1 class='section--title'>Send Us a Message</h1>
-          <form accept-charset='UTF-8' action='/' method='post'>
-            <input name='action' type='hidden' value='mandrillForm/sendMessage'>
-            <input name='successRedirectUrl' type='hidden' value='success'>
-            <div class='form-group'>
-              <label for='fromEmail'>Your Email</label>
-              <input class='form-control' id='fromEmail' name='fromEmail' type='text' value='{% if message is defined %}{{ message.fromEmail }}{% endif %}'>
-              {% if message is defined %}
-              {{ _self.errorList(message.getErrors('fromEmail')) }}
-              {% endif %}
-            </div>
-            <div class='form-group'>
-              <label for='message'>Message</label>
-              <textarea class='form-control' cols='40' id='message' name='message' rows='5'>{% if message is defined %}{{ message.message }}{% endif %}</textarea>
-              {% if message is defined %}
-              {{ _self.errorList(message.getErrors('message')) }}
-              {% endif %}
-            </div>
-            <button class='btn_more btn-primary' type='submit'>Send</button>
-          </form>
+        <div class='col-sm-5 col-sm-offset-4'>
+          <br>
+          <a class='btn_more btn-secondary' href='/contact'>All Office Locations</a>
+          &nbsp;
+          <a class='btn_more btn-clear-wired' href='/contact#send'>Send Us a Message</a>
         </div>
       </div>
     </div>

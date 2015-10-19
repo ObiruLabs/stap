@@ -71,29 +71,5 @@
       </div>
     </div>
   </section>
-  <section class='section_callout'>
-    <div class='container-fluid'>
-      <h1 class='section--title col-sm-6 col-sm-offset-3'>Recent Newsletters</h1>
-      {% for newsletters in craft.entries.section('newsletters') %}
-      <div class='row'>
-        <div class='col-sm-4 col-sm-offset-4'>
-          <h1>{{ newsletters.title }}</h1>
-          <ul>
-            {% for newsletter in newsletters.newsletters | slice(0, 4) %}
-            <li>
-              <a href='{{ newsletter.newsletterDocument.first().url }}'>{{ newsletter.newsletterEdition }}</a>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-      {% endfor %}
-      <div class='row'>
-        <div class='col-sm-6 col-sm-offset-3 text-center'>
-          <a class='section--more btn btn-secondary' href='/newsletters'>Read more</a>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 {% endblock %}

@@ -6,15 +6,17 @@
     %section.section
         .container-fluid
             %h1.section--title.col-sm-6.col-sm-offset-3 {{ entry.title }}
-            {% set groups = entry.newsletters | batch((entry.newsletters | length / 2) | round(0, 'ceil')) %}
             .row
-                {% for newsletters in groups %}
-                .col-sm-6
-                    %ul
-                        {% for newsletter in newsletters %}
-                        %li
-                            %a{ href: '{{ newsletter.newsletterDocument.first().url }}' } {{ newsletter.newsletterEdition }}
+                .col-sm-6.col-sm-offset-3
+                    {% set groups = entry.newsletters | batch((entry.newsletters | length / 2) | round(0, 'ceil')) %}
+                    .row
+                        {% for newsletters in groups %}
+                        .col-sm-6
+                            %ul
+                                {% for newsletter in newsletters %}
+                                %li
+                                    %a{ href: '{{ newsletter.newsletterDocument.first().url }}' } {{ newsletter.newsletterEdition }}
+                                {% endfor %}
                         {% endfor %}
-                {% endfor %}
     {% endfor %}
 {% endblock %}

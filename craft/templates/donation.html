@@ -229,16 +229,16 @@
             <div class='donation-form--share-links'>
               <div class='row'>
                 <div class='col-xs-6'>
-                  <button class='btn btn-secondary_pill btn-facebook'>
+                  <a class='btn btn-secondary_pill btn-facebook' onclick='window.open("https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstapinc.org%2Fdonation", "share_facebook", "height=350,width=660,left=0,top=0")'>
                     <svg viewbox='0 0 512 512'>
                       <use xlink:href='#facebook'></use>
                     </svg>
                     Share
                     <span class='hidden-xs'>on Facebook</span>
-                  </button>
+                  </a>
                 </div>
                 <div class='col-xs-6'>
-                  <a class='btn btn-secondary_pill btn-twitter' ng-href='https://twitter.com/home?status=I%20just%20donated%20${[{ donationAmount() / 100 }]}%20to%20the%20Southern%20Tier%20AIDS%20Program' target='_blank'>
+                  <a class='btn btn-secondary_pill btn-twitter' onclick='window.open("https://twitter.com/home?status=I%20just%20made%20a%20donation%20to%20support%20%40STAPinc!%20You%20can%20too%20at%20https%3A%2F%2Fstapinc.org%2Fdonation", "share_twitter", "height=350,width=660,left=0,top=0")'>
                     <svg viewbox='0 0 512 512'>
                       <use xlink:href='#twitter'></use>
                     </svg>

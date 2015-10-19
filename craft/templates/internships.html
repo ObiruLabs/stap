@@ -2,42 +2,30 @@
 {% set navPage = 'about' %}
 {% block content %}
 <main id='main-content'>
-  <section class='section'>
+  <section class='section_background_internships'>
+    <div class='section_background--overlay'></div>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-sm-6 col-sm-offset-3'>
           <h1 class='section--title'>Internships</h1>
+          {{ entry.pageIntroduction }}
         </div>
       </div>
-      {% for block in entry.callToAction %}
+    </div>
+  </section>
+  <section class='section'>
+    <div class='container-fluid'>
       <div class='row'>
-        {% if block.type == 'description' %}
         <div class='col-sm-6 col-sm-offset-3'>
-          <p>{{ block.text }}</p>
+          {{ entry.descriptionWithContent }}
         </div>
-        {% elseif block.type == 'callToAction' %}
-        <div class='col-sm-5 col-sm-offset-2'>
-          <p>{{ block.description }}</p>
-          <a class='btn btn-secondary' href='{{ block.buttonUrl }}'>{{ block.buttonText }}</a>
+      </div>
+      {% for block in entry.callToActionButton %}
+      <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <br>
+          <a class='btn btn-secondary' href='{{ block.buttonLink }}'>{{ block.buttonText }}</a>
         </div>
-        <div class='col-sm-3'>
-          {% set groups = block.photos | batch((block.photos | length / 2) | round(0, 'ceil')) %}
-          <div class='row'>
-            {% for photos in groups %}
-            <div class='col-sm-6'>
-              <div class='row'>
-                {% for photo in photos %}
-                <div class='col-xs-12'>
-                  <img data-src='{{ photo.url }}' style='width: 100%'>
-                  <br>
-                </div>
-                {% endfor %}
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-        {% endif %}
       </div>
       <br>
       {% endfor %}

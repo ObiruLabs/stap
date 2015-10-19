@@ -3,11 +3,20 @@
 %main#main-content{ ng: { controller: 'donationCancelCtrl' } }
     %section.section
         .container-fluid
-            %h1.section--title Donations
-            %div{ ng: { show: 'form.init && !form.cancelled', cloak: '' } }
-                %form{ method: 'post', accept_charset: 'UTF-8' }
-                    %p Click the button below to stop your monthly donations.
-                    %button.btn.btn-primary{ ng: { click: 'submit()' } } Cancel donation
-            %div{ ng: { show: 'form.init && form.cancelled', cloak: '' } }
-                You've already successfully cancelled your monthly donation.
+            {% set donation = craft.entries.section('donation').first() %}
+            %h1.section--title-center Cancel Your Donation
+            .row
+                .col-sm-6.col-sm-offset-3
+                    %div{ ng: { hide: 'form.init' } } Checking your donation status...
+                    %div{ ng: { show: 'form.init && !form.cancelled', cloak: '' } }
+                        %form{ method: 'post', accept_charset: 'UTF-8' }
+                            %p Please confirm that you would like to cancel future monthly donations to STAP by clicking the button below.
+                            %button.btn.btn-secondary{ ng: { click: 'submit()', disabled: 'form.cancelling' } }
+                                {[{ form.cancelling ? 'Cancelling future donations...' : 'Cancel future donations' }]}
+                    %div{ ng: { show: 'form.init && form.cancelled', cloak: '' } }
+                        You've successfully cancelled your monthly donation.
+                    %br
+                    %br
+                    %hr
+                    {{ donation.donationNote }}
 {% endblock %}

@@ -2,20 +2,30 @@
 {% set navPage = 'about' %}
 {% block content %}
 <main id='main-content'>
-  <section class='section'>
+  <section class='section_background_jobs'>
+    <div class='section_background--overlay'></div>
     <div class='container-fluid'>
-      <h1 class='section--title col-sm-6 col-sm-offset-3'>Job Openings</h1>
       <div class='row'>
         <div class='col-sm-6 col-sm-offset-3'>
-          <ul>
-            {% for entry in craft.entries.section('jobOpenings') %}
-            <li>
-              <a href='/jobs/{{ entry.slug }}'>{{ entry.title }}</a>
-            </li>
-            {% endfor %}
-          </ul>
+          <h1 class='section--title'>Job Openings</h1>
+          Providing Comprehensive HIV/AIDS Services in the Southern Tier of New York. Founded in 1984 as a local response to the HIV epidemic, Southern Tier AIDS program provides effective and innovative HIV and Hepatitis C prevention education.
         </div>
       </div>
+    </div>
+  </section>
+  <section class='section'>
+    <div class='container-fluid'>
+      {% for entry in craft.entries.section('jobOpenings') %}
+      <div class='job row'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <a class='job--title' href='/jobs/{{ entry.slug }}'>
+            <h2>{{ entry.title }}</h2>
+          </a>
+          <p>{{ entry.excerpt }}</p>
+          <a class='btn btn-secondary' href='/jobs/{{ entry.slug }}'>View Posting</a>
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </section>
 </main>

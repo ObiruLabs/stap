@@ -1,0 +1,22 @@
+.job {
+    &--title {
+        color: $text-color;
+        &:hover {
+            color: $text-color;
+        }
+    }
+
+    h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        margin-top: 20px;
+        padding: 8px 25px;
+    }
+
+    & + & {
+        margin-top: 50px;
+    }
+}

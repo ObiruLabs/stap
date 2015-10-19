@@ -2,32 +2,76 @@
 {% set navPage = 'about' %}
 {% block content %}
 %main#main-content
-    %section.section
+    %section.section_background_about
+        .section_background--overlay
         .container-fluid
-            %h1.section--title.col-sm-8.col-sm-offset-2 Contact Us
+            .row
+                .col-sm-6.col-sm-offset-3
+                    %h1.section--title Contact Us
+                    {{ entry.pageIntroduction }}
 
+    %section.section.section_bordered
+        .container-fluid
             {% for location in entry.contactLocations %}
-            .post
-                .col-xs-10.col-xs-offset-1
-                    .post--container
-                        .row
-                            .col-sm-7.col-sm-offset-1
-                                %h2 {{ location.locationName }}
-                                %p {{ location.address1 }}
-                                %p {{ location.address2 }}
-                                %p {{ location.city }}, {{ location.state }} {{ location.zip }}
-                                {% if location.hotline %}
-                                %p Hotline: {{ location.hotline }}
-                                {% endif %}
-                                {% if location.phone %}
-                                %p Phone: {{ location.phone }}
-                                {% endif %}
-                                {% if location.fax %}
-                                %p Fax: {{ location.fax }}
-                                {% endif %}
-                                %a{ href: '{{ location.mapLink }}' } Map
-                            .col-sm-3.col-sm-offset-1
-                                {% set coordinates = location.latitude ~ ',' ~ location.longitude %}
-                                %img.post--image{ data: { src: 'https://maps.googleapis.com/maps/api/staticmap?center={{ coordinates }}&zoom=14&size=150x150&markers=size:mid%7Ccolor:red%7C{{ coordinates }}&scale=2&key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU' } }
+            .contact.row
+                .col-sm-6.col-sm-offset-3
+                    .contact--map
+                        .contact--overlay
+                            %h2 {{ location.locationName }}
+                        {% set coordinates = location.latitude ~ ',' ~ location.longitude %}
+                        %a{ href: '{{ location.mapLink }}' }
+                            %img{ data: { src: 'https://maps.googleapis.com/maps/api/staticmap?center={{ coordinates }}&zoom=14&size=300x125&markers=size:mid%7Ccolor:red%7C{{ coordinates }}&scale=2&key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU' } }
+                    .contact--address1 {{ location.address1 }}
+                    .contact--address2 {{ location.address2 }}
+                    .contact--address3 {{ location.city }}, {{ location.state }} {{ location.zip }}
+                    {% if location.hotline %}
+                    .contact--phone
+                        %span<> Hotline:
+                        {{ location.hotline }}
+                    {% endif %}
+                    {% if location.phone %}
+                    .contact--phone
+                        %span<> Phone:
+                        {{ location.phone }}
+                    {% endif %}
+                    {% if location.fax %}
+                    .contact--phone
+                        %span<> Fax:
+                        {{ location.fax }}
+                    {% endif %}
+                    %a{ href: '{{ location.mapLink }}' } See it on the map
             {% endfor %}
+
+    %section#send.contact-form.section_bordered
+        .container-fluid
+            .row
+                .col-sm-6.col-sm-offset-3
+                    %h2 Send Us a Message
+
+                    %p.contact-form--instructions We'd love to hear from you! Whether you have a question about our services or would like to become part of our community, drop us a line below and we'll do our best to get back to you right away.
+
+                    %form{ method: 'post', action: '/', accept: { charset: 'UTF-8' } }
+                        %input{ type: 'hidden', name: 'action', value: 'mandrillForm/sendMessage' }
+                        %input{ type: 'hidden', name: 'successRedirectUrl', value: 'success' }
+
+                        .form-group
+                            %input#fromEmail.form-control{ type: 'text',
+                                                           name: 'fromEmail',
+                                                           placeholder: 'Your Email',
+                                                           value: '{% if message is defined %}{{ message.fromEmail }}{% endif %}' }
+
+                            {% if message is defined %}
+                            {{ _self.errorList(message.getErrors('fromEmail')) }}
+                            {% endif %}
+
+                        .form-group
+                            %label{ for: 'message' } Message
+                            %textarea#message.form-control{ rows: '5', cols: '40', name: 'message' }
+                                {% if message is defined %}{{ message.message }}{% endif %}
+
+                            {% if message is defined %}
+                            {{ _self.errorList(message.getErrors('message')) }}
+                            {% endif %}
+
+                        %button.btn_more.btn-secondary{ type: 'submit' } Send Now
 {% endblock %}

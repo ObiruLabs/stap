@@ -49,21 +49,4 @@
                                                 %h2.section--title Client Services
                                                 %p {{ entry.clientServicesIntroduction }}
                                                 %a.btn.btn-secondary{ href: '/clientservices' } Read about our client programs
-
-    %section.section_callout
-        .container-fluid
-            %h1.section--title.col-sm-6.col-sm-offset-3 Recent Newsletters
-            {% for newsletters in craft.entries.section('newsletters') %}
-            .row
-                .col-sm-4.col-sm-offset-4
-                    %h1 {{ newsletters.title }}
-                    %ul
-                        {% for newsletter in newsletters.newsletters | slice(0, 4) %}
-                        %li
-                            %a{ href: '{{ newsletter.newsletterDocument.first().url }}' } {{ newsletter.newsletterEdition }}
-                        {% endfor %}
-            {% endfor %}
-            .row
-                .col-sm-6.col-sm-offset-3.text-center
-                    %a.section--more.btn.btn-secondary{ href: '/newsletters' } Read more
 {% endblock %}

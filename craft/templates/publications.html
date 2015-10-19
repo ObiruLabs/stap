@@ -1,10 +1,10 @@
 {% extends "_layout" %}
 {% block content %}
-{% for entry in craft.entries.section('publications') %}
 <main id='main-content'>
-  <section class='section'>
+  {% for entry in craft.entries.section('publications') %}
+  <section class='section section_bordered'>
     <div class='container-fluid'>
-      <h1 class='section--title col-sm-6 col-sm-offset-3'>{{ entry.title }}</h1>
+      <h1 class='section--title-center-alt col-sm-6 col-sm-offset-3' style='margin-bottom: 100px;'>{{ entry.title }}</h1>
       {% set groups = entry.issues | batch(3) %}
       {% for issues in groups %}
       <div class='row'>
@@ -20,6 +20,6 @@
       {% endfor %}
     </div>
   </section>
+  {% endfor %}
 </main>
-{% endfor %}
 {% endblock %}

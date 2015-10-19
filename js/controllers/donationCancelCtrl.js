@@ -5,6 +5,7 @@ angular.module('stap')
 
         $scope.form = {
             init: false,
+            cancelling: false,
             cancelled: true
         };
 
@@ -24,9 +25,16 @@ angular.module('stap')
                 })
             };
 
+            $scope.form.cancelling = true;
+
             $http(request)
                 .success(function() {
-                    console.warn('donezo');
+                    location.reload();
+                    $scope.form.cancelling = false;
+                })
+                .catch(function() {
+                    alert('Unable to cancel your donation. Please try again or send us an email.');
+                    $scope.form.cancelling = false;
                 });
         };
 

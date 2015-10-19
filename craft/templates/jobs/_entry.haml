@@ -11,5 +11,6 @@
                 .col-sm-6.col-sm-offset-3
                     %label {{ entry.postDate | date("F j, Y") }}
                     %p {{ entry.body }}
-                    %a{ href: '{{ entry.jobOpeningDocument.first().url }}' } Document
+                    %br
+                    %a.btn.btn-secondary{ href: '{{ entry.jobOpeningDocument.first().url }}' } Download PDF
 {% endblock %}

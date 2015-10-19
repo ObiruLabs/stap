@@ -6,19 +6,23 @@
   <section class='section'>
     <div class='container-fluid'>
       <h1 class='section--title col-sm-6 col-sm-offset-3'>{{ entry.title }}</h1>
-      {% set groups = entry.newsletters | batch((entry.newsletters | length / 2) | round(0, 'ceil')) %}
       <div class='row'>
-        {% for newsletters in groups %}
-        <div class='col-sm-6'>
-          <ul>
-            {% for newsletter in newsletters %}
-            <li>
-              <a href='{{ newsletter.newsletterDocument.first().url }}'>{{ newsletter.newsletterEdition }}</a>
-            </li>
+        <div class='col-sm-6 col-sm-offset-3'>
+          {% set groups = entry.newsletters | batch((entry.newsletters | length / 2) | round(0, 'ceil')) %}
+          <div class='row'>
+            {% for newsletters in groups %}
+            <div class='col-sm-6'>
+              <ul>
+                {% for newsletter in newsletters %}
+                <li>
+                  <a href='{{ newsletter.newsletterDocument.first().url }}'>{{ newsletter.newsletterEdition }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
             {% endfor %}
-          </ul>
+          </div>
         </div>
-        {% endfor %}
       </div>
     </div>
   </section>

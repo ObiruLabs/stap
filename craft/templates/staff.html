@@ -1,27 +1,36 @@
 {% extends "_layout" %}
 {% set navPage = 'about' %}
 {% block content %}
-{% for entry in craft.entries.section('staff') %}
 <main id='main-content'>
-  <section class='section' id='{{ entry.slug }}'>
+  <section class='section_background_staff'>
+    <div class='section_background--overlay'></div>
     <div class='container-fluid'>
-      <h1 class='section--title col-sm-6 col-sm-offset-3'>{{ entry.title }}</h1>
-      {% set groups = entry.employees | batch((entry.employees | length / 2) | round(0, 'ceil')) %}
       <div class='row'>
         <div class='col-sm-6 col-sm-offset-3'>
+          <h1 class='section--title'>Staff</h1>
+          Providing Comprehensive HIV/AIDS Services in the Southern Tier of New York. Founded in 1984 as a local response to the HIV epidemic, Southern Tier AIDS program provides effective and innovative HIV and Hepatitis C prevention education and outreach services to individuals and communities and comprehensive and caring services to people living with HIV/AIDS. Serving eight counties from nine office locations, all our services are free and confidential.
+        </div>
+      </div>
+    </div>
+  </section>
+  {% for entry in craft.entries.section('staff') %}
+  <section class='section' id='{{ entry.slug }}'>
+    <div class='container-fluid'>
+      <h1 class='section--title-center-alt col-sm-6 col-sm-offset-3'>{{ entry.title }}</h1>
+      {% set groups = entry.employees | batch((entry.employees | length / 2) | round(0, 'ceil')) %}
+      <div class='staff row'>
+        <div class='col-sm-8 col-sm-offset-2'>
           <div class='row'>
             {% for employees in groups %}
             <div class='col-sm-6'>
-              <ul>
-                {% for employee in employees %}
-                <li>
-                  <a href='mailto:{{ employee.emailAddress }}'>{{ employee.employeeName }}</a>
-                  {% if employee.position %}
-                  - {{ employee.position }}
-                  {% endif %}
-                </li>
-                {% endfor %}
-              </ul>
+              <div class='row'>
+                <div class='col-xs-10 col-xs-offset-1'>
+                  <ul>
+                    {% for employee in employees %}<li>{% if employee.emailAddress %}<a href='mailto:{{ employee.emailAddress }}'><span class='geomicon-mail'></span><span><span>{{ employee.employeeName }}</span>{% if employee.position %}<span>,</span>{% endif %}</span>{% if employee.position %}<span class='staff--position'>{{ " " ~ employee.position }}</span>{% endif %}</a>{% else %}<span><span>{{ employee.employeeName }}</span>{% if employee.position %}<span>,</span>{% endif %}</span>{% if employee.position %}<span class='staff--position'>{{ " " ~ employee.position }}</span>{% endif %}
+                    {% endif %}</li>{% endfor %}
+                  </ul>
+                </div>
+              </div>
             </div>
             {% endfor %}
           </div>
@@ -29,6 +38,6 @@
       </div>
     </div>
   </section>
+  {% endfor %}
 </main>
-{% endfor %}
 {% endblock %}

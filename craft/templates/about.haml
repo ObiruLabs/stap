@@ -11,103 +11,113 @@
 
 {% block content %}
 %main#main-content
-    %section.section_callout
+    %section.section_background_about
+        .section_background--overlay
         .container-fluid
             .row
                 .col-sm-6.col-sm-offset-3
-                    %h1.section--title Our Mission
+                    %h1.section--title Who We Are
                     {{ entry.pageIntroduction }}
-                    %a.btn_more.btn-secondary{ href: '/staff' } Meet Us
+            .section_background_about--buttons.row
+                .col-xs-12
+                    %a.btn.btn-secondary{ href: '/staff' } Meet our team
+                    &nbsp;
+                    %a.btn.btn-clear-wired{ href: '/contact' } Contact Us
 
-    %section#opportunities.section
-        .container-fluid
-            .row
-                .col-sm-6
-                    .row
-                        .col-xs-11.col-xs-offset-1
-                            %h1.section--title Join Us
-            .row
-                .col-sm-6
-                    .row
-                        .col-xs-10.col-xs-offset-1
-                            %h2 Job Openings
-                            %p {{ entry.jobOpeningsIntroduction }}
-                            %a.btn_more.btn-secondary{ href: '/jobs' } See Jobs
-                .col-sm-6
-                    .row
-                        .col-xs-10.col-xs-offset-1
-                            %h2 Internships
-                            %p {{ entry.internshipsIntroduction }}
-                            %a.btn_more.btn-secondary{ href: '/internships' } See Internships
-
-    %section.section_callout
+    %section.section_bordered
         .container-fluid
             .row
                 .col-sm-6.col-sm-offset-3
-                    %h1.section--title Get Involved
-                    {{ entry.volunteerIntroduction }}
-                    %a.btn_more.btn-secondary{ href: '/volunteer' } Learn more
+                    %h1.section--title-center-alt Our Mission
+                    {{ entry.pageSubIntroduction }}
 
-    %section.section
+    %section#opportunities.section_clear.section_bordered
+        .container-full
+            .row
+                .col-lg-12.is-odd
+                    .service
+                        .row
+                            .service--photo.col-xs-12.col-lg-6{ style: 'background-image: url("/images/backgrounds/bg-6.jpg")' }
+                            .service--details.col-lg-7
+                                .row
+                                    .col-lg-11<
+                                        .row
+                                            .col-xs-10.col-xs-offset-1.col-lg-8.col-lg-offset-2
+                                                %h2.section--title Jobs &amp; Internships
+                                                %p {{ entry.jobInternshipIntroduction }}
+                                                %a.btn.btn-secondary{ href: '/jobs' } See Jobs
+                                                &nbsp;
+                                                %a.btn.btn-tertiary{ href: '/internships' } See Internships
+            .row
+                .col-lg-12.is-even
+                    .service
+                        .row
+                            .service--photo.col-xs-12.col-lg-6{ style: 'background-image: url("/images/backgrounds/bg-3.jpg")' }
+                            .service--details.col-lg-7
+                                .row
+                                    .col-lg-11<
+                                        .row
+                                            .col-xs-10.col-xs-offset-1.col-lg-8.col-lg-offset-2
+                                                %h2.section--title Volunteer with Us
+                                                %p {{ entry.volunteerIntroduction }}
+                                                %a.btn.btn-tertiary{ href: '/volunteer' } Become a Volunteer
+
+    %section.section_background_publications-services.section_bordered{ style: 'background-color: #eef7f8' }
+        {% set allIssues = [] %}
+        {% for entry in craft.entries.section('publications') %}
+        {% for issue in entry.issues %}
+        {% set allIssues = allIssues | merge([issue]) %}
+        {% endfor %}
+        {% endfor %}
+        .section_background--overlay
         .container-fluid
             .row
-                .col-sm-6.col-sm-offset-3
-                    {% for entry in craft.entries.section('contact') %}
-                    {% for location in entry.contactLocations | slice(0, 1) %}
+                .col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2
                     .row
                         .col-xs-12
-                            %h1.section--title Contact Us
+                            %h1.section--title-center-alt Publications
                     .row
-                        .col-sm-7
-                            %h2 {{ location.locationName }}
-                            %p {{ location.address1 }}
-                            %p {{ location.address2 }}
-                            %p {{ location.city }}, {{ location.state }} {{ location.zip }}
-                            {% if location.hotline %}
-                            %p Hotline: {{ location.hotline }}
-                            {% endif %}
-                            {% if location.phone %}
-                            %p Phone: {{ location.phone }}
-                            {% endif %}
-                            {% if location.fax %}
-                            %p Fax: {{ location.fax }}
-                            {% endif %}
-                            %p
-                                %a{ href: '{{ location.mapLink }}' } Map
-                            %a.btn_more.btn-secondary{ href: '/contact' } See all locations
-                        .col-sm-3.col-sm-offset-1
-                            {% set coordinates = location.latitude ~ ',' ~ location.longitude %}
-                            %img.post--image{ data: { src: 'https://maps.googleapis.com/maps/api/staticmap?center={{ coordinates }}&zoom=14&size=150x150&markers=size:mid%7Ccolor:red%7C{{ coordinates }}&scale=2&key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU' } }
-                    {% endfor %}
-                    {% endfor %}
+                        {% for issue in allIssues | slice(0, 4) %}
+                        .section_background_publications-services--cover.col-xs-3
+                            %a{ href: '{{ issue.linkToIssue }}', style: 'background-image: url("{{ issue.coverImage.first().url }}")' }
+                        {% endfor %}
+                    .row
+                        .col-xs-12.text-center
+                            %br
+                            %br
+                            %a.btn.btn-secondary{ href: '/publications' } View all Publications
 
-    %section.section
+
+
+    %section.section_background_about-contact.section_bordered{ style: 'background-color: #eef7f8' }
+        .section_background--overlay-light
+        .section_background--overlay
         .container-fluid
+            %h1.section--title-center-alt.col-sm-8.col-sm-offset-2 Contact Us
+
+            {% for entry in craft.entries.section('contact') %}
+            {% for location in entry.contactLocations | slice(0, 1) %}
+            .contact.row
+                .col-sm-5.col-sm-offset-4
+                    %h2 {{ location.locationName }}
+                    .contact--address1 {{ location.address1 }}
+                    .contact--address2 {{ location.address2 }}
+                    .contact--address3 {{ location.city }}, {{ location.state }} {{ location.zip }}
+                    {% if location.hotline %}
+                    .contact--phone Hotline: {{ location.hotline }}
+                    {% endif %}
+                    {% if location.phone %}
+                    .contact--phone Phone: {{ location.phone }}
+                    {% endif %}
+                    {% if location.fax %}
+                    .contact--phone Fax: {{ location.fax }}
+                    {% endif %}
+            {% endfor %}
+            {% endfor %}
             .row
-                .col-sm-6.col-sm-offset-3
-                    %h1.section--title Send Us a Message
-
-                    %form{ method: 'post', action: '/', accept: { charset: 'UTF-8' } }
-                        %input{ type: 'hidden', name: 'action', value: 'mandrillForm/sendMessage' }
-                        %input{ type: 'hidden', name: 'successRedirectUrl', value: 'success' }
-
-                        .form-group
-                            %label{ for: 'fromEmail' } Your Email
-                            %input#fromEmail.form-control{ type: 'text', name: 'fromEmail', value: '{% if message is defined %}{{ message.fromEmail }}{% endif %}' }
-
-                            {% if message is defined %}
-                            {{ _self.errorList(message.getErrors('fromEmail')) }}
-                            {% endif %}
-
-                        .form-group
-                            %label{ for: 'message' } Message
-                            %textarea#message.form-control{ rows: '5', cols: '40', name: 'message' }
-                                {% if message is defined %}{{ message.message }}{% endif %}
-
-                            {% if message is defined %}
-                            {{ _self.errorList(message.getErrors('message')) }}
-                            {% endif %}
-
-                        %button.btn_more.btn-primary{ type: 'submit' } Send
-
+                .col-sm-5.col-sm-offset-4
+                    %br
+                    %a.btn_more.btn-secondary{ href: '/contact' } All Office Locations
+                    &nbsp;
+                    %a.btn_more.btn-clear-wired{ href: '/contact#send' } Send Us a Message
 {% endblock %}

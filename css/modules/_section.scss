@@ -26,6 +26,11 @@
         text-align: center;
     }
 
+    &--title-center-alt {
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
     &--title_secondary {
         font-weight: 700;
         margin: {
@@ -171,6 +176,124 @@
 
         .btn {
             margin-bottom: 15px;
+        }
+    }
+}
+
+.section_background_about {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-6.jpg");
+    color: #fff;
+
+    .section_background--overlay {
+        background: $brand-tertiary-dark;
+    }
+
+    &--buttons {
+        margin-top: 50px;
+        text-align: center;
+
+        .btn {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.section_background_about-contact {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-map.png");
+    padding-bottom: 150px;
+
+    .section_background--overlay-light {
+        background: #fff;
+        opacity: .85;
+    }
+
+    .section_background--overlay {
+        background: $brand-tertiary-dark;
+        opacity: .2;
+    }
+
+    .section--title {
+        font-weight: 400;
+        margin-bottom: 60px;
+    }
+
+    p {
+        text-align: left;
+    }
+}
+
+.section_background_staff {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-6.jpg");
+    color: #fff;
+
+    .section_background--overlay {
+        background: $brand-tertiary-dark;
+    }
+}
+
+.section_background_internships {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-6.jpg");
+    color: #fff;
+
+    .section_background--overlay {
+        background: $brand-tertiary-dark;
+    }
+}
+
+.section_background_volunteer {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-6.jpg");
+    color: #fff;
+
+    .section_background--overlay {
+        background: $brand-tertiary-dark;
+    }
+}
+
+.section_background_jobs {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-6.jpg");
+    color: #fff;
+
+    .section_background--overlay {
+        background: $brand-tertiary-dark;
+    }
+}
+
+.section_background_publications-services {
+    @extend .section_background;
+    background-image: url("/images/backgrounds/bg-publications.jpg");
+
+    .section_background--overlay {
+        opacity: 0;
+        background: #fff;
+    }
+
+    &--cover {
+        height: 185px;
+
+        @media (min-width: $screen-sm-min) {
+            height: 300px;
+        }
+
+        @media (min-width: $screen-md-min) {
+            height: 220px;
+        }
+
+        @media (min-width: $screen-lg-min) {
+            height: 190px;
+        }
+
+        > a {
+            display: block;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+            @include poly-background-size();
         }
     }
 }

@@ -2,10 +2,14 @@
 {% block content %}
 %main#main-content
     %section.section
-        .container-fluid
+        .article.container-fluid
             %h1.section--title.col-sm-6.col-sm-offset-3 {{ entry.title }}
             .row
-                .col-xs-10.col-xs-offset-1
+                .article--photo.col-sm-6.col-sm-offset-3
+                    %img{ data: { src: '{{ entry.articlePhoto.first().url }}' } }
+            .row
+                .col-sm-6.col-sm-offset-3
+                    %br
                     %label {{ entry.postDate | date("F j, Y") }}
                     %p {{ entry.body }}
 {% endblock %}

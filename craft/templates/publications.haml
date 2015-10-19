@@ -1,11 +1,11 @@
 {% extends "_layout" %}
 {% block content %}
 
-{% for entry in craft.entries.section('publications') %}
 %main#main-content
-    %section.section
+    {% for entry in craft.entries.section('publications') %}
+    %section.section.section_bordered
         .container-fluid
-            %h1.section--title.col-sm-6.col-sm-offset-3 {{ entry.title }}
+            %h1.section--title-center-alt.col-sm-6.col-sm-offset-3{ style: "margin-bottom: 100px;" } {{ entry.title }}
             {% set groups = entry.issues | batch(3) %}
             {% for issues in groups %}
             .row
@@ -16,5 +16,5 @@
                         %img{ data: { src: '{{ issue.coverImage.first().url }}' }, style: 'width: 100%' }
                 {% endfor %}
             {% endfor %}
-{% endfor %}
+    {% endfor %}
 {% endblock %}

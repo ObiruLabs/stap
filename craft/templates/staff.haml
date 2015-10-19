@@ -2,26 +2,53 @@
 {% set navPage = 'about' %}
 {% block content %}
 
-{% for entry in craft.entries.section('staff') %}
 %main#main-content
-    %section.section{ id: '{{ entry.slug }}' }
+    %section.section_background_staff
+        .section_background--overlay
         .container-fluid
-            %h1.section--title.col-sm-6.col-sm-offset-3 {{ entry.title }}
-            {% set groups = entry.employees | batch((entry.employees | length / 2) | round(0, 'ceil')) %}
             .row
                 .col-sm-6.col-sm-offset-3
+                    %h1.section--title Staff
+                    Providing Comprehensive HIV/AIDS Services in the Southern Tier of New York. Founded in 1984 as a local response to the HIV epidemic, Southern Tier AIDS program provides effective and innovative HIV and Hepatitis C prevention education and outreach services to individuals and communities and comprehensive and caring services to people living with HIV/AIDS. Serving eight counties from nine office locations, all our services are free and confidential.
+
+    {% for entry in craft.entries.section('staff') %}
+    %section.section{ id: '{{ entry.slug }}' }
+        .container-fluid
+            %h1.section--title-center-alt.col-sm-6.col-sm-offset-3 {{ entry.title }}
+            {% set groups = entry.employees | batch((entry.employees | length / 2) | round(0, 'ceil')) %}
+            .staff.row
+                .col-sm-8.col-sm-offset-2
                     .row
                         {% for employees in groups %}
                         .col-sm-6
-                            %ul
-                                {% for employee in employees %}
-                                %li
-                                    %a{ href: 'mailto:{{ employee.emailAddress }}' } {{ employee.employeeName }}
-                                    {% if employee.position %}
-                                    \- {{ employee.position }}
-                                    {% endif %}
+                            .row
+                                .col-xs-10.col-xs-offset-1
+                                    %ul
+                                        {% for employee in employees %}
+                                        %li<>
+                                            {% if employee.emailAddress %}
+                                            %a{ href: 'mailto:{{ employee.emailAddress }}' }<>
+                                                %span.geomicon-mail<>
+                                                %span<>
+                                                    %span<> {{ employee.employeeName }}
+                                                    {% if employee.position %}
+                                                    %span<> ,
+                                                    {% endif %}
+                                                {% if employee.position %}
+                                                %span.staff--position<> {{ " " ~ employee.position }}
+                                                {% endif %}
+                                            {% else %}
+                                            %span<>
+                                                %span<> {{ employee.employeeName }}
+                                                {% if employee.position %}
+                                                %span<> ,
+                                                {% endif %}
+                                            {% if employee.position %}
+                                            %span.staff--position<> {{ " " ~ employee.position }}
+                                            {% endif %}
+                                            {% endif %}
 
-                                {% endfor %}
+                                        {% endfor %}
                         {% endfor %}
-{% endfor %}
+    {% endfor %}
 {% endblock %}

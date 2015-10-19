@@ -5,32 +5,17 @@
     <div class='container-fluid'>
       <h1 class='section--title col-sm-6 col-sm-offset-3'>News</h1>
       {% for entry in craft.entries.section('news') %}
-      <div class='post'>
-        <div class='col-xs-10 col-xs-offset-1'>
-          <div class='post--container'>
-            <div class='row'>
-              {% if entry.articlePhoto.first() %}
-              <div class='col-sm-7'>
-                <h2>{{ entry.title }}</h2>
-                <span class='post--date'>{{ entry.postDate | date("F j, Y") }}</span>
-                <p>{{ entry.excerpt }}</p>
-                <a class='post--more btn btn-secondary' href='/news/{{ entry.slug }}'>Read More</a>
-              </div>
-              <div class='col-sm-4 col-sm-offset-1'>
-                <a href='/news/{{ entry.slug }}'>
-                  <img class='post--image' data-src='{{ entry.articlePhoto.first().url }}'>
-                </a>
-              </div>
-              {% else %}
-              <div class='col-sm-12'>
-                <h2>{{ entry.title }}</h2>
-                <span class='post--date'>{{ entry.postDate | date("F j, Y") }}</span>
-                <p>{{ entry.excerpt }}</p>
-                <a class='post--more btn btn-secondary' href='/news/{{ entry.slug }}'>Read More</a>
-              </div>
-              {% endif %}
-            </div>
+      <div class='article row'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <div class='article--photo'>
+            <a href='/news/{{ entry.slug }}'>
+              <img data-src='{{ entry.articlePhoto.first().url }}'>
+            </a>
           </div>
+          <h2>{{ entry.title }}</h2>
+          <span class='post--date'>{{ entry.postDate | date("F j, Y") }}</span>
+          <p>{{ entry.excerpt }}</p>
+          <a class='post--more btn btn-secondary' href='/news/{{ entry.slug }}'>Read More</a>
         </div>
       </div>
       {% endfor %}

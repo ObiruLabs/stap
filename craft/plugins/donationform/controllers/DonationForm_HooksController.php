@@ -29,7 +29,9 @@ class DonationForm_HooksController extends BaseController
     {
         $mandrill = craft()->mandrillService_wrapper->requireApi();
 
+//        $cancelURL = 'https://stapinc.org/donation/cancel?a='.$json->data->object->customer;
         $cancelURL = 'http://localhost:8888/donation/cancel?a='.$json->data->object->customer;
+
         $amount = $json->data->object->amount_due;
         $bodyOne = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptParagraphOne;
         $bodyTwo = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptParagraphTwo;

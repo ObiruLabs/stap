@@ -20,7 +20,7 @@
                             %h2 {{ location.locationName }}
                         {% set coordinates = location.latitude ~ ',' ~ location.longitude %}
                         %a{ href: '{{ location.mapLink }}' }
-                            %img{ data: { src: 'https://maps.googleapis.com/maps/api/staticmap?center={{ coordinates }}&zoom=14&size=300x125&markers=size:mid%7Ccolor:red%7C{{ coordinates }}&scale=2&key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU' } }
+                            %img{ data: { src: 'https://maps.googleapis.com/maps/api/staticmap?center={{ coordinates }}&zoom=14&size=600x250&markers=size:mid%7Ccolor:red%7C{{ coordinates }}&scale=1&key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU' } }
                     .contact--address1 {{ location.address1 }}
                     .contact--address2 {{ location.address2 }}
                     .contact--address3 {{ location.city }}, {{ location.state }} {{ location.zip }}

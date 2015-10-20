@@ -24,7 +24,7 @@
             </div>
             {% set coordinates = location.latitude ~ ',' ~ location.longitude %}
             <a href='{{ location.mapLink }}'>
-              <img data-src='https://maps.googleapis.com/maps/api/staticmap?center={{ coordinates }}&amp;zoom=14&amp;size=300x125&amp;markers=size:mid%7Ccolor:red%7C{{ coordinates }}&amp;scale=2&amp;key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU'>
+              <img data-src='https://maps.googleapis.com/maps/api/staticmap?center={{ coordinates }}&amp;zoom=14&amp;size=600x250&amp;markers=size:mid%7Ccolor:red%7C{{ coordinates }}&amp;scale=1&amp;key=AIzaSyDGcxPj2JOF7ViOZELFJ3hEbpGKnZbwpmU'>
             </a>
           </div>
           <div class='contact--address1'>{{ location.address1 }}</div>

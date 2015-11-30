@@ -37,6 +37,7 @@ Development
 * When adding new JavaScript files:
   * Add them to ` application.js `
   * Copy over the dependency list to ` Gruntfile.js `
+  * Increment version in application.js
 * When adding a new CSS module:
   * Include module inside ` application.scss `
 * When including a new asset, consider using an aws s3 bucket
@@ -49,13 +50,16 @@ Testing Donations
 
 Deployment
 -----------
-1. Create a branch off master with a version ` x.x.x `
+1. Create a branch off master with a version ` vX.X.X `
 2. Compile assets
   * If JS changes are made, increment version in application.js to update its hash.
   * In the terminal, run ` grunt `
 3. Stage generated assets from ` /dist `
 4. Commit change
 5. Tag the commit to be deployed
+6. Log into server
+7. Fetch recent changes ` git fetch origin `
+8. Checkout the latest release ` git checkout vX.X.X `
 
 New Deployments
 -----------

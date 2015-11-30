@@ -5,6 +5,7 @@
         appProduction = ['/dist/app.min.js'],
         isProduction = commonProduction[0].match(/dist\/common\.min\.js/) === null,
         IE8_TEST = Modernizr.video,
+        version = 1,
         i;
 
     var commonDependencies = [

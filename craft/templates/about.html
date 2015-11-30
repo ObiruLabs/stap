@@ -86,12 +86,9 @@
     </div>
   </section>
   <section class='section_background_publications-services section_bordered' style='background-color: #eef7f8'>
-    {% set allIssues = [] %}
-    {% for entry in craft.entries.section('publications') %}
-    {% for issue in entry.issues %}
-    {% set allIssues = allIssues | merge([issue]) %}
-    {% endfor %}
-    {% endfor %}
+    {% set publicationOne = craft.entries.section('publications')[0].issues %}
+    {% set publicationTwo = craft.entries.section('publications')[1].issues %}
+    {% set allIssues = [publicationOne[0], publicationOne[1], publicationTwo[0], publicationTwo[1]] %}
     <div class='section_background--overlay'></div>
     <div class='container-fluid'>
       <div class='row'>

@@ -29,21 +29,15 @@ class DonationForm_HooksController extends BaseController
     {
         $mandrill = craft()->mandrillService_wrapper->requireApi();
 
-//        $cancelURL = 'https://stapinc.org/donation/cancel?a='.$json->data->object->customer;
-        $cancelURL = 'http://localhost:8888/donation/cancel?a='.$json->data->object->customer;
+        $cancelURL =  craft()->getSiteUrl() . 'donation/cancel?a='.$json->data->object->customer;
 
         $amount = $json->data->object->amount_due;
         $bodyOne = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptParagraphOne;
         $bodyTwo = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptParagraphTwo;
         $bodyThree = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptParagraphThree;
+        $toNotifyEmail = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->notifyEmail;
 
-        $message = array(
-            'to' => array(array('email' => $email, 'name' => $name)),
-            'merge' => true,
-            'merge_vars' => array(array(
-                'rcpt' => $email,
-                'vars' =>
-                array(
+        $vars = array(
                     array(
                         'name' => 'NAME',
                         'content' => $name),
@@ -62,7 +56,21 @@ class DonationForm_HooksController extends BaseController
                     array(
                         'name' => 'CANCEL_URL',
                         'content' => $cancelURL)
-            )))
+        );
+
+        $message = array(
+            'to' => array(array('email' => $email, 'name' => $name), array('email' => $toNotifyEmail, 'name' => 'notify', 'type' => 'bcc')),
+            'merge' => true,
+            'merge_vars' => array(
+                array(
+                    'rcpt' => $email,
+                    'vars' => $vars
+                ),
+                array(
+                    'rcpt' => $toNotifyEmail,
+                    'vars' => $vars
+                ),
+            )
         );
 
         $template_content = array();

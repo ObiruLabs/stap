@@ -11,9 +11,12 @@
           <div ng-cloak='' ng-show='form.init &amp;&amp; !form.cancelled'>
             <form accept_charset='UTF-8' method='post'>
               <p>Please confirm that you would like to cancel future monthly donations to STAP by clicking the button below.</p>
-              <button class='btn btn-secondary' ng-click='submit()' ng-disabled='form.cancelling'>
-                {[{ form.cancelling ? 'Cancelling future donations...' : 'Cancel future donations' }]}
-              </button>
+              <br>
+              <div class='text-center'>
+                <button class='btn btn-secondary' ng-click='submit()' ng-disabled='form.cancelling'>
+                  {[{ form.cancelling ? 'Cancelling future donations...' : 'Cancel future donations' }]}
+                </button>
+              </div>
             </form>
           </div>
           <div ng-cloak='' ng-show='form.init &amp;&amp; form.cancelled'>

@@ -14,7 +14,8 @@ class DonationForm_EmailSettingModel extends BaseModel
             'id'    => AttributeType::Number,
             'receiptParagraphOne' => AttributeType::String,
             'receiptParagraphTwo' => AttributeType::String,
-            'receiptParagraphThree' => AttributeType::String
+            'receiptParagraphThree' => AttributeType::String,
+            'notifyEmail' => AttributeType::String
         );
     }
 }

@@ -20,7 +20,7 @@
 
                             {% if type == "upcoming" %}
                             {% if event.signUpLink %}
-                            %a.btn.btn-secondary{ href: '{{ event.signUpLink }}' } Sign Up
+                            %a.btn.btn-secondary{ href: '{{ event.signUpLink }}' } {{ event.signUpButtonText }}
                             {% endif %}
                             {% endif %}
 

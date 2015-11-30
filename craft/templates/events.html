@@ -16,7 +16,7 @@
             {{ event.description }}
             {% if type == "upcoming" %}
             {% if event.signUpLink %}
-            <a class='btn btn-secondary' href='{{ event.signUpLink }}'>Sign Up</a>
+            <a class='btn btn-secondary' href='{{ event.signUpLink }}'>{{ event.signUpButtonText }}</a>
             {% endif %}
             {% endif %}
             {% if event.photosLink %}

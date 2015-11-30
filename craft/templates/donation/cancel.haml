@@ -11,8 +11,10 @@
                     %div{ ng: { show: 'form.init && !form.cancelled', cloak: '' } }
                         %form{ method: 'post', accept_charset: 'UTF-8' }
                             %p Please confirm that you would like to cancel future monthly donations to STAP by clicking the button below.
-                            %button.btn.btn-secondary{ ng: { click: 'submit()', disabled: 'form.cancelling' } }
-                                {[{ form.cancelling ? 'Cancelling future donations...' : 'Cancel future donations' }]}
+                            %br
+                            .text-center
+                                %button.btn.btn-secondary{ ng: { click: 'submit()', disabled: 'form.cancelling' } }
+                                    {[{ form.cancelling ? 'Cancelling future donations...' : 'Cancel future donations' }]}
                     %div{ ng: { show: 'form.init && form.cancelled', cloak: '' } }
                         You've successfully cancelled your monthly donation.
                     %br

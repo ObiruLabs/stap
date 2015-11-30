@@ -41,6 +41,12 @@ Development
   * Include module inside ` application.scss `
 * When including a new asset, consider using an aws s3 bucket
 
+Testing Donations
+-----------
+* In JS console, enter ` fakeData() `
+* Modify fields as necessary
+* Do something here
+
 Deployment
 -----------
 1. Create a branch off master with a version ` x.x.x `
@@ -48,9 +54,8 @@ Deployment
   * If JS changes are made, increment version in application.js to update its hash.
   * In the terminal, run ` grunt `
 3. Stage generated assets from ` /dist `
-4. Update DonationForm_HooksController's cancel URL to use production site instead of local.
-5. Commit change
-6. Tag the commit to be deployed
+4. Commit change
+5. Tag the commit to be deployed
 
 New Deployments
 -----------

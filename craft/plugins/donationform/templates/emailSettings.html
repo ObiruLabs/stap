@@ -27,6 +27,16 @@
     <form method="post" action="" accept-charset="UTF-8">
         <div class="field">
             {{ forms.textField({
+                label: 'Notify Email',
+                required: false,
+                instructions: 'A copy of the donation receipts are sent to this email.',
+                name: 'settings[notifyEmail]',
+                value: emailSettings.notifyEmail
+            }) }}
+        </div>
+        <hr>
+        <div class="field">
+            {{ forms.textField({
                 label: 'Receipt Paragraph 1',
                 required: false,
                 instructions: 'This appears in the email that is sent when an individual submits a donation.',

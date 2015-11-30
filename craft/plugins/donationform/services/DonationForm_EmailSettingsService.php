@@ -24,7 +24,7 @@ class DonationForm_EmailSettingsService extends BaseApplicationComponent
         $records = $this->emailSettingRecord->findAll();
 
         if (empty($records)) {
-            $model = $this->newEmailSetting(array('receiptParagraphOne' => '', 'receiptParagraphTwo' => '', 'receiptParagraphThree' => ''));
+            $model = $this->newEmailSetting(array('receiptParagraphOne' => '', 'receiptParagraphTwo' => '', 'receiptParagraphThree' => '', 'notifyEmail' => ''));
             $this->saveEmailSetting($model);
         } else {
             $models = DonationForm_EmailSettingModel::populateModels($records, 'id');

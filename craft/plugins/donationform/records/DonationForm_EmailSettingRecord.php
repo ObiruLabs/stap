@@ -16,7 +16,8 @@ class DonationForm_EmailSettingRecord extends BaseRecord
         return array(
             'receiptParagraphOne' => array(AttributeType::String, 'maxLength' => 600, 'required' => false),
             'receiptParagraphTwo' => array(AttributeType::String, 'maxLength' => 600, 'required' => false),
-            'receiptParagraphThree' => array(AttributeType::String, 'maxLength' => 600, 'required' => false)
+            'receiptParagraphThree' => array(AttributeType::String, 'maxLength' => 600, 'required' => false),
+            'notifyEmail' => array(AttributeType::String, 'maxLength' => 200, 'required' => false)
         );
     }
 
@@ -33,4 +34,3 @@ class DonationForm_EmailSettingRecord extends BaseRecord
         return $record;
     }
 }
-//*|NAME|*

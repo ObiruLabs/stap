@@ -8,13 +8,21 @@
       <div class='row'>
         <div class='col-sm-6 col-sm-offset-3'>
           <h1 class='section--title'>Job Openings</h1>
-          Providing Comprehensive HIV/AIDS Services in the Southern Tier of New York. Founded in 1984 as a local response to the HIV epidemic, Southern Tier AIDS program provides effective and innovative HIV and Hepatitis C prevention education.
+          {{ entry.pageIntroduction }}
         </div>
       </div>
     </div>
   </section>
   <section class='section'>
     <div class='container-fluid'>
+      {% if craft.entries.section('jobOpenings') is empty %}
+      <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <h2>No job openings available at this time</h2>
+          <p>Thank you for your interest in STAP. All positions are currently filled. Please visit our site again for future job postings that may relate to your experience and talents.​</p>
+        </div>
+      </div>
+      {% endif %}
       {% for entry in craft.entries.section('jobOpenings') %}
       <div class='job row'>
         <div class='col-sm-6 col-sm-offset-3'>

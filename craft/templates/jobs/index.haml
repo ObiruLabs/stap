@@ -9,10 +9,16 @@
             .row
                 .col-sm-6.col-sm-offset-3
                     %h1.section--title Job Openings
-                    Providing Comprehensive HIV/AIDS Services in the Southern Tier of New York. Founded in 1984 as a local response to the HIV epidemic, Southern Tier AIDS program provides effective and innovative HIV and Hepatitis C prevention education.
+                    {{ entry.pageIntroduction }}
 
     %section.section
         .container-fluid
+            {% if craft.entries.section('jobOpenings') is empty %}
+            .row
+                .col-sm-6.col-sm-offset-3
+                    %h2 No job openings available at this time
+                    %p Thank you for your interest in STAP. All positions are currently filled. Please visit our site again for future job postings that may relate to your experience and talents.​
+            {% endif %}
             {% for entry in craft.entries.section('jobOpenings') %}
             .job.row
                 .col-sm-6.col-sm-offset-3

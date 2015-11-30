@@ -118,6 +118,8 @@ class DonationForm_DonationsController extends BaseController
         $template = self::EMAIL_CONFIRMATION_TEMPLATE;
         $vars = array();
 
+        $toNotifyEmail = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->notifyEmail;
+
         if ($type == 'once') {
             $bodyOne = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptParagraphOne;
             $bodyTwo = craft()->donationForm_emailSettings->getOrCreateEmailSetting()->receiptParagraphTwo;
@@ -150,12 +152,18 @@ class DonationForm_DonationsController extends BaseController
         }
 
         $message = array(
-            'to' => array(array('email' => $email, 'name' => $name)),
+            'to' => array(array('email' => $email, 'name' => $name), array('email' => $toNotifyEmail, 'name' => 'notify', 'type' => 'bcc')),
             'merge' => true,
-            'merge_vars' => array(array(
-                'rcpt' => $email,
-                'vars' => $vars
-            ))
+            'merge_vars' => array(
+                array(
+                    'rcpt' => $email,
+                    'vars' => $vars
+                ),
+                array(
+                    'rcpt' => $toNotifyEmail,
+                    'vars' => $vars
+                ),
+            )
         );
 
         $template_content = array();

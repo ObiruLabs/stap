@@ -25,7 +25,7 @@
         %script{ src: '//maps.googleapis.com/maps/api/js?libraries=geometry,places' }
         %script{ src: 'https://js.stripe.com/v2/' }
 
-        %script{ src: '/js/vendor/faker.min.js' }
+        -#%script{ src: '/js/vendor/faker.min.js' }
 
         :javascript
             try{Typekit.load();}catch(e){}
@@ -247,7 +247,7 @@
                 .container-fluid
                     .row
                         .footer--callout-form.col-sm-6
-                            %h3 Get our newsletters updates
+                            %h3 Get our newsletter updates
                             %form#mc-embedded-subscribe-form.validate.form-inline{ action: '//stapinc.us10.list-manage.com/subscribe/post?u=6e2aebad0f9c25b08a995d4a9&amp;id=d382e4949e', method: 'post', name: 'mc-embedded-subscribe-form', target: '_blank', novalidate: '' }
                                 #mc_embed_signup_scroll
                                     .mc-field-group

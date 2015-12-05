@@ -33,7 +33,7 @@
     RewriteRule ^Prevention-Services/Criminal-Justice$ "/preventionservices#criminal-justice-initiative" [R=301,NC,L,R,NE]
     RewriteRule ^Prevention-Services/Substance-Use-Outreach$ "/preventionservices" [R=301,NC,L,R,NE]
 
-    RewriteRule ^HIV-Testing/HIV-Testing$ "/testing" [R=301,NC,L,R,NE]
+    RewriteRule ^HIV-Testing/HIV-Testing$ "/faq#hiv-aids-101" [R=301,NC,L,R,NE]
     RewriteRule ^HIV-Testing/Broome$ "/testing" [R=301,NC,L,R,NE]
     RewriteRule ^HIV-Testing/Chemung$ "/testing" [R=301,NC,L,R,NE]
     RewriteRule ^HIV-Testing/Chenango$ "/testing" [R=301,NC,L,R,NE]

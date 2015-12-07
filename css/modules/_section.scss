@@ -130,7 +130,10 @@
 
 .section_background {
     @extend .section;
-    background-size: cover;
+    background: {
+        position: center center;
+        size: cover;
+    }
     padding: {
         bottom: 150px;
         top: 100px;
@@ -202,16 +205,12 @@
 .section_background_about-contact {
     @extend .section_background;
     background-image: url("/images/backgrounds/bg-map.jpg");
+    color: #fff;
     padding-bottom: 150px;
-
-    .section_background--overlay-light {
-        background: #fff;
-        opacity: .85;
-    }
 
     .section_background--overlay {
         background: $brand-tertiary-dark;
-        opacity: .2;
+        opacity: .7;
     }
 
     .section--title {
@@ -320,45 +319,40 @@
 
 .section_background_donation {
     @extend .section_background;
-    background-image: url("/images/backgrounds/bg-7.jpg");
+    background-image: url("/images/backgrounds/bg-hands.jpg");
+    color: #fff;
 
     .section_background--overlay {
-        background: #fff;
-        opacity: .9;
+        background: #000;
+        opacity: .5;
     }
 }
 
 .section_background_clientstories {
     @extend .section_background;
-    background-image: url("/images/backgrounds/bg-7.jpg");
+    background-image: url("/images/backgrounds/bg-group.jpg");
 
     .section_background--overlay {
         background: #fff;
-        opacity: .9;
+        opacity: .85;
     }
 }
 
 .section_background_home {
     @extend .section_background;
-    background-image: url("/images/backgrounds/bg-1.jpg");
+    background-image: url("/images/backgrounds/bg-hope.jpg");
     padding: {
         bottom: 220px;
         top: 150px;
     }
     position: relative;
 
-    .section_background--overlay-light {
-        background: #fff;
-        opacity: .6;
-    }
-
     .section_background--overlay {
-        background: $brand-tertiary-dark;
-        opacity: .5;
+        background: #fff;
+        opacity: .4;
     }
 
     .section--title {
-        color: #fff;
         font: {
             family: $font-family-serif;
             size: 30px;
@@ -379,14 +373,9 @@
     background-image: url("/images/backgrounds/bg-map.jpg");
     padding-bottom: 80px;
 
-    .section_background--overlay-light {
+    .section_background--overlay {
         background: #fff;
         opacity: .85;
-    }
-
-    .section_background--overlay {
-        background: #f2f2f2;
-        opacity: .4;
     }
 
     .section--title {
@@ -395,7 +384,11 @@
     }
 
     &--more {
-        margin-top: 120px;
+        margin-top: 100px;
+
+        .btn {
+            margin-top: 20px;
+        }
     }
 
     p {

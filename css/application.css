@@ -9436,7 +9436,7 @@ button.close {
 }
 
 .section_background_about-contact {
-  background-image: url("/images/backgrounds/bg-map.jpg");
+  background-image: url("/images/backgrounds/bg-mapbox.jpg");
   color: #fff;
   padding-bottom: 150px;
 }
@@ -9575,7 +9575,7 @@ button.close {
 }
 
 .section_background_home-services {
-  background-image: url("/images/backgrounds/bg-map.jpg");
+  background-image: url("/images/backgrounds/bg-mapbox.jpg");
   padding-bottom: 80px;
 }
 .section_background_home-services .section_background--overlay {

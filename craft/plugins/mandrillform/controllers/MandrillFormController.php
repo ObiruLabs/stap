@@ -40,11 +40,15 @@ class MandrillFormController extends BaseController
 			$api = new \Mandrill($settings->apiKey);
 
 			// construct model
+            $fromEmail = craft()->request->getPost('fromEmail');
+            $fromName = craft()->request->getPost('fromName', '');
+            $formMessageBody = $fromEmail.' sent the following message: '.craft()->request->getPost('message');
+
 			$formData = new MandrillFormModel();
-			$formData->fromEmail = craft()->request->getPost('fromEmail');
-			$formData->fromName = craft()->request->getPost('fromName', '');
+			$formData->fromEmail = 'no-reply@stapinc.org';
+			$formData->fromName = 'STAP Contact Form';
 			$formData->subject = $settings->emailSubject;
-			$formData->message = craft()->request->getPost('message');
+			$formData->message = $formMessageBody;
 
 			// Mandrill status responses
 			$messageStatus = 'unknown';

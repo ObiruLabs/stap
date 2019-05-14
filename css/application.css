@@ -8163,111 +8163,134 @@ button.close {
 .footer {
   background: #f2f2f2;
   font-family: "freight-sans-pro", helvetica, arial, sans-serif;
-  text-align: center;
+}
+.footer--flex-col {
+  display: flex;
+  border-right: none;
+  border-bottom: 2px solid #ccc;
+  height: 100%;
+  padding: 30px 0;
+}
+@media (min-width: 768px) {
+  .footer--flex-col {
+    border-right: 1px solid #ccc;
+    border-bottom: none;
+    padding: 0;
+  }
+}
+.footer--flex-row {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .footer--flex-row {
+    flex-direction: row;
+  }
+}
+.footer--flex-row div:last-child .footer--flex-col {
+  border-bottom: none;
+}
+@media (min-width: 768px) {
+  .footer--flex-row div:last-child .footer--flex-col {
+    border-right: none;
+  }
 }
 .footer--callout {
   background: #f13449;
   color: #fff;
-  padding: 25px 0 40px;
-}
-.footer--callout h3 {
-  font-family: "freight-sans-pro", helvetica, arial, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-}
-.footer--callout a {
-  padding: 10px;
-  position: relative;
-  top: 10px;
-  transition: opacity 100ms;
-}
-.footer--callout a:hover {
-  opacity: .75;
-}
-.footer--callout svg {
-  width: 18px;
-}
-.footer--callout input.email {
-  border: 2px solid #fff;
-  box-shadow: none;
-  display: inline-block;
-  width: 250px;
-  vertical-align: middle;
-}
-.footer--callout button {
-  background: #f13449;
-  border: 2px solid #fff;
-  margin-left: -5px;
-  padding: 5px 25px;
-  transition: background 200ms, box-shadow 200ms, color 200ms;
-}
-.footer--callout button:focus {
-  color: #fff;
-}
-.footer--callout button:hover {
-  background: #fff;
-  box-shadow: -2px 0 #f13449;
-  color: #f13449;
+  height: 8px;
 }
 .footer--callout-form {
-  border-bottom: 1px solid #d2242b;
-  padding-bottom: 35px;
+  margin-bottom: 35px;
 }
 @media (min-width: 768px) {
   .footer--callout-form {
-    border-bottom: none;
-    border-right: 1px solid #d2242b;
-    padding-bottom: 0;
+    margin-bottom: 0;
   }
 }
 .footer--about {
-  padding: 100px 0;
+  padding-top: 20px;
 }
-.footer--about a {
+.footer--about x
+a {
   color: #f13449;
 }
 .footer--about .footer--links .footer--separator {
   color: #f13449;
 }
+@media (min-width: 768px) {
+  .footer--about {
+    padding: 50px 0;
+  }
+}
 .footer--disclaimer {
+  text-align: center;
   border-bottom: 5px solid #f13449;
   border-top: 1px solid #ccc;
   color: #888;
   font-size: 16px;
   padding: 20px;
 }
-.footer--contact-info {
-  margin-bottom: 15px;
+.footer--socials {
+  margin: 0 auto;
 }
-.footer--contact-info .footer--separator {
-  display: none;
+.footer--socials h3 {
+  margin: 0;
+  text-align: center;
+  font-family: "freight-sans-pro", helvetica, arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+.footer--socials a {
+  position: relative;
+  top: 10px;
+  transition: opacity 100ms;
+  display: block;
+  color: #333333;
+}
+.footer--socials a:hover {
+  opacity: .75;
+  text-decoration: none;
+}
+.footer--socials svg {
+  width: 18px;
+  margin-right: 5px;
 }
 @media (min-width: 768px) {
-  .footer--contact-info .footer--separator {
-    display: inline-block;
-    *display: inline;
-    zoom: 1;
+  .footer h3 {
+    text-align: left;
   }
 }
-.footer--address, .footer--phone {
+.footer--links {
+  margin: 0 auto;
+  text-align: center;
+}
+.footer--links a {
   display: block;
+  color: #333333;
+}
+@media (min-width: 768px) {
+  .footer--links {
+    text-align: right;
+  }
+}
+.footer--contact-info {
+  margin: 0 auto;
+}
+.footer--company, .footer--address, .footer--phone {
+  display: block;
+  text-align: center;
 }
 .footer--company {
-  display: block;
+  font-size: 18px;
   font-weight: 700;
+  margin: 0;
+  font-family: "freight-sans-pro", helvetica, arial, sans-serif;
 }
 @media (min-width: 768px) {
   .footer--company, .footer--address, .footer--phone {
-    display: inline-block;
-    *display: inline;
-    zoom: 1;
+    text-align: left;
   }
-}
-.footer--separator {
-  font-size: 14px;
-  padding: 0 10px;
-  position: relative;
-  top: -2px;
 }
 
 /*! Hint.css - v1.3.5 - 2015-06-16
@@ -8971,15 +8994,14 @@ button.close {
   margin-top: -190px;
   min-height: 280px;
 }
-.nav-header--left-nav-links {
-  padding-right: 0;
+.nav-header--left-nav-links, .nav-header--right-nav-links {
+  padding: 0;
 }
-.nav-header--right-nav-links {
-  padding-left: 0;
+.nav-header__link {
+  white-space: nowrap;
 }
 .nav-header--logo {
   text-align: right;
-  padding-right: 0;
 }
 .nav-header--logo > a {
   display: block;
@@ -9066,6 +9088,7 @@ button.close {
 }
 .nav-header--item {
   text-align: center;
+  padding: 0;
 }
 .nav-header--item > a {
   display: inline-block;

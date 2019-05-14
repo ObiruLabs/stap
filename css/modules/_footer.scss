@@ -1,79 +1,116 @@
 .footer {
     background: #f2f2f2;
     font-family: $font-family-sans-serif;
-    text-align: center;
+//    text-align: center;
+
+    &--flex-col {
+        display: flex;
+        border-right: none;
+        border-bottom: 2px solid #ccc;
+        height: 100%;
+        padding: 30px 0;
+    }
+
+    @media (min-width: $screen-sm-min) {
+        &--flex-col {
+            border-right: 1px solid #ccc;
+            border-bottom: none;
+            padding: 0;
+        }
+    }
+
+    &--flex-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media (min-width: $screen-sm-min) {
+        &--flex-row {
+            flex-direction: row;
+        }
+    }
+
+    &--flex-row div:last-child &--flex-col {
+        border-bottom: none;
+    }
+    @media (min-width: $screen-sm-min) {
+        &--flex-row div:last-child &--flex-col {
+            border-right: none;
+        }
+    }
 
     &--callout {
         background: $brand-primary;
         color: #fff;
-        padding: 25px 0 40px;
+        height: 8px;
+//        padding: 25px 0 40px;
 
-        h3 {
-            font: {
-                family: $font-family-sans-serif;
-                size: 18px;
-                weight: 400;
-            }
-        }
-
-        a {
-            padding: 10px;
-            position: relative;
-            top: 10px;
-            transition: opacity 100ms;
-
-            &:hover {
-                opacity: .75;
-            }
-        }
-
-        svg {
-            width: 18px;
-        }
-
-        input.email {
-            border: 2px solid #fff;
-            box-shadow: none;
-            display: inline-block;
-            width: 250px;
-            vertical-align: middle;
-        }
-
-        button {
-            background: $brand-primary;
-            border: 2px solid #fff;
-            margin-left: -5px;
-            padding: 5px 25px;
-            transition: background 200ms, box-shadow 200ms, color 200ms;
-
-            &:focus {
-                color: #fff;
-            }
-
-            &:hover {
-                background: #fff;
-                box-shadow: -2px 0 $brand-primary;
-                color: $brand-primary;
-            }
-        }
+//        h3 {
+//            font: {
+//                family: $font-family-sans-serif;
+//                size: 18px;
+//                weight: 400;
+//            }
+//        }
+//
+//        a {
+//            padding: 10px;
+//            position: relative;
+//            top: 10px;
+//            transition: opacity 100ms;
+//
+//            &:hover {
+//                opacity: .75;
+//            }
+//        }
+//
+//        svg {
+//            width: 18px;
+//        }
+//
+//        input.email {
+//            border: 2px solid #fff;
+//            box-shadow: none;
+//            display: inline-block;
+//            width: 250px;
+//            vertical-align: middle;
+//        }
+//
+//        button {
+//            background: $brand-primary;
+//            border: 2px solid #fff;
+//            margin-left: -5px;
+//            padding: 5px 25px;
+//            transition: background 200ms, box-shadow 200ms, color 200ms;
+//
+//            &:focus {
+//                color: #fff;
+//            }
+//
+//            &:hover {
+//                background: #fff;
+//                box-shadow: -2px 0 $brand-primary;
+//                color: $brand-primary;
+//            }
+//        }
     }
 
     &--callout-form {
-        border-bottom: 1px solid $brand-logo;
-        padding-bottom: 35px;
+//        border-bottom: 1px solid $brand-logo;
+        margin-bottom: 35px;
 
         @media (min-width: $screen-sm-min) {
-            border: {
-                bottom: none;
-                right: 1px solid $brand-logo;
-            }
-            padding-bottom: 0;
+//            border: {
+//                bottom: none;
+//                right: 1px solid $brand-logo;
+//            }
+            margin-bottom: 0;
         }
     }
 
     &--about {
-        padding: 100px 0;
-
+        padding-top: 20px;
+x
         a {
             color: $brand-primary;
         }
@@ -83,7 +120,14 @@
         }
     }
 
+    @media (min-width: $screen-sm-min) {
+        &--about {
+            padding: 50px 0;
+        }
+    }
+
     &--disclaimer {
+        text-align: center;
         border: {
             bottom: 5px solid $brand-primary;
             top: 1px solid #ccc;
@@ -93,40 +137,111 @@
         padding: 20px;
     }
 
-    &--contact-info {
-        margin-bottom: 15px;
+    &--socials {
+        margin: 0 auto;
+        h3 {
+            margin: 0;
+            text-align: center;
+            font: {
+                family: $font-family-sans-serif;
+                size: 18px;
+                weight: 700;
+            }
+        }
 
-        .footer--separator {
-            display: none;
+        a {
+//            padding: 10px;
+            position: relative;
+            top: 10px;
+            transition: opacity 100ms;
+            display: block;
+            color: #333333;
 
-            @media (min-width: $screen-sm-min) {
-                @include display-inline-block();
+            &:hover {
+                opacity: .75;
+                text-decoration: none;
+            }
+        }
+
+        svg {
+            width: 18px;
+            margin-right: 5px;
+
+        }
+    }
+
+    @media (min-width: $screen-sm-min) {
+        & {
+            h3 {
+                text-align: left;
             }
         }
     }
 
+    &--links {
+        margin: 0 auto;
+        text-align: center;
+
+        a {
+            display: block;
+            color: #333333;
+        }
+    }
+
+    @media (min-width: $screen-sm-min) {
+        &--links {
+            text-align: right;
+        }
+    }
+
+    &--contact-info {
+        margin: 0 auto;
+//        margin-bottom: 15px;
+
+//        .footer--separator {
+//            display: none;
+//
+//            @media (min-width: $screen-sm-min) {
+//                @include display-inline-block();
+//            }
+//        }
+    }
+
+    &--company,
     &--address,
-    &--phone {
+    &--phone, {
         display: block;
+        text-align: center;
     }
 
     &--company {
-        display: block;
+        font-size: 18px;
         font-weight: 700;
+        margin: 0;
+        font-family: "freight-sans-pro", helvetica, arial, sans-serif;
     }
 
     @media (min-width: $screen-sm-min) {
         &--company,
         &--address,
         &--phone {
-            @include display-inline-block();
+            text-align: left;
+
         }
     }
 
-    &--separator {
-        font-size: 14px;
-        padding: 0 10px;
-        position: relative;
-        top: -2px;
-    }
+//    @media (min-width: $screen-sm-min) {
+//        &--company,
+//        &--address,
+//        &--phone {
+//            @include display-inline-block();
+//        }
+//    }
+
+//    &--separator {
+//        font-size: 14px;
+//        padding: 0 10px;
+//        position: relative;
+//        top: -2px;
+//    }
 }

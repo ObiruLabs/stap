@@ -64,17 +64,17 @@
         min-height: 280px;
     }
 
-    &--left-nav-links {
-        padding-right: 0;
+    &--left-nav-links, &--right-nav-links {
+        padding: 0;
     }
 
-    &--right-nav-links {
-        padding-left: 0;
+    &__link {
+        white-space: nowrap;
     }
 
     &--logo {
         text-align: right;
-        padding-right: 0;
+//        padding-right: 0;
 
         > a {
             display: block;
@@ -177,6 +177,7 @@
 
     &--item {
         text-align: center;
+        padding: 0;
 
         > a {
             @include display-inline-block();

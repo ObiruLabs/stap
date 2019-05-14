@@ -58,6 +58,8 @@ Deployment
 4. Commit change
 5. Tag the commit to be deployed
 6. Log into server
+  * `stap` OR `ssh root@45.55.211.141`
+  * `cd /var/www/html`
 7. Fetch recent changes ` git fetch origin `
 8. Checkout the latest release ` git checkout vX.X.X `
 

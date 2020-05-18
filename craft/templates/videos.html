@@ -1,0 +1,64 @@
+{% extends "_layout" %}
+{% set navPage = 'resources' %}
+{% block content %}
+<main id='main-content'>
+  <section class='section_background_clientstories' style='background-image: url("{{ entry.bannerPhoto.first().url }}");'>
+    <div class='section_background--overlay'></div>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3'>
+          <h1 class='section--title'>{{ entry.bannerTitle }}</h1>
+          <p>{{ entry.bannerBody }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% for entry in craft.entries.section('videoResources') %}
+  <section class='section_bordered'>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='video-resource col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
+          <h1 class='section--title_secondary'>{{ entry.title }}</h1>
+          {% for video in entry.videoResources %}
+          <section class='video-resource--resource' id='{{ video.videoTitle | kebab }}'>
+            {% if video.image|length %}
+            <div class='row'>
+              <div class='col-sm-2 col-sm-pull-2'>
+                <div class='video-resource--image'>
+                  <img data-src='{{ video.image.first().url }}'>
+                </div>
+              </div>
+              <div class='col-sm-10 col-sm-pull-2'>
+                <h3>{{ video.videoTitle }}</h3>
+                <h4>{{ video.featuredText }}</h4>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-xs-12'>
+                <p>{{ video.description }}</p>
+              </div>
+            </div>
+            {% else %}
+            <h3>{{ video.videoTitle }}</h3>
+            <h4>{{ video.featuredText }}</h4>
+            <p>{{ video.description }}</p>
+            {% endif %}
+            <iframe allowfullscreen='' class='video-resource--video' data-src='{{ video.videoLink }}?rel=0&amp;amp;showinfo=0' frameborder='0' width='100%'></iframe>
+          </section>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endfor %}
+  <script>
+    function init() {
+    var vidDefer = document.getElementsByTagName('iframe');
+    for (var i=0; i<vidDefer.length; i++) {
+    if(vidDefer[i].getAttribute('data-src')) {
+    vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
+    } } }
+    window.onload = init;
+  </script>
+</main>
+{% endblock %}

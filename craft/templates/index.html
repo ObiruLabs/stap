@@ -11,27 +11,36 @@
       </div>
     </div>
     <div class='client-callout'>
-      {% set story = random(craft.entries.section('clientStories').first().clientStories) %}
+      {% set featuredVideos = [] %}
+      {% for entry in craft.entries.section('videoResources') %}
+      {% for video in entry.videoResources %}
+      {% if video.isFeatured.contains('yesFeatured') %}
+      {% set featuredVideos = featuredVideos|merge([video]) %}
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+      {% set video = random(featuredVideos ) %}
       <div class='client-callout--overlay'></div>
       <div class='client-callout--body'>
-        <div class='container-fluid'>
+        <div class='container'>
           <div class='row'>
-            <div class='col-sm-4 col-md-3'>
-              <a href='/clientstories{{ "#" ~ story.storyName | kebab }}'>
-                <img class='client-callout--photo' src='{{ story.coverImage.first().url }}'>
+            <div class='col-sm-2 col-md-1'>
+              {% if video.image|length %}
+              <a href='/videos{{ "#" ~ video.videoTitle | kebab }}'>
+                <img class='client-callout--photo' src='{{ video.image.first().url }}'>
               </a>
-              <h3 class='client-callout--name'>
-                <a href='/clientstories{{ "#" ~ story.storyName | kebab }}'>{{ story.storyName }}</a>
-                <div class='client-callout--introduction'>
-                  <a href='/clientstories{{ "#" ~ story.storyName | kebab }}'>{{ story.introduction }}</a>
-                </div>
-              </h3>
+              {% endif %}
             </div>
-            <div class='client-callout--quote col-sm-8 col-md-9'>
-              <svg class='client-callout--quote-image' viewbox='0 0 45.9 39.2'>
-                <use xlink:href='#quote'></use>
-              </svg>
-              <div class='client-callout--quote-body'>{{ story.quote }}</div>
+            <div class='col-sm-10'>
+              <h3 class='client-callout--name'>
+                <a href='/videos{{ "#" ~ video.videoTitle | kebab }}'>{{ video.videoTitle }}</a>
+              </h3>
+              <div class='client-callout--quote-body'>
+                {{ video.featuredText }}
+              </div>
+              <div class='client-callout--link'>
+                <a href='/videos{{ "#" ~ video.videoTitle | kebab }}'>{{ video.featuredLinkText }}</a>
+              </div>
             </div>
           </div>
         </div>

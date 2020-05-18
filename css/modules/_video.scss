@@ -1,0 +1,38 @@
+.video-resource {
+    .video-resource--resource + .video-resource--resource {
+        margin-top: 100px;
+    }
+
+    .video-resource--resource + .section--title_secondary {
+        margin-top: 150px;
+    }
+
+    h3 {
+        margin-top: 5px;
+    }
+
+    h4 {
+        font-size: 18px;
+        font-weight: 400;
+        color: #aaa;
+        line-height: 1.5;
+    }
+
+    .video-resource--image {
+        img {
+            border-radius: 50%;
+            height: 75px;
+            margin: 0 auto;
+            width: 75px;
+        }
+    }
+
+    .video-resource--video {
+        height: 300px;
+        margin-top: 30px;
+
+        @media (min-width: $screen-sm-min) {
+            height: 400px;
+        }
+    }
+}

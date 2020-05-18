@@ -32,8 +32,10 @@ Development
 * Make sure grunt is installed. If not, run `sudo npm install -g grunt`.
 * Make sure the grunt CLI is installed. If not, run `sudo npm install -g grunt-cli`.
 * Run `npm install` to install dependencies.
-* Run `grunt server` to start up a server on `localhost:8080`
+* Run `grunt server` to start up a server on `localhost:8080` to compile files
 * Run `grunt watch` to watch for changes in Haml and Sass files and automatically compile to HTML and CSS
+* Run MAMP server
+  * Make sure to point web server to the correct directory
 * When adding new JavaScript files:
   * Add them to ` application.js `
   * Copy over the dependency list to ` Gruntfile.js `
